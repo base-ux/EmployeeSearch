@@ -2,3 +2,11 @@
     padding: 100px;
     background-color: #eeeeee;
 }
+
+.welcomeTitleFull {
+    padding: 100px;
+}
+
+#welcomeTitleEmployee {
+    color: #ff0066;
+}
