@@ -38,10 +38,12 @@ public class ProjektiTest {
     // POSTS-TESTS
     @Test
     public void posts() {
+        
     }
 
     // HOME-TESTS
     @Test
     public void home() {
+        
     }
 }

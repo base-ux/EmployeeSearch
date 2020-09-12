@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DefaultController {
 
     @GetMapping("/")
-    public String welcome() {
+    public String root() {
         return "redirect:/EmployeeSearch/Welcome";
     }
 }
