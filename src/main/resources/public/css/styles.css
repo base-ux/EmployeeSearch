@@ -18,9 +18,7 @@
     background-color: #eeeeee;
 }
 .welcomeText {
-    margin-top: 10px;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin: 10px;
     padding: 100px;
     text-align: center;
 }
