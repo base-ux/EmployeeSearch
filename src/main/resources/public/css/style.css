@@ -2,12 +2,21 @@
     padding: 100px;
 }
 
+.welcomeLoginRegister {
+    color: #ffffff;
+}
+
 .welcomePosts {
     padding: 100px;
     background-color: #eeeeee;
 }
 
-.welcomeTitleFull {
+.welcomeBackground {
+    background-color: #00336c;
+}
+
+.welcomeText {
+    color: #ffffff;
     padding: 100px;
 }
 
