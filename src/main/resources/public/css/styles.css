@@ -1,0 +1,35 @@
+.footer {
+    padding: 100px;
+}
+
+.welcomeBackground {
+    background-color: #012853;
+}
+
+.welcomeLoginRegister {
+    color: #ffffff;
+}
+
+.welcomePostsButton {
+    margin-top: 10px;
+    margin-left: 30px;
+    padding: 100px;
+    background-color: #eeeeee;
+}
+.welcomeText {
+    color: #ffffff;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 100px;
+    text-align: center;
+}
+
+.welcomeTitle {
+    color: #ffffff;
+    padding: 100px;
+}
+
+#welcomeTitleEmployee {
+    color: #ff0066;
+}
