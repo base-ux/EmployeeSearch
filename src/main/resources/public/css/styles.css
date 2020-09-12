@@ -12,7 +12,7 @@
 }
 
 .welcomeLeftBar {
-    background-color: #ffffff;
+    background-color: #eeeeee;
     margin-top: 10px;
     margin-bottom: 100px;
     padding: 100px 0 100px 0;
@@ -23,15 +23,13 @@
 }
 
 .welcomePostsButton {
-    align-content: center;
-    height: 500px;
     margin: 10px 0 100px 10px;
     padding: 50px;
     background-color: #eeeeee;
 }
 .welcomeText {
-    align-content: center;
     margin: 10px 0 100px 0;
+    vertical-align: middle;
     text-align: center;
 }
 
