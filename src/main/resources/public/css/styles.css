@@ -13,11 +13,12 @@
 
 .welcomePostsButton {
     margin-top: 10px;
-    margin-left: 100px;
     padding: 50px;
     background-color: #eeeeee;
 }
 .welcomeText {
+    margin: 10px;
+    text-align: center;
 }
 
 .welcomeTitle {
