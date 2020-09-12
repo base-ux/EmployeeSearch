@@ -9,6 +9,7 @@
 
 .welcomeLeftBar {
     background-color: #dfe1e5;
+    margin-bottom: 100px;
 }
 
 .welcomeLoginRegister {
@@ -23,6 +24,7 @@
 }
 .welcomeText {
     margin-top: 10px;
+    margin-bottom: 100px;
     text-align: center;
 }
 
