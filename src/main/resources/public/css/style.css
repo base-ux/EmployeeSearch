@@ -1,4 +1,5 @@
 .footer {
+    margin-left: 0px;
     padding: 100px;
 }
 
@@ -7,6 +8,7 @@
 }
 
 .welcomePosts {
+    margin-left: 0px;
     padding: 100px;
     background-color: #eeeeee;
 }
@@ -18,6 +20,7 @@
 .welcomeText {
     color: #ffffff;
     padding: 100px;
+    margin-left: 0px;
 }
 
 #welcomeTitleEmployee {
