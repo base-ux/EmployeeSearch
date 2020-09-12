@@ -24,7 +24,7 @@ public class ProjektiTest {
 
     // WELCOME-TESTS
     @Test
-    public void getRequestToRootGivesRedirect() throws Exception {
+    public void getRequestToRootReturnsRedirect() throws Exception {
         this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isFound());
     }
 
