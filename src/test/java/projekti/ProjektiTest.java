@@ -5,7 +5,8 @@ import org.junit.Test;
 public class ProjektiTest {
 
     @Test
-    public void welcome() {
+    public void getRequestToRootReturnsWelcomePage() {
+        
     }
 
     @Test
