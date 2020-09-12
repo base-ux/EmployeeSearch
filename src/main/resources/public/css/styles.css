@@ -1,10 +1,10 @@
 .carouselText {
-    color: #212121;
+    color: #ff0066;
 }
 
 .footer {
     background-color: #dddddd;
-    padding: 100px;
+    padding: 100px 100px 100px 10px;
 }
 
 .welcomeBackground {
@@ -12,8 +12,7 @@
 }
 
 .welcomeLeftBar {
-    margin-top: 10px;
-    margin-bottom: 100px;
+    margin: 10px 0 100px 10px;
     padding: 100px 0 100px 0;
 }
 
@@ -22,7 +21,7 @@
 }
 
 .welcomePostsButton {
-    font-weight: bold;
+    font-weight: bolder;
     margin: 10px 0 100px 10px;
     padding: 200px 0 200px 0;
     background-color: #eeeeee;
