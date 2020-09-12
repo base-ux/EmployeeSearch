@@ -19,8 +19,7 @@
 .welcomeLeftBarCurve {
     background-color: #012853;
     color: #ff0066;
-    margin: 10px;
-    padding: 50px;
+    padding: 0 50px 50px 50px;
 }
 
 .welcomeLoginRegister {
