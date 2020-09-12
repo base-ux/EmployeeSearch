@@ -9,9 +9,10 @@
 
 .welcomeLeftBar {
     background-color: #dfe1e5;
+    color: #212121;
     margin-top: 10px;
     margin-bottom: 100px;
-    padding: 10px 0 100px 0;
+    padding: 0 0 100px 0;
 }
 
 .welcomeLoginRegister {
