@@ -31,7 +31,7 @@ public class ProjektiTest {
     @Test
     public void getRequestToWelcomeReturnsWelcomePhrase() throws Exception {
         this.mockMvc.perform(get("/EmployeeSearch/Welcome")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Welcome to Employee Search App")))
+                .andExpect(content().string(containsString("Welcome to the ")))
                 .andExpect(content().string(not(containsString("gaslo4tghj38g92"))));
     }
 
