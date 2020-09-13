@@ -23,15 +23,7 @@
     padding: 0 0 100px 0;
 }
 
-.welcomeLeftBarCurveBottom {
-    background-color: #012854;
-    border-bottom-right-radius:100%;
-    color: #ffffff;
-    height:50px;
-    padding-top: 100px;
-}
-
-.welcomeLeftBarCurveTopA {
+.welcomeLeftBarCurveTop {
     margin-bottom: 15px;
 }
 
