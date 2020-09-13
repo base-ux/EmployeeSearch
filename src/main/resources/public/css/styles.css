@@ -3,7 +3,7 @@
 }
 
 .carouselText {
-    color: #212121;
+    color: #212122;
 }
 
 .footer {
@@ -16,7 +16,7 @@
 }
 
 .welcomeBackground {
-    background-color: #012853;
+    background-color: #012854;
 }
 
 .welcomeLeftBar {
@@ -24,20 +24,20 @@
 }
 
 .welcomeLeftBarCurveBottom {
-    background-color: #012853;
-    width:500px;
-    height:50px;
-    border-bottom-left-radius:50%;
-    border-bottom-right-radius:50%;
+    background-color: #012854;
+    border-bottom-left-radius:20%;
+    border-bottom-right-radius:80%;
     color: #ffffff;
+    height:50px;
     padding-top: 100px;
 }
 
 .welcomeLeftBarCurveTop {
-    background-color: #012853;
+    background-color: #012854;
     border-top: 25px solid transparent;
-    border-right: 50px solid #555;
+    border-right: 50px solid #555555;
     border-bottom: 25px solid transparent;
+    border-bottom-left-radius: 20%;
     color: #ffffff;
     padding-top: 100px;
 }
@@ -63,5 +63,5 @@
 }
 
 #welcomeTitleEmployee {
-    color: #ff0066;
+    color: #ff0067;
 }
