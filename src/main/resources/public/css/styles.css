@@ -35,11 +35,12 @@
     background-color: #012854;
     border-bottom-right-radius:100%;
     color: #ffffff;
+    margin-top: 15px;
     padding-top: 100px;
 }
 
 .welcomeLeftBarCurveTopB {
-    background-color: #c2c2c2;
+    background-color: #4285f5;
     border-bottom-right-radius:100%;
     color: #ffffff;
     padding-top: 100px;
