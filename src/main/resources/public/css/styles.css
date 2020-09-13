@@ -20,7 +20,13 @@
     padding: 0 0 100px 0;
 }
 
-.welcomeLeftBarCurve {
+.welcomeLeftBarCurveBottom {
+    background-color: #012853;
+    color: #ffffff;
+    padding: 0 50px 50px 50px;
+}
+
+.welcomeLeftBarCurveTop {
     background-color: #012853;
     color: #ffffff;
     padding: 0 50px 50px 50px;
