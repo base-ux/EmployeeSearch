@@ -1,5 +1,5 @@
 .btn-block {
-    padding: 100px 0 100px 0;
+    padding: 200px 0 200px 0;
 }
 
 .carouselText {
@@ -32,9 +32,7 @@
 }
 
 .welcomePostsButton {
-    background-color: #eeeeee;
     margin: 10px 0 100px 10px;
-    padding: 200px 0 200px 0;
 }
 .welcomeText {
     margin: 10px 0 100px 0;
