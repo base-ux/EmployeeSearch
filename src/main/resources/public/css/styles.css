@@ -17,19 +17,19 @@
 
 .welcomeLeftBar {
     margin: 0 0 100px 0;
-    padding: 0 0 100px 0;
+    padding: 50px 0 100px 20px;
 }
 
 .welcomeLeftBarCurveBottom {
     background-color: #012853;
     color: #ffffff;
-    padding: 0 50px 50px 50px;
+    padding: 50px 50px 50px 100px;
 }
 
 .welcomeLeftBarCurveTop {
     background-color: #012853;
     color: #ffffff;
-    padding: 0 50px 50px 50px;
+    padding: 50px 50px 50px 100px;
 }
 
 .welcomeLoginRegister {
