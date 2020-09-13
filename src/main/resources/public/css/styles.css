@@ -11,6 +11,10 @@
     padding: 50px 50px 50px 50px;
 }
 
+.termsOfServiceTitle {
+    text-align: center;
+}
+
 .welcomeBackground {
     background-color: #012853;
 }
@@ -23,13 +27,13 @@
 .welcomeLeftBarCurveBottom {
     background-color: #012853;
     color: #ffffff;
-    padding: 50px 50px 50px 100px;
+    padding: 50px 50px 50px 75px;
 }
 
 .welcomeLeftBarCurveTop {
     background-color: #012853;
     color: #ffffff;
-    padding: 50px 50px 50px 100px;
+    padding: 50px 50px 50px 75px;
 }
 
 .welcomeLoginRegister {
