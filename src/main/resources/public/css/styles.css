@@ -26,13 +26,13 @@
 .welcomeLeftBarCurveBottom {
     background-color: #012853;
     color: #ffffff;
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 .welcomeLeftBarCurveTop {
     background-color: #012853;
     color: #ffffff;
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 .welcomeLoginRegister {
@@ -41,7 +41,7 @@
 }
 
 .welcomePostsButton {
-    margin: 15px 0 0 0;
+    margin: 15px 0 15px 0;
 }
 
 .welcomeText {
