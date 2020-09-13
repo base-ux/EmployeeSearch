@@ -1,5 +1,5 @@
 .btn-block {
-    padding: 200px 0 200px 0;
+    padding: 300px 0 300px 0;
 }
 
 .carouselText {
@@ -26,13 +26,13 @@
 .welcomeLeftBarCurveBottom {
     background-color: #012853;
     color: #ffffff;
-    padding: 50px 50px 50px 100px;
+    padding-top: 50px;
 }
 
 .welcomeLeftBarCurveTop {
     background-color: #012853;
     color: #ffffff;
-    padding: 50px 50px 50px 75px;
+    padding-top: 50px;
 }
 
 .welcomeLoginRegister {
