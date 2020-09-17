@@ -10,4 +10,14 @@ public class DefaultController {
     public String root() {
         return "redirect:/EmployeeSearch/Welcome";
     }
+
+    @GetMapping("/EmployeeSearch")
+    public String rootEmployeeSearchA() {
+        return "redirect:/EmployeeSearch/Welcome";
+    }
+
+    @GetMapping("/EmployeeSearch/")
+    public String rootEmployeeSearchB() {
+        return "redirect:/EmployeeSearch/Welcome";
+    }
 }

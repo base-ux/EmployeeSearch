@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Register - Employee Search</title>
+    </head>
+    <body>
+        <h1>Register</h1>
+
+        <ol>
+            <li th:each="account : ${accounts}">
+                <p th:text="${account.username}">username</p>
+                <p th:text="${account.password}">password</p>
+            </li>
+        </ol>
+        
+        <form th:action="@{/EmployeeSearch/Register}" method="POST">
+            <input type="text" name="username"/>
+            <input type="password" name="password"/>
+            <input type="submit" value="Register"/>
+        </form>
+    </body>
+</html>
