@@ -28,7 +28,7 @@
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#012854" fill-opacity="1" d="M0,224L80,218.7C160,213,320,203,480,165.3C640,128,800,64,960,32C1120,0,1280,0,1360,0L1440,0L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
                     </div>
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -57,11 +57,11 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
@@ -91,27 +91,8 @@
         <div class="container">
             <div class="row">
                 <div class="col footer">
-                    <h5 class="termsOfServiceTitle">Terms of Service</h5>
-                    <p><strong>Terms and Conditions</strong><br/><br/>
-                        By using this website you agree to be bound by and 
-                        accept the following terms and conditions. Please read 
-                        them carefully.<br/><br/>
-                        <strong>Disclaimer</strong><br/><br/>
-                        I, the author (Toni Silfver), created this website 
-                        for a school project and as such it should be 
-                        comprehended. All the information published on this 
-                        website is true and accurate to the best of the 
-                        author's knowledge. Any information on this site should 
-                        not be a substitute for an advice. No liability is 
-                        assumed by author for losses suffered by any person or 
-                        organisation relying directly or indirectly on 
-                        information published or files shared on this site. 
-                        Views expressed in any post, comment or like are the 
-                        views of the authors individually and do not 
-                        necessarily reflect the view of Toni Silfver.<br/><br/>
-                        Information appearing on this site may only be 
-                        reproduced with prior approval from Toni Silfver and 
-                        credit being given to the source.<br/><br/>
+                    <a th:href="@{/EmployeeSearch/TermsOfService}" class="termsOfServiceTitle">Terms of Service</a>
+                    <p>
                         Copyright &copy; Toni Silfver 2020. All rights reserved.
                     </p>
                 </div>
