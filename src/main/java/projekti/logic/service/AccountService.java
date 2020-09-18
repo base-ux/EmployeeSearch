@@ -16,7 +16,7 @@ public class AccountService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public String addAccount(String username, String password) {
+    public String addaccount(String username, String password) {
         if (this.accountRepository.findByUsername(username) != null) {
             return "redirect:/EmployeeSearch/Register";
         }
@@ -27,6 +27,10 @@ public class AccountService {
     }
 
     public String home() {
+        return "home";
+    }
+    
+    public String login() {
         return "home";
     }
 

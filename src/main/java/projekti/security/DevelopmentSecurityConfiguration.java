@@ -21,10 +21,14 @@ public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapt
     public void configure(HttpSecurity http) throws Exception {
         
         http.authorizeRequests()
-                .antMatchers("/EmployeeSearch/Posts").permitAll()
-                .antMatchers("/EmployeeSearch/Welcome").permitAll()
-                .antMatchers(HttpMethod.GET, "/").permitAll()
+                .antMatchers("/css/**", "/javascript/**", "/media/**").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/EmployeeSearch").permitAll()
+                .antMatchers("/EmployeeSearch/").permitAll()
+                .antMatchers("/EmployeeSearch/TermsOfService").permitAll()
+                .antMatchers(HttpMethod.GET, "/EmployeeSearch/Posts").permitAll()
                 .antMatchers(HttpMethod.GET, "/EmployeeSearch/Register").permitAll()
+                .antMatchers(HttpMethod.GET, "/EmployeeSearch/Welcome").permitAll()
                 .antMatchers(HttpMethod.POST, "/EmployeeSearch/Register").permitAll()
                 .anyRequest().authenticated();
         http.formLogin()

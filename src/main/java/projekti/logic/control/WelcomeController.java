@@ -19,6 +19,7 @@ public class WelcomeController {
     public String posts() {
         return this.postsService.posts();
     }
+    
     @GetMapping("/EmployeeSearch/TermsOfService")
     public String termsofservice() {
         return this.welcomeService.termsofservice();

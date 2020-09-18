@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8"/>
         <title>Welcome - Employee Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <!-- CSS only -->
+        <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+        <!-- CSS only -->
         <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
     <body>
@@ -16,11 +17,11 @@
                         <span id="welcomeTitleEmployee">Employee</span> 
                         Search App</h1>
                 </div>
-                <div class="col-2 welcomeLoginRegister">
-                    <h6>Login</h6>
+                <div class="col-2 welcomeLoginRegister links">
+                    <a th:href="@{/EmployeeSearch/Login}"><h6>Login</h6></a>
                 </div>
-                <div class="col-2 welcomeLoginRegister">
-                    <h6>Register</h6>
+                <div class="col-2 welcomeLoginRegister links">
+                    <a th:href="@{/EmployeeSearch/Register}"><h6>Register</h6></a>
                 </div>
             </div>
             <div class="row">
@@ -71,9 +72,9 @@
                     </div>
                 </div>
                 <div class="col-5 welcomePostsButton">
-                    <button type="button" 
-                            class="btn btn-outline-dark btn-lg btn-block">
-                        Take a look at the Posts Section</button>
+                    <a th:href="@{/EmployeeSearch/Posts}" class="links">
+                        <button type="button" class="btn btn-outline-dark btn-lg btn-block">
+                            Take a look at the Posts Section</button></a>
                 </div>
                 <div class="col welcomeText">
                     <p>As a Registered User you will get your own Home Page 
@@ -100,8 +101,8 @@
         </div>
         <!-- JS, Popper.js, and jQuery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script th:src="@{/javascript/code.js}" defer></script>
     </body>
 </html>

@@ -11,6 +11,10 @@
     padding: 50px 50px 50px 50px;
 }
 
+.links {
+    text-decoration: none;
+}
+
 .termsOfServiceTitle {
     text-align: center;
 }

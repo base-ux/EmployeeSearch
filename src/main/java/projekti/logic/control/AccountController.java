@@ -18,6 +18,11 @@ public class AccountController {
     public String home() {
         return this.accountService.home();
     }
+    
+    @GetMapping("/EmployeeSearch/Login")
+    public String login() {
+        return this.accountService.login();
+    }
 
     @GetMapping("/EmployeeSearch/Register")
     public String register(Model model) {
@@ -25,7 +30,7 @@ public class AccountController {
     }
     
     @PostMapping("/EmployeeSearch/Register")
-    public String addAccount(@RequestParam String username, @RequestParam String password) {
-        return this.accountService.addAccount(username, password);
+    public String addaccount(@RequestParam String username, @RequestParam String password) {
+        return this.accountService.addaccount(username, password);
     }
 }
