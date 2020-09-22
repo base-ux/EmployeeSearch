@@ -11,14 +11,39 @@
             <li th:each="account : ${accounts}">
                 <p th:text="${account.username}">username</p>
                 <p th:text="${account.password}">password</p>
+                <p th:text="${account.realname}">realname</p>
+                <p th:text="${account.alias}">alias</p>
             </li>
         </ol>
-        
-        <form th:action="@{/EmployeeSearch/Register}" method="POST">
-            <input type="text" name="username"/>
-            <input type="password" name="password"/>
+
+        <form th:action="@{/EmployeeSearch/Register}" th:object="${account}" 
+              method="POST">
+            <p>Allowed characters: letters, numbers, &, @, _</p>
+            <p>Not allowed characters: all others e.g. spaces etc.</p>
+            <p>Note that all inputs will be converted to lowercase.</p>
+            <p>Username:<br/>This is what you use to login.<br/></p>
+            <input type="text" th:field="*{username}" name="username"/>
+            <p th:if="${#fields.hasErrors('username')}" 
+               th:errors="*{username}">username error message</p>
+            <p>Password:<br/>Please remember your password for future 
+                reference.</p>
+            <input type="text" th:field="*{password}" name="password"/>
+            <p th:if="${#fields.hasErrors('password')}" 
+               th:errors="*{password}">password error message</p>
+            <p>Name:<br/>Please surrender your real name.</p>
+            <input type="text" th:field="*{realname}" name="realname"/>
+            <p th:if="${#fields.hasErrors('realname')}"
+               th:errors="*{realname}">realname error message</p>
+            <p>Alias:<br/></p>
+            <input type="text" th:field="*{alias}" name="alias"/>
+            <p th:if="${#fields.hasErrors('alias')}"
+               th:errors="*{alias}">alias error message</p>
+            <br/>
+            <br/>
             <input type="submit" value="Register"/>
         </form>
-        <a th:href="@{/}">Back to Main Page</a>
+        <div th:replace="fragments/layout :: back"></div>
+        <div th:replace="fragments/layout :: copyright"></div>
+        <div th:replace="fragments/layout :: date"></div>
     </body>
 </html>

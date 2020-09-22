@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Fragments</title>
+    </head>
+    <body>
+        <div th:fragment="logout">
+            <form th:action="@{/}">
+                <input type="submit" value="Logout"/>
+            </form>
+        </div>
+        <div th:fragment="back">
+            <a th:href="@{/}">Back to Main Page</a>
+        </div>
+        <div th:fragment="copyright">
+            <p>Copyright &copy; Toni Silfver 2020. All rights reserved.</p>
+        </div>
+        <div th:fragment="date">
+            <p th:text="${date}">Date</p>
+        </div>
+    </body>
+</html>

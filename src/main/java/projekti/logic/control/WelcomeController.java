@@ -21,8 +21,8 @@ public class WelcomeController {
     }
     
     @GetMapping("/EmployeeSearch/TermsOfService")
-    public String termsofservice() {
-        return this.welcomeService.termsofservice();
+    public String termsOfService() {
+        return this.welcomeService.termsOfService();
     }
     
     @GetMapping("/EmployeeSearch/Welcome")

@@ -5,5 +5,7 @@ import projekti.domain.Account;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
+    Account findByAlias(String alias);
+
     Account findByUsername(String username);
 }

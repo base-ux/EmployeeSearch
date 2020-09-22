@@ -1,11 +1,15 @@
 package projekti.logic.control;
 
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import projekti.domain.Account;
 import projekti.logic.service.AccountService;
 
 @Controller
@@ -18,19 +22,26 @@ public class AccountController {
     public String home() {
         return this.accountService.home();
     }
-    
+
     @GetMapping("/EmployeeSearch/Login")
     public String login() {
         return this.accountService.login();
     }
 
     @GetMapping("/EmployeeSearch/Register")
-    public String register(Model model) {
-        return this.accountService.register(model);
+    public String register(Model model, @ModelAttribute Account account) {
+        return this.accountService.register(model, account);
     }
-    
+
+    @GetMapping("/EmployeeSearch/Register/{alias}")
+    public String registerOk(Model model, @PathVariable String alias) {
+        return this.accountService.registerOk(model, alias);
+    }
+
     @PostMapping("/EmployeeSearch/Register")
-    public String addaccount(@RequestParam String username, @RequestParam String password) {
-        return this.accountService.addaccount(username, password);
+    public String addAccount(Model model,
+            @Valid @ModelAttribute Account account,
+            BindingResult bindingResult) {
+        return this.accountService.addAccount(model, account, bindingResult);
     }
 }

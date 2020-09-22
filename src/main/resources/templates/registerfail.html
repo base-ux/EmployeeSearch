@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Registering unsuccessful - Employee Search</title>
+    </head>
+    <body>
+        <p>Registering for user <span th:text="${username}">username</span> 
+            was erroneus.</p>
+        <p th:if="${usernameFail}">Username <span th:text="${username}">
+                Username</span> is already in use.</p>
+        <p th:if="${aliasFail}">Alias <span th:text="${alias}">
+                alias</span> is already in use.</p>
+        <p th:if="${entryFail}">Some of the entered characters were not 
+            allowed or not unlike Scandinavian or of other regional type.</p>
+        <div th:replace="fragments/layout :: back"></div>
+        <div th:replace="fragments/layout :: copyright"></div>
+        <div th:replace="fragments/layout :: date"></div>
+    </body>
+</html>

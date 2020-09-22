@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Registering successful - Employee Search</title>
+    </head>
+    <body>
+        <p>Registering was successful for Alias 
+            <span th:text="${alias}">alias</span>!</p>
+        <div th:replace="fragments/layout :: back"></div>
+        <div th:replace="fragments/layout :: copyright"></div>
+        <div th:replace="fragments/layout :: date"></div>
+    </body>
+</html>

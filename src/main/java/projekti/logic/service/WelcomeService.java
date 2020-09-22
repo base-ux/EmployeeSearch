@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class WelcomeService {
     
-    public String termsofservice() {
+    public String termsOfService() {
         return "termsofservice";
     }
     
