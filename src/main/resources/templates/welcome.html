@@ -93,9 +93,9 @@
             <div class="row">
                 <div class="col footer">
                     <a th:href="@{/EmployeeSearch/TermsOfService}" class="termsOfServiceTitle">Terms of Service</a>
-                    <p>
-                        Copyright &copy; Toni Silfver 2020. All rights reserved.
-                    </p>
+                    <p class="footerTextBlend">&</p>
+                    <div th:replace="fragments/layout :: copyright"></div>
+                    <div th:replace="fragments/layout :: date"></div>
                 </div>
             </div>
         </div>

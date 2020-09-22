@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import projekti.domain.Account;
 import projekti.logic.repo.AccountRepository;
+import projekti.logic.utility.Date;
 
 @Service
 public class AccountService {
@@ -18,16 +19,21 @@ public class AccountService {
     AccountRepository accountRepository;
 
     @Autowired
+    Date date;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     public String addAccount(Model model,
             @Valid @ModelAttribute Account account,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("date", this.date.date());
             return "register";
         }
         if (this.accountRepository.findByUsername(account.getUsername())
                 != null) {
+            model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
             model.addAttribute("usernameFail", "");
             return "registerfail";
@@ -35,6 +41,7 @@ public class AccountService {
         if (this.accountRepository.findByAlias(account.getAlias()) != null) {
             model.addAttribute("alias", account.getAlias());
             model.addAttribute("aliasFail", "");
+            model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
             return "registerfail";
         }
@@ -42,6 +49,7 @@ public class AccountService {
                 || convertRegisterEntry(account.getPassword()).equals("ERROR")
                 || convertRegisterEntry(account.getRealname()).equals("ERROR")
                 || convertRegisterEntry(account.getAlias()).equals("ERROR")) {
+            model.addAttribute("date", this.date.date());
             model.addAttribute("entryFail", "");
             return "registerfail";
         } else {
@@ -85,11 +93,13 @@ public class AccountService {
 
     public String register(Model model, @ModelAttribute Account account) {
         model.addAttribute("accounts", this.accountRepository.findAll());
+        model.addAttribute("date", this.date.date());
         return "register";
     }
 
     public String registerOk(Model model, @PathVariable String alias) {
         model.addAttribute("alias", alias);
+        model.addAttribute("date", this.date.date());
         return "registerok";
     }
 }

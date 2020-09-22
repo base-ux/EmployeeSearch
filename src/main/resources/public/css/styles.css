@@ -11,6 +11,15 @@
     padding: 50px 50px 50px 50px;
 }
 
+.footerTextBlend {
+    color: #dddddd;
+}
+
+.headTextBlend {
+    font-size: 50px;
+    color: #ffffff;
+}
+
 .links {
     text-decoration: none;
 }
