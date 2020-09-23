@@ -3,22 +3,19 @@
 }
 
 .button {
-    min-width: 200px;
-    margin: 25px 0 25px 10px;
+    min-width: 450px;
+    max-width: 450px;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.17);
 }
 
 .carousel-inner {
-    min-width: 250px;
-    max-width: 400px;
-
+    width: 400px;
     img {
-        min-width: 250px;
-        max-width: 400px;
+        width: 400px;
     }
-}
-
-.carouselText {
-    color: #212122;
 }
 
 .footer {
@@ -41,7 +38,6 @@
 
 .welcomeTitle {
     color: #ffffff;
-    padding: 100px;
 }
 
 #welcomeTitleEmployee {

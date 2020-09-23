@@ -36,14 +36,14 @@ public class AccountService {
             model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
             model.addAttribute("usernameFail", "");
-            return "registerfail";
+            return "register_fail";
         }
         if (this.accountRepository.findByAlias(account.getAlias()) != null) {
             model.addAttribute("alias", account.getAlias());
             model.addAttribute("aliasFail", "");
             model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
-            return "registerfail";
+            return "register_fail";
         }
         if (convertRegisterEntry(account.getUsername()).equals("ERROR")
                 || convertRegisterEntry(account.getPassword()).equals("ERROR")
@@ -51,7 +51,7 @@ public class AccountService {
                 || convertRegisterEntry(account.getAlias()).equals("ERROR")) {
             model.addAttribute("date", this.date.date());
             model.addAttribute("entryFail", "");
-            return "registerfail";
+            return "register_fail";
         } else {
             account.setUsername(convertRegisterEntry(account.getUsername()));
             String password = convertRegisterEntry(account.getPassword());
@@ -100,6 +100,6 @@ public class AccountService {
     public String registerOk(Model model, @PathVariable String alias) {
         model.addAttribute("alias", alias);
         model.addAttribute("date", this.date.date());
-        return "registerok";
+        return "register_ok";
     }
 }

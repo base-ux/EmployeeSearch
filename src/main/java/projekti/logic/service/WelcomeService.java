@@ -12,7 +12,7 @@ public class WelcomeService {
     Date date;
     
     public String termsOfService() {
-        return "termsofservice";
+        return "terms_of_service";
     }
     
     public String welcome(Model model) {
