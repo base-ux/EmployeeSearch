@@ -23,23 +23,15 @@
     padding: 50px;
 }
 
-.welcomeStyle {
-    max-width: 400px;
-}
-
-.welcomeBackground {
+.header {
     background-color: #012854;
-}
-
-.welcomeLoginRegister {
-    color: #ffffff;
-    margin-top: 10px;
-}
-
-.welcomeTitle {
     color: #ffffff;
 }
 
-#welcomeTitleEmployee {
+.pinkish {
     color: #ff0067;
+}
+
+.welcomeStyle {
+    width: 400px;
 }
