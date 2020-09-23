@@ -3,11 +3,12 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Welcome - Employee Search</title>
+        <style>&</style>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-        <!-- CSS only -->
-        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+            <!-- Custom CSS -->
+            <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
     <body>
         <div class="container-fluid">
@@ -25,11 +26,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-3 welcomeLeftBar">
+                <div class="col mt-0 pl-0 w-75">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#012854" fill-opacity="1" d="M0,224L80,218.7C160,213,320,203,480,165.3C640,128,800,64,960,32C1120,0,1280,0,1360,0L1440,0L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
                     </div>
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleIndicators" class="carousel slide welcomeStyle" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -67,16 +68,16 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                    <div>
+                    <div class="welcomeStyle">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#4285f5" fill-opacity="1" d="M0,224L80,218.7C160,213,320,203,480,165.3C640,128,800,64,960,32C1120,0,1280,0,1360,0L1440,0L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
                     </div>
                 </div>
-                <div class="col-5 welcomePostsButton">
-                    <a th:href="@{/EmployeeSearch/Posts}" class="links">
+                <div class="col button">
+                    <a th:href="@{/EmployeeSearch/Posts}">
                         <button type="button" class="btn btn-outline-dark btn-lg btn-block">
                             Take a look at the Posts Section</button></a>
                 </div>
-                <div class="col welcomeText">
+                <div class="col my-auto">
                     <p>As a Registered User you will get your own Home Page 
                         that you can modify to your liking and show others 
                         your abilities, skill level, CV or other profile 
@@ -89,16 +90,22 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
-            <div class="row">
-                <div class="col footer">
-                    <a th:href="@{/EmployeeSearch/TermsOfService}" class="termsOfServiceTitle">Terms of Service</a>
-                    <p class="footerTextBlend">&</p>
-                    <div th:replace="fragments/layout :: copyright"></div>
+            <!-- Footer -->
+            <footer class="page-footer font-small footer">
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3">© 2020 Copyright: Toni Silfver 
+                    <a th:href="@{/EmployeeSearch/TermsOfService}">Terms of Service</a>
                     <div th:replace="fragments/layout :: date"></div>
                 </div>
-            </div>
+                <!-- Copyright -->
+
+            </footer>
+            <!-- Footer -->
         </div>
+
         <!-- JS, Popper.js, and jQuery -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

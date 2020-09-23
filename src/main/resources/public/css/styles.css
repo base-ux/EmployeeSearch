@@ -2,53 +2,41 @@
     padding: 300px 0 300px 0;
 }
 
+.button {
+    min-width: 200px;
+    margin: 25px 0 25px 10px;
+}
+
+.carousel-inner {
+    min-width: 250px;
+    max-width: 400px;
+
+    img {
+        min-width: 250px;
+        max-width: 400px;
+    }
+}
+
 .carouselText {
     color: #212122;
 }
 
 .footer {
-    background-color: #dddddd;
-    padding: 50px 50px 50px 50px;
+    background-color: gainsboro;
+    padding: 50px;
 }
 
-.footerTextBlend {
-    color: #dddddd;
-}
-
-.headTextBlend {
-    font-size: 50px;
-    color: #ffffff;
-}
-
-.links {
-    text-decoration: none;
-}
-
-.termsOfServiceTitle {
-    text-align: center;
+.welcomeStyle {
+    max-width: 400px;
 }
 
 .welcomeBackground {
     background-color: #012854;
 }
 
-.welcomeLeftBar {
-    padding: 0 0 100px 0;
-}
-
 .welcomeLoginRegister {
     color: #ffffff;
     margin-top: 10px;
-}
-
-.welcomePostsButton {
-    margin: 25px 0 25px 10px;
-}
-
-.welcomeText {
-    margin: 15px 0 100px 0;
-    padding-top: 150px;
-    text-align: center;
 }
 
 .welcomeTitle {
