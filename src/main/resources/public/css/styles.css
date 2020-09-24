@@ -1,14 +1,13 @@
-.btn-block {
-    padding: 300px 0 300px 0;
+a:focus, a:hover, a:visited {
+    text-decoration: none;
 }
 
 .button {
-    min-width: 450px;
-    max-width: 450px;
+    padding: 300px 0 300px 0;
 }
 
 .carousel-caption {
-    background: rgba(0, 0, 0, 0.18);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .carousel-inner {
@@ -18,14 +17,8 @@
     }
 }
 
-.footer {
-    background-color: gainsboro;
-    padding: 50px;
-}
-
-.header {
+.darkblue {
     background-color: #012854;
-    color: #ffffff;
 }
 
 .pinkish {
