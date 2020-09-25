@@ -17,14 +17,14 @@ a:focus, a:hover, a:visited {
     }
 }
 
+.curve {
+    width: 400px;
+}
+
 .darkblue {
     background-color: #012854;
 }
 
 .pinkish {
     color: #ff0067;
-}
-
-.welcomeStyle {
-    width: 400px;
 }

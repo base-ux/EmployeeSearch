@@ -4,25 +4,31 @@
         <meta charset="UTF-8" />
         <title>Terms Of Service - Employee Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-        <!-- CSS -->
-        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"/>
     </head>
     <body>
+
+        <!-- Terms of service -->
         <div class="container">
-            <div class="row">
-                <div class="col footer">
-                    <h5 class="termsOfServiceTitle">Terms of Service</h5>
-                    <p><strong>Terms and Conditions</strong><br/><br/>
-                        By using this website you agree to be bound by and 
-                        accept the following terms and conditions. Please read 
-                        them carefully.<br/><br/>
-                        <strong>Disclaimer</strong><br/><br/>
-                        I (Toni Silfver) created this website 
+            <footer class="grey lighten-3 mb-4 mt-3 page-footer">
+                <div class="font-small footer-copyright p-5 text-dark">
+                    <h5><strong>Terms of Service</strong></h5><br/><br/>
+                    <h6><strong>Terms and Conditions</strong></h6>
+                    <p>By using this website you agree to be bound by and 
+                        accept the following disclaimer, please read it 
+                        carefully.</p>
+                    <h6><strong>Disclaimer</strong></h6>
+                    <p>I, Toni Silfver, created this website 
                         for a school project and as such it should be 
-                        comprehended. The site has no purpose for monetary 
-                        gain. Any information on this site should 
+                        comprehended. The site has not been created for 
+                        monetary gain. Any information on this site should 
                         not be substituted for an advice. No liability is 
                         assumed by Toni Silfver for losses suffered by any 
                         person or organisation relying directly or indirectly 
@@ -38,13 +44,13 @@
                         (@leestone007), man # 1 Sean Benesh (Portland, Oregon, 
                         seanbenesh.com), woman # 2 Alex Robinson (New Jersey, 
                         USA, instagram.com/shotbyaliix), man # 2 Benigno 
-                        Hoyuela (USA).<br/><br/>
-                        Copyright &copy; Toni Silfver 2020. All rights 
-                        reserved.
-                    </p>
+                        Hoyuela (USA).</p>
+                    <div th:replace="fragments/layout :: copyright"></div>
+                    <div th:replace="fragments/layout :: back"></div>
                 </div>
-            </div>
+            </footer>
         </div>
-        <div th:replace="fragments/layout :: back"></div>
+        <!-- Terms of service -->
+
     </body>
 </html>

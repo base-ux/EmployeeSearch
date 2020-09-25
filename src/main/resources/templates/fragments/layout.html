@@ -5,19 +5,33 @@
         <title>Fragments</title>
     </head>
     <body>
+
+        <!-- Back to Main Page -->
+        <div th:fragment="back">
+            <a th:href="@{/}">Back to Main Page</a>
+        </div>
+        <!-- Back to Main Page -->
+
+        <!-- Copyright -->
+        <div th:fragment="copyright">
+            <p>&copy; 2020 Copyright: Toni Silfver</p>
+        </div>
+        <!-- Copyright -->
+
+        <!-- Date -->
+        <div th:fragment="date">
+            <br/>
+            <p th:text="${date}">Date</p>
+        </div>
+        <!-- Date -->
+
+        <!-- Logout -->
         <div th:fragment="logout">
             <form th:action="@{/}">
                 <input type="submit" value="Logout"/>
             </form>
         </div>
-        <div th:fragment="back">
-            <a th:href="@{/}">Back to Main Page</a>
-        </div>
-        <div th:fragment="copyright">
-            <p>Copyright &copy; Toni Silfver 2020.</p>
-        </div>
-        <div th:fragment="date">
-            <p th:text="${date}">Date</p>
-        </div>
+        <!-- Logout -->
+
     </body>
 </html>
