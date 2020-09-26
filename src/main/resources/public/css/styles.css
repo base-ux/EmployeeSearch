@@ -2,23 +2,13 @@ a:focus, a:hover, a:visited {
     text-decoration: none;
 }
 
-.button {
-    padding: 300px 0 300px 0;
+.bigbutton {
+    max-width: 50vw;
+    padding: 20vh 5vw 20vh 5vw;
 }
 
 .carousel-caption {
     background: rgba(0, 0, 0, 0.6);
-}
-
-.carousel-inner {
-    width: 400px;
-    img {
-        width: 400px;
-    }
-}
-
-.curve {
-    width: 400px;
 }
 
 .darkblue {
@@ -27,4 +17,8 @@ a:focus, a:hover, a:visited {
 
 .pinkish {
     color: #ff0067;
+}
+
+.welcometextbutton {
+    padding: 5vh 2vw 5vh 2vw;
 }
