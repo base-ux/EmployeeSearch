@@ -3,19 +3,55 @@
     <head>
         <meta charset="UTF-8" />
         <title>Registering unsuccessful - Employee Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"/>
     </head>
     <body>
-        <p>Registering for user <span th:text="${username}">username</span> 
-            was erroneus.</p>
-        <p th:if="${usernameFail}">Username <span th:text="${username}">
-                Username</span> is already in use.</p>
-        <p th:if="${aliasFail}">Alias <span th:text="${alias}">
-                alias</span> is already in use.</p>
-        <p th:if="${entryFail}">Some of the entered characters were not 
-            allowed or not unlike Scandinavian or of other regional type.</p>
-        <p>Please refresh the Register page in order to complete sign up.</p>
-        <div th:replace="fragments/layout :: back"></div>
-        <div th:replace="fragments/layout :: copyright"></div>
-        <div th:replace="fragments/layout :: date"></div>
+
+        <!-- Registering error message -->
+        <div class="container">
+            <div class="alert alert-warning mt-5">
+                <p><strong>Somehow registering for user <span th:text="${username}">username</span> 
+                        was not completed!</strong></p>
+                <p th:if="${usernameFail}">Username <span th:text="${username}">
+                        Username</span> is already in use.</p>
+                <p th:if="${aliasFail}">Alias <span th:text="${alias}">
+                        alias</span> is already in use.</p>
+                <p th:if="${entryFail}">Some of the entered characters were not 
+                    allowed or not unlike Scandinavian or of other regional type.</p>
+                <p>Please refresh the Register page in order to complete the sign up form.</p>
+            </div>
+        </div>
+        <!-- Registering error message -->
+
+        <!-- Back to main page -->
+        <div class="container">
+            <div class="text-center">
+                <div th:replace="fragments/layout :: back"></div>
+            </div>
+        </div>
+        <!-- Back to main page -->
+
+        <!-- Footer -->
+        <div class="container">
+            <footer class="mb-4 mt-3 font-small mdb-color page-footer">
+
+                <!-- Copyright -->
+                <div class="font-small footer-copyright p-5 text-center">
+                    <div th:replace="fragments/layout :: copyright"></div>
+                    <div th:replace="fragments/layout :: date"></div>
+                </div>
+                <!-- Copyright -->
+
+            </footer>
+        </div>
+        <!-- Footer -->
     </body>
 </html>

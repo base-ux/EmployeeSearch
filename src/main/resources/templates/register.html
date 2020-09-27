@@ -30,12 +30,11 @@
 
             <!-- Sign up text -->
             <p class="h4 mb-4">Sign up</p>
-            <p class="text-info">Allowed characters: letters, numbers, &, @, _</p>
-            <p class="text-info">Not allowed characters: all others e.g. spaces, commas, full stops etc.</p>
-            <p class="text-info">Note that all inputs will be converted to lowercase without spaces</p>
+            <p class="text-info">Allowed characters: capital and lowercase letters, numbers, &, @, _</p>
+            <p class="text-warning">Not allowed characters: all others e.g. spaces, commas, full stops etc.</p>
 
             <!-- Username -->
-            <input type="text" th:field="*{username}" name="username" id="RegisterFormUsername" class="form-control" placeholder="Username" aria-describedby="RegisterFormUsernameHelpBlock"/>
+            <input type="text" th:field="*{username}" name="username" id="RegisterFormUsername" class="form-control" placeholder="Username" aria-describedby="RegisterFormUsernameHelpBlock" required/>
             <p class="text-danger" th:if="${#fields.hasErrors('username')}" 
                th:errors="*{username}">username error message</p>
             <small id="RegisterFormUsernameHelpBlock" class="form-text text-muted mb-4">
@@ -43,7 +42,7 @@
             </small>
 
             <!-- Password -->
-            <input type="password" th:field="*{password}" name="password" id="RegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="RegisterFormPasswordHelpBlock"/>
+            <input type="password" th:field="*{password}" name="password" id="RegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="RegisterFormPasswordHelpBlock" required/>
             <p class="text-danger" th:if="${#fields.hasErrors('password')}" 
                th:errors="*{password}">password error message</p>
             <small id="RegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
@@ -51,7 +50,7 @@
             </small>
 
             <!-- Real name -->
-            <input type="text" th:field="*{realname}" name="realname" id="RegisterFormRealname" class="form-control" placeholder="Your name" aria-describedby="RegisterFormRealnameHelpBlock"/>
+            <input type="text" th:field="*{realname}" name="realname" id="RegisterFormRealname" class="form-control" placeholder="Your name" aria-describedby="RegisterFormRealnameHelpBlock" required/>
             <p class="text-danger" th:if="${#fields.hasErrors('realname')}"
                th:errors="*{realname}">realname error message</p>
             <small id="RegisterFormRealnameHelpBlock" class="form-text text-muted mb-4">
@@ -59,7 +58,7 @@
             </small>
 
             <!-- Alias -->
-            <input type="text" th:field="*{alias}" name="alias" id="RegisterFormAlias" class="form-control" placeholder="Alias" aria-describedby="RegisterFormAliasHelpBlock"/>
+            <input type="text" th:field="*{alias}" name="alias" id="RegisterFormAlias" class="form-control" placeholder="Alias" aria-describedby="RegisterFormAliasHelpBlock" required/>
             <p class="text-danger" th:if="${#fields.hasErrors('alias')}"
                th:errors="*{alias}">alias error message</p>
             <small id="RegisterFormAliasHelpBlock" class="form-text text-muted mb-4">

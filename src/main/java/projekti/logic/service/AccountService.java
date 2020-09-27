@@ -80,7 +80,6 @@ public class AccountService {
                 return converted;
             }
         }
-        converted = converted.trim().toLowerCase();
         return converted;
     }
 
