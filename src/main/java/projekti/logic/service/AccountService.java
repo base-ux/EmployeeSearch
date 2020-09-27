@@ -44,20 +44,21 @@ public class AccountService {
             model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
             return "register_fail";
-        }
-        if (convertRegisterEntry(account.getUsername()).equals("ERROR")
-                || convertRegisterEntry(account.getPassword()).equals("ERROR")
-                || convertRegisterEntry(account.getRealname()).equals("ERROR")
-                || convertRegisterEntry(account.getAlias()).equals("ERROR")) {
-            model.addAttribute("date", this.date.date());
-            model.addAttribute("entryFail", "");
-            return "register_fail";
         } else {
-            account.setUsername(convertRegisterEntry(account.getUsername()));
+            String username = convertRegisterEntry(convertRemoveSpaces(account.getUsername()));
             String password = convertRegisterEntry(account.getPassword());
+            String realname = convertRegisterEntry(convertRemoveSpaces(account.getRealname()));
+            String alias = convertRegisterEntry(convertRemoveSpaces(account.getAlias()));
+            if (username.equals("ERROR") || password.equals("ERROR")
+                    || realname.equals("ERROR") || alias.equals("ERROR")) {
+                model.addAttribute("date", this.date.date());
+                model.addAttribute("entryFail", "");
+                return "register_fail";
+            }
+            account.setUsername(username);
             account.setPassword(passwordEncoder.encode(password));
-            account.setRealname(convertRegisterEntry(account.getRealname()));
-            account.setAlias(convertRegisterEntry(account.getAlias()));
+            account.setRealname(realname);
+            account.setAlias(alias);
         }
         this.accountRepository.save(account);
         return "redirect:/EmployeeSearch/Register/" + account.getAlias();
@@ -79,7 +80,13 @@ public class AccountService {
                 return converted;
             }
         }
-        converted = converted.trim().toLowerCase().replaceAll("\\s+", "");
+        converted = converted.trim().toLowerCase();
+        return converted;
+    }
+
+    public String convertRemoveSpaces(String convert) {
+        String converted = convert;
+        converted = converted.trim().replaceAll("\\s+", "");
         return converted;
     }
 

@@ -44,7 +44,7 @@
 
                     <!-- Register -->
                     <a th:href="@{/EmployeeSearch/Register}">
-                        <button type="button" class="btn btn-dark">Register</button>
+                        <button type="button" class="btn btn-dark">Sign up</button>
                     </a>
                     <!-- Register -->
 
@@ -153,6 +153,7 @@
                         </button>
                     </a>
                 </div>
+
                 <!-- Welcome text button -->
 
             </div>
@@ -161,12 +162,15 @@
 
         <!-- Footer -->
         <div class="container">
-            <footer class="mb-4 mt-3 page-footer">
+            <footer class="mb-4 mt-3 font-small mdb-color page-footer">
+
+                <!-- Copyright -->
                 <div class="font-small footer-copyright p-5 text-center">
                     <div th:replace="fragments/layout :: copyright"></div>
-                    <a th:href="@{/EmployeeSearch/TermsOfService}">Terms of Service</a>
                     <div th:replace="fragments/layout :: date"></div>
                 </div>
+                <!-- Copyright -->
+
             </footer>
         </div>
         <!-- Footer -->

@@ -15,17 +15,18 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Account extends AbstractPersistable<Long> {
 
     @NotEmpty
-    @Size(min = 1, max = 25)
+    @Size(min = 2, max = 25)
     private String username;
 
     @NotEmpty
+    @Size(min = 8, max = 60)
     private String password;
 
     @NotEmpty
-    @Size(min = 1, max = 25)
+    @Size(min = 2, max = 25)
     private String realname;
 
     @NotEmpty
-    @Size(min = 1, max = 25)
+    @Size(min = 2, max = 25)
     private String alias;
 }

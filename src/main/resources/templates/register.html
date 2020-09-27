@@ -3,9 +3,17 @@
     <head>
         <meta charset="UTF-8" />
         <title>Register - Employee Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"/>
     </head>
     <body>
-        <h1>Register</h1>
 
         <ol>
             <li th:each="account : ${accounts}">
@@ -16,34 +24,89 @@
             </li>
         </ol>
 
-        <form th:action="@{/EmployeeSearch/Register}" th:object="${account}" 
-              method="POST">
-            <p>Allowed characters: letters, numbers, &, @, _</p>
-            <p>Not allowed characters: all others e.g. spaces etc.</p>
-            <p>Note that all inputs will be converted to lowercase.</p>
-            <p>Username:<br/>This is what you use to login.<br/></p>
-            <input type="text" th:field="*{username}" name="username"/>
-            <p th:if="${#fields.hasErrors('username')}" 
+        <!-- Register form -->
+        <form class="text-center border border-light p-5" 
+              th:action="@{/EmployeeSearch/Register}" th:object="${account}" method="POST">
+
+            <!-- Sign up text -->
+            <p class="h4 mb-4">Sign up</p>
+            <p class="text-info">Allowed characters: letters, numbers, &, @, _</p>
+            <p class="text-info">Not allowed characters: all others e.g. spaces, commas, full stops etc.</p>
+            <p class="text-info">Note that all inputs will be converted to lowercase without spaces</p>
+
+            <!-- Username -->
+            <input type="text" th:field="*{username}" name="username" id="RegisterFormUsername" class="form-control" placeholder="Username" aria-describedby="RegisterFormUsernameHelpBlock"/>
+            <p class="text-danger" th:if="${#fields.hasErrors('username')}" 
                th:errors="*{username}">username error message</p>
-            <p>Password:<br/>Please remember your password for future 
-                reference.</p>
-            <input type="text" th:field="*{password}" name="password"/>
-            <p th:if="${#fields.hasErrors('password')}" 
+            <small id="RegisterFormUsernameHelpBlock" class="form-text text-muted mb-4">
+                This is what you use to login
+            </small>
+
+            <!-- Password -->
+            <input type="password" th:field="*{password}" name="password" id="RegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="RegisterFormPasswordHelpBlock"/>
+            <p class="text-danger" th:if="${#fields.hasErrors('password')}" 
                th:errors="*{password}">password error message</p>
-            <p>Name:<br/>Please surrender your real name.</p>
-            <input type="text" th:field="*{realname}" name="realname"/>
-            <p th:if="${#fields.hasErrors('realname')}"
+            <small id="RegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                Please remember your password for future reference
+            </small>
+
+            <!-- Real name -->
+            <input type="text" th:field="*{realname}" name="realname" id="RegisterFormRealname" class="form-control" placeholder="Your name" aria-describedby="RegisterFormRealnameHelpBlock"/>
+            <p class="text-danger" th:if="${#fields.hasErrors('realname')}"
                th:errors="*{realname}">realname error message</p>
-            <p>Alias:<br/></p>
-            <input type="text" th:field="*{alias}" name="alias"/>
-            <p th:if="${#fields.hasErrors('alias')}"
+            <small id="RegisterFormRealnameHelpBlock" class="form-text text-muted mb-4">
+                Your real name
+            </small>
+
+            <!-- Alias -->
+            <input type="text" th:field="*{alias}" name="alias" id="RegisterFormAlias" class="form-control" placeholder="Alias" aria-describedby="RegisterFormAliasHelpBlock"/>
+            <p class="text-danger" th:if="${#fields.hasErrors('alias')}"
                th:errors="*{alias}">alias error message</p>
-            <br/>
-            <br/>
-            <input type="submit" value="Register"/>
+            <small id="RegisterFormAliasHelpBlock" class="form-text text-muted mb-4">
+                Your unique identifier
+            </small>
+
+            <!-- Sign up button -->
+            <button class="btn btn-info my-4 btn-block" type="submit">Sign up</button>
+
+            <!-- Social register -->
+            <p>or sign up with:</p>
+
+            <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+            <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+            <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+            <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
+            <!-- Terms of service -->
+            <p>By clicking
+                <em>Sign up</em> you agree to the
+                <a th:href="@{/EmployeeSearch/TermsOfService}">terms of service.</a>
+            </p>
         </form>
-        <div th:replace="fragments/layout :: back"></div>
-        <div th:replace="fragments/layout :: copyright"></div>
-        <div th:replace="fragments/layout :: date"></div>
+        <!-- Register form -->
+
+        <!-- Back to main page -->
+        <div class="container">
+            <div class="text-center">
+                <div th:replace="fragments/layout :: back"></div>
+            </div>
+        </div>
+        <!-- Back to main page -->
+
+        <!-- Footer -->
+        <div class="container">
+            <footer class="mb-4 mt-3 font-small mdb-color page-footer">
+
+                <!-- Copyright -->
+                <div class="font-small footer-copyright p-5 text-center">
+                    <div th:replace="fragments/layout :: copyright"></div>
+                    <div th:replace="fragments/layout :: date"></div>
+                </div>
+                <!-- Copyright -->
+
+            </footer>
+        </div>
+        <!-- Footer -->
+
     </body>
 </html>
