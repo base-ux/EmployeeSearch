@@ -18,15 +18,18 @@
         <!-- Registering error message -->
         <div class="container">
             <div class="alert alert-warning mt-5">
-                <p><strong>Somehow registering for user <span th:text="${username}">username</span> 
+                <p><strong>Somehow registering for user 
+                        <span th:text="${username}">username</span> 
                         was not completed!</strong></p>
                 <p th:if="${usernameFail}">Username <span th:text="${username}">
                         Username</span> is already in use.</p>
                 <p th:if="${aliasFail}">Alias <span th:text="${alias}">
                         alias</span> is already in use.</p>
-                <p th:if="${entryFail}">Some of the entered characters were not 
-                    allowed or not unlike Scandinavian or of other regional type.</p>
-                <p>Please refresh the Register page in order to complete the sign up form.</p>
+                <p th:if="${entryFail}">Some of the entered characters were 
+                    not allowed or not unlike Scandinavian or of other 
+                    regional type.</p>
+                <p>Please refresh the Register page in order to complete the 
+                    sign up form.</p>
             </div>
         </div>
         <!-- Registering error message -->
@@ -53,5 +56,6 @@
             </footer>
         </div>
         <!-- Footer -->
+
     </body>
 </html>
