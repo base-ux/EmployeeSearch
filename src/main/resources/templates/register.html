@@ -34,23 +34,23 @@
                 <h5 class="card-header darkblue py-4 text-center white-text">
                     <strong>Sign up</strong>
                 </h5>
-                <p class="text-info">Allowed characters: capital and lowercase letters, numbers, &, @, _</p>
-                <p class="text-warning">Not allowed characters: all others e.g. spaces, commas, full stops etc.</p>
+                <small class="text-info">Allowed characters: capital and lowercase letters, numbers, &, @, _</small>
+                <small class="text-warning">Not allowed characters: all others e.g. spaces, commas, full stops etc.</small>
 
                 <!--Card content-->
                 <div class="card-body pt-0 px-lg-5">
 
                     <!-- Form -->
-                    <form class="text-center" style="color: #757575;" 
-                          th:action="@{/EmployeeSearch/Register}" th:object="${account}" method="POST">
+                    <form class="text-center" th:action="@{/EmployeeSearch/Register}" th:object="${account}" method="POST">
 
                         <!-- Username -->
                         <div class="md-form">
                             <input type="text" id="RegisterFormUsername" th:field="*{username}" name="username" class="form-control" 
                                    aria-describedby="RegisterFormUsernameHelpBlock" required/>
                             <label for="RegisterFormUsername">Username</label>
-                            <p class="text-danger" th:if="${#fields.hasErrors('username')}" 
-                               th:errors="*{username}">username error message</p>
+                            <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('username')}" 
+                                   th:errors="*{username}">username error message
+                            </small>
                             <small id="RegisterFormUsernameHelpBlock" class="form-text mb-4 text-muted">
                                 Username is used with login
                             </small>
@@ -61,8 +61,9 @@
                             <input type="password" id="RegisterFormPassword" th:field="*{password}" name="password" class="form-control" 
                                    aria-describedby="RegisterFormPasswordHelpBlock" required/>
                             <label for="RegisterFormPassword">Password</label>
-                            <p class="text-danger" th:if="${#fields.hasErrors('password')}" 
-                               th:errors="*{password}">password error message</p>
+                            <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('password')}" 
+                                   th:errors="*{password}">password error message
+                            </small>
                             <small id="RegisterFormPasswordHelpBlock" class="form-text mb-4 text-muted">
                                 Password length should be at least 8 characters
                             </small>
@@ -73,8 +74,9 @@
                             <input type="text" id="RegisterFormRealname" th:field="*{realname}" name="realname" class="form-control" 
                                    aria-describedby="RegisterFormRealnameHelpBlock" required/>
                             <label for="RegisterFormRealname">Your name</label>
-                            <p class="text-danger" th:if="${#fields.hasErrors('realname')}"
-                               th:errors="*{realname}">realname error message</p>
+                            <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('realname')}"
+                                   th:errors="*{realname}">realname error message
+                            </small>
                             <small id="RegisterFormRealnameHelpBlock" class="form-text mb-4 text-muted">
                                 Your real name
                             </small>
@@ -85,8 +87,9 @@
                             <input type="text" id="RegisterFormAlias" th:field="*{alias}" name="alias" class="form-control" 
                                    aria-describedby="RegisterFormAliasHelpBlock" required/>
                             <label for="RegisterFormAlias">Alias</label>
-                            <p class="text-danger" th:if="${#fields.hasErrors('alias')}"
-                               th:errors="*{alias}">alias error message</p>
+                            <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('alias')}"
+                                   th:errors="*{alias}">alias error message
+                            </small>
                             <small id="RegisterFormAliasHelpBlock" class="form-text mb-4 text-muted">
                                 Alias will be your unique identifier
                             </small>
@@ -97,7 +100,6 @@
 
                         <!-- Social register -->
                         <p>or sign up with:</p>
-
                         <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
                         <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
                         <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
