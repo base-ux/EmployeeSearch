@@ -24,8 +24,8 @@ public class AccountController {
     }
 
     @GetMapping("/EmployeeSearch/Login")
-    public String login() {
-        return this.accountService.login();
+    public String login(Model model) {
+        return this.accountService.login(model);
     }
 
     @GetMapping("/EmployeeSearch/Register")
@@ -36,6 +36,11 @@ public class AccountController {
     @GetMapping("/EmployeeSearch/Register/{alias}")
     public String registerOk(Model model, @PathVariable String alias) {
         return this.accountService.registerOk(model, alias);
+    }
+    
+    @GetMapping("/login")
+    public String rootLogin() {
+        return "redirect:/EmployeeSearch/Login";
     }
 
     @PostMapping("/EmployeeSearch/Register")

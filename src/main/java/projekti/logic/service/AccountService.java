@@ -93,8 +93,9 @@ public class AccountService {
         return "home";
     }
 
-    public String login() {
-        return "home";
+    public String login(Model model) {
+        model.addAttribute("date", this.date.date());
+        return "login";
     }
 
     public String register(Model model, @ModelAttribute Account account) {

@@ -9,23 +9,23 @@ import projekti.logic.service.WelcomeService;
 
 @Controller
 public class WelcomeController {
-    
+
     @Autowired
     private PostsService postsService;
-    
+
     @Autowired
     private WelcomeService welcomeService;
-    
+
     @GetMapping("/EmployeeSearch/Posts")
     public String posts() {
         return this.postsService.posts();
     }
-    
+
     @GetMapping("/EmployeeSearch/TermsOfService")
     public String termsOfService() {
         return this.welcomeService.termsOfService();
     }
-    
+
     @GetMapping("/EmployeeSearch/Welcome")
     public String welcome(Model model) {
         return this.welcomeService.welcome(model);

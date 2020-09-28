@@ -25,6 +25,7 @@ public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .antMatchers("/").permitAll()
                 .antMatchers("/EmployeeSearch").permitAll()
                 .antMatchers("/EmployeeSearch/").permitAll()
+                .antMatchers("/EmployeeSearch/Login").permitAll()
                 .antMatchers("/EmployeeSearch/TermsOfService").permitAll()
                 .antMatchers(HttpMethod.GET, "/EmployeeSearch/Posts").permitAll()
                 .antMatchers(HttpMethod.GET, "/EmployeeSearch/Register").permitAll()

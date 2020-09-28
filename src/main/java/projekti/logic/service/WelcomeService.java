@@ -7,14 +7,14 @@ import projekti.logic.utility.Date;
 
 @Service
 public class WelcomeService {
-    
+
     @Autowired
     Date date;
-    
+
     public String termsOfService() {
         return "terms_of_service";
     }
-    
+
     public String welcome(Model model) {
         model.addAttribute("date", this.date.date());
         return "welcome";

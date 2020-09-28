@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Register - Employee Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"/>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    </head>
+    <body>
+
+        <!-- Login form -->
+        <div class="container p-5 text-center">
+            <div class="card">
+
+                <h5 class="card-header darkblue py-4 text-center white-text">
+                    <strong>Sign in</strong>
+                </h5>
+
+                <!--Card content-->
+                <div class="card-body pt-0 px-lg-5">
+
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;" action="#!">
+
+                        <!-- Username -->
+                        <div class="md-form">
+                            <input type="text" id="LoginFormUsername" class="form-control"/>
+                            <label for="LoginFormUsername">Username</label>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="md-form">
+                            <input type="password" id="LoginFormPassword" class="form-control"/>
+                            <label for="LoginFormPassword">Password</label>
+                        </div>
+
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <!-- Remember me -->
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="materialLoginFormRemember"/>
+                                    <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Forgot password -->
+                                <a href="">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Sign in button -->
+                        <button class="btn btn-outline-info btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+
+                        <!-- Register -->
+                        <p>Not a member?
+                            <a  th:href="@{/EmployeeSearch/Register}">Register</a>
+                        </p>
+
+                        <!-- Social login -->
+                        <p>or sign up with:</p>
+
+                        <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                        <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                        <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                        <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
+                    </form>
+                    <!-- Form -->
+
+                </div>
+                <!--Card content-->
+
+            </div>
+        </div>
+        <!-- Login form -->
+
+        <!-- Back to main page -->
+        <div class="container">
+            <div class="text-center">
+                <div th:replace="fragments/layout :: main"></div>
+            </div>
+        </div>
+        <!-- Back to main page -->
+
+        <!-- Footer -->
+        <div class="container">
+            <footer class="darkblue font-small mb-4 mt-3 page-footer">
+
+                <!-- Copyright -->
+                <div class="font-small footer-copyright p-5 text-center">
+                    <div th:replace="fragments/layout :: copyright"></div>
+                    <div th:replace="fragments/layout :: date"></div>
+                </div>
+
+            </footer>
+        </div>
+        <!-- Footer -->
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <!-- Custom JavaScript -->
+        <script th:src="@{/javascript/code.js}" defer></script>
+
+    </body>
+</html>
