@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import projekti.domain.Account;
 import projekti.logic.repo.AccountRepository;
 import projekti.logic.utility.Date;
@@ -24,7 +23,53 @@ public class AccountService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public String addAccount(Model model,
+    public String convertRegisterEntry(String convert) {
+        String converted = "";
+        for (int i = 0; i < convert.length(); i++) {
+            char c = convert.charAt(i);
+            if (((int) c >= 48 && (int) c <= 57)
+                    || ((int) c >= 65 && (int) c <= 90)
+                    || ((int) c >= 97 && (int) c <= 122)
+                    || ((int) c == 38)
+                    || ((int) c == 64)
+                    || ((int) c == 95)) {
+                converted += c;
+            } else {
+                converted = "ERROR";
+                return converted;
+            }
+        }
+        return converted;
+    }
+
+    public String convertRemoveSpaces(String convert) {
+        String converted = convert;
+        converted = converted.trim().replaceAll("\\s+", "");
+        return converted;
+    }
+
+    public String loginCheck(Model model, String username, String password) {
+        Account account = this.accountRepository.findByUsername(username);
+        if (account == null) {
+            model.addAttribute("date", this.date.date());
+            model.addAttribute("username", username);
+            model.addAttribute("usernameFail", "");
+            return "login_fail";
+        }
+        if (!account.getPassword().equals(password)) {
+            model.addAttribute("date", this.date.date());
+            model.addAttribute("passwordFail", "");
+            return "login_fail";
+        }
+        return "redirect:/EmployeeSearch/Users/" + account.getAlias();
+    }
+
+    public String loginFill(Model model) {
+        model.addAttribute("date", this.date.date());
+        return "login";
+    }
+
+    public String registerCheck(Model model,
             @Valid @ModelAttribute Account account,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -64,49 +109,20 @@ public class AccountService {
         return "redirect:/EmployeeSearch/Register/" + account.getAlias();
     }
 
-    public String convertRegisterEntry(String convert) {
-        String converted = "";
-        for (int i = 0; i < convert.length(); i++) {
-            char c = convert.charAt(i);
-            if (((int) c >= 48 && (int) c <= 57)
-                    || ((int) c >= 65 && (int) c <= 90)
-                    || ((int) c >= 97 && (int) c <= 122)
-                    || ((int) c == 38)
-                    || ((int) c == 64)
-                    || ((int) c == 95)) {
-                converted += c;
-            } else {
-                converted = "ERROR";
-                return converted;
-            }
-        }
-        return converted;
-    }
-
-    public String convertRemoveSpaces(String convert) {
-        String converted = convert;
-        converted = converted.trim().replaceAll("\\s+", "");
-        return converted;
-    }
-
-    public String home() {
-        return "home";
-    }
-
-    public String login(Model model) {
-        model.addAttribute("date", this.date.date());
-        return "login";
-    }
-
-    public String register(Model model, @ModelAttribute Account account) {
+    public String registerFill(Model model, @ModelAttribute Account account) {
         model.addAttribute("accounts", this.accountRepository.findAll());
         model.addAttribute("date", this.date.date());
         return "register";
     }
 
-    public String registerOk(Model model, @PathVariable String alias) {
+    public String registerOk(Model model, String alias) {
         model.addAttribute("alias", alias);
         model.addAttribute("date", this.date.date());
         return "register_ok";
+    }
+
+    public String userHome(Model model, String alias) {
+        model.addAttribute("date", this.date.date());
+        return "home";
     }
 }

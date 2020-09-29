@@ -41,13 +41,16 @@
                 <div class="card-body pt-0 px-lg-5">
 
                     <!-- Form -->
-                    <form class="text-center" th:action="@{/EmployeeSearch/Register}" th:object="${account}" method="POST">
+                    <form th:action="@{/EmployeeSearch/Register}" th:object="${account}" method="POST">
 
                         <!-- Username -->
-                        <div class="md-form">
+                        <div class="md-form input-group input-with-pre-icon">
+                            <i class="fas fa-user-circle prefix" aria-hidden="true"></i>
                             <input type="text" id="RegisterFormUsername" th:field="*{username}" name="username" class="form-control" 
                                    aria-describedby="RegisterFormUsernameHelpBlock" required/>
                             <label for="RegisterFormUsername">Username</label>
+                        </div>
+                        <div>
                             <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('username')}" 
                                    th:errors="*{username}">username error message
                             </small>
@@ -57,10 +60,13 @@
                         </div>
 
                         <!-- Password -->
-                        <div class="md-form">
+                        <div class="md-form input-group input-with-pre-icon">
+                            <i class="fas fa-lock prefix" aria-hidden="true"></i>
                             <input type="password" id="RegisterFormPassword" th:field="*{password}" name="password" class="form-control" 
                                    aria-describedby="RegisterFormPasswordHelpBlock" required/>
                             <label for="RegisterFormPassword">Password</label>
+                        </div>
+                        <div>
                             <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('password')}" 
                                    th:errors="*{password}">password error message
                             </small>

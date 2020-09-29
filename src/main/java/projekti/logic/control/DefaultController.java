@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DefaultController {
 
     @GetMapping("/")
-    public String root() {
+    public String welcomeRoot() {
         return "redirect:/EmployeeSearch/Welcome";
     }
 
     @GetMapping("/EmployeeSearch")
-    public String rootEmployeeSearchA() {
+    public String welcomeEmployeeSearch() {
         return "redirect:/EmployeeSearch/Welcome";
     }
 
     @GetMapping("/EmployeeSearch/")
-    public String rootEmployeeSearchB() {
+    public String welcomeEmployeeSearchSlash() {
         return "redirect:/EmployeeSearch/Welcome";
     }
 }

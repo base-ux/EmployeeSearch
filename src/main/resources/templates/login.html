@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Register - Employee Search</title>
+        <title>Login - Employee Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
@@ -30,17 +30,19 @@
                 <div class="card-body pt-0 px-lg-5">
 
                     <!-- Form -->
-                    <form class="text-center" action="#!">
+                    <form class="text-center" th:action="@{/EmployeeSearch/Login}" method="POST">
 
                         <!-- Username -->
-                        <div class="md-form">
-                            <input type="text" id="LoginFormUsername" class="form-control"/>
+                        <div class="md-form input-group input-with-pre-icon">
+                            <i class="fas fa-user-circle prefix" aria-hidden="true"></i>
+                            <input type="text" name="username" id="LoginFormUsername" class="form-control" required/>
                             <label for="LoginFormUsername">Username</label>
                         </div>
 
                         <!-- Password -->
-                        <div class="md-form">
-                            <input type="password" id="LoginFormPassword" class="form-control"/>
+                        <div class="md-form input-group input-with-pre-icon">
+                            <i class="fas fa-lock prefix" aria-hidden="true"></i>
+                            <input type="password" name="password" id="LoginFormPassword" class="form-control" required/>
                             <label for="LoginFormPassword">Password</label>
                         </div>
 
@@ -48,8 +50,8 @@
                             <div>
                                 <!-- Remember me -->
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="materialLoginFormRemember"/>
-                                    <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
+                                    <input type="checkbox" class="form-check-input" id="LoginFormRemember"/>
+                                    <label class="form-check-label" for="LoginFormRemember">Remember me</label>
                                 </div>
                             </div>
                             <div>
@@ -59,11 +61,11 @@
                         </div>
 
                         <!-- Sign in button -->
-                        <button class="btn btn-outline-info btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+                        <button class="btn btn-outline-info btn-block my-4 waves-effect z-depth-0" name="submit" type="submit">Sign in</button>
 
                         <!-- Register -->
-                        <p>Not a member?
-                            <a  th:href="@{/EmployeeSearch/Register}">Register</a>
+                        <p>Not a registered user?
+                            <a  th:href="@{/EmployeeSearch/Register}">Sign up</a>
                         </p>
 
                         <!-- Social login -->
