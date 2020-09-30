@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import projekti.domain.Account;
 import projekti.logic.service.AccountService;
 
@@ -19,6 +18,11 @@ public class AccountController {
 
     @Autowired
     private AccountService accountService;
+
+    @GetMapping("/EmployeeSearch/LoginError")
+    public String loginError(Model model) {
+        return this.accountService.loginError(model);
+    }
 
     @GetMapping("/EmployeeSearch/Login")
     public String loginFill(Model model) {
@@ -35,15 +39,10 @@ public class AccountController {
         return this.accountService.registerOk(model, alias);
     }
 
-    @GetMapping("/EmployeeSearch/Users/{alias}")
-    public String userHome(Model model, @PathVariable String alias) {
-        return this.accountService.userHome(model, alias);
-    }
-
-    @PostMapping("/EmployeeSearch/Login")
-    public String loginCheck(Model model, @RequestParam String username,
-            @RequestParam String password) {
-        return this.accountService.loginCheck(model, username, password);
+    @Secured("USER")
+    @GetMapping("/EmployeeSearch/Users")
+    public String userHome(Model model) {
+        return this.accountService.userHome(model);
     }
 
     @PostMapping("/EmployeeSearch/Register")

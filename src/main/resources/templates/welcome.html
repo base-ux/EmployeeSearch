@@ -17,6 +17,32 @@
     </head>
     <body>
 
+        <!--Navbar -->
+        <nav class="darkblue mb-0 navbar navbar-dark navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="ml-auto navbar-nav">
+                    <li class="dropdown nav-item">
+                        <a th:if="${loggedinuser} == ''" class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> User (Not logged in) </a>
+                        <a th:unless="${loggedinuser} == ''"  th:text="${loggedinuser} + ' (Logged in) '" class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> User (Logged in) </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" th:href="@{/EmployeeSearch/Users}">My Home Page</a>
+                            <a th:if="${loggedinuser} == ''" class="dropdown-item" th:href="@{/EmployeeSearch/Login}">Login</a>
+                            <a th:unless="${loggedinuser} == ''" class="dropdown-item" th:href="@{/EmployeeSearch/Logout}">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- /Navbar -->
+
         <!-- Header area -->
         <div class="container-fluid darkblue">
 
@@ -49,7 +75,7 @@
             </div>
 
         </div>
-        <!-- Header area -->
+        <!-- /Header area -->
 
         <!-- Welcome page content -->
         <div class="container-fluid">
@@ -120,7 +146,7 @@
                     </div>
 
                 </div>
-                <!-- Carousel and Bottom curve -->
+                <!-- /Carousel and Bottom curve -->
 
                 <!-- Big button -->
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 p-3">
@@ -149,7 +175,7 @@
 
             </div>
         </div>
-        <!-- Welcome page content -->
+        <!-- /Welcome page content -->
 
         <!-- Footer -->
         <div class="container">
@@ -163,7 +189,7 @@
 
             </footer>
         </div>
-        <!-- Footer -->
+        <!-- /Footer -->
 
         <!-- JQuery -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

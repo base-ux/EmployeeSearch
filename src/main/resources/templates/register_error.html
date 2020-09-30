@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Login unsuccessful - Employee Search</title>
+        <title>Registering unsuccessful - Employee Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
@@ -17,29 +17,33 @@
     </head>
     <body>
 
-        <!-- Login error message -->
+        <!-- Registering error message -->
         <div class="container">
             <div class="alert alert-warning mt-5">
-                <p><strong>Somehow login for user 
-                        <span th:text="${username}">username</span> was not 
-                        completed!</strong></p>
+                <p><strong>Somehow registering for user 
+                        <span th:text="${username}">username</span> 
+                        was not completed!</strong></p>
                 <p th:if="${usernameFail}">Username 
-                    <span th:text="${username}">username</span> is not 
-                    found.</p>
-                <p th:if="${passwordFail}">Password is not correct.</p>
-                <p>Please refresh the Login page in order to complete logging 
-                    in.</p>
+                    <span th:text="${username}">username</span> is already 
+                    in use.</p>
+                <p th:if="${aliasFail}">Alias <span th:text="${alias}">
+                        alias</span> is already in use.</p>
+                <p th:if="${entryFail}">Some of the entered characters were 
+                    not allowed or not unlike Scandinavian or of other 
+                    regional type.</p>
+                <p>Please refresh the Register page in order to complete the 
+                    sign up form.</p>
             </div>
         </div>
-        <!-- Login error message -->
+        <!-- /Registering error message -->
 
-        <!-- Back to login page -->
+        <!-- Back to register page -->
         <div class="container">
             <div class="text-center">
-                <div th:replace="fragments/layout :: login"></div>
+                <div th:replace="fragments/layout :: register"></div>
             </div>
         </div>
-        <!-- Back to login page -->
+        <!-- /Back to register page -->
 
         <!-- Footer -->
         <div class="container">
@@ -53,7 +57,7 @@
 
             </footer>
         </div>
-        <!-- Footer -->
+        <!-- /Footer -->
 
     </body>
 </html>

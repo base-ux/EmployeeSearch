@@ -48,20 +48,9 @@ public class AccountService {
         return converted;
     }
 
-    public String loginCheck(Model model, String username, String password) {
-        Account account = this.accountRepository.findByUsername(username);
-        if (account == null) {
-            model.addAttribute("date", this.date.date());
-            model.addAttribute("username", username);
-            model.addAttribute("usernameFail", "");
-            return "login_fail";
-        }
-        if (!account.getPassword().equals(password)) {
-            model.addAttribute("date", this.date.date());
-            model.addAttribute("passwordFail", "");
-            return "login_fail";
-        }
-        return "redirect:/EmployeeSearch/Users/" + account.getAlias();
+    public String loginError(Model model) {
+        model.addAttribute("date", this.date.date());
+        return "login_error";
     }
 
     public String loginFill(Model model) {
@@ -77,18 +66,20 @@ public class AccountService {
             return "register";
         }
         if (this.accountRepository.findByUsername(account.getUsername())
-                != null) {
+                != null
+                || account.getUsername().equals("anonymousUser")
+                || account.getUsername().equals("null")) {
             model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
             model.addAttribute("usernameFail", "");
-            return "register_fail";
+            return "register_error";
         }
         if (this.accountRepository.findByAlias(account.getAlias()) != null) {
             model.addAttribute("alias", account.getAlias());
             model.addAttribute("aliasFail", "");
             model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
-            return "register_fail";
+            return "register_error";
         } else {
             String username = convertRegisterEntry(convertRemoveSpaces(account.getUsername()));
             String password = convertRegisterEntry(account.getPassword());
@@ -98,7 +89,7 @@ public class AccountService {
                     || realname.equals("ERROR") || alias.equals("ERROR")) {
                 model.addAttribute("date", this.date.date());
                 model.addAttribute("entryFail", "");
-                return "register_fail";
+                return "register_error";
             }
             account.setUsername(username);
             account.setPassword(passwordEncoder.encode(password));
@@ -121,7 +112,7 @@ public class AccountService {
         return "register_ok";
     }
 
-    public String userHome(Model model, String alias) {
+    public String userHome(Model model) {
         model.addAttribute("date", this.date.date());
         return "home";
     }
