@@ -19,6 +19,8 @@
 
         <!--Navbar -->
         <nav class="darkblue mb-0 navbar navbar-dark navbar-expand-lg">
+            <i class="navbar-text ml-4" th:if="${loggedinuser} == ''" th:text="${hellouser}">join</i>
+            <i class="navbar-brand ml-4" th:unless="${loggedinuser} == ''" th:text="${hellouser}">hello user</i>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,8 +32,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-circle"></i> User (Not logged in) </a>
                         <a th:unless="${loggedinuser} == ''"  th:text="${loggedinuser} + ' (Logged in) '" class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user-circle"></i> User (Logged in) </a>
+                           aria-haspopup="true" aria-expanded="false">user logged in</a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" th:href="@{/EmployeeSearch/Users}">My Home Page</a>
                             <a th:if="${loggedinuser} == ''" class="dropdown-item" th:href="@{/EmployeeSearch/Login}">Login</a>
@@ -50,8 +51,10 @@
             <div class="row">    
                 <header class="page-header">
                     <div>
-                        <h1 class="p-3 text-light">Welcome to the 
-                            <span class="pinkish">Employee</span> Search App
+
+                        <h1 class="ml-2 p-3 text-light">
+                            <img class="ml-2" src="" th:src="@{/media/empSiteLogo.png}" alt="empSiteLogo"/>
+                            <span class="pinkish">Employee</span>Search
                         </h1>
                     </div>
                 </header>

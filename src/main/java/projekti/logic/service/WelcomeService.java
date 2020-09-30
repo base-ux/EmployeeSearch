@@ -21,8 +21,10 @@ public class WelcomeService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         if (username.equals("anonymousUser") || username.equals("null")) {
+            model.addAttribute("hellouser", "Welcome, visitor!");
             model.addAttribute("loggedinuser", "");
         } else {
+            model.addAttribute("hellouser", "Hello, " + username + "!");
             model.addAttribute("loggedinuser", username);
         }
         model.addAttribute("date", this.date.date());
