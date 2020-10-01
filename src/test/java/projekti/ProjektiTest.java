@@ -29,9 +29,9 @@ public class ProjektiTest {
     }
 
     @Test
-    public void getRequestToWelcomeReturnsEmployeeSearch() throws Exception {
+    public void getRequestToWelcomeReturnsWelcomeText() throws Exception {
         this.mockMvc.perform(get("/EmployeeSearch/Welcome")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("EmployeeSearch")))
+                .andExpect(content().string(containsString("As a Registered User you will get your own Home Page")))
                 .andExpect(content().string(not(containsString("gaslo4tghj38g92"))));
     }
 

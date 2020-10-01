@@ -2,15 +2,6 @@ a:focus, a:hover, a:visited {
     text-decoration: none;
 }
 
-/*body, html {
-    background-color: black;
-}*/
-
-.bigbutton {
-    max-width: 50vw;
-    padding: 20vh 5vw 20vh 5vw;
-}
-
 .carousel-caption {
     background: rgba(0, 0, 0, 0.6);
 }
@@ -21,6 +12,12 @@ a:focus, a:hover, a:visited {
 
 .pinkish {
     color: #ff0067;
+}
+
+.pinkishrow {
+    background-color: #ff0067;
+    min-height: 1.3rem;
+    width: 100%;
 }
 
 .welcometextbutton {
