@@ -50,9 +50,9 @@
                 <div class="row">    
                     <header class="page-header">
                         <div>
-
                             <h1 class="ml-2 p-3 text-light">
-                                <img class="ml-2" src="" th:src="@{/media/empSiteLogo.png}" alt="empSiteLogo"/>
+                                <img class="ml-2" src="" th:src="@{/media/empSiteLogo_in_small.png}" 
+                                     alt="empSiteLogo_in_small"/>
                                 <span class="pinkish">Employee</span>Search
                             </h1>
                         </div>
@@ -150,19 +150,19 @@
                     </div>
                     <!-- /Carousel and Bottom curve -->
 
-                    <!-- Big button -->
-                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 p-3">
+                    <!-- Big logo -->
+                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
                         <a th:href="@{/EmployeeSearch/Posts}">
-                            <button type="button" class="bigbutton blue-gradient btn btn-block text-center">
-                                <h3>Take a look at the Posts Section</h3>
-                            </button>
+                            <img src="/media/empSiteLogo_in.png" 
+                                 onmouseover="this.src='/media/empSiteLogo_out.png';" 
+                                 onmouseout="this.src='/media/empSiteLogo_in.png';"/>
                         </a>
                     </div>
 
                     <!-- Welcome text button -->
                     <div class="col-sm-0 col-md-0 col-lg-0 col-xl-3 p-3">
                         <a th:href="@{/EmployeeSearch/Register}">
-                            <button type="button" class="accent-4 light-blue text-center text-light welcometextbutton">
+                            <button type="button" class="accent-4 light-blue text-center text-light waves-effect welcometextbutton">
                                 <p>As a Registered User you will get your own Home Page 
                                     that you can modify to your liking and show others 
                                     your abilities, skill level, CV or other profile 
@@ -228,9 +228,9 @@
                 <div class="row">    
                     <header class="page-header">
                         <div>
-
                             <h1 class="ml-2 p-3 text-light">
-                                <img class="ml-2" src="" th:src="@{/media/empSiteLogo.png}" alt="empSiteLogo"/>
+                                <img class="ml-2" src="" th:src="@{/media/empSiteLogo_in_small.png}" 
+                                     alt="empSiteLogo_in_small"/>
                                 <span class="pinkish">Employee</span>Search
                             </h1>
                         </div>
@@ -256,21 +256,19 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <!-- Home button -->
-                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 p-3">
+                    <!-- Home link -->
+                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
                         <a th:href="@{/EmployeeSearch/Users}">
-                            <button type="button" class="bigbutton purple-gradient btn btn-block text-center">
-                                <h3>Home</h3>
-                            </button>
+                            <img src="" th:src="@{/media/empSiteLogo_in.png}" alt="empSiteLogo_in"/>
+                            <h3 class="text-dark">Home</h3>
                         </a>
                     </div>
 
-                    <!-- Big button -->
-                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 p-3">
+                    <!-- Posts link -->
+                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
                         <a th:href="@{/EmployeeSearch/Posts}">
-                            <button type="button" class="bigbutton blue-gradient btn btn-block text-center">
-                                <h3>Posts</h3>
-                            </button>
+                            <img src="" th:src="@{/media/empSiteLogo_out.png}" alt="empSiteLogo_out"/>
+                            <h3 class="text-dark">Posts</h3>
                         </a>
                     </div>
 
