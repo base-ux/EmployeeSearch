@@ -6,6 +6,10 @@ a:focus, a:hover, a:visited {
     background: rgba(0, 0, 0, 0.6);
 }
 
+.biglogo {
+    width: 2vw;
+}
+
 .darkblue {
     background-color: #012854;
 }

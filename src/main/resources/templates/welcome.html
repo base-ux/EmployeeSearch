@@ -159,11 +159,11 @@
                     <!-- /Carousel and Bottom curve -->
 
                     <!-- Big logo -->
-                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
+                    <div class="biglogo col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
                         <a th:href="@{/EmployeeSearch/Posts}">
                             <img src="/media/empSiteLogo_in.png" 
-                                 onmouseover="this.src='/media/empSiteLogo_out.png';" 
-                                 onmouseout="this.src='/media/empSiteLogo_in.png';"/>
+                                 onmouseover="this.src='/media/empSiteLogo_out.png';"
+                                 onmouseout="this.src='/media/empSiteLogo_in.png';" alt="Posts"/>
                         </a>
                     </div>
 
@@ -203,6 +203,8 @@
 
         </div>
         <!-- /Not logged in -->
+
+        <!--////////////////////////////////////////////////////////////////-->
 
         <!-- Logged in -->
         <div th:unless="${loggedinuser} == ''">
