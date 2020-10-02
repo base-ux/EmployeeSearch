@@ -7,7 +7,8 @@ a:focus, a:hover, a:visited {
 }
 
 .biglogo {
-    width: 2vw;
+    max-width: 100%;
+    height: auto;
 }
 
 .darkblue {
