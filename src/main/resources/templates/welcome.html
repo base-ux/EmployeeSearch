@@ -219,7 +219,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="ml-auto navbar-nav">
                         <li class="dropdown nav-item">
-                            <a th:text="${loggedinuser} + ' (Logged in) '" class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            <a th:text="${loggedinuser} + ' (Logged in) '" 
+                               class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">user logged in</a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" th:href="@{/EmployeeSearch/Users}">My Home Page</a>
@@ -277,7 +278,7 @@
                     <!-- Home link -->
                     <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
                         <a th:href="@{/EmployeeSearch/Users}">
-                            <img src="" th:src="@{/media/empSiteLogo_in.png}" alt="empSiteLogo_in"/>
+                            <img class="biglogo img-fluid" src="" th:src="@{/media/empSiteLogo_in.png}" alt="empSiteLogo_in"/>
                             <h3 class="text-dark">Home</h3>
                         </a>
                     </div>
@@ -285,7 +286,7 @@
                     <!-- Posts link -->
                     <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
                         <a th:href="@{/EmployeeSearch/Posts}">
-                            <img src="" th:src="@{/media/empSiteLogo_out.png}" alt="empSiteLogo_out"/>
+                            <img class="biglogo img-fluid" src="" th:src="@{/media/empSiteLogo_out.png}" alt="empSiteLogo_out"/>
                             <h3 class="text-dark">Posts</h3>
                         </a>
                     </div>
