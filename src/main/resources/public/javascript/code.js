@@ -6,7 +6,7 @@ $(document).ready(function(){
         var $signupButton = $("#signup")
         var $passwordField = $("#RegisterFormPassword")
         var $confirmPasswordField = $("#RegisterFormMatchingPassword")
-        var $errorMessage = $('<small class="form-text mb-4 text-danger" id="error">confirm password is not correct</small>')
+        var $errorMessage = $('<div class="container-fluid"><small class="form-text mt-4 text-center text-danger" id="error">confirm must match password</small></div>')
 
         $signupButton.removeAttr("disabled")
 

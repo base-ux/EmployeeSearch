@@ -83,7 +83,7 @@
                             <i class="fas fa-lock prefix" aria-hidden="true"></i>
                             <input type="password" id="RegisterFormMatchingPassword" class="form-control" 
                                    aria-describedby="RegisterFormMatchingPasswordHelpBlock" required/>
-                            <label for="RegisterFormMatchingPassword">Confirm Password</label>
+                            <label for="RegisterFormMatchingPassword">Confirm</label>
                         </div>
                         <div>
                             <small id="RegisterFormMatchingPasswordHelpBlock" class="form-text mb-4 text-muted">
@@ -96,7 +96,7 @@
                             <input type="text" id="RegisterFormRealname" th:field="*{realname}" name="realname" class="form-control" 
                                    aria-describedby="RegisterFormRealnameHelpBlock" required/>
                             <label for="RegisterFormRealname">Your name</label>
-                            <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('realname')}"
+                            <small class="form-text mb-4 mt-4 text-danger" th:if="${#fields.hasErrors('realname')}"
                                    th:errors="*{realname}">realname validation error message
                             </small>
                             <small id="RegisterFormRealnameHelpBlock" class="form-text mb-4 text-muted">
@@ -109,7 +109,7 @@
                             <input type="text" id="RegisterFormAlias" th:field="*{alias}" name="alias" class="form-control" 
                                    aria-describedby="RegisterFormAliasHelpBlock" required/>
                             <label for="RegisterFormAlias">Alias</label>
-                            <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('alias')}"
+                            <small class="form-text mb-4 mt-4 text-danger" th:if="${#fields.hasErrors('alias')}"
                                    th:errors="*{alias}">alias validation error message
                             </small>
                             <small id="RegisterFormAliasHelpBlock" class="form-text mb-4 text-muted">
