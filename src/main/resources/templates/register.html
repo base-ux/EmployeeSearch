@@ -72,9 +72,7 @@
                                    th:errors="*{password}">password validation error message
                             </small>
                             <small id="RegisterFormPasswordHelpBlock" class="form-text mb-4 text-muted">
-                                Password length should be at least 8 characters, contain one special character, 
-                                contain one number, contain an uppercase character and lowercase character and 
-                                should not be an e-mail address
+                                Create a strong password
                             </small>
                         </div>
 
@@ -118,15 +116,18 @@
                         </div>
 
                         <!-- E-mail -->
-                        <div class="md-form">
+                        <div class="md-form input-group input-with-pre-icon">
+                            <i class="fas fa-envelope prefix" aria-hidden="true"></i>
                             <input type="email" id="RegisterFormEmail" th:field="*{email}" name="email" class="form-control" 
                                    aria-describedby="RegisterFormEmailHelpBlock" required/>
                             <label for="RegisterFormEmail">Email</label>
+                        </div>
+                        <div>
                             <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('email')}"
                                    th:errors="*{email}">email validation error message
                             </small>
                             <small id="RegisterFormEmailHelpBlock" class="form-text mb-4 text-muted">
-                                This is your e-mail address where the password confirmation e-mail will be sent to
+                                This is your e-mail address where the reset password e-mail will be sent to
                             </small>
                         </div>
 

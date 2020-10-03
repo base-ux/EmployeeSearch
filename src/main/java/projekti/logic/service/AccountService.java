@@ -20,6 +20,7 @@ import projekti.domain.Account;
 import projekti.logic.repo.AccountRepository;
 import projekti.logic.utility.Date;
 import projekti.security.EmailValidator;
+import projekti.security.PasswordConstraintValidator;
 
 @Service
 public class AccountService {
@@ -46,6 +47,20 @@ public class AccountService {
         Class<? extends Payload>[] payload() default {};
     }
 
+    @Documented
+    @Constraint(validatedBy = PasswordConstraintValidator.class)
+    @Target({TYPE, FIELD, ANNOTATION_TYPE})
+    @Retention(RUNTIME)
+    public @interface ValidPassword {
+
+        String message() default "Invalid Password";
+
+        Class<?>[] groups() default {};
+
+        Class<? extends Payload>[] payload() default {};
+
+    }
+
     public String convertRegisterEntry(String convert) {
         String converted = "";
         for (int i = 0; i < convert.length(); i++) {
@@ -69,6 +84,11 @@ public class AccountService {
         String converted = convert;
         converted = converted.trim().replaceAll("\\s+", "");
         return converted;
+    }
+
+    public String forgotPassword(Model model) {
+        model.addAttribute("date", this.date.date());
+        return "forgotpassword";
     }
 
     public String loginError(Model model) {

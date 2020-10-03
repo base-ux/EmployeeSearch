@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import projekti.logic.service.AccountService.ValidEmail;
+import projekti.logic.service.AccountService.ValidPassword;
 
 @Entity
 @Data
@@ -21,6 +22,7 @@ public class Account extends AbstractPersistable<Long> {
     @Size(min = 2, max = 25)
     private String username;
 
+    @ValidPassword
     @NotEmpty
     @NotNull
     @Size(min = 8, max = 60)

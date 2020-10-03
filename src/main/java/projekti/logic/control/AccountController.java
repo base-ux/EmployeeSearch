@@ -19,6 +19,11 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
+    @GetMapping("/EmployeeSearch/ForgotPassword")
+    public String forgotPassword(Model model) {
+        return this.accountService.forgotPassword(model);
+    }
+    
     @GetMapping("/EmployeeSearch/LoginError")
     public String loginError(Model model) {
         return this.accountService.loginError(model);

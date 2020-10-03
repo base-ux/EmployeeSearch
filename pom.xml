@@ -90,6 +90,12 @@
             <artifactId>postgresql</artifactId>
         </dependency>
         
+        <dependency>
+            <groupId>org.passay</groupId>
+            <artifactId>passay</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+        
         <!-- TMC -->
         <dependency>
             <groupId>fi.helsinki.cs.tmc</groupId>
