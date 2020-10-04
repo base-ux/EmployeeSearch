@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import projekti.domain.Account;
-import projekti.logic.repo.AccountRepository;
+import projekti.logic.repository.AccountRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

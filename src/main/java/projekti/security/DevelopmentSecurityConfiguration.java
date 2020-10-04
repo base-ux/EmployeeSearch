@@ -27,7 +27,6 @@ public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .antMatchers("/").permitAll()
                 .antMatchers("/EmployeeSearch").permitAll()
                 .antMatchers("/EmployeeSearch/").permitAll()
-                .antMatchers("/EmployeeSearch/ForgotPassword").permitAll()
                 .antMatchers("/EmployeeSearch/Login").permitAll()
                 .antMatchers("/EmployeeSearch/TermsOfService").permitAll()
                 .antMatchers("/EmployeeSearch/Users").hasAnyAuthority("USER")

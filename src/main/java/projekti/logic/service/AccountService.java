@@ -17,9 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import projekti.domain.Account;
-import projekti.logic.repo.AccountRepository;
+import projekti.logic.repository.AccountRepository;
 import projekti.logic.utility.Date;
-import projekti.security.EmailValidator;
 import projekti.security.PasswordConstraintValidator;
 
 @Service
@@ -33,19 +32,6 @@ public class AccountService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
-
-    @Target({TYPE, FIELD, ANNOTATION_TYPE})
-    @Retention(RUNTIME)
-    @Constraint(validatedBy = EmailValidator.class)
-    @Documented
-    public @interface ValidEmail {
-
-        String message() default "Invalid email";
-
-        Class<?>[] groups() default {};
-
-        Class<? extends Payload>[] payload() default {};
-    }
 
     @Documented
     @Constraint(validatedBy = PasswordConstraintValidator.class)
@@ -86,11 +72,6 @@ public class AccountService {
         return converted;
     }
 
-    public String forgotPassword(Model model) {
-        model.addAttribute("date", this.date.date());
-        return "forgotpassword";
-    }
-
     public String loginError(Model model) {
         model.addAttribute("date", this.date.date());
         return "login_error";
@@ -123,18 +104,11 @@ public class AccountService {
             model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
             return "register_error";
-        }
-        if (this.accountRepository.findByEmail(account.getEmail()) != null) {
-            model.addAttribute("date", this.date.date());
-            model.addAttribute("email", account.getEmail());
-            model.addAttribute("emailFail", "");
-            return "register_error";
         } else {
             String username = convertRegisterEntry(convertRemoveSpaces(account.getUsername()));
             String password = convertRegisterEntry(account.getPassword());
             String realname = convertRegisterEntry(convertRemoveSpaces(account.getRealname()));
             String alias = convertRegisterEntry(convertRemoveSpaces(account.getAlias()));
-            String email = account.getEmail();
             if (username.equals("ERROR") || password.equals("ERROR")
                     || realname.equals("ERROR") || alias.equals("ERROR")) {
                 model.addAttribute("date", this.date.date());
@@ -145,7 +119,6 @@ public class AccountService {
             account.setPassword(passwordEncoder.encode(password));
             account.setRealname(realname);
             account.setAlias(alias);
-            account.setEmail(email);
         }
         this.accountRepository.save(account);
         return "redirect:/EmployeeSearch/Register/" + account.getAlias();

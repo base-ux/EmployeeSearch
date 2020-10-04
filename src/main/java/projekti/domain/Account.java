@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-import projekti.logic.service.AccountService.ValidEmail;
 import projekti.logic.service.AccountService.ValidPassword;
 
 @Entity
@@ -37,9 +36,4 @@ public class Account extends AbstractPersistable<Long> {
     @NotNull
     @Size(min = 2, max = 25)
     private String alias;
-
-    @NotEmpty
-    @NotNull
-    @ValidEmail
-    private String email;
 }

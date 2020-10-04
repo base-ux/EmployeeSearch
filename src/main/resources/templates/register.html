@@ -115,36 +115,17 @@
                             </small>
                         </div>
 
-                        <!-- E-mail -->
-                        <div class="md-form input-group input-with-pre-icon">
-                            <i class="fas fa-envelope prefix" aria-hidden="true"></i>
-                            <input type="email" id="RegisterFormEmail" th:field="*{email}" name="email" class="form-control" 
-                                   aria-describedby="RegisterFormEmailHelpBlock" required/>
-                            <label for="RegisterFormEmail">Email</label>
-                        </div>
-                        <div>
-                            <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('email')}"
-                                   th:errors="*{email}">email validation error message
-                            </small>
-                            <small id="RegisterFormEmailHelpBlock" class="form-text mb-4 text-muted">
-                                This is your e-mail address where the reset password e-mail will be sent to
-                            </small>
-                        </div>
-
                         <!-- Sign up button -->
                         <button class="btn btn-outline-info btn-block my-4 waves-effect z-depth-0" type="submit" id="signup">Sign up</button>
 
                         <!-- Social register -->
                         <p>or sign up with:</p>
                         <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-                        <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-                        <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-                        <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
 
                         <!-- Terms of service -->
                         <p>By clicking
                             <em>Sign up</em> you agree to the
-                            <a th:href="@{/EmployeeSearch/TermsOfService}">terms of service.</a>
+                            <a th:href="@{/EmployeeSearch/TermsOfService}">terms of service</a>.
                         </p>
 
                     </form>
