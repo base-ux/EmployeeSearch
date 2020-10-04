@@ -65,12 +65,12 @@
 
                         <!-- Login -->
                         <a th:href="@{/EmployeeSearch/Login}">
-                            <button type="button" class="btn btn-outline-light">Login</button>
+                            <button type="button" name="welcomeLoginButton" class="btn btn-outline-light">Login</button>
                         </a>
 
                         <!-- Register -->
                         <a th:href="@{/EmployeeSearch/Register}">
-                            <button type="button" class="btn btn-dark">Sign up</button>
+                            <button type="button" name="welcomeSignupButton" class="btn btn-dark">Sign up</button>
                         </a>
 
                     </div>
@@ -161,7 +161,7 @@
                     <!-- Big logo -->
                     <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
                         <a th:href="@{/EmployeeSearch/Posts}">
-                            <img class="biglogo img-fluid" src="/media/empSiteLogo_in.png" 
+                            <img class="biglogo img-fluid" name="welcomeBigLogo" src="/media/empSiteLogo_in.png" 
                                  onmouseover="this.src='/media/empSiteLogo_out.png';"
                                  onmouseout="this.src='/media/empSiteLogo_in.png';" alt="Posts"/>
                         </a>
@@ -170,7 +170,7 @@
                     <!-- Welcome text button -->
                     <div class="col-sm-0 col-md-0 col-lg-0 col-xl-3 p-3">
                         <a th:href="@{/EmployeeSearch/Register}">
-                            <button type="button" class="accent-4 light-blue text-center text-light waves-effect welcometextbutton">
+                            <button type="button" name="welcomeTextButton" class="accent-4 light-blue text-center text-light waves-effect welcometextbutton">
                                 <p>As a Registered User you will get your own Home Page 
                                     that you can modify to your liking and show others 
                                     your abilities, skill level, CV or other profile 
