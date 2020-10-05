@@ -29,14 +29,41 @@ public class WelcomePageTest extends FluentTest {
     @LocalServerPort
     private Integer port;
 
-    // WELCOME_CONTROLLER-TESTS
+    // Not logged in
+    //// WelcomeController - TESTS continued also in TermsOfServicePageTest.java
+    //// Testing that welcome.html contains certain text
     @Test
-    public void getRequestToWelcomeReturnsWelcomeText() throws Exception {
+    public void getRequestToWelcomeReturnsWelcomeVisitorText() throws Exception {
+        this.mockMvc.perform(get("/EmployeeSearch/Welcome")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Welcome, visitor!")));
+    }
+
+    @Test
+    public void getRequestToWelcomeReturnsUserNotLoggedInText() throws Exception {
+        this.mockMvc.perform(get("/EmployeeSearch/Welcome")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("User (Not logged in)")));
+    }
+
+    @Test
+    public void getRequestToWelcomeReturnsSmallLogoText() throws Exception {
+        this.mockMvc.perform(get("/EmployeeSearch/Welcome")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("EmployeeSearch")));
+    }
+
+    @Test
+    public void getRequestToWelcomeReturnsPromotionText() throws Exception {
         this.mockMvc.perform(get("/EmployeeSearch/Welcome")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("As a Registered User you will get your own Home Page")));
     }
 
-    // WELCOME_HTML-TESTS
+    @Test
+    public void getRequestToWelcomeReturnsFooterText() throws Exception {
+        this.mockMvc.perform(get("/EmployeeSearch/Welcome")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("&copy; 2020 Copyright: Toni Silfver")));
+    }
+
+    //// welcome.html - TESTS
+    //// Testing that links and buttons work
     @Test
     public void clickNavbarDropdownMenuLinkThenMyHomePageLinkThenPageSourceContainsUserLogin() {
         clickNavbarDropdownMenuLinkThenMyHomePageLink();

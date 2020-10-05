@@ -1,5 +1,6 @@
 package projekti;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import org.fluentlenium.adapter.junit.FluentTest;
 import static org.hamcrest.CoreMatchers.containsString;
 import org.junit.Test;
@@ -7,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -24,7 +26,10 @@ public class RegisterPageTest extends FluentTest {
     @Autowired
     private MockMvc mockMvc;
 
-    // ACCOUNT_CONTROLLER-TESTS
+    @LocalServerPort
+    private Integer port;
+
+    // AccountController - TESTS continued also in LoginPageTest.java
     @Test
     public void getRequestToRegisterReturnsRegisterFillText() throws Exception {
         this.mockMvc.perform(get("/EmployeeSearch/Register")).andDo(print()).andExpect(status().isOk())
@@ -36,5 +41,40 @@ public class RegisterPageTest extends FluentTest {
         this.mockMvc.perform(get("/EmployeeSearch/Register/heippa")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("<p>Registering was successful for alias \n"
                         + "                    <span>heippa</span>.</p>")));
+    }
+
+    // register.html - TESTS
+    // Testing that links and buttons work
+    @Test
+    public void clickRegisterSignupButtonThenPageSourceContainsSignUp() {
+        clickRegisterSignupButton();
+    }
+
+    public void clickRegisterSignupButton() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        $("#signup").click();
+        assertThat(pageSource()).contains("Sign up");
+    }
+
+    @Test
+    public void clickToTermsOfServicePageLinkThenPageSourceContainsTermsOfServiceText() {
+        clickToTermsOfServicePageLink();
+    }
+
+    public void clickToTermsOfServicePageLink() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        $("#toTermsOfServicePage").click();
+        assertThat(pageSource()).contains("or the ability of any other person to access");
+    }
+
+    @Test
+    public void clickRegisterBackToMainPageLinkThenPageSourceContainsPromotionText() {
+        clickRegisterBackToMainPageLink();
+    }
+
+    public void clickRegisterBackToMainPageLink() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        $("#backToMainPage").click();
+        assertThat(pageSource()).contains("documents, profile avatar and more");
     }
 }

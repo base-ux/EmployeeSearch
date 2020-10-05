@@ -28,10 +28,10 @@ a:focus, a:hover, a:visited {
 
 .pinkishrow {
     background-color: #ff0067;
-    min-height: 1.3rem;
+    min-height: 1.3em;
     width: 100%;
 }
 
 .welcometextbutton {
-    padding: 5vh 2vw 5vh 2vw
+    padding: 5vh 2vw 5vh 2vw;
 }

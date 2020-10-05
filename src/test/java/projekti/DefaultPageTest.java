@@ -22,7 +22,7 @@ public class DefaultPageTest extends FluentTest {
     @Autowired
     private MockMvc mockMvc;
 
-    // DEFAULT_CONTROLLER-TESTS
+    // DefaultController - TESTS all are here
     @Test
     public void getRequestToRootReturnsRedirect() throws Exception {
         this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isFound());

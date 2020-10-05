@@ -17,7 +17,7 @@
             <p th:text="${date}">Date</p>
         </div>
         <!-- Date -->
-        
+
         <!-- Back to Login Page -->
         <div th:fragment="login">
             <a th:href="@{/EmployeeSearch/Login}">Return</a>
@@ -34,15 +34,15 @@
 
         <!-- Back to Main Page -->
         <div th:fragment="main">
-            <a th:href="@{/}">Back to Main Page</a>
+            <a id="backToMainPage" th:href="@{/}">Back to Main Page</a>
         </div>
         <!-- Back to Main Page -->
-        
+
         <!-- Back to Register Page -->
         <div th:fragment="register">
-            <a th:href="@{/EmployeeSearch/Register}">Return</a>
+            <a id="backToRegisterPage" th:href="@{/EmployeeSearch/Register}">Return</a>
         </div>
         <!-- Back to Register Page -->
-        
+
     </body>
 </html>
