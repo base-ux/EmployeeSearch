@@ -11,6 +11,13 @@ a:focus, a:hover, a:visited {
     height: auto;
 }
 
+.bubbles {
+    background-image: url("/media/empSiteBackground_bubbles.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
 .darkblue {
     background-color: #012854;
 }

@@ -23,7 +23,7 @@
             <!--Navbar -->
             <nav class="darkblue mb-0 navbar navbar-dark navbar-expand-lg">
                 <i th:text="${hellouser}" class="navbar-text ml-4">join</i>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                <button class="navbar-toggler" type="button" name="welcomeHamburger" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,8 +34,8 @@
                                aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user-circle"></i> User (Not logged in) </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" th:href="@{/EmployeeSearch/Users}">My Home Page</a>
-                                <a th:href="@{/EmployeeSearch/Login}" class="dropdown-item">Login</a>
+                                <a th:href="@{/EmployeeSearch/Users}" class="dropdown-item" name="myHomePageLink">My Home Page</a>
+                                <a th:href="@{/EmployeeSearch/Login}" class="dropdown-item" name="loginLink">Login</a>
                             </div>
                         </li>
                     </ul>
@@ -140,11 +140,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                            <a class="carousel-control-prev" id="carouselPrev" href="#carouselIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                            <a class="carousel-control-next" id="carouselNext" href="#carouselIndicators" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
