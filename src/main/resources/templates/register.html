@@ -47,7 +47,7 @@
                         <div class="md-form input-group input-with-pre-icon">
                             <i class="fas fa-user-circle prefix" aria-hidden="true"></i>
                             <input type="text" id="RegisterFormUsername" th:field="*{username}" name="username" class="form-control" 
-                                   aria-describedby="RegisterFormUsernameHelpBlock" required/>
+                                   aria-describedby="RegisterFormUsernameHelpBlock"/>
                             <label for="RegisterFormUsername">Username</label>
                         </div>
                         <div>
@@ -63,7 +63,7 @@
                         <div class="md-form input-group input-with-pre-icon">
                             <i class="fas fa-lock prefix" aria-hidden="true"></i>
                             <input type="password" id="RegisterFormPassword" th:field="*{password}" name="password" class="form-control" 
-                                   aria-describedby="RegisterFormPasswordHelpBlock" required/>
+                                   aria-describedby="RegisterFormPasswordHelpBlock"/>
                             <label for="RegisterFormPassword">Password</label>
                         </div>
                         <div>
@@ -78,8 +78,8 @@
                         <!-- Matching password -->
                         <div class="md-form input-group input-with-pre-icon">
                             <i class="fas fa-lock prefix" aria-hidden="true"></i>
-                            <input type="password" id="RegisterFormMatchingPassword" class="form-control" 
-                                   aria-describedby="RegisterFormMatchingPasswordHelpBlock" required/>
+                            <input type="password" id="RegisterFormMatchingPassword" name="confirm" class="form-control" 
+                                   aria-describedby="RegisterFormMatchingPasswordHelpBlock"/>
                             <label for="RegisterFormMatchingPassword">Confirm</label>
                         </div>
                         <div>
@@ -91,7 +91,7 @@
                         <!-- Real name -->
                         <div class="md-form">
                             <input type="text" id="RegisterFormRealname" th:field="*{realname}" name="realname" class="form-control" 
-                                   aria-describedby="RegisterFormRealnameHelpBlock" required/>
+                                   aria-describedby="RegisterFormRealnameHelpBlock"/>
                             <label for="RegisterFormRealname">Your name</label>
                             <small class="form-text mb-4 mt-4 text-danger" th:if="${#fields.hasErrors('realname')}"
                                    th:errors="*{realname}">realname validation error message
@@ -104,7 +104,7 @@
                         <!-- Alias -->
                         <div class="md-form">
                             <input type="text" id="RegisterFormAlias" th:field="*{alias}" name="alias" class="form-control" 
-                                   aria-describedby="RegisterFormAliasHelpBlock" required/>
+                                   aria-describedby="RegisterFormAliasHelpBlock"/>
                             <label for="RegisterFormAlias">Alias</label>
                             <small class="form-text mb-4 mt-4 text-danger" th:if="${#fields.hasErrors('alias')}"
                                    th:errors="*{alias}">alias validation error message

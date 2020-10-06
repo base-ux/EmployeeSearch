@@ -17,12 +17,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class DefaultPageTest extends FluentTest {
+public class DefaultControllerTest extends FluentTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-    // DefaultController - TESTS all are here
+    // DefaultController - TESTS
     @Test
     public void getRequestToRootReturnsRedirect() throws Exception {
         this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isFound());

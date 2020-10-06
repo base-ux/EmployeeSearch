@@ -29,11 +29,11 @@ public class Account extends AbstractPersistable<Long> {
 
     @NotEmpty
     @NotNull
-    @Size(min = 2, max = 25)
+    @Size(min = 2, max = 20)
     private String realname;
 
     @NotEmpty
     @NotNull
-    @Size(min = 2, max = 25)
+    @Size(min = 2, max = 15)
     private String alias;
 }

@@ -9,8 +9,8 @@ $(document).ready(function () {
         var $errorMessage = $('<small class="container-fluid form-text mt-4 text-center text-danger" id="error">confirm must match password</small>')
 
         function checkMatchingPassword () {
-            if($confirmPasswordField.val() != $passwordField.val() && 
-            $confirmPasswordField.val() != "" && $passwordField.val() != "") {
+            if($confirmPasswordField.val() != $passwordField.val() || 
+            $confirmPasswordField.val() == "" && $passwordField.val() != "") {
                     $errorMessage.insertAfter($confirmPasswordField)
                     $signupButton.attr("disabled", "disabled")
             }
