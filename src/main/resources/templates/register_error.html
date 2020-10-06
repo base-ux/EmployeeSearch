@@ -26,15 +26,15 @@
                 <p th:if="${usernameFail}">Username 
                     <span th:text="${username}">username</span> is already 
                     in use.</p>
+                <p th:if="${confirmFail}">The entered Confirm does not match 
+                    with Password.</p>
                 <p th:if="${aliasFail}">Alias <span th:text="${alias}">
                         alias</span> is already in use.</p>
                 <p th:if="${entryFail}">Some of the entered characters were 
                     not allowed or not unlike Scandinavian or of other 
                     regional type.</p>
-                <p th:if="${emailFail}">The entered e-mail address is already 
-                    in use.</p>
                 <p>Please refresh the Register page in order to complete the 
-                    sign up form.</p>
+                    Sign up form.</p>
             </div>
         </div>
         <!-- /Registering error message -->

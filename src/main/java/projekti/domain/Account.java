@@ -18,7 +18,7 @@ public class Account extends AbstractPersistable<Long> {
 
     @NotEmpty
     @NotNull
-    @Size(min = 2, max = 25)
+    @Size(min = 2, max = 60)
     private String username;
 
     @ValidPassword
@@ -26,14 +26,19 @@ public class Account extends AbstractPersistable<Long> {
     @NotNull
     @Size(min = 8, max = 60)
     private String password;
+    
+    @NotEmpty
+    @NotNull
+    @Size(min = 8, max = 60)
+    private String confirm;
 
     @NotEmpty
     @NotNull
-    @Size(min = 2, max = 20)
+    @Size(min = 6, max = 30)
     private String realname;
 
     @NotEmpty
     @NotNull
-    @Size(min = 2, max = 15)
+    @Size(min = 2, max = 30)
     private String alias;
 }

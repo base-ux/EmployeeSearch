@@ -47,6 +47,7 @@ public class AccountService {
 
     }
 
+    //    Allows only numbers, uppercase letters, lowercase letters, &, @, _
     public String convertRegisterEntry(String convert) {
         String converted = "";
         for (int i = 0; i < convert.length(); i++) {
@@ -98,6 +99,12 @@ public class AccountService {
             model.addAttribute("usernameFail", "");
             return "register_error";
         }
+        if (!account.getPassword().equals(account.getConfirm())) {
+            model.addAttribute("confirmFail", "");
+            model.addAttribute("date", this.date.date());
+            model.addAttribute("username", account.getUsername());
+            return "register_error";
+        }
         if (this.accountRepository.findByAlias(account.getAlias()) != null) {
             model.addAttribute("alias", account.getAlias());
             model.addAttribute("aliasFail", "");
@@ -107,6 +114,7 @@ public class AccountService {
         } else {
             String username = convertRegisterEntry(convertRemoveSpaces(account.getUsername()));
             String password = convertRegisterEntry(account.getPassword());
+            String confirm = convertRegisterEntry(account.getConfirm());
             String realname = convertRegisterEntry(convertRemoveSpaces(account.getRealname()));
             String alias = convertRegisterEntry(convertRemoveSpaces(account.getAlias()));
             if (username.equals("ERROR") || password.equals("ERROR")
@@ -117,6 +125,7 @@ public class AccountService {
             }
             account.setUsername(username);
             account.setPassword(passwordEncoder.encode(password));
+            account.setConfirm(confirm);
             account.setRealname(realname);
             account.setAlias(alias);
         }
