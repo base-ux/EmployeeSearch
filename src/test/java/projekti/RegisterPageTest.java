@@ -212,6 +212,36 @@ public class RegisterPageTest extends FluentTest {
     }
 
     @Test
+    public void enteredUsernameIsAlreadyInUseError() {
+        usernameIsAlreadyInUseError();
+    }
+
+    public void usernameIsAlreadyInUseError() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "EE";
+        $("input[name=username]").fill().with(userName);
+        String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(4);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Si";
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "to";
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        $("input[name=username]").fill().with(userName);
+        $("input[name=password]").fill().with(passWord);
+        $("input[name=confirm]").fill().with(conFirm);
+        $("input[name=realname]").fill().with(realName);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        assertThat(pageSource()).contains("Somehow registering for user");
+        assertThat(pageSource()).contains("EE");
+        assertThat(pageSource()).contains("in use.");
+    }
+
+    @Test
     public void tooShortPasswordFail() {
         shortPasswordFail();
     }
@@ -402,6 +432,69 @@ public class RegisterPageTest extends FluentTest {
     }
 
     @Test
+    public void enteredShortConfirmMustMatchPasswordError() {
+        shortConfirmMustMatchPasswordError();
+    }
+
+    public void shortConfirmMustMatchPasswordError() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "EE_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm.substring(1));
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#_hiddensignup").click();
+        assertThat(pageSource()).contains("The entered Confirm does not match");
+    }
+    
+    @Test
+    public void enteredLongConfirmMustMatchPasswordError() {
+        longConfirmMustMatchPasswordError();
+    }
+
+    public void longConfirmMustMatchPasswordError() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "EE_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(55);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm + "X");
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#_hiddensignup").click();
+        assertThat(pageSource()).contains("The entered Confirm does not match");
+    }
+    
+    @Test
+    public void enteredWrongConfirmMustMatchPasswordError() {
+        wrongConfirmMustMatchPasswordError();
+    }
+
+    public void wrongConfirmMustMatchPasswordError() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "EE_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = RandomStringUtils.randomAscii(20) + RandomStringUtils.randomGraph(20) + RandomStringUtils.randomPrint(20);
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#_hiddensignup").click();
+        assertThat(pageSource()).contains("The entered Confirm does not match");
+    }
+
+    @Test
     public void tooShortRealnameFail() {
         shortRealnameFail();
     }
@@ -464,6 +557,28 @@ public class RegisterPageTest extends FluentTest {
     }
 
     @Test
+    public void fieldRealnameNotAllowedCharactersError() {
+        realnameNotAllowedCharactersError();
+    }
+
+    public void realnameNotAllowedCharactersError() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "EE_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = RandomStringUtils.randomAscii(10) + RandomStringUtils.randomGraph(10) + RandomStringUtils.randomPrint(10);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        assertThat(pageSource()).contains("was not completed!");
+        assertThat(pageSource()).contains("Some of the entered characters were");
+    }
+
+    @Test
     public void tooShortAliasFail() {
         shortAliasFail();
     }
@@ -523,5 +638,58 @@ public class RegisterPageTest extends FluentTest {
         $("#signup").click();
         assertThat(pageSource()).contains("must not be empty");
         assertThat(pageSource()).contains("size must be between 2 and 30");
+    }
+
+    @Test
+    public void fieldAliasNotAllowedCharactersError() {
+        aliasNotAllowedCharactersError();
+    }
+
+    public void aliasNotAllowedCharactersError() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "EE_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = RandomStringUtils.randomAscii(10) + RandomStringUtils.randomGraph(10) + RandomStringUtils.randomPrint(10);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        assertThat(pageSource()).contains("was not completed!");
+        assertThat(pageSource()).contains("Some of the entered characters were");
+    }
+
+    @Test
+    public void enteredAliasIsAlreadyInUseError() {
+        aliasIsAlreadyInUseError();
+    }
+
+    public void aliasIsAlreadyInUseError() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "EE";
+        $("input[name=username]").fill().with(userName);
+        String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(4);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Si";
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "to";
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        userName = "ER";
+        $("input[name=username]").fill().with(userName);
+        $("input[name=password]").fill().with(passWord);
+        $("input[name=confirm]").fill().with(conFirm);
+        $("input[name=realname]").fill().with(realName);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        assertThat(pageSource()).contains("Somehow registering for user");
+        assertThat(pageSource()).contains("to");
+        assertThat(pageSource()).contains("in use.");
     }
 }

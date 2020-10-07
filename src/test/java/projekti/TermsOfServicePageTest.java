@@ -22,11 +22,11 @@ public class TermsOfServicePageTest extends FluentTest {
     // terms_of_service.html - TESTS
     // Testing that links work
     @Test
-    public void clickReturnLinkThenPageSourceContainsSignUp() {
-        clickReturnLink();
+    public void clickTermsOfServiceReturnLinkThenPageSourceContainsSignUp() {
+        clickTermsOfServiceReturnLink();
     }
 
-    public void clickReturnLink() {
+    public void clickTermsOfServiceReturnLink() {
         goTo("http://localhost:" + port + "/EmployeeSearch/TermsOfService");
         $("#backToRegisterPage").click();
         assertThat(pageSource()).contains("Sign up");
