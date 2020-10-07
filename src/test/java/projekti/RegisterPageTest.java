@@ -69,7 +69,7 @@ public class RegisterPageTest extends FluentTest {
 
     public void addAccountWithShortInputs() {
         goTo("http://localhost:" + port + "/EmployeeSearch/Register");
-        String userName = "EE";
+        String userName = "BB";
         $("input[name=username]").fill().with(userName);
         String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(4);
         $("input[name=password]").fill().with(passWord);
@@ -218,7 +218,7 @@ public class RegisterPageTest extends FluentTest {
 
     public void usernameIsAlreadyInUseError() {
         goTo("http://localhost:" + port + "/EmployeeSearch/Register");
-        String userName = "EE";
+        String userName = "BB";
         $("input[name=username]").fill().with(userName);
         String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(4);
         $("input[name=password]").fill().with(passWord);
@@ -237,7 +237,7 @@ public class RegisterPageTest extends FluentTest {
         $("input[name=alias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("Somehow registering for user");
-        assertThat(pageSource()).contains("EE");
+        assertThat(pageSource()).contains("BB");
         assertThat(pageSource()).contains("in use.");
     }
 
@@ -451,7 +451,7 @@ public class RegisterPageTest extends FluentTest {
         $("#_hiddensignup").click();
         assertThat(pageSource()).contains("The entered Confirm does not match");
     }
-    
+
     @Test
     public void enteredLongConfirmMustMatchPasswordError() {
         longConfirmMustMatchPasswordError();
@@ -472,7 +472,7 @@ public class RegisterPageTest extends FluentTest {
         $("#_hiddensignup").click();
         assertThat(pageSource()).contains("The entered Confirm does not match");
     }
-    
+
     @Test
     public void enteredWrongConfirmMustMatchPasswordError() {
         wrongConfirmMustMatchPasswordError();
@@ -669,7 +669,7 @@ public class RegisterPageTest extends FluentTest {
 
     public void aliasIsAlreadyInUseError() {
         goTo("http://localhost:" + port + "/EmployeeSearch/Register");
-        String userName = "EE";
+        String userName = "BB";
         $("input[name=username]").fill().with(userName);
         String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(4);
         $("input[name=password]").fill().with(passWord);

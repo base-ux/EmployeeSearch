@@ -32,7 +32,7 @@ public class WelcomeControllerTest extends FluentTest {
         this.mockMvc.perform(get("/EmployeeSearch/TermsOfService")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("guarded-thicket-83287.herokuapp.com (the ")));
     }
-    
+
     @Test
     public void getRequestToWelcomeReturnsWelcomeVisitorText() throws Exception {
         this.mockMvc.perform(get("/EmployeeSearch/Welcome")).andDo(print()).andExpect(status().isOk())

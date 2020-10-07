@@ -10,5 +10,5 @@ package projekti;
  * @author MikroMafiaPC
  */
 public class PostsServiceTest {
-    
+
 }

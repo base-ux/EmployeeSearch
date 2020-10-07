@@ -1,5 +1,6 @@
 package projekti;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.fluentlenium.adapter.junit.FluentTest;
 import org.junit.Test;
@@ -19,9 +20,9 @@ public class WelcomePageTest extends FluentTest {
     @LocalServerPort
     private Integer port;
 
-    // Not logged in
     // welcome.html - TESTS
     // Testing that links and buttons work
+    // Not logged in
     @Test
     public void clickNavbarDropdownMenuLinkThenMyHomePageLinkThenPageSourceContainsUserLogin() {
         clickNavbarDropdownMenuLinkThenMyHomePageLink();
@@ -110,5 +111,159 @@ public class WelcomePageTest extends FluentTest {
         goTo("http://localhost:" + port + "/EmployeeSearch/Welcome");
         $("button[name='welcomeTextButton']").click();
         assertThat(pageSource()).contains("Sign up");
+    }
+
+    // Testing that links and buttons work
+    // Logged in
+    @Test
+    public void afterLoginInWelcomePageClickNavbarDropdownMenuLinkThenMyHomePageLinkThenPageSourceContainsHomeText() {
+        loginInWelcomePageClickNavbarDropdownMenuLinkThenMyHomePageLink();
+    }
+
+    public void loginInWelcomePageClickNavbarDropdownMenuLinkThenMyHomePageLink() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "AA_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "bR8@" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        goTo("http://localhost:" + port + "/EmployeeSearch/Login");
+        $("#LoginFormUsername").fill().with(userName);
+        $("#LoginFormPassword").fill().with(passWord);
+        $("#userLogin").click();
+        assertThat(pageSource()).contains("Hello, " + aliAs + "!");
+        assertThat(pageSource()).contains(aliAs + " (Logged in)");
+        assertThat(pageSource()).contains("Home");
+        assertThat(pageSource()).contains("Posts");
+        $("#navbarDropdownMenuLink").click();
+        $("a[name='myHomePageLink']").click();
+        assertThat(pageSource()).contains("This is my Homepage");
+    }
+
+    @Test
+    public void afterLoginInWelcomePageClickNavbarDropdownMenuLinkThenLogoutLinkThenPageSourceContainsPromotionText() {
+        loginInWelcomePageClickNavbarDropdownMenuLinkThenLogoutLink();
+    }
+
+    public void loginInWelcomePageClickNavbarDropdownMenuLinkThenLogoutLink() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "AA_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "bR8@" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        goTo("http://localhost:" + port + "/EmployeeSearch/Login");
+        $("#LoginFormUsername").fill().with(userName);
+        $("#LoginFormPassword").fill().with(passWord);
+        $("#userLogin").click();
+        assertThat(pageSource()).contains("Hello, " + aliAs + "!");
+        assertThat(pageSource()).contains(aliAs + " (Logged in)");
+        assertThat(pageSource()).contains("Home");
+        assertThat(pageSource()).contains("Posts");
+        $("#navbarDropdownMenuLink").click();
+        $("a[name='logoutLink']").click();
+        assertThat(pageSource()).contains("that you can modify to your liking and show others");
+    }
+
+    @Test
+    public void afterLoginInWelcomePageClickLogoutButtonThenPageSourceContainsPromotionText() {
+        loginInWelcomePageClickLogoutButton();
+    }
+
+    public void loginInWelcomePageClickLogoutButton() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "AA_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "bR8@" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        goTo("http://localhost:" + port + "/EmployeeSearch/Login");
+        $("#LoginFormUsername").fill().with(userName);
+        $("#LoginFormPassword").fill().with(passWord);
+        $("#userLogin").click();
+        assertThat(pageSource()).contains("Hello, " + aliAs + "!");
+        assertThat(pageSource()).contains(aliAs + " (Logged in)");
+        assertThat(pageSource()).contains("Home");
+        assertThat(pageSource()).contains("Posts");
+        $("button[name='welcomeLogoutButton']").click();
+        assertThat(pageSource()).contains("that you can modify to your liking and show others");
+    }
+
+    @Test
+    public void afterLoginInWelcomePageClickHomeLinkThenPageSourceContainsHomeText() {
+        loginInWelcomePageClickHomeLink();
+    }
+
+    public void loginInWelcomePageClickHomeLink() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "AA_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "bR8@" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        goTo("http://localhost:" + port + "/EmployeeSearch/Login");
+        $("#LoginFormUsername").fill().with(userName);
+        $("#LoginFormPassword").fill().with(passWord);
+        $("#userLogin").click();
+        assertThat(pageSource()).contains("Hello, " + aliAs + "!");
+        assertThat(pageSource()).contains(aliAs + " (Logged in)");
+        assertThat(pageSource()).contains("Home");
+        assertThat(pageSource()).contains("Posts");
+        $("a[name='welcomeHomeLink']").click();
+        assertThat(pageSource()).contains("This is my Homepage");
+    }
+
+    @Test
+    public void afterLoginInWelcomePageClickPostsLinkThenPageSourceContainsPostsText() {
+        loginInWelcomePageClickPostsLink();
+    }
+
+    public void loginInWelcomePageClickPostsLink() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = "AA_@" + RandomStringUtils.randomAlphanumeric(56);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "bR8@" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
+        $("input[name=alias]").fill().with(aliAs);
+        $("#signup").click();
+        goTo("http://localhost:" + port + "/EmployeeSearch/Login");
+        $("#LoginFormUsername").fill().with(userName);
+        $("#LoginFormPassword").fill().with(passWord);
+        $("#userLogin").click();
+        assertThat(pageSource()).contains("Hello, " + aliAs + "!");
+        assertThat(pageSource()).contains(aliAs + " (Logged in)");
+        assertThat(pageSource()).contains("Home");
+        assertThat(pageSource()).contains("Posts");
+        $("a[name='welcomePostsLink']").click();
+        assertThat(pageSource()).contains("Here are Posts");
     }
 }

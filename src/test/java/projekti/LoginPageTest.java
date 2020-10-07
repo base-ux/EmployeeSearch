@@ -132,7 +132,7 @@ public class LoginPageTest extends FluentTest {
         $("#userLogin").click();
         assertThat(pageSource()).contains("Somehow login was not completed!");
     }
-    
+
     @Test
     public void enteredCorrectUsernameAndWrongPasswordError() {
         correctUsernameAndWrongPasswordError();
@@ -157,7 +157,7 @@ public class LoginPageTest extends FluentTest {
         $("#userLogin").click();
         assertThat(pageSource()).contains("Somehow login was not completed!");
     }
-    
+
     @Test
     public void enteredWrongUsernameAndCorrectPasswordError() {
         wrongUsernameAndCorrectPasswordError();
@@ -182,7 +182,7 @@ public class LoginPageTest extends FluentTest {
         $("#userLogin").click();
         assertThat(pageSource()).contains("Somehow login was not completed!");
     }
-    
+
     @Test
     public void enteredWrongUsernameAndWrongPasswordError() {
         wrongUsernameAndWrongPasswordError();

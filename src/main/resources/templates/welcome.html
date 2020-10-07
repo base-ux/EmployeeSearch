@@ -223,8 +223,8 @@
                                class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">user logged in</a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" th:href="@{/EmployeeSearch/Users}">My Home Page</a>
-                                <a class="dropdown-item" th:href="@{/EmployeeSearch/Logout}">Logout</a>
+                                <a th:href="@{/EmployeeSearch/Users}" class="dropdown-item" name="myHomePageLink">My Home Page</a>
+                                <a th:href="@{/EmployeeSearch/Logout}" class="dropdown-item" name="logoutLink">Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -254,7 +254,7 @@
 
                         <!-- Logout -->
                         <a th:href="@{/EmployeeSearch/Logout}">
-                            <button type="button" class="btn btn-outline-light">Logout</button>
+                            <button type="button" name="welcomeLogoutButton" class="btn btn-outline-light">Logout</button>
                         </a>
 
                     </div>
@@ -277,16 +277,16 @@
 
                     <!-- Home link -->
                     <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
-                        <a th:href="@{/EmployeeSearch/Users}">
-                            <img class="biglogo img-fluid" src="" th:src="@{/media/empSiteLogo_in.png}" alt="empSiteLogo_in"/>
+                        <a th:href="@{/EmployeeSearch/Users}" name="welcomeHomeLink" >
+                            <img src="" th:src="@{/media/empSiteLogo_in.png}" alt="empSiteLogo_in" class="biglogo img-fluid"/>
                             <h3 class="text-dark">Home</h3>
                         </a>
                     </div>
 
                     <!-- Posts link -->
                     <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
-                        <a th:href="@{/EmployeeSearch/Posts}">
-                            <img class="biglogo img-fluid" src="" th:src="@{/media/empSiteLogo_out.png}" alt="empSiteLogo_out"/>
+                        <a th:href="@{/EmployeeSearch/Posts}" name="welcomePostsLink">
+                            <img src="" th:src="@{/media/empSiteLogo_out.png}" alt="empSiteLogo_out" class="biglogo img-fluid"/>
                             <h3 class="text-dark">Posts</h3>
                         </a>
                     </div>
