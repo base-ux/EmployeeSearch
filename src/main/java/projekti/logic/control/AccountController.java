@@ -39,7 +39,7 @@ public class AccountController {
         return this.accountService.registerOk(model, alias);
     }
 
-    @Secured("USER")
+//    @Secured("USER")
     @GetMapping("/EmployeeSearch/Users")
     public String userHome(Model model) {
         return this.accountService.userHome(model);

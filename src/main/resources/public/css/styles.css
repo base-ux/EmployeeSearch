@@ -2,6 +2,10 @@ a:focus, a:hover, a:visited {
     text-decoration: none;
 }
 
+body, html {
+    background-color: #fefeff;
+}
+
 .carousel-caption {
     background: rgba(0, 0, 0, 0.6);
 }
@@ -9,6 +13,13 @@ a:focus, a:hover, a:visited {
 .biglogo {
     max-width: 100%;
     height: auto;
+}
+
+.blocks {
+    background-image: url("/media/empSiteBackground_blocks.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    min-width: 100vw;
 }
 
 .bubbles {
@@ -22,8 +33,20 @@ a:focus, a:hover, a:visited {
     background-color: #012854;
 }
 
+.darkbluetext {
+    color: #012854;
+}
+
+.darkish {
+    color: #444444;
+}
+
 .pinkish {
     color: #ff0067;
+}
+
+.pinkishbg {
+    background-color: #ff0067;
 }
 
 .pinkishrow {
@@ -34,4 +57,20 @@ a:focus, a:hover, a:visited {
 
 .welcometextbutton {
     padding: 5vh 2vw 5vh 2vw;
+}
+
+.whiteicon {
+    color: #ffffff;
+}
+
+.yellowish {
+    color: #e6e600;
+}
+
+#draggableLeft .dragdropTitleLeft {
+    cursor: move;
+}
+
+#draggableRight .dragdropTitleRight {
+    cursor: move;
 }

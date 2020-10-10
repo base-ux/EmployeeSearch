@@ -18,48 +18,50 @@
     <body>
 
         <!-- Login form -->
-        <div class="bubbles col-sm-10 col-md-8 col-lg-6 col-xl-6 container p-5 text-center">
-            <div class="card">
+        <div class="blocks">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-6 container p-5 text-center">
+                <div class="card">
 
-                <!-- Login header -->
-                <h5 class="card-header darkblue py-4 text-center white-text">
-                    <strong>User Login</strong>
-                </h5>
+                    <!-- Login header -->
+                    <h5 class="card-header darkblue py-4 text-center white-text">
+                        <strong>User Login</strong>
+                    </h5>
 
-                <!-- Card content-->
-                <div class="card-body pt-0 px-lg-5">
+                    <!-- Card content-->
+                    <div class="card-body pt-0 px-lg-5">
 
-                    <!-- Form -->
-                    <form class="text-center" th:action="@{/EmployeeSearch/Login}" method="POST">
+                        <!-- Form -->
+                        <form class="text-center" th:action="@{/EmployeeSearch/Login}" method="POST">
 
-                        <!-- Username -->
-                        <div class="md-form input-group input-with-pre-icon">
-                            <i class="fas fa-user-circle prefix" aria-hidden="true"></i>
-                            <input type="text" name="username" id="LoginFormUsername" class="form-control"/>
-                            <label for="LoginFormUsername">Username</label>
-                        </div>
+                            <!-- Username -->
+                            <div class="md-form input-group input-with-pre-icon">
+                                <i class="fas fa-user-circle prefix" aria-hidden="true"></i>
+                                <input type="text" name="username" id="LoginFormUsername" class="form-control"/>
+                                <label for="LoginFormUsername">Username</label>
+                            </div>
 
-                        <!-- Password -->
-                        <div class="md-form input-group input-with-pre-icon">
-                            <i class="fas fa-lock prefix" aria-hidden="true"></i>
-                            <input type="password" name="password" id="LoginFormPassword" class="form-control"/>
-                            <label for="LoginFormPassword">Password</label>
-                        </div>
+                            <!-- Password -->
+                            <div class="md-form input-group input-with-pre-icon">
+                                <i class="fas fa-lock prefix" aria-hidden="true"></i>
+                                <input type="password" name="password" id="LoginFormPassword" class="form-control"/>
+                                <label for="LoginFormPassword">Password</label>
+                            </div>
 
-                        <!-- Login button -->
-                        <button class="btn btn-outline-info btn-block my-4 waves-effect z-depth-0" name="submit" type="submit" id="userLogin">Login</button>
+                            <!-- Login button -->
+                            <button class="btn btn-outline-info btn-block my-4 waves-effect z-depth-0" name="submit" type="submit" id="userLogin">Login</button>
 
-                        <!-- Register -->
-                        <p>Not a registered user?
-                            <a id="toSignupPage" th:href="@{/EmployeeSearch/Register}">Sign up</a>
-                        </p>
+                            <!-- Register -->
+                            <p>Not a registered user?
+                                <a id="toSignupPage" th:href="@{/EmployeeSearch/Register}">Sign up</a>
+                            </p>
 
-                    </form>
-                    <!-- /Form -->
+                        </form>
+                        <!-- /Form -->
+
+                    </div>
+                    <!-- /Card content-->
 
                 </div>
-                <!-- /Card content-->
-
             </div>
         </div>
         <!-- /Login form -->
