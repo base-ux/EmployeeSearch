@@ -16,7 +16,7 @@ body, html {
 }
 
 .blocks {
-    background-image: url("/media/empSiteBackground_blocks.png");
+    background-image: url("/media/empSiteBackground_blocks.gif");
     background-position: center;
     background-repeat: no-repeat;
     min-width: 100vw;
@@ -41,6 +41,11 @@ body, html {
     color: #444444;
 }
 
+.overflowing {
+    overflow-y: scroll;
+    max-height: 15em;
+}
+
 .pinkish {
     color: #ff0067;
 }
@@ -55,6 +60,30 @@ body, html {
     width: 100%;
 }
 
+.toggleAlias[aria-expanded=true] .text-collapsed {
+    display: none;
+}
+
+.toggleAlias[aria-expanded=false] .text-expanded {
+    display: none;
+}
+
+.toggleConnections[aria-expanded=true] .text-collapsed {
+    display: none;
+}
+
+.toggleConnections[aria-expanded=false] .text-expanded {
+    display: none;
+}
+
+.toggleUploads[aria-expanded=true] .text-collapsed {
+    display: none;
+}
+
+.toggleUploads[aria-expanded=false] .text-expanded {
+    display: none;
+}
+
 .welcometextbutton {
     padding: 5vh 2vw 5vh 2vw;
 }
@@ -65,10 +94,6 @@ body, html {
 
 .yellowish {
     color: #e6e600;
-}
-
-#draggableLeft .dragdropTitleLeft {
-    cursor: move;
 }
 
 #draggableRight .dragdropTitleRight {

@@ -43,7 +43,7 @@
                         </form>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/EmployeeSearch/Users/{}/Contacts}" class="nav-link waves-effect waves-light">1
+                        <a th:href="@{/EmployeeSearch/Users/{}/Connections}" class="nav-link waves-effect waves-light">1
                             <i class="fas fa-user-friends darkish"></i>
                         </a>
                     </li>
@@ -62,12 +62,12 @@
                            class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">user logged in</a>
                         <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
-                            <a th:href="@{/EmployeeSearch/Users/{}/Search}" class="btn darkblue dropdown-item mb-1 mt-0" name=""><i class="fas fa-search mr-3 darkish"></i><small class="ml-3 text-light"><strong>Search</strong></small></a>
-                            <a th:href="@{/EmployeeSearch/Users/{}/Contacts}" class="btn darkblue dropdown-item mb-1 mt-0" name=""><i class="fas fa-user-friends mr-3 darkish"></i><small class="ml-1 text-light"><strong> Contacts</strong></small></a>
-                            <a th:href="@{/EmployeeSearch/Users/{}/Posts}" class="btn darkblue dropdown-item mb-1 mt-0" name=""><i class="fas fa-envelope mr-4 darkish"></i><small class="ml-2 text-light"><strong> Posts</strong></small></a>
+                            <a th:href="@{/EmployeeSearch/Users/{}/Search}" class="btn darkblue dropdown-item mb-1 mt-0" name=""><i class="fas fa-search mr-3 darkish"></i><small class="ml-3 text-light"><strong> Search</strong></small></a>
+                            <a th:href="@{/EmployeeSearch/Users/{}/Connections}" class="btn darkblue dropdown-item mb-1 mt-0" name=""><i class="fas fa-user-friends mr-2 darkish"></i><small class="ml-1 text-light"><strong> Connections</strong></small></a>
+                            <a th:href="@{/EmployeeSearch/Users/{}/Posts}" class="btn darkblue dropdown-item mb-1 mt-0" name=""><i class="fas fa-envelope mr-4 darkish"></i><small class="ml-3 text-light"><strong>Posts</strong></small></a>
                             <a th:href="@{/EmployeeSearch/Users}" class="btn darkblue dropdown-item mb-1 mt-0" name="myHomePageLink"><i class="fas fa-home mr-2 darkish"></i><small class="ml-1 text-light"><strong> My Home Page</strong></small></a>
                             <a th:href="@{/EmployeeSearch/Users/{}/Preferences}" class="btn darkblue dropdown-item mb-1 mt-0" name=""><i class="fas fa-cog mr-3 darkish"></i><small class="text-light"><strong> Preferences</strong></small></a>
-                            <a th:href="@{/EmployeeSearch/Logout}" class="btn darkblue dropdown-item mb-0 mt-0" name="logoutLink"><i class="fas fa-sign-out-alt mr-4 darkish"></i><small class="ml-1 text-light"><strong> Sign out</strong></small></a>
+                            <a th:href="@{/EmployeeSearch/Logout}" class="btn darkblue dropdown-item mb-0 mt-0" name="logoutLink"><i class="fas fa-sign-out-alt mr-4 darkish"></i><small class="ml-2 text-light"><strong>Sign out</strong></small></a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -81,13 +81,13 @@
         <!-- /Navbar -->
 
         <!-- Home Page Elements Grid -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-6 mr-5">
+                <div class="col-xl ml-5 mr-5">
                     <!-- User Picture -->
                     <div class="card mb-5">
                         <div><h5 class="darkblue text-center text-light"><strong>Alias</strong></h5></div>
-                        <div class="container">
+                        <div class="container-fluid collapse show" id="collapseAlias">
                             <div class="row">
                                 <div class="col">
                                     <a th:href="@{/EmployeeSearch/Users}" name="">
@@ -100,123 +100,74 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Abilities and proficiency levels -->
-                    <div class="card mb-5">
-                        <div><h5 class="darkblue text-center text-light"><strong>Abilities</strong></h5></div>
-                        <div>
-                            <a th:href="@{/EmployeeSearch/Users}" name="">
-                                <h5 class="mt-3 text-center text-dark">Ability 1 Proficiency Level <i class="far fa-thumbs-up"></i></h5>
-                                <h5 class="mt-3 text-center text-dark">Ability 2 Proficiency Level <i class="far fa-thumbs-up"></i></h5>
-                                <h5 class="mt-3 text-center text-dark">Ability 3 Proficiency Level <i class="far fa-thumbs-up"></i></h5>
-                            </a>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col text-right toggleAlias" data-toggle="collapse" data-target="#collapseAlias" aria-expanded="true">
+                                    <small class="text-expanded">Content now Visible, make Private <i class="fas fa-eye"></i></small>
+                                    <small class="text-collapsed">Content now Invisible, make Public <i class="fas fa-eye-slash"></i></small>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div id="draggableLeft" class="">
-                        <!-- Current Job -->
-                        <div class="card dragdrop mb-5">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col text-right">
-                                        <i class="fas fa-window-close"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dragdropTitleLeft"><h5 class="darkblue text-center text-light"><strong>Current Job</strong></h5></div>
-                            <div class="dragdropContentLeft">
-                                <a th:href="@{/EmployeeSearch/Users}" name="">
-                                    <h5 class="mt-3 text-center text-dark">Current Employer Name</h5>
-                                    <h6 class="mt-3 text-center text-dark">Current Job Title</h6>
-                                    <h6 class="mt-3 text-center text-dark">Work Field and Subcategory</h6>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Previous Jobs -->
-                        <div class="card dragdrop mb-5">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col text-right">
-                                        <i class="fas fa-window-close"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dragdropTitleLeft"><h5 class="darkblue text-center text-light"><strong>Previous Jobs</strong></h5></div>
-                            <div class="dragdropContentLeft">
-                                <a th:href="@{/EmployeeSearch/Users}" name="">
-                                    <h5 class="mt-3 text-center text-dark">Job 1</h5>
-                                    <h6 class="mt-3 text-center text-dark">Job 1 Title</h6>
-                                    <h5 class="mt-3 text-center text-dark">Job 2</h5>
-                                    <h6 class="mt-3 text-center text-dark">Job 2 Title</h6>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Schools -->
-                        <div class="card dragdrop mb-5">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col text-right">
-                                        <i class="fas fa-window-close"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dragdropTitleLeft"><h5 class="darkblue text-center text-light"><strong>Education</strong></h5></div>
-                            <div class="dragdropContentLeft">
-                                <a th:href="@{/EmployeeSearch/Users}" name="">
-                                    <h5 class="mt-3 text-center text-dark">School 1</h5>
-                                    <h6 class="mt-3 text-center text-dark">Study Field 1</h6>
-                                    <h5 class="mt-3 text-center text-dark">School 2</h5>
-                                    <h6 class="mt-3 text-center text-dark">Study Field 2</h6>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Endorsements -->
-                        <div class="card dragdrop mb-5">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col text-right">
-                                        <i class="fas fa-window-close"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dragdropTitleLeft"><h5 class="darkblue text-center text-light"><strong>Endorsements</strong></h5></div>
-                            <div class="dragdropContentLeft">
-                                <a th:href="@{/EmployeeSearch/Users}" name="">
-                                    <h5 class="mt-3 text-center text-dark">Endorser 1</h5>
-                                    <h5 class="mt-3 text-center text-dark">Endorser 2</h5>
-                                </a>
-                            </div>
-                        </div>
+                    <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="proficiency-tab" data-toggle="tab" href="#proficiency" role="tab" aria-controls="proficiency"
+                               aria-selected="true">Proficiency</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="background-tab" data-toggle="tab" href="#background" role="tab" aria-controls="background"
+                               aria-selected="false">Background</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contactInformation-tab" data-toggle="tab" href="#contactInformation" role="tab" aria-controls="contactInformation"
+                               aria-selected="false">Contact Information</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="workHistory-tab" data-toggle="tab" href="#workHistory" role="tab" aria-controls="workHistory"
+                               aria-selected="false">Work History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education"
+                               aria-selected="false">Education</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="endorsements-tab" data-toggle="tab" href="#endorsements" role="tab" aria-controls="endorsements"
+                               aria-selected="false">Endorsements</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content pt-5 pb-5" id="profileTabsContent">
+                        <div class="tab-pane fade show active" id="proficiency" role="tabpanel" aria-labelledby="proficiency-tab">
+                            <p>Ability 1 Proficiency Level <i class="far fa-thumbs-up"></i></p></div>
+                        <div class="tab-pane fade" id="background" role="tabpanel" aria-labelledby="background-tab">Background Text</div>
+                        <div class="tab-pane fade" id="contactInformation" role="tabpanel" aria-labelledby="contactInformation-tab">Contact Information Text</div>
+                        <div class="tab-pane fade" id="workHistory" role="tabpanel" aria-labelledby="workHistory-tab">Work History Text</div>
+                        <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">Education Text</div>
+                        <div class="tab-pane fade" id="endorsements" role="tabpanel" aria-labelledby="endorsements-tab">Endorsements Text</div>
                     </div>
                 </div>
-                <div class="col-sm">
+                <div class="col ml-5 mr-5">
                     <div id="draggableRight" class="">
                         <!-- Posts link -->
                         <div class="dragdrop mb-5">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col text-right">
-                                        <i class="fas fa-window-close"></i>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="dragdropTitleRight"><h5 class="mt-2 text-center text-dark"><strong>Posts</strong></h5></div>
-                            <div class="dragdropContentRight text-center">
+                            <div class="dragdropContentRight text-center collapse show">
                                 <a th:href="@{/EmployeeSearch/Posts}" name="">
-                                    <img src="" th:src="@{/media/empSiteLogo_out_medium.png}" alt="empSiteLogo_out_medium" class="biglogo img-fluid"/>
+                                    <img src="" th:src="@{/media/empSiteLogo_posts_medium.png}" alt="empSiteLogo_posts_medium" class="biglogo img-fluid"/>
                                 </a>
                             </div>
                         </div>
-                        <!-- Contacts -->
+                        <!-- Connections -->
                         <div class="card dragdropRight mb-5">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col text-right">
-                                        <i class="fas fa-window-close"></i>
+                                    <div class="col text-right toggleConnections" data-toggle="collapse" data-target="#collapseConnections" aria-expanded="true">
+                                        <small class="text-expanded">Content now Visible, make Private <i class="fas fa-eye"></i></small>
+                                        <small class="text-collapsed">Content now Invisible, make Public <i class="fas fa-eye-slash"></i></small>
                                     </div>
                                 </div>
                             </div>
-                            <div class="dragdropTitleRight"><h5 class="darkblue text-center text-light"><strong>Contacts</strong></h5></div>
-                            <div class="container">
+                            <div class="dragdropTitleRight"><h5 class="darkblue text-center text-light"><strong>Connections (4)</strong></h5></div>
+                            <div class="container collapse show overflowing" id="collapseConnections">
                                 <div class="row">
                                     <div class="col dragdropContentRight">
                                         <a th:href="@{/EmployeeSearch/Users}" name="">
@@ -244,24 +195,60 @@
                                         </a>
                                     </div>
                                 </div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col dragdropContentRight">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                            <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <h5 class="mt-3 text-left text-dark"><strong>Remove</strong></h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col dragdropContentRight">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                            <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <h5 class="mt-3 text-left text-dark"><strong>Remove</strong></h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr/>
                             </div>
                         </div>
-
                         <!-- Uploads -->
                         <div class="card dragdropRight mb-5">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col text-right">
-                                        <i class="fas fa-window-close"></i>
+                                    <div class="col text-right toggleUploads" data-toggle="collapse" data-target="#collapseUploads" aria-expanded="true">
+                                        <small class="text-expanded">Content now Visible, make Private <i class="fas fa-eye"></i></small>
+                                        <small class="text-collapsed">Content now Invisible, make Public <i class="fas fa-eye-slash"></i></small>
                                     </div>
                                 </div>
                             </div>
-                            <div class="dragdropTitleRight"><h5 class="darkblue text-center text-light"><strong>Uploads</strong></h5></div>
-                            <div class="dragdropContentRight">
+                            <div class="dragdropTitleRight"><h5 class="darkblue text-center text-light"><strong>Uploads (10)</strong></h5></div>
+                            <div class="dragdropContentRight collapse show overflowing" id="collapseUploads">
                                 <a th:href="@{/EmployeeSearch/Users}" name="">
                                     <h5 class="mt-3 text-center text-dark">File 1</h5>
                                     <h5 class="mt-3 text-center text-dark">File 2</h5>
                                     <h5 class="mt-3 text-center text-dark">File 3</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 4</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 5</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 6</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 7</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 8</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 9</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 10</h5>
                                 </a>
                             </div>
                         </div>
@@ -270,6 +257,20 @@
             </div>
         </div>
         <!-- Home Page Elements Grid -->
+
+        <!-- Footer -->
+        <div class="container">
+            <footer class="darkblue mb-4 mt-3 font-small page-footer">
+
+                <!-- Copyright -->
+                <div class="font-small footer-copyright p-5 text-center">
+                    <div th:replace="fragments/layout :: copyright"></div>
+                    <div th:replace="fragments/layout :: date"></div>
+                </div>
+
+            </footer>
+        </div>
+        <!-- /Footer -->
 
         <!-- JQuery -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -286,47 +287,3 @@
 
     </body>
 </html>
-
-
-<!--dragElement(document.getElementById("mydiv"));
-
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    /* if present, the header is where you move the DIV from:*/
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
-    elmnt.onmousedown = dragMouseDown;
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    /* stop moving when mouse button is released:*/
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}-->
