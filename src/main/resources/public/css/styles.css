@@ -44,12 +44,26 @@ body, html {
     color: #444444;
 }
 
+.editbutton {
+    min-width: 20em;
+}
+
 .greyish {
     color: #bbbbbb;
 }
 
+.greyishbg {
+    background-color: #bbbbbb;
+}
+
 .greyishicon {
     color: #bbbbbb;
+}
+
+.greyishrow {
+    background-color: #bbbbbb;
+    min-height: 1.3em;
+    width: 100%;
 }
 
 .overflowing {
@@ -116,7 +130,7 @@ body, html {
     cursor: move;
 }
 
-/*Id's*/
+/*Id's and Lists*/
 #sortable li {
     list-style-type: none;
 }

@@ -28,10 +28,15 @@
                 </button>
                 <div class="navbar-collapse collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
+                        <!-- User logo -->
+                        <li class="nav-item">
+                            <a th:href="@{/EmployeeSearch/Users}" class="nav-link waves-effect waves-light">
+                                <i class="fas fa-user-circle whiteicon"></i>
+                            </a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user-circle"></i> User (Not logged in) </a>
+                               aria-haspopup="true" aria-expanded="false"> User (Not logged in) </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink">
                                 <a th:href="@{/EmployeeSearch/Users}" class="dropdown-item" name="myHomePageLink">My Home Page</a>
                                 <a th:href="@{/EmployeeSearch/Login}" class="dropdown-item" name="loginLink">Login</a>
@@ -71,11 +76,7 @@
             </div>
             <!-- /Header area -->
             <!-- Pinkish row -->
-            <table class="pinkishrow">
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
+            <div th:replace="fragments/layout_misc_elements :: pinkishrowelement"></div>
             <!-- /Pinkish row -->
             <!-- Welcome page content -->
             <div class="container-fluid">
@@ -225,11 +226,7 @@
             </div>
             <!-- /Header area -->
             <!-- Pinkish row -->
-            <table class="pinkishrow">
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
+            <div th:replace="fragments/layout_misc_elements :: pinkishrowelement"></div>
             <!-- /Pinkish row -->
             <!-- Welcome page content -->
             <div class="container-fluid">

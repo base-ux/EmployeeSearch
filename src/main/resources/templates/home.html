@@ -17,19 +17,19 @@
     </head>
     <body>
 
-        <!--Navbar -->
+        <!-- Navbar -->
         <div th:replace="fragments/layout_navbar :: navbar"></div>
         <!-- /Navbar -->
 
-        <!-- Edit layout button and home page contents -->
+        <!-- Home page contents -->
         <div class="container-fluid">
             <!-- Edit layout button -->
             <div class="row">
                 <div class="col mb-4 text-right">
-                    <button class="btn btn-sm btn-dark greyish">Edit Home Page Layout <i class="fas fa-edit greyishicon"></i></button>
+                    <button class="btn btn-sm btn-dark editbutton greyish">Edit Home Page Layout <i class="fas fa-edit greyishicon"></i></button>
                 </div>
             </div>
-            <!-- Home page contents -->
+            <!-- Contents -->
             <div class="row">
                 <!-- Left column -->
                 <div class="col-xl mx-5">
@@ -198,7 +198,7 @@
                 </div>
             </div>
         </div>
-        <!-- /Edit layout button and home page contents -->
+        <!-- /Home page contents -->
 
         <!-- Footer -->
         <div th:replace="fragments/layout_footer :: footer"></div>

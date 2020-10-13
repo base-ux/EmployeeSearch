@@ -47,6 +47,10 @@
                             <p>Not a registered user?
                                 <a id="toSignupPage" th:href="@{/EmployeeSearch/Register}">Sign up</a>
                             </p>
+                            <!-- Forgotte password -->
+                            <p>Cannot remember Password? 
+                                See <a id="toSignupPage" th:href="@{/EmployeeSearch/TermsOfService}">terms of service</a> - Availability.
+                            </p>
                         </form>
                         <!-- /Form -->
                     </div>
@@ -57,11 +61,7 @@
         <!-- /Login form -->
 
         <!-- Back to main page -->
-        <div class="container">
-            <div class="text-center">
-                <div th:replace="fragments/layout_links_texts :: main"></div>
-            </div>
-        </div>
+        <div th:replace="fragments/layout_links_texts :: main"></div>
         <!-- /Back to main page -->
 
         <!-- Footer -->

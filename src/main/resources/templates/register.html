@@ -30,12 +30,13 @@
         <div class="blocks">
             <div class="container col-sm-10 col-md-10 col-lg-10 col-xl-6 p-5 text-center">
                 <div class="card">
-                    <!-- Sign up text -->
                     <div>
+                        <!-- Sign up header -->
                         <h5 class="card-header py-4 text-center text-light darkbluebg">
                             <strong>Sign up</strong>
                         </h5>
-                        <small class="text-info">Allowed usual and special characters: capital and lowercase letters, numbers, &, @, _</small>
+                        <!-- Sign up information -->
+                        <small class="text-info">Allowed usual and special characters: capital and lowercase letters, numbers, &, @, _</small><br/>
                         <small class="text-warning">Not allowed characters: all others e.g. spaces, commas, full stops etc.</small>
                     </div>
                     <!-- Form elements -->
@@ -127,11 +128,7 @@
         <!-- /Register form -->
 
         <!-- Back to main page -->
-        <div class="container">
-            <div class="text-center">
-                <div th:replace="fragments/layout_links_texts :: main"></div>
-            </div>
-        </div>
+        <div th:replace="fragments/layout_links_texts :: main"></div>
         <!-- /Back to main page -->
 
         <!-- Footer -->

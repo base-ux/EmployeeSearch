@@ -8,19 +8,31 @@
 
         <!-- Back to Login Page -->
         <div th:fragment="login">
-            <a id="backToLoginPage" th:href="@{/EmployeeSearch/Login}">Return</a>
+            <div class="container">
+                <div class="text-center">
+                    <a th:href="@{/EmployeeSearch/Login}">to Login Page</a>
+                </div>
+            </div>
         </div>
         <!-- /Back to Login Page -->
 
         <!-- Back to Main Page -->
         <div th:fragment="main">
-            <a id="backToMainPage" th:href="@{/}">Back to Main Page</a>
+            <div class="container">
+                <div class="text-center">
+                    <a th:href="@{/}">to Main Page</a>
+                </div>
+            </div>
         </div>
         <!-- /Back to Main Page -->
 
         <!-- Back to Register Page -->
         <div th:fragment="register">
-            <a id="backToRegisterPage" th:href="@{/EmployeeSearch/Register}">Return</a>
+            <div class="container">
+                <div class="text-center">
+                    <a th:href="@{/EmployeeSearch/Register}">to Register Page</a>
+                </div>
+            </div>
         </div>
         <!-- /Back to Register Page -->
 
