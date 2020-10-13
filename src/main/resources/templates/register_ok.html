@@ -30,21 +30,13 @@
         <!-- Back to main page -->
         <div class="container">
             <div class="text-center">
-                <div th:replace="fragments/layout :: main"></div>
+                <div th:replace="fragments/layout_links_texts :: main"></div>
             </div>
         </div>
         <!-- /Back to main page -->
 
         <!-- Footer -->
-        <div class="container font-small">
-            <footer class="page-footer mb-4 mt-3 darkbluebg">
-                <!-- Copyright -->
-                <div class="footer-copyright p-5 text-center">
-                    <div th:replace="fragments/layout :: copyright"></div>
-                    <div th:replace="fragments/layout :: date"></div>
-                </div>
-            </footer>
-        </div>
+        <div th:replace="fragments/layout_footer :: footer"></div>
         <!-- /Footer -->
 
     </body>

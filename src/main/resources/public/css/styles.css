@@ -1,7 +1,9 @@
+/*Links*/
 a:focus, a:hover, a:visited {
     text-decoration: none;
 }
 
+/*Body*/
 body, html {
     background-color: #fefeff;
 }
@@ -109,11 +111,12 @@ body, html {
     color: #e6e600;
 }
 
-/*Id's*/
+/*Id's and Classes*/
 #draggableRight .dragdropTitleRight {
     cursor: move;
 }
 
+/*Id's*/
 #sortable li {
     list-style-type: none;
 }

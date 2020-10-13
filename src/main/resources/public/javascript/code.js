@@ -1,7 +1,15 @@
+// Welcome Page Carousel
 $(".carousel").carousel({
   interval: 10000
 })
 
+// Home Page Drag and Drop
+$(function() {
+    $("#sortable").sortable()
+    $("#sortable").disableSelection()
+})
+
+// Register Page Password Confirmation
 $(document).ready(function() {
     var $signupButton = $("#signup")
     var $passwordField = $("#RegisterFormPassword")
@@ -38,9 +46,4 @@ $(document).ready(function() {
         })
 
     $signupButton.removeAttr("disabled")
-})
-
-$(function() {
-    $("#sortable").sortable()
-    $("#sortable").disableSelection()
 })

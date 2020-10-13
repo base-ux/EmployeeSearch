@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Fragments Layout Navbar</title>
+    </head>
+    <body>
+
+        <!-- Navbar -->
+        <div th:fragment="navbar">
+            <nav class="navbar navbar-dark navbar-expand-lg darkbluebg">
+                <!-- Employee logo -->
+                <div>
+                    <a th:href="@{/EmployeeSearch/Welcome}" class="nav-link waves-effect waves-light">
+                        <h6 class="ml-4 greyish">
+                            <img src="" th:src="@{/media/empSiteLogo_in_extrasmall.png}" 
+                                 alt="empSiteLogo_in_small"/>
+                            <span class="pinkish">Employee</span>Search
+                        </h6>
+                    </a>
+                </div>
+                <!-- Navbar toggler -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navbar buttons and links -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Search -->
+                        <li class="nav-item">
+                            <form th:action="@{/EmployeeSearch/Users/Search}" class="form-inline my-0" method="POST">
+                                <div class="md-form form-sm my-0">
+                                    <input class="form-control form-control-sm mr-sm-2" type="text" placeholder="Search"
+                                           aria-label="Search"/>
+                                </div>
+                                <button type="submit" class="btn btn-outline-light btn-sm ml-3 my-0 waves-effect"><i class="fas fa-search mr-2"></i>
+                                </button>
+                            </form>
+                        </li>
+                        <!-- Connections -->
+                        <li class="nav-item">
+                            <a th:href="@{/EmployeeSearch/Users/Connections}" class="nav-link waves-effect waves-light">1
+                                <i class="fas fa-user-plus greyishicon"></i>
+                            </a>
+                        </li>
+                        <!-- Posts -->
+                        <li class="nav-item">
+                            <a th:href="@{/EmployeeSearch/Users/Posts}" class="nav-link waves-effect waves-light">1
+                                <i class="fas fa-envelope greyishicon"></i>
+                            </a>
+                        </li>
+                        <!-- Preferences -->
+                        <li class="nav-item">
+                            <a th:href="@{/EmployeeSearch/Users/Preferences}" class="nav-link waves-effect waves-light">
+                                <i class="fas fa-cog greyishicon"></i>
+                            </a>
+                        </li>
+                        <!-- User logo -->
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <i class="fas fa-user-circle whiteicon"></i>
+                            </a>
+                        </li>
+                        <!-- Dropdown list -->
+                        <li class="nav-item dropdown">
+                            <a th:text="${loggedinuser} + ' (Logged in) '" 
+                               class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">user logged in</a>
+                            <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
+                                <a th:href="@{/EmployeeSearch/Users}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-home mr-2 greyishicon"></i><small class="ml-1 greyish"> My Home Page</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/Search}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-search mr-2 greyishicon"></i><small class="ml-4 greyish">Search</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/Connections}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-user mr-2 greyishicon"></i><small class="ml-1 greyish"> Connections</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/Uploads}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-cloud-upload-alt mr-2 greyishicon"></i><small class="ml-3 greyish">Uploads</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/Posts}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-envelope mr-3 greyishicon"></i><small class="ml-3 greyish"> Posts</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/Preferences}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-cog mr-3 greyishicon"></i><small class="greyish"> Preferences</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/Help}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-question-circle mr-4 greyishicon"></i><small class="ml-2 greyish"> Help !</small></a>
+                                <a th:href="@{/EmployeeSearch/Logout}" class="btn dropdown-item my-0 darkbluebg" name="logoutLink"><i class="fas fa-sign-out-alt mr-4 greyishicon"></i><small class="ml-1 greyish">Sign out</small></a>
+                            </div>
+                        </li>
+                        <!-- Empty item -->
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- /Navbar -->
+
+    </body>
+</html>

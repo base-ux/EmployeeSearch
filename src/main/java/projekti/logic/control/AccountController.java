@@ -102,6 +102,12 @@ public class AccountController {
         return "search";
     }
 
+    @GetMapping("/EmployeeSearch/Users/Uploads")
+    public String userUploads(Model model) {
+        model.addAttribute("date", this.date.date());
+        return "uploads";
+    }
+
     @PostMapping("/EmployeeSearch/Register")
     public String registerCheck(Model model,
             @Valid @ModelAttribute Account account,
