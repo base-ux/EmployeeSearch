@@ -28,22 +28,19 @@
 
         <!-- Register form -->
         <div class="blocks">
-            <div class="col-sm-10 col-md-10 col-lg-10 col-xl-6 container p-5 text-center">
+            <div class="container col-sm-10 col-md-10 col-lg-10 col-xl-6 p-5 text-center">
                 <div class="card">
-
                     <!-- Sign up text -->
-                    <h5 class="card-header darkbluebg py-4 text-center white-text">
-                        <strong>Sign up</strong>
-                    </h5>
-                    <small class="text-info">Allowed usual and special characters: capital and lowercase letters, numbers, &, @, _</small>
-                    <small class="text-warning">Not allowed characters: all others e.g. spaces, commas, full stops etc.</small>
-
-                    <!-- Card content-->
+                    <div>
+                        <h5 class="card-header py-4 text-center text-light darkbluebg">
+                            <strong>Sign up</strong>
+                        </h5>
+                        <small class="text-info">Allowed usual and special characters: capital and lowercase letters, numbers, &, @, _</small>
+                        <small class="text-warning">Not allowed characters: all others e.g. spaces, commas, full stops etc.</small>
+                    </div>
+                    <!-- Form elements -->
                     <div class="card-body pt-0 px-lg-5">
-
-                        <!-- Form -->
                         <form th:action="@{/EmployeeSearch/Register}" th:object="${account}" method="POST">
-
                             <!-- Username -->
                             <div class="md-form input-group input-with-pre-icon">
                                 <i class="fas fa-user-circle prefix" aria-hidden="true"></i>
@@ -52,14 +49,13 @@
                                 <label for="RegisterFormUsername">Username</label>
                             </div>
                             <div>
-                                <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('username')}" 
+                                <small class="form-text my-4 text-danger" th:if="${#fields.hasErrors('username')}" 
                                        th:errors="*{username}">username validation error message
                                 </small>
                                 <small id="RegisterFormUsernameHelpBlock" class="form-text mb-4 text-muted">
                                     Username is used with login
                                 </small>
                             </div>
-
                             <!-- Password -->
                             <div class="md-form input-group input-with-pre-icon">
                                 <i class="fas fa-lock prefix" aria-hidden="true"></i>
@@ -68,14 +64,13 @@
                                 <label for="RegisterFormPassword">Password</label>
                             </div>
                             <div>
-                                <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('password')}" 
+                                <small class="form-text my-4 text-danger" th:if="${#fields.hasErrors('password')}" 
                                        th:errors="*{password}">password validation error message
                                 </small>
                                 <small id="RegisterFormPasswordHelpBlock" class="form-text mb-4 text-muted">
                                     Create a strong password
                                 </small>
                             </div>
-
                             <!-- Matching password -->
                             <div class="md-form input-group input-with-pre-icon">
                                 <i class="fas fa-lock prefix" aria-hidden="true"></i>
@@ -84,58 +79,48 @@
                                 <label for="RegisterFormMatchingPassword">Confirm</label>
                             </div>
                             <div>
-                                <small class="form-text mb-4 text-danger" th:if="${#fields.hasErrors('confirm')}" 
+                                <small class="form-text my-4 text-danger" th:if="${#fields.hasErrors('confirm')}" 
                                        th:errors="*{confirm}">confirm validation error message
                                 </small>
                                 <small id="RegisterFormMatchingPasswordHelpBlock" class="form-text mb-4 text-muted">
                                     This should match the password you typed in the password field
                                 </small>
                             </div>
-
                             <!-- Real name -->
                             <div class="md-form">
                                 <input type="text" id="RegisterFormRealname" th:field="*{realname}" name="realname" class="form-control" 
                                        aria-describedby="RegisterFormRealnameHelpBlock"/>
                                 <label for="RegisterFormRealname">Your name</label>
-                                <small class="form-text mb-4 mt-4 text-danger" th:if="${#fields.hasErrors('realname')}"
+                                <small class="form-text my-4 text-danger" th:if="${#fields.hasErrors('realname')}"
                                        th:errors="*{realname}">realname validation error message
                                 </small>
                                 <small id="RegisterFormRealnameHelpBlock" class="form-text mb-4 text-muted">
                                     Your real name
                                 </small>
                             </div>
-
                             <!-- Alias -->
                             <div class="md-form">
                                 <input type="text" id="RegisterFormAlias" th:field="*{alias}" name="alias" class="form-control" 
                                        aria-describedby="RegisterFormAliasHelpBlock"/>
                                 <label for="RegisterFormAlias">Alias</label>
-                                <small class="form-text mb-4 mt-4 text-danger" th:if="${#fields.hasErrors('alias')}"
+                                <small class="form-text my-4 text-danger" th:if="${#fields.hasErrors('alias')}"
                                        th:errors="*{alias}">alias validation error message
                                 </small>
                                 <small id="RegisterFormAliasHelpBlock" class="form-text mb-4 text-muted">
                                     Alias will be your unique identifier
                                 </small>
                             </div>
-
                             <!-- Sign up button -->
-                            <button class="btn btn-outline-info btn-block my-4 waves-effect z-depth-0" type="submit" id="signup">Sign up</button>
-
+                            <button class="btn btn-outline-info btn-block my-4 z-depth-0 waves-effect" type="submit" id="signup">Sign up</button>
                             <!-- Terms of service -->
                             <p>By clicking
                                 <em>Sign up</em> you agree to the
-                                <a id="toTermsOfServicePage" th:href="@{/EmployeeSearch/TermsOfService}">terms of service</a>.
+                                <a th:href="@{/EmployeeSearch/TermsOfService}">terms of service</a>.
                             </p>
-
                             <!-- _Hidden Sign up button -->
                             <asp:button runat="server" type="submit" id="_hiddensignup"/>
-
                         </form>
-                        <!-- /Form -->
-
                     </div>
-                    <!-- /Card content-->
-
                 </div>
             </div>
         </div>
@@ -150,15 +135,13 @@
         <!-- /Back to main page -->
 
         <!-- Footer -->
-        <div class="container">
-            <footer class="darkbluebg font-small mb-4 mt-3 page-footer">
-
+        <div class="container font-small">
+            <footer class="page-footer mb-4 mt-3 darkbluebg">
                 <!-- Copyright -->
-                <div class="font-small footer-copyright p-5 text-center">
+                <div class="footer-copyright p-5 text-center">
                     <div th:replace="fragments/layout :: copyright"></div>
                     <div th:replace="fragments/layout :: date"></div>
                 </div>
-
             </footer>
         </div>
         <!-- /Footer -->

@@ -18,10 +18,6 @@ public class WelcomeService {
     @Autowired
     Date date;
 
-    public String termsOfService() {
-        return "terms_of_service";
-    }
-
     public String welcome(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();

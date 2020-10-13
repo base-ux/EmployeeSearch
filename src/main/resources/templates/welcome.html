@@ -19,18 +19,17 @@
 
         <!-- Not logged in -->
         <div th:if="${loggedinuser} == ''">
-
             <!--Navbar -->
-            <nav class="darkbluebg mb-0 navbar navbar-dark navbar-expand-lg">
+            <nav class="navbar navbar-dark navbar-expand-lg mb-0 darkbluebg">
                 <i th:text="${helloalias}" class="navbar-text ml-4">join</i>
                 <button class="navbar-toggler" type="button" name="welcomeHamburger" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="ml-auto navbar-nav">
-                        <li class="dropdown nav-item">
-                            <a class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user-circle"></i> User (Not logged in) </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink">
@@ -42,10 +41,8 @@
                 </div>
             </nav>
             <!-- /Navbar -->
-
             <!-- Header area -->
             <div class="container-fluid darkbluebg">
-
                 <!-- Welcome header -->
                 <div class="row">    
                     <header class="page-header">
@@ -58,27 +55,21 @@
                         </div>
                     </header>
                 </div>
-
                 <!-- Login and Register -->
                 <div class="row">
                     <div class="col d-flex justify-content-end">
-
                         <!-- Login -->
                         <a th:href="@{/EmployeeSearch/Login}">
                             <button type="button" name="welcomeLoginButton" class="btn btn-outline-light">Login</button>
                         </a>
-
                         <!-- Register -->
                         <a th:href="@{/EmployeeSearch/Register}">
                             <button type="button" name="welcomeSignupButton" class="btn btn-dark">Sign up</button>
                         </a>
-
                     </div>
                 </div>
-
             </div>
             <!-- /Header area -->
-
             <!-- Pinkish row -->
             <table class="pinkishrow">
                 <tr>
@@ -86,14 +77,11 @@
                 </tr>
             </table>
             <!-- /Pinkish row -->
-
             <!-- Welcome page content -->
             <div class="container-fluid">
                 <div class="row">
-
                     <!-- Carousel and Bottom curve -->
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3 p-0">
-
                         <!-- Carousel -->
                         <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
@@ -149,24 +137,20 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-
                         <!-- Bottom curve -->
                         <div>
                             <img class="col p-0" src="" th:src="@{/media/curveBottom_welcome_darkblue2.png}" alt=""/>
                         </div>
-
                     </div>
                     <!-- /Carousel and Bottom curve -->
-
                     <!-- Big logo -->
-                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
+                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 py-5 text-center">
                         <a th:href="@{/EmployeeSearch/Posts}">
-                            <img class="biglogo img-fluid" name="welcomeBigLogo" src="/media/empSiteLogo_in.png" 
+                            <img class="img-fluid biglogo" name="welcomeBigLogo" src="/media/empSiteLogo_in.png" 
                                  onmouseover="this.src='/media/empSiteLogo_out.png';"
                                  onmouseout="this.src='/media/empSiteLogo_in.png';" alt="Posts"/>
                         </a>
                     </div>
-
                     <!-- Welcome text button -->
                     <div class="col-sm-0 col-md-0 col-lg-0 col-xl-3 p-3">
                         <a th:href="@{/EmployeeSearch/Register}">
@@ -182,45 +166,37 @@
                             </button>
                         </a>
                     </div>
-
                 </div>
             </div>
             <!-- /Welcome page content -->
-
             <!-- Footer -->
-            <div class="container">
-                <footer class="darkbluebg mb-4 mt-3 font-small page-footer">
-
+            <div class="container font-small">
+                <footer class="page-footer mb-4 mt-3 darkbluebg">
                     <!-- Copyright -->
-                    <div class="font-small footer-copyright p-5 text-center">
+                    <div class="footer-copyright p-5 text-center">
                         <div th:replace="fragments/layout :: copyright"></div>
                         <div th:replace="fragments/layout :: date"></div>
                     </div>
-
                 </footer>
             </div>
             <!-- /Footer -->
-
         </div>
         <!-- /Not logged in -->
 
-        <!--////////////////////////////////////////////////////////////////-->
-
         <!-- Logged in -->
         <div th:unless="${loggedinuser} == ''">
-
             <!--Navbar -->
-            <nav class="darkbluebg mb-0 navbar navbar-dark navbar-expand-lg">
+            <nav class="navbar navbar-dark navbar-expand-lg mb-0 darkbluebg">
                 <i th:text="${helloalias}" class="navbar-text ml-4">hello alias</i>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="ml-auto navbar-nav">
-                        <li class="dropdown nav-item">
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
                             <a th:text="${loggedinuser} + ' (Logged in) '" 
-                               class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                               class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">user logged in</a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink">
                                 <a th:href="@{/EmployeeSearch/Users}" class="dropdown-item" name="myHomePageLink">My Home Page</a>
@@ -231,10 +207,8 @@
                 </div>
             </nav>
             <!-- /Navbar -->
-
             <!-- Header area -->
             <div class="container-fluid darkbluebg">
-
                 <!-- Welcome header -->
                 <div class="row">    
                     <header class="page-header">
@@ -247,22 +221,17 @@
                         </div>
                     </header>
                 </div>
-
                 <!-- Login and Register -->
                 <div class="row">
                     <div class="col d-flex justify-content-end">
-
                         <!-- Logout -->
                         <a th:href="@{/EmployeeSearch/Logout}">
                             <button type="button" name="welcomeLogoutButton" class="btn btn-outline-light">Logout</button>
                         </a>
-
                     </div>
                 </div>
-
             </div>
             <!-- /Header area -->
-
             <!-- Pinkish row -->
             <table class="pinkishrow">
                 <tr>
@@ -270,45 +239,37 @@
                 </tr>
             </table>
             <!-- /Pinkish row -->
-
             <!-- Welcome page content -->
             <div class="container-fluid">
                 <div class="row">
-
                     <!-- Home link -->
-                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
+                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 py-5 text-center">
                         <a th:href="@{/EmployeeSearch/Users}" name="welcomeHomeLink" >
-                            <img src="" th:src="@{/media/empSiteLogo_in.png}" alt="empSiteLogo_in" class="biglogo img-fluid"/>
+                            <img src="" th:src="@{/media/empSiteLogo_in.png}" alt="empSiteLogo_in" class="img-fluid biglogo"/>
                             <h3 class="text-dark">Home</h3>
                         </a>
                     </div>
-
                     <!-- Posts link -->
-                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 pb-5 pt-5 text-center">
+                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 py-5 text-center">
                         <a th:href="@{/EmployeeSearch/Posts}" name="welcomePostsLink">
-                            <img src="" th:src="@{/media/empSiteLogo_out.png}" alt="empSiteLogo_out" class="biglogo img-fluid"/>
+                            <img src="" th:src="@{/media/empSiteLogo_out.png}" alt="empSiteLogo_out" class="img-fluid biglogo"/>
                             <h3 class="text-dark">Posts</h3>
                         </a>
                     </div>
-
                 </div>
             </div>
             <!-- /Welcome page content -->
-
             <!-- Footer -->
-            <div class="container">
-                <footer class="darkbluebg mb-4 mt-3 font-small page-footer">
-
+            <div class="container font-small">
+                <footer class="page-footer mb-4 mt-3 darkbluebg">
                     <!-- Copyright -->
-                    <div class="font-small footer-copyright p-5 text-center">
+                    <div class="footer-copyright p-5 text-center">
                         <div th:replace="fragments/layout :: copyright"></div>
                         <div th:replace="fragments/layout :: date"></div>
                     </div>
-
                 </footer>
             </div>
             <!-- /Footer -->
-
         </div>
         <!-- /Logged in -->
 

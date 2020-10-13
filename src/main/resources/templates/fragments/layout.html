@@ -6,23 +6,35 @@
     </head>
     <body>
 
+        <!-- Back to Login Page -->
+        <div th:fragment="login">
+            <a id="backToLoginPage" th:href="@{/EmployeeSearch/Login}">Return</a>
+        </div>
+        <!-- /Back to Login Page -->
+
+        <!-- Back to Main Page -->
+        <div th:fragment="main">
+            <a id="backToMainPage" th:href="@{/}">Back to Main Page</a>
+        </div>
+        <!-- /Back to Main Page -->
+
+        <!-- Back to Register Page -->
+        <div th:fragment="register">
+            <a id="backToRegisterPage" th:href="@{/EmployeeSearch/Register}">Return</a>
+        </div>
+        <!-- /Back to Register Page -->
+
         <!-- Copyright -->
         <div th:fragment="copyright">
             <p>&copy; 2020 Copyright: Toni Silfver</p>
         </div>
-        <!-- Copyright -->
+        <!-- /Copyright -->
 
         <!-- Date -->
         <div th:fragment="date">
             <p th:text="${date}">Date</p>
         </div>
-        <!-- Date -->
-
-        <!-- Back to Login Page -->
-        <div th:fragment="login">
-            <a id="backToLoginPage" th:href="@{/EmployeeSearch/Login}">Return</a>
-        </div>
-        <!-- Back to Login Page -->
+        <!-- /Date -->
 
         <!-- Logout -->
         <div th:fragment="logout">
@@ -30,19 +42,7 @@
                 <input type="submit" value="Logout"/>
             </form>
         </div>
-        <!-- Logout -->
-
-        <!-- Back to Main Page -->
-        <div th:fragment="main">
-            <a id="backToMainPage" th:href="@{/}">Back to Main Page</a>
-        </div>
-        <!-- Back to Main Page -->
-
-        <!-- Back to Register Page -->
-        <div th:fragment="register">
-            <a id="backToRegisterPage" th:href="@{/EmployeeSearch/Register}">Return</a>
-        </div>
-        <!-- Back to Register Page -->
+        <!-- /Logout -->
 
     </body>
 </html>

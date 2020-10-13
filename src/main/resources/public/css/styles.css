@@ -6,13 +6,10 @@ body, html {
     background-color: #fefeff;
 }
 
-.carousel-caption {
-    background: rgba(0, 0, 0, 0.6);
-}
-
+/*Classes*/
 .biglogo {
-    max-width: 100%;
     height: auto;
+    max-width: 100%;
 }
 
 .blocks {
@@ -29,21 +26,33 @@ body, html {
     width: 100%;
 }
 
-.darkbluebg {
-    background-color: #012854;
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .darkblue {
     color: #012854;
 }
 
+.darkbluebg {
+    background-color: #012854;
+}
+
 .darkish {
     color: #444444;
 }
 
+.greyish {
+    color: #bbbbbb;
+}
+
+.greyishicon {
+    color: #bbbbbb;
+}
+
 .overflowing {
+    max-height: 15em;
     overflow-y: scroll;
-    max-height: 14.5em;
 }
 
 .pinkish {
@@ -60,15 +69,11 @@ body, html {
     width: 100%;
 }
 
-.toggleAlias[aria-expanded=true] .text-collapsed {
-    display: none;
-}
-
 .toggleAlias[aria-expanded=false] .text-expanded {
     display: none;
 }
 
-.toggleConnections[aria-expanded=true] .text-collapsed {
+.toggleAlias[aria-expanded=true] .text-collapsed {
     display: none;
 }
 
@@ -76,7 +81,7 @@ body, html {
     display: none;
 }
 
-.toggleUploads[aria-expanded=true] .text-collapsed {
+.toggleConnections[aria-expanded=true] .text-collapsed {
     display: none;
 }
 
@@ -84,22 +89,31 @@ body, html {
     display: none;
 }
 
-.welcometextbutton {
-    padding: 5vh 2vw 5vh 2vw;
+.toggleUploads[aria-expanded=true] .text-collapsed {
+    display: none;
 }
 
-.whiteish {
-    color: #fefeff;
+.welcometextbutton {
+    padding: 5vh 2vw 5vh 2vw;
 }
 
 .whiteicon {
     color: #ffffff;
 }
 
+.whiteish {
+    color: #fefeff;
+}
+
 .yellowish {
     color: #e6e600;
 }
 
+/*Id's*/
 #draggableRight .dragdropTitleRight {
     cursor: move;
+}
+
+#sortable li {
+    list-style-type: none;
 }

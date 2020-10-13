@@ -18,22 +18,28 @@
     <body>
 
         <!--Navbar -->
-        <nav class="darkbluebg navbar navbar-dark navbar-expand-lg">
-            <a th:href="@{/EmployeeSearch/Welcome}" class="nav-link waves-effect waves-light">
-                <h6 class="ml-4 text-light">
-                    <img src="" th:src="@{/media/empSiteLogo_in_extrasmall.png}" 
-                         alt="empSiteLogo_in_small"/>
-                    <span class="pinkish">Employee</span>Search
-                </h6>
-            </a>
+        <nav class="navbar navbar-dark navbar-expand-lg darkbluebg">
+            <!-- Employee logo -->
+            <div>
+                <a th:href="@{/EmployeeSearch/Welcome}" class="nav-link waves-effect waves-light">
+                    <h6 class="ml-4 greyish">
+                        <img src="" th:src="@{/media/empSiteLogo_in_extrasmall.png}" 
+                             alt="empSiteLogo_in_small"/>
+                        <span class="pinkish">Employee</span>Search
+                    </h6>
+                </a>
+            </div>
+            <!-- Navbar toggler -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="ml-auto navbar-nav">
+            <!-- Navbar buttons and links -->
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Search -->
                     <li class="nav-item">
-                        <form th:action="@{/EmployeeSearch/Users/{}/Search}" class="form-inline my-0" method="POST">
+                        <form th:action="@{/EmployeeSearch/Users/Search}" class="form-inline my-0" method="POST">
                             <div class="md-form form-sm my-0">
                                 <input class="form-control form-control-sm mr-sm-2" type="text" placeholder="Search"
                                        aria-label="Search">
@@ -42,34 +48,40 @@
                             </button>
                         </form>
                     </li>
+                    <!-- Connections -->
                     <li class="nav-item">
-                        <a th:href="@{/EmployeeSearch/Users/{}/Connections}" class="nav-link waves-effect waves-light">1
-                            <i class="fas fa-user-plus darkish"></i>
+                        <a th:href="@{/EmployeeSearch/Users/Connections}" class="nav-link waves-effect waves-light">1
+                            <i class="fas fa-user-plus greyishicon"></i>
                         </a>
                     </li>
+                    <!-- Posts -->
                     <li class="nav-item">
-                        <a th:href="@{/EmployeeSearch/Users/{}/Posts}" class="nav-link waves-effect waves-light">1
-                            <i class="fas fa-user-edit darkish"></i>
+                        <a th:href="@{/EmployeeSearch/Users/Posts}" class="nav-link waves-effect waves-light">1
+                            <i class="fas fa-envelope greyishicon"></i>
                         </a>
                     </li>
+                    <!-- Preferences -->
                     <li class="nav-item">
-                        <a th:href="@{/EmployeeSearch/Users/{}/Preferences}" class="nav-link waves-effect waves-light">
-                            <i class="fas fa-cog darkish"></i>
+                        <a th:href="@{/EmployeeSearch/Users/Preferences}" class="nav-link waves-effect waves-light">
+                            <i class="fas fa-cog greyishicon"></i>
                         </a>
                     </li>
-                    <li class="dropdown nav-item">
+                    <!-- Dropdown list -->
+                    <li class="nav-item dropdown">
                         <a th:text="${loggedinuser} + ' (Logged in) '" 
-                           class="dropdown-toggle nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">user logged in</a>
                         <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
-                            <a th:href="@{/EmployeeSearch/Users/{}/Search}" class="btn darkbluebg dropdown-item mb-1 mt-0" name=""><i class="fas fa-search mr-2 darkish"></i><small class="ml-4 text-light">Search</small></a>
-                            <a th:href="@{/EmployeeSearch/Users/{}/Connections}" class="btn darkbluebg dropdown-item mb-1 mt-0" name=""><i class="fas fa-user-friends mr-2 darkish"></i><small class="ml-1 text-light"> Connections</small></a>
-                            <a th:href="@{/EmployeeSearch/Users/{}/Posts}" class="btn darkbluebg dropdown-item mb-1 mt-0" name=""><i class="fas fa-envelope mr-3 darkish"></i><small class="ml-3 text-light"> Posts</small></a>
-                            <a th:href="@{/EmployeeSearch/Users}" class="btn darkbluebg dropdown-item mb-1 mt-0" name="myHomePageLink"><i class="fas fa-home mr-2 darkish"></i><small class="ml-1 text-light"> My Home Page</small></a>
-                            <a th:href="@{/EmployeeSearch/Users/{}/Preferences}" class="btn darkbluebg dropdown-item mb-1 mt-0" name=""><i class="fas fa-cog mr-3 darkish"></i><small class="text-light"> Preferences</small></a>
-                            <a th:href="@{/EmployeeSearch/Logout}" class="btn darkbluebg dropdown-item mb-0 mt-0" name="logoutLink"><i class="fas fa-sign-out-alt mr-4 darkish"></i><small class="ml-2 text-light">Sign out</small></a>
+                            <a th:href="@{/EmployeeSearch/Users}" class="btn dropdown-item mb-1 mt-0 darkbluebg" name="myHomePageLink"><i class="fas fa-home mr-2 greyishicon"></i><small class="ml-1 greyish"> My Home Page</small></a>
+                            <a th:href="@{/EmployeeSearch/Users/Search}" class="btn dropdown-item mb-1 mt-0 darkbluebg" name=""><i class="fas fa-search mr-2 greyishicon"></i><small class="ml-4 greyish">Search</small></a>
+                            <a th:href="@{/EmployeeSearch/Users/Connections}" class="btn dropdown-item mb-1 mt-0 darkbluebg" name=""><i class="fas fa-user mr-2 greyishicon"></i><small class="ml-1 greyish"> Connections</small></a>
+                            <a th:href="@{/EmployeeSearch/Users/Posts}" class="btn dropdown-item mb-1 mt-0 darkbluebg" name=""><i class="fas fa-envelope mr-3 greyishicon"></i><small class="ml-3 greyish"> Posts</small></a>
+                            <a th:href="@{/EmployeeSearch/Users/Preferences}" class="btn dropdown-item mb-1 mt-0 darkbluebg" name=""><i class="fas fa-cog mr-3 greyishicon"></i><small class="greyish"> Preferences</small></a>
+                            <a th:href="@{/EmployeeSearch/Users/Help}" class="btn dropdown-item mb-1 mt-0 darkbluebg" name=""><i class="fas fa-question-circle mr-4 greyishicon"></i><small class="ml-2 greyish"> Help !</small></a>
+                            <a th:href="@{/EmployeeSearch/Logout}" class="btn dropdown-item my-0 darkbluebg" name="logoutLink"><i class="fas fa-sign-out-alt mr-4 greyishicon"></i><small class="ml-1 greyish">Sign out</small></a>
                         </div>
                     </li>
+                    <!-- Empty item -->
                     <li class="nav-item">
                         <a href="" class="nav-link">
                             <i></i>
@@ -80,19 +92,21 @@
         </nav>
         <!-- /Navbar -->
 
-        <!-- Home Page Layout and Contents -->
+        <!-- Edit layout button and home page contents -->
         <div class="container-fluid">
+            <!-- Edit layout button -->
             <div class="row">
                 <div class="col mb-4 text-right">
-                    <!-- Edit Home Page Layout Button -->
-                    <button class="btn btn-sm btn-dark">Edit Home Page Layout <i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-dark greyish">Edit Home Page Layout <i class="fas fa-edit greyishicon"></i></button>
                 </div>
             </div>
+            <!-- Home page contents -->
             <div class="row">
-                <div class="col-xl ml-5 mr-5">
-                    <!-- User Picture -->
+                <!-- Left column -->
+                <div class="col-xl mx-5">
+                    <!-- User picture -->
                     <div class="card mb-5">
-                        <div><h5 class="darkbluebg text-center text-light"><strong>Alias</strong></h5></div>
+                        <div><h5 class="text-center darkbluebg greyish"><strong><i class="fas fa-user-circle greyishicon"></i> Alias</strong></h5></div>
                         <div class="container-fluid collapse show" id="collapseAlias">
                             <div class="row">
                                 <div class="col">
@@ -115,165 +129,156 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Tabs -->
                     <ul class="nav nav-tabs" id="profileTabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link darkbluebg whiteish active" id="proficiency-tab" data-toggle="tab" href="#proficiency" role="tab" aria-controls="proficiency"
-                               aria-selected="true">Proficiency <i class="fas fa-user-tie"></i></a>
+                            <a class="nav-link darkbluebg greyish active" id="proficiency-tab" data-toggle="tab" href="#proficiency" role="tab" aria-controls="proficiency"
+                               aria-selected="true">Proficiency <i class="fas fa-user-tie greyishicon"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link darkbluebg whiteish" id="background-tab" data-toggle="tab" href="#background" role="tab" aria-controls="background"
-                               aria-selected="false">Background <i class="fas fa-history"></i></a>
+                            <a class="nav-link darkbluebg greyish" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education"
+                               aria-selected="false">Education <i class="fas fa-graduation-cap greyishicon"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link darkbluebg whiteish" id="contactInformation-tab" data-toggle="tab" href="#contactInformation" role="tab" aria-controls="contactInformation"
-                               aria-selected="false">Contact Information <i class="fas fa-address-card"></i></a>
+                            <a class="nav-link darkbluebg greyish" id="workHistory-tab" data-toggle="tab" href="#workHistory" role="tab" aria-controls="workHistory"
+                               aria-selected="false">Work History <i class="fas fa-briefcase greyishicon"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link darkbluebg whiteish" id="workHistory-tab" data-toggle="tab" href="#workHistory" role="tab" aria-controls="workHistory"
-                               aria-selected="false">Work History <i class="fas fa-briefcase"></i></a>
+                            <a class="nav-link darkbluebg greyish" id="background-tab" data-toggle="tab" href="#background" role="tab" aria-controls="background"
+                               aria-selected="false">Background <i class="fas fa-history greyishicon"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link darkbluebg whiteish" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education"
-                               aria-selected="false">Education <i class="fas fa-graduation-cap"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link darkbluebg whiteish" id="endorsements-tab" data-toggle="tab" href="#endorsements" role="tab" aria-controls="endorsements"
-                               aria-selected="false">Endorsements <i class="fas fa-users"></i></a>
+                            <a class="nav-link darkbluebg greyish" id="contactInformation-tab" data-toggle="tab" href="#contactInformation" role="tab" aria-controls="contactInformation"
+                               aria-selected="false">Contact Information <i class="fas fa-address-card greyishicon"></i></a>
                         </li>
                     </ul>
-                    <div class="tab-content pt-5 pb-5" id="profileTabsContent">
+                    <div class="tab-content py-5" id="profileTabsContent">
                         <div class="tab-pane fade show active" id="proficiency" role="tabpanel" aria-labelledby="proficiency-tab">
-                            <p>Ability 1 Proficiency Level <i class="far fa-thumbs-up"></i></p></div>
+                            <p>Ability 1 Proficiency Level <i class="far fa-thumbs-up"></i></p>
+                        </div>
+                        <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">Education Text</div>
+                        <div class="tab-pane fade" id="workHistory" role="tabpanel" aria-labelledby="workHistory-tab">Work History Text</div>
                         <div class="tab-pane fade" id="background" role="tabpanel" aria-labelledby="background-tab">Background Text</div>
                         <div class="tab-pane fade" id="contactInformation" role="tabpanel" aria-labelledby="contactInformation-tab">Contact Information Text</div>
-                        <div class="tab-pane fade" id="workHistory" role="tabpanel" aria-labelledby="workHistory-tab">Work History Text</div>
-                        <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">Education Text</div>
-                        <div class="tab-pane fade" id="endorsements" role="tabpanel" aria-labelledby="endorsements-tab">Endorsements Text</div>
                     </div>
                 </div>
-                <div class="col ml-5 mr-5">
-                    <div id="draggableRight" class="">
-                        <!-- Posts link -->
-                        <div class="dragdrop mb-5">
-                            <div class="dragdropTitleRight"><h5 class="mt-2 text-center text-dark"><strong>Posts</strong></h5></div>
-                            <div class="dragdropContentRight text-center collapse show">
-                                <a th:href="@{/EmployeeSearch/Posts}" name="">
-                                    <img src="" th:src="@{/media/empSiteLogo_posts_medium.png}" alt="empSiteLogo_posts_medium" class="biglogo img-fluid"/>
-                                </a>
-                            </div>
-                        </div>
+                <!-- Right column -->
+                <div class="col mx-5">
+                    <ul id="sortable">
                         <!-- Connections -->
-                        <div class="card dragdropRight mb-5">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col text-right toggleConnections" data-toggle="collapse" data-target="#collapseConnections" aria-expanded="true">
-                                        <small class="text-expanded">Content now Visible, make Private <i class="fas fa-eye"></i></small>
-                                        <small class="text-collapsed">Content now Invisible, make Public <i class="fas fa-eye-slash"></i></small>
+                        <li class="ui-state-default">
+                            <div class="card mb-5">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col text-right toggleConnections" data-toggle="collapse" data-target="#collapseConnections" aria-expanded="true">
+                                            <small class="text-expanded">Content now Visible, make Private <i class="fas fa-eye"></i></small>
+                                            <small class="text-collapsed">Content now Invisible, make Public <i class="fas fa-eye-slash"></i></small>
+                                        </div>
                                     </div>
+                                </div>
+                                <div><h5 class="text-center darkbluebg greyish"><strong><i class="fas fa-user greyishicon"></i> Connections (4)</strong></h5></div>
+                                <div class="container collapse show overflowing" id="collapseConnections">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a th:href="@{/EmployeeSearch/Users}" name="">
+                                                <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                                <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a th:href="@{/EmployeeSearch/Users}" name="">
+                                                <small class="mt-3 text-left text-dark"><strong>Remove </strong><i class="fas fa-user-minus"></i></small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a th:href="@{/EmployeeSearch/Users}" name="">
+                                                <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                                <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a th:href="@{/EmployeeSearch/Users}" name="">
+                                                <small class="mt-3 text-left text-dark"><strong>Remove </strong><i class="fas fa-user-minus"></i></small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a th:href="@{/EmployeeSearch/Users}" name="">
+                                                <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                                <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a th:href="@{/EmployeeSearch/Users}" name="">
+                                                <small class="mt-3 text-left text-dark"><strong>Remove </strong><i class="fas fa-user-minus"></i></small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a th:href="@{/EmployeeSearch/Users}" name="">
+                                                <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                                <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a th:href="@{/EmployeeSearch/Users}" name="">
+                                                <small class="mt-3 text-left text-dark"><strong>Remove </strong><i class="fas fa-user-minus"></i></small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr/>
                                 </div>
                             </div>
-                            <div class="dragdropTitleRight"><h5 class="darkbluebg text-center text-light"><strong>Connections (4)</strong></h5></div>
-                            <div class="container collapse show overflowing" id="collapseConnections">
-                                <div class="row">
-                                    <div class="col dragdropContentRight">
-                                        <a th:href="@{/EmployeeSearch/Users}" name="">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
-                                            <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}" name="">
-                                            <small class="mt-3 text-left text-dark"><strong>Remove </strong><i class="fas fa-user-minus"></i></small>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col dragdropContentRight">
-                                        <a th:href="@{/EmployeeSearch/Users}" name="">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
-                                            <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}" name="">
-                                            <small class="mt-3 text-left text-dark"><strong>Remove </strong><i class="fas fa-user-minus"></i></small>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col dragdropContentRight">
-                                        <a th:href="@{/EmployeeSearch/Users}" name="">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
-                                            <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}" name="">
-                                            <small class="mt-3 text-left text-dark"><strong>Remove </strong><i class="fas fa-user-minus"></i></small>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col dragdropContentRight">
-                                        <a th:href="@{/EmployeeSearch/Users}" name="">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
-                                            <h5 class="mt-3 text-left text-dark"><strong>Real name</strong></h5>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}" name="">
-                                            <small class="mt-3 text-left text-dark"><strong>Remove </strong><i class="fas fa-user-minus"></i></small>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr/>
-                            </div>
-                        </div>
+                        </li>
                         <!-- Uploads -->
-                        <div class="card dragdropRight mb-5">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col text-right toggleUploads" data-toggle="collapse" data-target="#collapseUploads" aria-expanded="true">
-                                        <small class="text-expanded">Content now Visible, make Private <i class="fas fa-eye"></i></small>
-                                        <small class="text-collapsed">Content now Invisible, make Public <i class="fas fa-eye-slash"></i></small>
+                        <li class="ui-state-default">
+                            <div class="card mb-5">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col text-right toggleUploads" data-toggle="collapse" data-target="#collapseUploads" aria-expanded="true">
+                                            <small class="text-expanded">Content now Visible, make Private <i class="fas fa-eye"></i></small>
+                                            <small class="text-collapsed">Content now Invisible, make Public <i class="fas fa-eye-slash"></i></small>
+                                        </div>
                                     </div>
                                 </div>
+                                <div><h5 class="text-center darkbluebg greyish"><strong><i class="fas fa-cloud-upload-alt greyishicon"></i> Uploads (10)</strong></h5></div>
+                                <div class="collapse show overflowing" id="collapseUploads">
+                                    <a th:href="@{/EmployeeSearch/Users}" name="">
+                                        <h5 class="mt-3 text-center text-dark">File 1</h5>
+                                        <h5 class="mt-3 text-center text-dark">File 2</h5>
+                                        <h5 class="mt-3 text-center text-dark">File 3</h5>
+                                        <h5 class="mt-3 text-center text-dark">File 4</h5>
+                                        <h5 class="mt-3 text-center text-dark">File 5</h5>
+                                        <h5 class="mt-3 text-center text-dark">File 6</h5>
+                                        <h5 class="mt-3 text-center text-dark">File 7</h5>
+                                        <h5 class="mt-3 text-center text-dark">File 8</h5>
+                                        <h5 class="mt-3 text-center text-dark">File 9</h5>
+                                        <h5 class="mt-3 text-center text-dark">File 10</h5>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="dragdropTitleRight"><h5 class="darkbluebg text-center text-light"><strong>Uploads (10)</strong></h5></div>
-                            <div class="dragdropContentRight collapse show overflowing" id="collapseUploads">
-                                <a th:href="@{/EmployeeSearch/Users}" name="">
-                                    <h5 class="mt-3 text-center text-dark">File 1</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 2</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 3</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 4</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 5</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 6</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 7</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 8</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 9</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 10</h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- /Home Page Layout and Contents -->
+        <!-- /Edit layout button and home page contents -->
 
         <!-- Footer -->
-        <div class="container">
-            <footer class="darkbluebg mb-4 mt-3 font-small page-footer">
-
+        <div class="container font-small">
+            <footer class="page-footer mb-4 mt-3 darkbluebg">
                 <!-- Copyright -->
-                <div class="font-small footer-copyright p-5 text-center">
+                <div class="footer-copyright p-5 text-center">
                     <div th:replace="fragments/layout :: copyright"></div>
                     <div th:replace="fragments/layout :: date"></div>
                 </div>
-
             </footer>
         </div>
         <!-- /Footer -->

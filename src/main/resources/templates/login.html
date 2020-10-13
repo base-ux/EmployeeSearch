@@ -19,48 +19,38 @@
 
         <!-- Login form -->
         <div class="blocks">
-            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-6 container p-5 text-center">
+            <div class="container col-sm-10 col-md-8 col-lg-6 col-xl-6 p-5 text-center">
                 <div class="card">
-
                     <!-- Login header -->
-                    <h5 class="card-header darkbluebg py-4 text-center white-text">
+                    <h5 class="card-header py-4 text-center text-light darkbluebg">
                         <strong>User Login</strong>
                     </h5>
-
                     <!-- Card content-->
                     <div class="card-body pt-0 px-lg-5">
-
                         <!-- Form -->
                         <form class="text-center" th:action="@{/EmployeeSearch/Login}" method="POST">
-
                             <!-- Username -->
                             <div class="md-form input-group input-with-pre-icon">
                                 <i class="fas fa-user-circle prefix" aria-hidden="true"></i>
                                 <input type="text" name="username" id="LoginFormUsername" class="form-control"/>
                                 <label for="LoginFormUsername">Username</label>
                             </div>
-
                             <!-- Password -->
                             <div class="md-form input-group input-with-pre-icon">
                                 <i class="fas fa-lock prefix" aria-hidden="true"></i>
                                 <input type="password" name="password" id="LoginFormPassword" class="form-control"/>
                                 <label for="LoginFormPassword">Password</label>
                             </div>
-
                             <!-- Login button -->
-                            <button class="btn btn-outline-info btn-block my-4 waves-effect z-depth-0" name="submit" type="submit" id="userLogin">Login</button>
-
+                            <button class="btn btn-outline-info btn-block my-4 z-depth-0 waves-effect" name="submit" type="submit" id="userLogin">Login</button>
                             <!-- Register -->
                             <p>Not a registered user?
                                 <a id="toSignupPage" th:href="@{/EmployeeSearch/Register}">Sign up</a>
                             </p>
-
                         </form>
                         <!-- /Form -->
-
                     </div>
                     <!-- /Card content-->
-
                 </div>
             </div>
         </div>
@@ -75,15 +65,13 @@
         <!-- /Back to main page -->
 
         <!-- Footer -->
-        <div class="container">
-            <footer class="darkbluebg font-small mb-4 mt-3 page-footer">
-
+        <div class="container font-small">
+            <footer class="page-footer mb-4 mt-3 darkbluebg">
                 <!-- Copyright -->
-                <div class="font-small footer-copyright p-5 text-center">
+                <div class="footer-copyright p-5 text-center">
                     <div th:replace="fragments/layout :: copyright"></div>
                     <div th:replace="fragments/layout :: date"></div>
                 </div>
-
             </footer>
         </div>
         <!-- /Footer -->

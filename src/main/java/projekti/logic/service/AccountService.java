@@ -73,16 +73,6 @@ public class AccountService {
         return converted;
     }
 
-    public String loginError(Model model) {
-        model.addAttribute("date", this.date.date());
-        return "login_error";
-    }
-
-    public String loginFill(Model model) {
-        model.addAttribute("date", this.date.date());
-        return "login";
-    }
-
     public String registerCheck(Model model,
             @Valid @ModelAttribute Account account,
             BindingResult bindingResult) {
@@ -131,22 +121,5 @@ public class AccountService {
         }
         this.accountRepository.save(account);
         return "redirect:/EmployeeSearch/Register/" + account.getAlias();
-    }
-
-    public String registerFill(Model model, @ModelAttribute Account account) {
-        model.addAttribute("accounts", this.accountRepository.findAll());
-        model.addAttribute("date", this.date.date());
-        return "register";
-    }
-
-    public String registerOk(Model model, String alias) {
-        model.addAttribute("alias", alias);
-        model.addAttribute("date", this.date.date());
-        return "register_ok";
-    }
-
-    public String userHome(Model model) {
-        model.addAttribute("date", this.date.date());
-        return "home";
     }
 }

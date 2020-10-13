@@ -40,15 +40,7 @@ $(document).ready(function() {
     $signupButton.removeAttr("disabled")
 })
 
-jQuery(function($) {
-    var dragdropColumnRight = $("#draggableRight")
-
-    dragdropColumnRight.sortable({
-        update: function() {
-            $(".dragdrop", dragdropColumnRight).each(function(index, element) {
-                var $dragdropItemRight = $(element),
-                    newIndexRight = $dragdropItemRight.index()
-            })
-        }
-    })
+$(function() {
+    $("#sortable").sortable()
+    $("#sortable").disableSelection()
 })
