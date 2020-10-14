@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Fragments Layout Navbar</title>
+    </head>
+    <body>
+
+        <!-- Welcome page content -->
+        <div th:fragment="welcome">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Big logo -->
+                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 py-5 text-center">
+                        <a th:href="@{/EmployeeSearch/Users}">
+                            <img class="img-fluid biglogo" name="welcomeBigLogo" src="/media/empSiteLogo_in.png" 
+                                 onmouseover="this.src='/media/empSiteLogo_out.png';"
+                                 onmouseout="this.src='/media/empSiteLogo_in.png';" alt="Posts"/>
+                        </a>
+                    </div>
+                    <!-- Links -->
+                    <div class="col-sm-7 col-md-6 col-lg-6 col-xl-6 mt-5 py-5 text-center">
+                        <!-- Home page -->
+                        <p>
+                            <a th:href="@{/EmployeeSearch/Users}" class="text-dark">Home Page</a>
+                        </p>
+                        <!-- Help -->
+                        <p>
+                            <a th:href="@{/EmployeeSearch/Users/Help}" class="text-dark">Help</a>
+                        </p>
+                        <!-- Terms of service -->
+                        <p>
+                            <a th:href="@{/EmployeeSearch/TermsOfService}" class="text-dark">Terms of service</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Welcome page content -->
+
+    </body>
+</html>

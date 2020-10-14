@@ -18,10 +18,95 @@
     <body>
 
         <!-- Navbar -->
-        <div th:replace="fragments/layout_navbar :: navbar"></div>
+        <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>
         <!-- /Navbar -->
 
-        // Help
+        <!-- Greyish row -->
+        <div th:replace="fragments/layout_misc_elements :: greyishrowelement"></div>
+        <!-- /Greyish row -->
+
+        <!-- Help page contents -->
+        <div class="container-fluid my-5">
+            <!-- Help header -->
+            <div class="container">
+                <h5 class="card-header mb-5 py-4 text-center whiteish greyishbg">
+                    <i class="fas fa-question-circle"></i><strong class="ml-4">HELP</strong>
+                </h5>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Alias -->
+            <div class="container">
+                <!-- Alias title -->
+                <h4>Alias</h4>
+                <!-- Change alias help text -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <!-- Change alias title -->
+                        <h5 class="mt-2"><strong>Change Alias</strong></h5>
+                        <!-- Change alias text -->
+                        <p class="mt-2">Alias cannot be changed after 
+                            registration. If you want a new alias, you could 
+                            try to create a new profile with a new alias if it 
+                            is not already taken.</p>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Password -->
+            <div class="container">
+                <!-- Password title -->
+                <h4>Password</h4>
+                <!-- Forgotten password help text -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <!-- Forgotten password title -->
+                        <h5 class="mt-2"><strong>Forgotten password</strong></h5>
+                        <!-- Forgotten password text -->
+                        <p class="mt-2">If you forget your password, there 
+                            is no way of recovering it through this Site. 
+                            The Site does not provide this service.</p>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Profile -->
+            <div class="container">
+                <!-- Profile title -->
+                <h4>Profile</h4>
+                <!-- Delete profile help text -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <!-- Delete profile title -->
+                        <h5 class="mt-2"><strong>Delete Profile</strong></h5>
+                        <!-- Delete profile text -->
+                        <p class="mt-2">Deleting your Profile means that you 
+                            cannot log in to your Profile anymore and that 
+                            your Profile and all information that was in it 
+                            on this Site is removed from the Site's 
+                            database. If you wish to learn more about the 
+                            Site's privacy policy, See 
+                            <a id="toSignupPage" th:href="@{/EmployeeSearch/TermsOfService}">terms of service</a> 
+                            - Privacy policy.</p>
+                    </div>
+                </div>
+                <!-- Hide profile help text -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <!-- Hide profile title -->
+                        <h5 class="mt-2"><strong>Hide Profile</strong></h5>
+                        <!-- Hide profile text -->
+                        <p class="mt-2">Hiding your Profile means that 
+                            no one else can see your Profile in this Site 
+                            except you. This action does not hide any posts, 
+                            comments, likes etc. that you have made. It 
+                            hides only your Home Page and all the contents 
+                            that are in it.</p>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+        </div>
+        <!-- /Preferences page contents -->
 
         <!-- Footer -->
         <div th:replace="fragments/layout_footer :: footer"></div>

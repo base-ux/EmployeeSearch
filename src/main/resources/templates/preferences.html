@@ -18,7 +18,7 @@
     <body>
 
         <!-- Navbar -->
-        <div th:replace="fragments/layout_navbar :: navbar"></div>
+        <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>
         <!-- /Navbar -->
 
         <!-- Greyish row -->
@@ -30,10 +30,10 @@
             <!-- Preferences header -->
             <div class="container">
                 <h5 class="card-header mb-5 py-4 text-center whiteish greyishbg">
-                    <strong><i class="fas fa-cog"></i> PREFERENCES</strong>
+                    <i class="fas fa-cog"></i><strong class="ml-4">PREFERENCES</strong>
                 </h5>
             </div>
-            <hr/>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
             <!-- Change password -->
             <div class="container">
                 <!-- Change password title -->
@@ -56,17 +56,17 @@
                             </div>
                             <!-- Change password button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewPassword" type="submit" id="changePassword">Change Password <i class="fas fa-lock"></i></button>
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewPassword" type="submit" id="changePassword">Change Password <i class="fas fa-lock ml-2"></i></button>
                             </div>
                         </form>
                         <!-- Cannot remember password link -->
-                        <p>What if I forget my Password?
-                            <a th:href="@{/EmployeeSearch/Users/Help}">See the Help page.</a>
+                        <p class="mt-2">What if I forget my Password? See Password on the 
+                            <a th:href="@{/EmployeeSearch/Users/Help}">Help page.</a>
                         </p>
                     </div>
                 </div>
             </div>
-            <hr/>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
             <!-- Change name -->
             <div class="container">
                 <!-- Change name title -->
@@ -89,21 +89,21 @@
                             </div>
                             <!-- Change name button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewName" type="submit" id="changeName">Change Name <i class="fas fa-user-edit"></i></button>
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewName" type="submit" id="changeName">Change Name <i class="fas fa-user-edit ml-2"></i></button>
                             </div>
                         </form>
                         <!-- Change alias link -->
-                        <p>Want to change Alias?
-                            <a th:href="@{/EmployeeSearch/Users/Help}">See the Help page.</a>
+                        <p class="mt-2">Want to change Alias? See Alias on the 
+                            <a th:href="@{/EmployeeSearch/Users/Help}">Help page.</a>
                         </p>
                     </div>
                 </div>
             </div>
-            <hr/>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
             <!-- Hide profile -->
             <div class="container">
                 <!-- Hide profile title -->
-                <h4><i class="fas fa-user-slash"></i> Hide Profile</h4>
+                <h4><i class="fas fa-user-slash"></i><span class="ml-4">Hide Profile</span></h4>
                 <!-- Hide profile contents -->
                 <div class="row justify-content-left">
                     <div class="col col-8">
@@ -117,21 +117,21 @@
                         <form class="text-center">
                             <!-- Hide profile button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitHideProfile" type="submit" id="hideProfile">Hide Profile <i class="fas fa-user-circle"></i></button>
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitHideProfile" type="submit" id="hideProfile">Hide Profile <i class="fas fa-user-circle ml-2"></i></button>
                             </div>
                         </form>
-                        <!-- Change alias link -->
-                        <p>Not sure what Hide profile does?
-                            <a th:href="@{/EmployeeSearch/Users/Help}">See the Help page.</a>
+                        <!-- Hide profile link -->
+                        <p class="mt-2">Not sure what Hide profile does? See Profile on the 
+                            <a th:href="@{/EmployeeSearch/Users/Help}">Help page.</a>
                         </p>
                     </div>
                 </div>
             </div>
-            <hr/>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
             <!-- Delete profile button -->
             <div class="container">
                 <!-- Delete profile title -->
-                <h4><i class="fas fa-skull-crossbones"></i> Delete Profile</h4>
+                <h4><i class="fas fa-skull-crossbones"></i><span class="ml-4">Delete Profile</span></h4>
                 <!-- Delete profile contents -->
                 <div class="row justify-content-left">
                     <div class="col col-8">
@@ -142,20 +142,20 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-8">
-                        <form class="text-center">
+                        <form  th:action="@{/EmployeeSearch/Users/DeleteProfile}" class="text-center">
                             <!-- Delete profile button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitDeleteProfile" type="submit" id="deleteProfile">Delete Profile <i class="fas fa-user-circle"></i></button>
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitDeleteProfile" type="submit" id="deleteProfile">Delete Profile<i class="fas fa-user-circle ml-2"></i></button>
                             </div>
                         </form>
-                        <!-- Change alias link -->
-                        <p>Not sure what Delete profile does?
-                            <a th:href="@{/EmployeeSearch/Users/Help}">See the Help page.</a>
+                        <!-- Delete profile link -->
+                        <p class="mt-2">Not sure what Delete profile does? See Profile on the 
+                            <a th:href="@{/EmployeeSearch/Users/Help}">Help page.</a>
                         </p>
                     </div>
                 </div>
             </div>
-            <hr/>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
         </div>
         <!-- /Preferences page contents -->
 

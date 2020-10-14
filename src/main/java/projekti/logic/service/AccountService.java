@@ -11,6 +11,8 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -71,6 +73,25 @@ public class AccountService {
         String converted = convert;
         converted = converted.trim().replaceAll("\\s+", "");
         return converted;
+    }
+
+    public void helloUser(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        if (username.equals("anonymousUser") || username.equals("null")) {
+            model.addAttribute("helloalias", "Welcome, visitor!");
+            model.addAttribute("loggedinuser", "");
+        } else {
+            Account account = this.accountRepository.findByUsername(username);
+            String alias = account.getAlias();
+            if (alias.length() > 9) {
+                model.addAttribute("helloalias", "Hello, " + alias.substring(0, 9) + "...!");
+                model.addAttribute("loggedinuser", alias.substring(0, 9) + "...");
+            } else {
+                model.addAttribute("helloalias", "Hello, " + alias + " !");
+                model.addAttribute("loggedinuser", alias);
+            }
+        }
     }
 
     public String registerCheck(Model model,

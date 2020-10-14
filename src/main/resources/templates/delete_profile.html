@@ -18,14 +18,43 @@
     <body>
 
         <!-- Navbar -->
-        <div th:replace="fragments/layout_navbar :: navbar"></div>
+        <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>
         <!-- /Navbar -->
-        
+
         <!-- Greyish row -->
         <div th:replace="fragments/layout_misc_elements :: greyishrowelement"></div>
         <!-- /Greyish row -->
 
-        // Delete profile
+        <!-- Delete profile page contents -->
+        <div class="container-fluid my-5">
+            <!-- Delete profile header -->
+            <div class="container">
+                <h5 class="card-header mb-5 py-4 text-center whiteish greyishbg">
+                    <i class="fas fa-skull-crossbones"></i><strong class="ml-4">DELETE PROFILE</strong>
+                </h5>
+            </div>
+            <!-- Delete profile warning -->
+            <div class="row justify-content-center">
+                <div class="col col-8">
+                    <p>By pressing "I understand and I wish to Delete My Profile :" button 
+                        all Profile information is deleted. This means that the Home Page and 
+                        all of its contents along with username, password, name, alias, 
+                        every post, like, comment, picture, document, ability and connection 
+                        associated with this Profile is deleted. After deletion none of the 
+                        deleted information can be restored. The deleted information will be 
+                        permanately lost.</p>
+                    <!-- Delete profile button -->
+                    <form class="text-center my-5">
+                        <input type="submit" value="I understand and I wish to Delete My Profile :" 
+                               class="btn btn-sm btn-danger whiteish"/>
+                        <i class="fas fa-user-circle mr-2"></i><span th:text="${loggedinuser}">profile name</span>
+                    </form>
+                    <!-- I changed my mind button -->
+                    <div th:replace="fragments/layout_links_texts :: preferences"></div>
+                </div>
+            </div>
+        </div>
+        <!-- /Delete profile page contents -->
 
         <!-- Footer -->
         <div th:replace="fragments/layout_footer :: footer"></div>

@@ -109,6 +109,10 @@ body, html {
     display: none;
 }
 
+.verticalrule {
+    border-left: 1px solid #ffffff;
+}
+
 .welcometextbutton {
     padding: 5vh 2vw 5vh 2vw;
 }
