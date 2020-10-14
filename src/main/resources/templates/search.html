@@ -21,7 +21,36 @@
         <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>
         <!-- /Navbar -->
 
-        // Search
+        <!-- Search page contents -->
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Search -->
+                <div class="col mx-5 my-5">
+                    <form th:action="@{/EmployeeSearch/Users/Search}" class="form-inline justify-content-center" method="POST">
+                        <div class="md-form form-sm mr-2">
+                            <input type="text" placeholder="Search" aria-label="Search"/>
+                        </div>
+                        <select class="browser-default custom-select">
+                            <option value="0" selected>Users</option>
+                            <option value="1">Posts</option>
+                            <option value="2">Comments</option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-dark btn-sm ml-2 waves-effect">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Results -->
+                <div class="col mx-5 my-5">
+                    <div>
+                        <p class="text-center">Results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Search page contents -->
 
         <!-- Footer -->
         <div th:replace="fragments/layout_footer :: footer"></div>
@@ -29,6 +58,8 @@
 
         <!-- JQuery -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- JQuery UI -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
         <!-- Bootstrap core JavaScript -->
