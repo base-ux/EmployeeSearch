@@ -41,6 +41,7 @@ public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .and()
                 .formLogin()
                 .loginPage("/EmployeeSearch/Login")
+                .defaultSuccessUrl("/EmployeeSearch/Users")
                 .failureUrl("/EmployeeSearch/LoginError")
                 .permitAll()
                 .and()

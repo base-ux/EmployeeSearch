@@ -109,8 +109,16 @@ body, html {
     display: none;
 }
 
-.verticalrule {
+.verticalrulewhite {
     border-left: 1px solid #ffffff;
+}
+
+.verticalrulewhite2 {
+    position: absolute;
+    border-left: 1px solid #ffffff;
+    height: 48px;
+    top: 0px;
+    left: 54px;
 }
 
 .welcometextbutton {
@@ -127,6 +135,10 @@ body, html {
 
 .yellowish {
     color: #e6e600;
+}
+
+.yellowishbg {
+    background-color: #e6e600;
 }
 
 /*Id's and Classes*/
