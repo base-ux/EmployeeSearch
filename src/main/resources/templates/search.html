@@ -12,6 +12,8 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
         <!-- Material Design Bootstrap -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"/>
+        <!-- Summernote CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"/>
         <!-- Custom CSS -->
         <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
@@ -23,9 +25,15 @@
 
         <!-- Search page contents -->
         <div class="container-fluid">
-            <div class="row">
+            <div class="row mx-5 mt-5 px-5 pt-5 text-center">
+                <!-- Search title -->
+                <div class="col">
+                    <p class="h3 mb-4 darkblue">Search</p>
+                </div>
+            </div>
+            <div class="row mx-5 mt-5 px-5 pb-5 text-center">
                 <!-- Search -->
-                <div class="col mx-5 my-5">
+                <div class="col">
                     <form th:action="@{/EmployeeSearch/Users/Search}" class="form-inline justify-content-center" method="POST">
                         <div class="md-form form-sm mr-2">
                             <input type="text" placeholder="Search" aria-label="Search"/>
@@ -41,11 +49,11 @@
                     </form>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mx-5 mt-5 px-5 pb-5 text-center">
                 <!-- Results -->
-                <div class="col mx-5 my-5">
+                <div class="col">
                     <div>
-                        <p class="text-center">Results</p>
+                        <p>Results</p>
                     </div>
                 </div>
             </div>
@@ -66,6 +74,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <!-- Summernote JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
         <!-- Custom JavaScript -->
         <script th:src="@{/javascript/code.js}" defer></script>
 

@@ -12,6 +12,8 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"/>
         <!-- Material Design Bootstrap -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet"/>
+        <!-- Summernote CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"/>
         <!-- Custom CSS -->
         <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
@@ -21,7 +23,45 @@
         <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>
         <!-- /Navbar -->
 
-        // Connections
+        <!-- Connections page contents -->
+        <div class="container-fluid">
+            <div class="row mx-5 mt-5 px-5 pt-5 text-center">
+                <!-- Connections title -->
+                <div class="col">
+                    <p class="h3 mb-4 darkblue">My Connections</p>
+                </div>
+            </div>
+            <div class="row mx-5 mt-5 px-5 pb-5 text-center">
+                <!-- Requests received -->
+                <div class="col-4">
+                    <!-- Received title -->
+                    <p class="h5 mb-4 darkblue">Connection Requests Received</p>
+                    <!-- Received results -->
+                    <div>
+                        <p>No Requests Received</p>
+                    </div>
+                </div>
+                <!-- Requests sent -->
+                <div class="col-4">
+                    <!-- Sent title -->
+                    <p class="h5 mb-4 darkblue">Connection Requests Sent</p>
+                    <!-- Sent results -->
+                    <div>
+                        <p>No Requests Sent</p>
+                    </div>
+                </div>
+                <!-- Established -->
+                <div class="col-4">
+                    <!-- Established title -->
+                    <p class="h5 mb-4 darkblue">Established Connections</p>
+                    <!-- Established results -->
+                    <div>
+                        <p>No Connections Established</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Connections page contents -->
 
         <!-- Footer -->
         <div th:replace="fragments/layout_footer :: footer"></div>
@@ -37,6 +77,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <!-- Summernote JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
         <!-- Custom JavaScript -->
         <script th:src="@{/javascript/code.js}" defer></script>
 

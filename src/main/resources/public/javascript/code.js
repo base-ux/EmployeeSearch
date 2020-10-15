@@ -9,6 +9,28 @@ $(function() {
     $("#sortable").disableSelection()
 })
 
+// Posts Page Summernote Text Editor
+$(document).ready(function() {
+    $("#summernote").summernote({
+    height: 140,
+    minHeight: 140,
+    maxHeight: 800,
+    toolbar: [
+    [ 'fontname', [ 'fontname' ] ],
+    [ 'fontsize', [ 'fontsize' ] ],
+    [ 'color', [ 'forecolor', 'color' ] ],
+    [ 'style', [ 'style' ] ],
+    [ 'view', [ 'undo', 'redo' ] ],
+    [ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'hr', 'clear'] ],
+    [ 'view', [ 'codeview' ] ],
+    [ 'para', [ 'ol', 'ul', 'paragraph', 'height' ] ],
+    [ 'table', [ 'table' ] ],
+    [ 'insert', [ 'link'] ],
+    [ 'view', [ 'fullscreen', 'help' ] ]
+    ]
+    })
+})
+
 // Register Page Password Confirmation
 $(document).ready(function() {
     var $signupButton = $("#signup")

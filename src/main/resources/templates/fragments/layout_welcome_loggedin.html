@@ -2,32 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Fragments Layout Navbar</title>
+        <title>Fragments Layout Welcome Logged In</title>
     </head>
     <body>
 
         <!-- Welcome page content -->
         <div th:fragment="welcome">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
-                    <!-- Empty column -->
-                    <div class="col-3">
-                        <div></div>
-                    </div>
                     <!-- Big logo -->
-                    <div class="col mt-5 py-5">
-                        <div class="row">
-                            <a th:href="@{/EmployeeSearch/Users}">
-                                <img class="img-fluid biglogo" name="welcomeBigLogo" src="/media/empSiteLogo_in.png" 
-                                     onmouseover="this.src='/media/empSiteLogo_out.png';"
-                                     onmouseout="this.src='/media/empSiteLogo_in.png';" alt="Posts"/>
-                            </a>
-                        </div>
+                    <div class="col mt-5 py-5 text-center">
+                        <a th:href="@{/EmployeeSearch/Users}">
+                            <img name="welcomeBigLogo" src="/media/empSiteLogo_in.png" 
+                                 onmouseover="this.src='/media/empSiteLogo_out.png';"
+                                 onmouseout="this.src='/media/empSiteLogo_in.png';" alt="Posts"/>
+                        </a>
                     </div>
                     <!-- Links -->
-                    <div class="col-xl ml-5 mt-5 px-5 py-5">
-                        <div class="row">
-                            <ul class="list-group text-left">
+                    <div class="col-xl mt-5 mx-5 px-5 py-5">
+                        <div class="container smallbox">
+                            <ul class="list-group">
                                 <!-- Home page -->
                                 <li class="list-group-item darkbluebg">
                                     <div class="verticalrulewhite2"></div>

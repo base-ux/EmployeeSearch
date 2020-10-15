@@ -9,23 +9,11 @@ body, html {
 }
 
 /*Classes*/
-.biglogo {
-    height: auto;
-    max-width: 100%;
-}
-
 .blocks {
     background-image: url("/media/empSiteBackground_blocks.jpg");
     background-position: center;
     background-repeat: no-repeat;
     min-width: 100vw;
-}
-
-.bubbles {
-    background-image: url("/media/empSiteBackground_bubbles.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
 }
 
 .carousel-caption {
@@ -85,6 +73,10 @@ body, html {
     width: 100%;
 }
 
+.smallbox {
+    max-width: 15em;
+}
+
 .toggleAlias[aria-expanded=false] .text-expanded {
     display: none;
 }
@@ -131,14 +123,6 @@ body, html {
 
 .whiteish {
     color: #fefeff;
-}
-
-.yellowish {
-    color: #e6e600;
-}
-
-.yellowishbg {
-    background-color: #e6e600;
 }
 
 /*Id's and Classes*/
