@@ -9,6 +9,11 @@ body, html {
 }
 
 /*Classes*/
+.bigbox {
+    max-width: 75em;
+    min-width: 30em;
+}
+
 .blocks {
     background-image: url("/media/empSiteBackground_blocks.jpg");
     background-position: center;

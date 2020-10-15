@@ -28,32 +28,43 @@
             <div class="row mx-5 mt-5 px-5 pt-5 text-center">
                 <!-- Posts title -->
                 <div class="col">
-                    <p class="h3 mb-4 darkblue">Posts</p>
+                    <h3 class="text-center darkblue">
+                        <i class="fas fa-envelope"></i><strong class="ml-4">Posts</strong>
+                    </h3>
                 </div>
             </div>
-            <div class="row mx-5 px-5 pt-5">
+            <div class="row mt-5 pr-5 py-5">
                 <!-- New post box -->
-                <div class="col">
-                    <textarea id="summernote"></textarea>
-                </div>
+                <div class="col-xl">
+                    <div class="container bigbox">
+                        <form>
+                            <textarea id="summernote"></textarea>
+                            <button type="submit" class="btn btn-outline-dark btn-md mt-3 waves-effect">
+                                Send
+                            </button>
+                        </form>
+                    </div>
+                </div>    
             </div>
-            <div class="row mx-5 px-5 pt-5">
+            <div class="row my-5 pr-5 py-5">
                 <!-- List of posts -->
-                <div class="col">
-                    <table>
-                        <!-- Recent posts title -->
-                        <thead>
-                            <p class="h5 mb-4 darkblue">Recent Posts</p>
-                        </thead>
-                        <!-- Posts list -->
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>No Posts</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-xl">
+                    <div class="container bigbox">
+                        <table>
+                            <!-- Recent posts title -->
+                            <thead>
+                                <p class="h5 mb-4 darkblue">Recent Posts</p>
+                            </thead>
+                            <!-- Posts list -->
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>No Posts</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

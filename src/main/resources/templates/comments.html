@@ -28,31 +28,53 @@
             <div class="row mx-5 mt-5 px-5 pt-5 text-center">
                 <!-- Comments title -->
                 <div class="col">
-                    <p class="h3 mb-4 darkblue">Comments</p>
+                    <h3 class="text-center darkblue">
+                        <i class="fas fa-comment"></i><strong class="ml-4">Comments</strong>
+                    </h3>
                 </div>
             </div>
-            <div class="row mx-5 px-5 pt-5">
+            <div class="row mt-5 pr-5 py-5">
                 <!-- New comment box -->
-                <div class="col">
-                    <textarea id="summernote"></textarea>
+                <div class="col-xl">
+                    <div class="container bigbox">
+                        <form>
+                            <textarea id="summernote"></textarea>
+                            <button type="submit" class="btn btn-outline-dark btn-md mt-3 waves-effect">
+                                Comment
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="row mx-5 px-5 pt-5">
+            <div class="row my-5 pr-5 py-5">
                 <!-- List of comments -->
-                <div class="col">
+                <div class="col-xl">
                     <table>
-                        <!-- Recent comments title -->
+                        <!-- Original post title -->
                         <thead>
-                            <p class="h5 mb-4 darkblue">Recent Comments</p>
+                            <p class="h5 mb-4 darkblue">Original Post</p>
                         </thead>
-                        <!-- Comments list -->
+                        <!-- Original post contents -->
                         <tbody>
                             <tr>
                                 <td>
-                                    <p>No Comments</p>
+                                    <p>Original post</p>
                                 </td>
                             </tr>
                         </tbody>
+                    </table>
+                    <!-- Recent comments title -->
+                    <thead>
+                        <p class="h5 mb-4 darkblue">Recent Comments</p>
+                    </thead>
+                    <!-- Comments list -->
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>No Comments</p>
+                            </td>
+                        </tr>
+                    </tbody>
                     </table>
                 </div>
             </div>
