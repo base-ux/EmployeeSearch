@@ -37,6 +37,10 @@ body, html {
     color: #444444;
 }
 
+.darkishicon {
+    color: #444444;
+}
+
 .editbutton {
     min-width: 13em;
 }

@@ -12,7 +12,7 @@
                 <!-- Employee logo -->
                 <div class="row">
                     <div class="col">
-                        <a th:href="@{/EmployeeSearch/Welcome}" class="nav-link waves-effect waves-light">
+                        <a th:href="@{/EmployeeSearch/Users/{alias}/Welcome(alias=${account.alias})}" class="nav-link waves-effect waves-light">
                             <img src="" th:src="@{/media/empSiteLogo_in_extrasmall.png}" 
                                  alt="empSiteLogo_in_small"/>
                             <small class="greyish">
@@ -35,7 +35,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Search -->
                         <li class="nav-item">
-                            <form th:action="@{/EmployeeSearch/Users/Search}" class="form-inline my-0" method="POST">
+                            <form th:action="@{/EmployeeSearch/Users/{alias}/Search(alias=${account.alias})}" class="form-inline my-0" method="POST">
                                 <div class="md-form form-sm my-0">
                                     <input class="form-control form-control-sm mr-sm-2" type="text" placeholder="Search"
                                            aria-label="Search"/>
@@ -47,25 +47,25 @@
                         </li>
                         <!-- Connections -->
                         <li class="nav-item ml-1">
-                            <a th:href="@{/EmployeeSearch/Users/Connections}" class="nav-link waves-effect waves-light">1
+                            <a th:href="@{/EmployeeSearch/Users/{alias}/Connections(alias=${account.alias})}" class="nav-link waves-effect waves-light">1
                                 <i class="fas fa-user-plus greyishicon"></i>
                             </a>
                         </li>
                         <!-- Posts -->
                         <li class="nav-item ml-1">
-                            <a th:href="@{/EmployeeSearch/Users/Posts}" class="nav-link waves-effect waves-light">1
+                            <a th:href="@{/EmployeeSearch/Users/{alias}/Posts(alias=${account.alias})}" class="nav-link waves-effect waves-light">1
                                 <i class="fas fa-envelope greyishicon"></i>
                             </a>
                         </li>
                         <!-- Preferences -->
                         <li class="nav-item mx-1 verticalrulewhite">
-                            <a th:href="@{/EmployeeSearch/Users/Preferences}" class="nav-link waves-effect waves-light">
+                            <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences(alias=${account.alias})}" class="nav-link waves-effect waves-light">
                                 <i class="fas fa-cog greyishicon"></i>
                             </a>
                         </li>
                         <!-- User logo -->
                         <li class="nav-item">
-                            <a th:href="@{/EmployeeSearch/Users}" class="nav-link waves-effect waves-light">
+                            <a th:href="@{/EmployeeSearch/Users/{alias}(alias=${account.alias})}" class="nav-link waves-effect waves-light">
                                 <i class="fas fa-user-circle whiteicon"></i>
                             </a>
                         </li>
@@ -75,13 +75,13 @@
                                class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">user logged in</a>
                             <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
-                                <a th:href="@{/EmployeeSearch/Users}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-home mr-2 greyishicon"></i><small class="ml-1 greyish"> My Home Page</small></a>
-                                <a th:href="@{/EmployeeSearch/Users/Search}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-search mr-2 greyishicon"></i><small class="ml-4 greyish">Search</small></a>
-                                <a th:href="@{/EmployeeSearch/Users/Connections}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-user mr-2 greyishicon"></i><small class="ml-1 greyish"> Connections</small></a>
-                                <a th:href="@{/EmployeeSearch/Users/Uploads}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-cloud-upload-alt mr-2 greyishicon"></i><small class="ml-3 greyish">Uploads</small></a>
-                                <a th:href="@{/EmployeeSearch/Users/Posts}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-envelope mr-3 greyishicon"></i><small class="ml-3 greyish"> Posts</small></a>
-                                <a th:href="@{/EmployeeSearch/Users/Preferences}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-cog mr-3 greyishicon"></i><small class="greyish"> Preferences</small></a>
-                                <a th:href="@{/EmployeeSearch/Users/Help}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-question-circle mr-4 greyishicon"></i><small class="ml-2 greyish"> Help !</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}(alias=${account.alias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-home mr-2 greyishicon"></i><small class="ml-1 greyish"> My Home Page</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}/Search(alias=${account.alias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-search mr-2 greyishicon"></i><small class="ml-4 greyish">Search</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}/Connections(alias=${account.alias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-user mr-2 greyishicon"></i><small class="ml-1 greyish"> Connections</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}/Uploads(alias=${account.alias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-cloud-upload-alt mr-2 greyishicon"></i><small class="ml-3 greyish">Uploads</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}/Posts(alias=${account.alias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-envelope mr-3 greyishicon"></i><small class="ml-3 greyish"> Posts</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences(alias=${account.alias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-cog mr-3 greyishicon"></i><small class="greyish"> Preferences</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}/Help(alias=${account.alias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-question-circle mr-4 greyishicon"></i><small class="ml-2 greyish"> Help !</small></a>
                                 <a th:href="@{/EmployeeSearch/Logout}" class="btn dropdown-item my-0 darkbluebg" name="logoutLink"><i class="fas fa-sign-out-alt mr-4 greyishicon"></i><small class="ml-1 greyish">Sign out</small></a>
                             </div>
                         </li>

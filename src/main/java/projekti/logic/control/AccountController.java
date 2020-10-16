@@ -55,70 +55,89 @@ public class AccountController {
     }
 
     @GetMapping("/EmployeeSearch/TermsOfService")
-    public String termsOfService() {
+    public String termsOfService(Model model) {
+        this.accountService.helloUser(model);
+        model.addAttribute("date", this.date.date());
         return "terms_of_service";
     }
 
-//    @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users")
-    public String userHome(Model model) {
+    @GetMapping("/EmployeeSearch/Users/{alias}/TermsOfService")
+    public String termsOfService(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
+        model.addAttribute("date", this.date.date());
+        return "terms_of_service";
+    }
+
+    @Secured("USER")
+    @GetMapping("/EmployeeSearch/Users/{alias}")
+    public String userHome(Model model, @PathVariable String alias) {
+        this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "home";
     }
 
-    @GetMapping("/EmployeeSearch/Users/Comments")
-    public String userComments(Model model) {
+    @GetMapping("/EmployeeSearch/Users/{alias}/Comments")
+    public String userComments(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "comments";
     }
 
-    @GetMapping("/EmployeeSearch/Users/Connections")
-    public String userConnections(Model model) {
+    @GetMapping("/EmployeeSearch/Users/{alias}/Connections")
+    public String userConnections(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "connections";
     }
 
-    @GetMapping("/EmployeeSearch/Users/DeleteProfile")
-    public String userDeleteProfile(Model model) {
+    @GetMapping("/EmployeeSearch/Users/{alias}/DeleteProfile")
+    public String userDeleteProfile(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "delete_profile";
     }
 
-    @GetMapping("/EmployeeSearch/Users/Help")
-    public String userHelp(Model model) {
+    @GetMapping("/EmployeeSearch/Users/{alias}/Help")
+    public String userHelp(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "help";
     }
 
-    @GetMapping("/EmployeeSearch/Users/Posts")
-    public String userPosts(Model model) {
+    @GetMapping("/EmployeeSearch/Users/{alias}/Posts")
+    public String userPosts(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "posts";
     }
 
-    @GetMapping("/EmployeeSearch/Users/Preferences")
-    public String userPreferences(Model model) {
+    @GetMapping("/EmployeeSearch/Users/{alias}/Preferences")
+    public String userPreferences(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "preferences";
     }
 
-    @GetMapping("/EmployeeSearch/Users/Search")
-    public String userSearch(Model model) {
+    @GetMapping("/EmployeeSearch/Users/{alias}/Search")
+    public String userSearch(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "search";
     }
 
-    @GetMapping("/EmployeeSearch/Users/Uploads")
-    public String userUploads(Model model) {
+    @GetMapping("/EmployeeSearch/Users/{alias}/Uploads")
+    public String userUploads(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "uploads";
     }
@@ -126,6 +145,14 @@ public class AccountController {
     @GetMapping("/EmployeeSearch/Welcome")
     public String welcome(Model model) {
         this.accountService.helloUser(model);
+        model.addAttribute("date", this.date.date());
+        return "welcome";
+    }
+
+    @GetMapping("/EmployeeSearch/Users/{alias}/Welcome")
+    public String welcome(Model model, @PathVariable String alias) {
+        this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "welcome";
     }
@@ -138,9 +165,10 @@ public class AccountController {
         return this.accountService.registerCheck(model, account, bindingResult);
     }
 
-    @PostMapping("/EmployeeSearch/Users/Search")
-    public String userSearchUsers(Model model) {
+    @PostMapping("/EmployeeSearch/Users/{alias}/Search")
+    public String userSearchUsers(Model model, @PathVariable String alias) {
         this.accountService.helloUser(model);
+        model.addAttribute("account", this.accountRepository.findByAlias(alias));
         model.addAttribute("date", this.date.date());
         return "search";
     }

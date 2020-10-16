@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -28,20 +29,17 @@ public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .antMatchers("/EmployeeSearch").permitAll()
                 .antMatchers("/EmployeeSearch/").permitAll()
                 .antMatchers("/EmployeeSearch/Login").permitAll()
+                .antMatchers("/EmployeeSearch/Register/**").permitAll()
                 .antMatchers("/EmployeeSearch/TermsOfService").permitAll()
-                .antMatchers("/EmployeeSearch/Users").permitAll()
-                .antMatchers("/EmployeeSearch/Users/**").permitAll()
-                //                .antMatchers("/EmployeeSearch/Users").hasAnyAuthority("USER")
-                .antMatchers(HttpMethod.GET, "/EmployeeSearch/Posts").permitAll()
+                .antMatchers("/EmployeeSearch/Users/**").hasAnyAuthority("USER")
+                .antMatchers(HttpMethod.GET, "/EmployeeSearch/Posts").hasAnyAuthority("USER")
                 .antMatchers(HttpMethod.GET, "/EmployeeSearch/Register").permitAll()
-                .antMatchers(HttpMethod.GET, "/EmployeeSearch/Register/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/EmployeeSearch/Welcome").permitAll()
-                .antMatchers(HttpMethod.POST, "/EmployeeSearch/Register").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/EmployeeSearch/Login")
-                .defaultSuccessUrl("/EmployeeSearch/Users")
+                .successHandler(myAuthenticationSuccessHandler())
                 .failureUrl("/EmployeeSearch/LoginError")
                 .permitAll()
                 .and()
@@ -56,6 +54,11 @@ public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapt
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
+        return new MySimpleUrlAuthenticationSuccessHandler();
     }
 
     @Bean
