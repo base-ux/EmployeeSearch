@@ -7,6 +7,8 @@ import static java.lang.annotation.ElementType.TYPE;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
+import java.security.Principal;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.Valid;
@@ -31,6 +33,9 @@ public class AccountService {
 
     @Autowired
     Date date;
+
+    @Autowired
+    HttpServletRequest request;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -75,23 +80,36 @@ public class AccountService {
         return converted;
     }
 
-    public void helloUser(Model model) {
+    public boolean helloUser(Model model, String checkAlias) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         if (username.equals("anonymousUser") || username.equals("null")) {
             model.addAttribute("helloalias", "Welcome, visitor!");
             model.addAttribute("loggedinuser", "");
         } else {
-            Account account = this.accountRepository.findByUsername(username);
-            String alias = account.getAlias();
-            if (alias.length() > 9) {
-                model.addAttribute("helloalias", "Hello, " + alias.substring(0, 9) + "...!");
-                model.addAttribute("loggedinuser", alias.substring(0, 9) + "...");
+            Principal principal = this.request.getUserPrincipal();
+            String principalName = principal.getName();
+            Account principalAccount = this.accountRepository.findByUsername(principalName);
+            if (!principalAccount.getAlias().equals(checkAlias)) {
+                return false;
             } else {
-                model.addAttribute("helloalias", "Hello, " + alias + " !");
-                model.addAttribute("loggedinuser", alias);
+                String alias = principalAccount.getAlias();
+                if (alias.length() > 9) {
+                    model.addAttribute("account", principalAccount);
+                    model.addAttribute("date", this.date.date());
+                    model.addAttribute("helloalias", "Hello, " + alias.substring(0, 9) + "...!");
+                    model.addAttribute("loggedinuser", alias.substring(0, 9) + "...");
+                    return true;
+                } else {
+                    model.addAttribute("account", principalAccount);
+                    model.addAttribute("date", this.date.date());
+                    model.addAttribute("helloalias", "Hello, " + alias + " !");
+                    model.addAttribute("loggedinuser", alias);
+                    return true;
+                }
             }
         }
+        return true;
     }
 
     public String registerCheck(Model model,

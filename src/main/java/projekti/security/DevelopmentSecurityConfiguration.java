@@ -3,7 +3,6 @@ package projekti.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -32,9 +31,7 @@ public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .antMatchers("/EmployeeSearch/Register/**").permitAll()
                 .antMatchers("/EmployeeSearch/TermsOfService").permitAll()
                 .antMatchers("/EmployeeSearch/Users/**").hasAnyAuthority("USER")
-                .antMatchers(HttpMethod.GET, "/EmployeeSearch/Posts").hasAnyAuthority("USER")
-                .antMatchers(HttpMethod.GET, "/EmployeeSearch/Register").permitAll()
-                .antMatchers(HttpMethod.GET, "/EmployeeSearch/Welcome").permitAll()
+                .antMatchers("/EmployeeSearch/Welcome").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
