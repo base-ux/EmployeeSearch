@@ -227,7 +227,7 @@ public class AccountController {
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
-            model.addAttribute("editlayoutispressed", editLayoutButton);
+            model.addAttribute("editlayoutIsPressed", editLayoutButton);
             return "home";
         }
     }

@@ -63,7 +63,7 @@
                         </form>
                         <!-- Cannot remember password link -->
                         <p class="mt-2">What if I forget my Password? See Password on the 
-                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help(alias=${account.alias})}">Help page.</a>
+                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help#forgottenPassword(alias=${account.alias})}">Help page.</a>
                         </p>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
             <!-- Change name -->
             <div class="container">
                 <!-- Change name title -->
-                <h4>Change Name</h4>
+                <h4 id="changeName">Change Name</h4>
                 <!-- Change name form -->
                 <div class="row justify-content-center">
                     <div class="col col-8">
@@ -96,7 +96,7 @@
                         </form>
                         <!-- Change alias link -->
                         <p class="mt-2">Want to change Alias? See Alias on the 
-                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help(alias=${account.alias})}">Help page.</a>
+                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help#changeAlias(alias=${account.alias})}">Help page.</a>
                         </p>
                     </div>
                 </div>
@@ -119,12 +119,12 @@
                         <form class="text-center">
                             <!-- Hide profile button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitHideProfile" type="submit" id="hideProfile">Hide Profile <i class="fas fa-user-circle ml-2"></i></button>
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitHideProfile" type="submit" id="hideProfileButton">Hide Profile <i class="fas fa-user-circle ml-2"></i></button>
                             </div>
                         </form>
                         <!-- Hide profile link -->
                         <p class="mt-2">Not sure what Hide profile does? See Profile on the 
-                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help(alias=${account.alias})}">Help page.</a>
+                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help#hideProfile(alias=${account.alias})}">Help page.</a>
                         </p>
                     </div>
                 </div>
@@ -147,12 +147,12 @@
                         <form  th:action="@{/EmployeeSearch/Users/{alias}/DeleteProfile(alias=${account.alias})}" class="text-center">
                             <!-- Delete profile button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitDeleteProfile" type="submit" id="deleteProfile">Delete Profile<i class="fas fa-user-circle ml-2"></i></button>
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitDeleteProfile" type="submit" id="deleteProfileButton">Delete Profile<i class="fas fa-user-circle ml-2"></i></button>
                             </div>
                         </form>
                         <!-- Delete profile link -->
                         <p class="mt-2">Not sure what Delete profile does? See Profile on the 
-                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help(alias=${account.alias})}">Help page.</a>
+                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help#deleteProfile(alias=${account.alias})}">Help page.</a>
                         </p>
                     </div>
                 </div>
