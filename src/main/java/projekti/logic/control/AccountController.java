@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import projekti.domain.Account;
 import projekti.logic.repository.AccountRepository;
 import projekti.logic.service.AccountService;
@@ -219,6 +220,19 @@ public class AccountController {
     }
 
     @Secured("USER")
+    @PostMapping("/EmployeeSearch/Users/{alias}")
+    public String userHomeEdit(Model model, @PathVariable String alias,
+            @RequestParam String editLayoutButton) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+        if (isLoggedInUser == false) {
+            return "address_error";
+        } else {
+            model.addAttribute("editlayoutispressed", editLayoutButton);
+            return "home";
+        }
+    }
+
+    @Secured("USER")
     @PostMapping("/EmployeeSearch/Users/{alias}/Search")
     public String userSearchUsers(Model model, @PathVariable String alias) {
         boolean isLoggedInUser = this.accountService.helloUser(model, alias);
@@ -228,5 +242,4 @@ public class AccountController {
             return "search";
         }
     }
-
 }

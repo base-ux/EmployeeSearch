@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Fragments Layout Home Non Edit Mode</title>
+    </head>
+    <body>
+
+        <!-- Home page non-edit-mode -->
+        <div th:fragment="homenonedit">
+            <div class="container-fluid">
+                <div class="row my-5">
+                    <!-- Home page title -->
+                    <div class="col-6">
+                        <h3 class="text-center darkblue">
+                            <i class="fas fa-home"></i><strong class="ml-4">Home Page</strong>
+                        </h3>
+                    </div>
+                    <!-- Edit layout button -->
+                    <div class="col-6 pr-5 text-right">
+                        <form th:action="@{/EmployeeSearch/Users/{alias}(alias=${account.alias})}" method="POST">
+                            <button type="submit" name="editLayoutButton" value="beginEditing" class="btn btn-sm btn-dark editbutton greyish">Edit Layout<i class="fas fa-edit ml-2 greyishicon"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Contents -->
+                <div class="row">
+                    <!-- Left column -->
+                    <div class="col-xl mx-5">
+                        <!-- User picture -->
+                        <div class="card mb-5">
+                            <div><h5 class="py-2 text-center darkbluebg greyish"><strong><i class="fas fa-user-circle mr-3 whiteicon"></i>Alias</strong></h5></div>
+                            <div class="container-fluid collapse show" id="collapseAlias">
+                                <div class="row">
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <img src="" th:src="@{/media/profilePicture_default_male.png}" alt="" class="img-fluid rounded-circle"/>
+                                            <br/>
+                                            <small class="mt-3 text-center text-dark"><strong>Change picture</strong></small>
+                                            <h5 class="mt-3 text-center text-dark"><strong>Real name</strong></h5>
+                                            <small class="mt-3 text-center text-dark"><strong>Change name</strong></small>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <p><i class="fas fa-quote-left"></i> Introduction of myself and about my profile</p>
+                                        <small class="mt-3 text-center text-dark"><strong>Edit Introduction</strong></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tabs -->
+                        <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link darkbluebg greyish active" id="proficiency-tab" data-toggle="tab" href="#proficiency" role="tab" aria-controls="proficiency"
+                                   aria-selected="true">Proficiency<i class="fas fa-user-tie ml-3 greyishicon"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link darkbluebg greyish" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education"
+                                   aria-selected="false">Education<i class="fas fa-graduation-cap ml-3 greyishicon"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link darkbluebg greyish" id="workHistory-tab" data-toggle="tab" href="#workHistory" role="tab" aria-controls="workHistory"
+                                   aria-selected="false">Work History<i class="fas fa-briefcase ml-3 greyishicon"></i></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content py-5" id="profileTabsContent">
+                            <div class="tab-pane fade show active" id="proficiency" role="tabpanel" aria-labelledby="proficiency-tab">
+                                <p>Ability 1 Proficiency Level <i class="far fa-thumbs-up"></i></p>
+                                <small class="ml-3 mt-3 text-center text-dark"><strong>Add or Remove Abilities</strong></small>
+                            </div>
+                            <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">
+                                <p>Education Text</p>
+                                <small class="ml-3 mt-3 text-center text-dark"><strong>Edit Education</strong></small>
+                            </div>
+                            <div class="tab-pane fade" id="workHistory" role="tabpanel" aria-labelledby="workHistory-tab">
+                                <p>Work History Text</p>
+                                <small class="ml-3 mt-3 text-center text-dark"><strong>Edit Work History</strong></small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right column -->
+                    <div class="col mx-5">
+                        <!-- Background -->
+                        <div class="card mb-5">
+                            <div><h5 class="py-2 text-center darkbluebg greyish"><strong><i class="fas fa-history mr-3 greyishicon"></i>Background</strong></h5></div>
+                            <div class="collapse show overflowing" id="collapseBackground">
+                                <a th:href="@{/EmployeeSearch/Users}" name="">
+                                    <p class="mt-3 text-center text-dark">Background text</p>
+                                    <small class="ml-3 mt-3 text-center text-dark"><strong>Edit Background</strong></small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Contact Information -->
+                        <div class="card mb-5">
+                            <div><h5 class="py-2 text-center darkbluebg greyish"><strong><i class="fas fa-address-card mr-3 greyishicon"></i>Contact Information</strong></h5></div>
+                            <div class="collapse show overflowing" id="collapseContactInformation">
+                                <a th:href="@{/EmployeeSearch/Users}" name="">
+                                    <p class="mt-3 text-center text-dark">Contact Information text</p>
+                                    <small class="ml-3 mt-3 text-center text-dark"><strong>Edit Contact Information</strong></small>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Connections -->
+                        <div class="card mb-5">
+                            <h5 class="px-4 py-2 text-left darkbluebg greyish">
+                                <strong><i class="fas fa-user mr-3 greyishicon"></i>Connections (4)</strong><small class="mx-5">manage</small></h5>
+                            <div class="container collapse show overflowing" id="collapseConnections">
+                                <div class="row">
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <h5 class="mt-3 text-left text-dark"><strong>Alias</strong></h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <h5 class="mt-3 text-left text-dark"><strong>Alias</strong></h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <h5 class="mt-3 text-left text-dark"><strong>Alias</strong></h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a th:href="@{/EmployeeSearch/Users}" name="">
+                                            <h5 class="mt-3 text-left text-dark"><strong>Alias</strong></h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <!-- Uploads -->
+                        <div class="card mb-5">
+                            <div><h5 class="px-4 py-2 text-lef darkbluebg greyish">
+                                    <strong><i class="fas fa-cloud-upload-alt mr-3 greyishicon"></i>Uploads (10)</strong><small class="mx-5">manage</small></h5></div>
+                            <div class="collapse show overflowing" id="collapseUploads">
+                                <a th:href="@{/EmployeeSearch/Users}" name="">
+                                    <h5 class="mt-3 text-center text-dark">File 1</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 2</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 3</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 4</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 5</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 6</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 7</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 8</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 9</h5>
+                                    <h5 class="mt-3 text-center text-dark">File 10</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Home page non-edit-mode -->
+
+    </body>
+</html>

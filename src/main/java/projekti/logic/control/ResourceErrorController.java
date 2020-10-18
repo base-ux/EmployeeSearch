@@ -1,11 +1,17 @@
 package projekti.logic.control;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import projekti.logic.utility.Date;
 
 @Controller
 public class ResourceErrorController implements ErrorController {
+
+    @Autowired
+    Date date;
 
     @Override
     public String getErrorPath() {
@@ -13,7 +19,8 @@ public class ResourceErrorController implements ErrorController {
     }
 
     @GetMapping("/error")
-    public String error() {
+    public String error(Model model) {
+        model.addAttribute("date", this.date.date());
         return "resource_error";
     }
 }

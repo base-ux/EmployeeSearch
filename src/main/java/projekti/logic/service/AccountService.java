@@ -91,6 +91,7 @@ public class AccountService {
             String principalName = principal.getName();
             Account principalAccount = this.accountRepository.findByUsername(principalName);
             if (!principalAccount.getAlias().equals(checkAlias)) {
+                model.addAttribute("date", this.date.date());
                 return false;
             } else {
                 String alias = principalAccount.getAlias();
