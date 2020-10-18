@@ -11,7 +11,7 @@ $(function() {
 
 // Posts Page Summernote Text Editor
 $(document).ready(function() {
-    $("#summernote").summernote({
+    $(".summernote").summernote({
     height: 140,
     minHeight: 140,
     maxHeight: 800,

@@ -20,7 +20,7 @@
     <body>
 
         <!-- Not editing or finished editing -->
-        <div th:if="${editlayoutIsPressed} == null or ${editlayoutIsPressed} == 'finishedEditing'">
+        <div th:if="${editlayoutClicked} == null or ${editlayoutClicked} == 'finishedEditing'">
 
             <!-- Navbar -->
             <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>
@@ -38,7 +38,7 @@
         <!-- /Not editing or finished editing -->
 
         <!-- Edit layout button pressed and began editing -->
-        <div th:if="${editlayoutIsPressed} == 'beginEditing'">
+        <div th:if="${editlayoutClicked} == 'beginEditing'">
 
             <!-- Navbar -->
             <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>

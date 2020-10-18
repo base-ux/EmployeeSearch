@@ -36,14 +36,14 @@
                                         <div>
                                             <img src="" th:src="@{/media/profilePicture_default_male.png}" alt="" class="img-fluid rounded-circle"/>
                                             <br/>
-                                            <small class="mt-3 text-center text-dark"><strong>Change picture</strong></small>
+                                            <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences#changePicture(alias=${account.alias})}"><small class="mt-3 text-center text-dark"><strong>Change picture</strong></small></a>
                                             <h5 class="mt-3 text-center text-dark"><strong>Real name</strong></h5>
                                             <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences#changeName(alias=${account.alias})}"><small class="mt-3 text-center text-dark"><strong>Change name</strong></small></a>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <p><i class="fas fa-quote-left mr-1"></i>Introduction of myself and about my profile</p>
-                                        <small class="mt-3 text-center text-dark"><strong>Edit Introduction</strong></small>
+                                        <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences#editIntroduction(alias=${account.alias})}"><small class="mt-3 text-center text-dark"><strong>Edit Introduction</strong></small></a>
                                     </div>
                                 </div>
                             </div>
@@ -65,16 +65,33 @@
                         </ul>
                         <div class="tab-content py-5" id="profileTabsContent">
                             <div class="tab-pane fade show active" id="proficiency" role="tabpanel" aria-labelledby="proficiency-tab">
-                                <p>Ability 1 Proficiency Level <i class="far fa-thumbs-up"></i></p>
-                                <small class="ml-3 mt-3 text-center text-dark"><strong>Add or Remove Abilities</strong></small>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Ability</th>
+                                            <th>Level</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Likes <i class="far fa-thumbs-up"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <p></p>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences#editAbilities(alias=${account.alias})}"><small class="mt-3 text-center text-dark"><strong>Edit Abilities</strong></small></a>
                             </div>
                             <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">
                                 <p>Education Text</p>
-                                <small class="ml-3 mt-3 text-center text-dark"><strong>Edit Education</strong></small>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences#editEducation(alias=${account.alias})}"><small class="mt-3 text-center text-dark"><strong>Edit Education</strong></small></a>
                             </div>
                             <div class="tab-pane fade" id="workHistory" role="tabpanel" aria-labelledby="workHistory-tab">
                                 <p>Work History Text</p>
-                                <small class="ml-3 mt-3 text-center text-dark"><strong>Edit Work History</strong></small>
+                                <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences#editWorkHistory(alias=${account.alias})}"><small class="mt-3 text-center text-dark"><strong>Edit Work History</strong></small></a>
                             </div>
                         </div>
                     </div>
@@ -84,20 +101,20 @@
                         <div class="card mb-5">
                             <div><h5 class="py-2 text-center darkbluebg greyish"><strong><i class="fas fa-history mr-3 greyishicon"></i>Background</strong></h5></div>
                             <div class="overflowing">
-                                <a th:href="@{/EmployeeSearch/Users}">
+                                <div>
                                     <p class="mt-3 text-center text-dark">Background text</p>
-                                    <small class="ml-3 mt-3 text-center text-dark"><strong>Edit Background</strong></small>
-                                </a>
+                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences#editBackground(alias=${account.alias})}"><small class="ml-3 mt-3 text-center text-dark"><strong>Edit Background</strong></small></a>
+                                </div>
                             </div>
                         </div>
                         <!-- Contact Information -->
                         <div class="card mb-5">
                             <div><h5 class="py-2 text-center darkbluebg greyish"><strong><i class="fas fa-address-card mr-3 greyishicon"></i>Contact Information</strong></h5></div>
                             <div class="overflowing">
-                                <a th:href="@{/EmployeeSearch/Users}">
+                                <div th:href="@{/EmployeeSearch/Users}">
                                     <p class="mt-3 text-center text-dark">Contact Information text</p>
-                                    <small class="ml-3 mt-3 text-center text-dark"><strong>Edit Contact Information</strong></small>
-                                </a>
+                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Preferences#editContactInformation(alias=${account.alias})}"><small class="ml-3 mt-3 text-center text-dark"><strong>Edit Contact Information</strong></small></a>
+                                </div>
                             </div>
                         </div>
                         <!-- Connections -->

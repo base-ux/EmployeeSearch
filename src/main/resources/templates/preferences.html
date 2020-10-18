@@ -58,13 +58,39 @@
                             </div>
                             <!-- Change password button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewPassword" type="submit" id="changePassword">Change Password <i class="fas fa-lock ml-2"></i></button>
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewPassword" type="submit" id="changePasswordButton">Change Password<i class="fas fa-lock ml-2"></i></button>
                             </div>
                         </form>
                         <!-- Cannot remember password link -->
-                        <p class="mt-2">What if I forget my Password? See Password on the 
-                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help#forgottenPassword(alias=${account.alias})}">Help page.</a>
-                        </p>
+                        <div class="row">
+                            <div class="text-center">
+                                <p class="ml-2 mt-2">What if I forget my Password? See Password on the 
+                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Help#forgottenPassword(alias=${account.alias})}">Help page.</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Change picture -->
+            <div class="container">
+                <!-- Change picture title -->
+                <h4 id="changePicture">Change Picture</h4>
+                <!-- Change picture form -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <form class="text-center">
+                            <!-- Current picture -->
+                            <div class="md-form input-group input-with-pre-icon">
+                                <p><i class="fas fa-portrait fa-2x mr-5" aria-hidden="true"></i>Current Profile Picture</p>
+                                <img src="" th:src="@{/media/profilePicture_default_male.png}" alt="" class="img-fluid rounded-circle"/>
+                            </div>
+                            <!-- Change picture button -->
+                            <div class="row justify-content-left">
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewPicture" type="submit" id="changePictureButton">Change Picture<i class="fas fa-portrait ml-2"></i></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -91,13 +117,168 @@
                             </div>
                             <!-- Change name button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewName" type="submit" id="changeName">Change Name <i class="fas fa-user-edit ml-2"></i></button>
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewName" type="submit" id="changeNameButton">Change Name<i class="fas fa-user-edit ml-2"></i></button>
                             </div>
                         </form>
                         <!-- Change alias link -->
-                        <p class="mt-2">Want to change Alias? See Alias on the 
-                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help#changeAlias(alias=${account.alias})}">Help page.</a>
-                        </p>
+                        <div class="row">
+                            <div class="text-center">
+                                <p class="ml-2 mt-2">Want to change Alias? See Alias on the 
+                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Help#changeAlias(alias=${account.alias})}">Help page.</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Edit abilities -->
+            <div class="container">
+                <!-- Edit abilities title -->
+                <h4 id="editAbilities">Edit Abilities</h4>
+                <!-- Edit abilities form -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <!-- Current abilities -->
+                        <div class="row">
+                            <div class="md-form input-group input-with-pre-icon ml-2">
+                                <p><i class="fas fa-user-tie fa-2x mr-5" aria-hidden="true"></i>Current Abilities</p>
+                            </div>
+                        </div>
+                        <!-- Edit abilities box -->
+                        <div class="row">
+                            <div class="ml-2">
+                            </div>
+                        </div>
+                        <!-- Edit abilities button -->
+                        <div class="row justify-content-left">
+                            <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewAbilities" type="submit" id="editAbilitiesButton">Save<i class="fas fa-user-tie ml-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Edit background -->
+            <div class="container">
+                <!-- Edit background title -->
+                <h4 id="editBackground">Edit Background</h4>
+                <!-- Edit background form -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <form>
+                            <!-- Current background -->
+                            <div class="row">
+                                <div class="md-form input-group input-with-pre-icon ml-1">
+                                    <p><i class="fas fa-history fa-2x mr-5" aria-hidden="true"></i>Current Background</p>
+                                    <!-- Edit background box -->
+                                    <textarea class="summernote"></textarea>
+                                    <!-- Edit background button -->
+                                    <div class="row justify-content-left">
+                                        <button class="btn btn-sm btn-dark ml-3 mt-4 editbutton greyish" name="submitNewBackground" type="submit" id="editBackgroundButton">Save<i class="fas fa-history ml-2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Edit contact information -->
+            <div class="container">
+                <!-- Edit contact information title -->
+                <h4 id="editContactInformation">Edit Contact Information</h4>
+                <!-- Edit contact information form -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <form>
+                            <!-- Current contact information -->
+                            <div class="row">
+                                <div class="md-form input-group input-with-pre-icon ml-1">
+                                    <p><i class="fas fa-address-card fa-2x mr-5" aria-hidden="true"></i>Current Contact Information</p>
+                                    <!-- Edit contact information box -->
+                                    <textarea class="summernote"></textarea>
+                                    <!-- Edit contact information button -->
+                                    <div class="row justify-content-left">
+                                        <button class="btn btn-sm btn-dark ml-3 mt-4 editbutton greyish" name="submitNewContactInformation" type="submit" id="editContactInformationButton">Save<i class="fas fa-address-card ml-2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Edit education -->
+            <div class="container">
+                <!-- Edit education title -->
+                <h4 id="editEducation">Edit Education</h4>
+                <!-- Edit education form -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <form>
+                            <!-- Current education -->
+                            <div class="row">
+                                <div class="md-form input-group input-with-pre-icon ml-1">
+                                    <p><i class="fas fa-graduation-cap fa-2x mr-5" aria-hidden="true"></i>Current Education</p>
+                                    <!-- Edit education box -->
+                                    <textarea class="summernote"></textarea>
+                                    <!-- Edit education button -->
+                                    <div class="row justify-content-left">
+                                        <button class="btn btn-sm btn-dark ml-3 mt-4 editbutton greyish" name="submitNewEducation" type="submit" id="editEducationButton">Save<i class="fas fa-graduation-cap ml-2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Edit introduction -->
+            <div class="container">
+                <!-- Edit introduction title -->
+                <h4 id="editIntroduction">Edit Introduction</h4>
+                <!-- Edit introduction form -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <form>
+                            <!-- Current introduction -->
+                            <div class="row">
+                                <div class="md-form input-group input-with-pre-icon ml-1">
+                                    <p><i class="fas fa-quote-left fa-2x mr-5" aria-hidden="true"></i>Current Introduction</p>
+                                    <!-- Edit introduction box -->
+                                    <textarea class="summernote"></textarea>
+                                    <!-- Edit introduction button -->
+                                    <div class="row justify-content-left">
+                                        <button class="btn btn-sm btn-dark ml-3 mt-4 editbutton greyish" name="submitNewIntroduction" type="submit" id="editIntroductionButton">Save<i class="fas fa-quote-left ml-2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
+            <!-- Edit work history -->
+            <div class="container">
+                <!-- Edit work history title -->
+                <h4 id="editWorkHistory">Edit Work History</h4>
+                <!-- Edit work history form -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <form>
+                            <!-- Current work history -->
+                            <div class="row">
+                                <div class="md-form input-group input-with-pre-icon ml-1">
+                                    <p><i class="fas fa-briefcase fa-2x mr-5" aria-hidden="true"></i>Current Work History</p>
+                                    <!-- Edit work history box -->
+                                    <textarea class="summernote"></textarea>
+                                    <!-- Edit work history button -->
+                                    <div class="row justify-content-left">
+                                        <button class="btn btn-sm btn-dark ml-3 mt-4 editbutton greyish" name="submitNewWorkHistory" type="submit" id="editWorkHistoryButton">Save<i class="fas fa-briefcase ml-2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -107,25 +288,33 @@
                 <!-- Hide profile title -->
                 <h4><i class="fas fa-user-slash"></i><span class="ml-4">Hide Profile</span></h4>
                 <!-- Hide profile contents -->
-                <div class="row justify-content-left">
+                <div class="row justify-content-center">
                     <div class="col col-8">
-                        <div class="my-5 text-center">
-                            <h5>Currently your profile is <strong>public.</strong></h5>
+                        <div class="row">
+                            <div class="my-5 text-center">
+                                <h5 class="ml-2">Currently your profile is <strong>public.</strong></h5>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-8">
-                        <form class="text-center">
+                        <form>
                             <!-- Hide profile button -->
-                            <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitHideProfile" type="submit" id="hideProfileButton">Hide Profile <i class="fas fa-user-circle ml-2"></i></button>
+                            <div class="row">
+                                <div class="text-center">
+                                    <button class="btn btn-sm btn-dark editbutton greyish" name="submitHideProfile" type="submit" id="hideProfileButton">Hide Profile<i class="fas fa-user-circle ml-2"></i></button>
+                                </div>
                             </div>
                         </form>
                         <!-- Hide profile link -->
-                        <p class="mt-2">Not sure what Hide profile does? See Profile on the 
-                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help#hideProfile(alias=${account.alias})}">Help page.</a>
-                        </p>
+                        <div class="row">
+                            <div class="text-center">
+                                <p class="ml-2 mt-2">Not sure what Hide profile does? See Profile on the 
+                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Help#hideProfile(alias=${account.alias})}">Help page.</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,10 +324,12 @@
                 <!-- Delete profile title -->
                 <h4><i class="fas fa-skull-crossbones"></i><span class="ml-4">Delete Profile</span></h4>
                 <!-- Delete profile contents -->
-                <div class="row justify-content-left">
+                <div class="row justify-content-center">
                     <div class="col col-8">
-                        <div class="my-5 text-center">
-                            <h5 class="text-danger"> CAUTION! This action is <span class="font-italic">irreversible!</span></h5>
+                        <div class="row">
+                            <div class="my-5 text-center">
+                                <h5 class="ml-2 text-danger"> CAUTION! This action is <span class="font-italic">irreversible!</span></h5>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,14 +337,20 @@
                     <div class="col col-8">
                         <form  th:action="@{/EmployeeSearch/Users/{alias}/DeleteProfile(alias=${account.alias})}" class="text-center">
                             <!-- Delete profile button -->
-                            <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitDeleteProfile" type="submit" id="deleteProfileButton">Delete Profile<i class="fas fa-user-circle ml-2"></i></button>
+                            <div class="row">
+                                <div class="text-center">
+                                    <button class="btn btn-sm btn-dark editbutton greyish" name="submitDeleteProfile" type="submit" id="deleteProfileButton">Delete Profile<i class="fas fa-user-circle ml-2"></i></button>
+                                </div>
                             </div>
                         </form>
                         <!-- Delete profile link -->
-                        <p class="mt-2">Not sure what Delete profile does? See Profile on the 
-                            <a th:href="@{/EmployeeSearch/Users/{alias}/Help#deleteProfile(alias=${account.alias})}">Help page.</a>
-                        </p>
+                        <div class="row">
+                            <div class="text-center">
+                                <p class="ml-2 mt-2">Not sure what Delete profile does? See Profile on the 
+                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Help#deleteProfile(alias=${account.alias})}">Help page.</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
