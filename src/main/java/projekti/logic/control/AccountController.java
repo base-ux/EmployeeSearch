@@ -198,7 +198,7 @@ public class AccountController {
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
-            return "visiting";
+            return "visiting_page";
         }
     }
 
