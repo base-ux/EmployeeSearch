@@ -8,6 +8,8 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -54,7 +56,7 @@ public class AccountService {
 
     }
 
-    //    Allows only numbers, uppercase letters, lowercase letters, &, @, _
+    //    Allows only numbers, uppercase letters, lowercase letters, space, &, @, _
     public String convertRegisterEntry(String convert) {
         String converted = "";
         for (int i = 0; i < convert.length(); i++) {
@@ -62,6 +64,7 @@ public class AccountService {
             if (((int) c >= 48 && (int) c <= 57)
                     || ((int) c >= 65 && (int) c <= 90)
                     || ((int) c >= 97 && (int) c <= 122)
+                    || ((int) c == 32)
                     || ((int) c == 38)
                     || ((int) c == 64)
                     || ((int) c == 95)) {
@@ -80,32 +83,32 @@ public class AccountService {
         return converted;
     }
 
-    public boolean helloUser(Model model, String checkAlias) {
+    public boolean helloUser(Model model, String checkUseralias) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         if (username.equals("anonymousUser") || username.equals("null")) {
-            model.addAttribute("helloalias", "Welcome, visitor!");
+            model.addAttribute("hellouseralias", "Welcome, visitor!");
             model.addAttribute("loggedinuser", "");
         } else {
             Principal principal = this.request.getUserPrincipal();
             String principalName = principal.getName();
             Account principalAccount = this.accountRepository.findByUsername(principalName);
-            if (!principalAccount.getAlias().equals(checkAlias)) {
+            if (!principalAccount.getUseralias().equals(checkUseralias)) {
                 model.addAttribute("date", this.date.date());
                 return false;
             } else {
-                String alias = principalAccount.getAlias();
-                if (alias.length() > 9) {
+                String useralias = principalAccount.getUseralias();
+                if (useralias.length() > 9) {
                     model.addAttribute("account", principalAccount);
                     model.addAttribute("date", this.date.date());
-                    model.addAttribute("helloalias", "Hello, " + alias.substring(0, 9) + "...!");
-                    model.addAttribute("loggedinuser", alias.substring(0, 9) + "...");
+                    model.addAttribute("hellouseralias", "Hello, " + useralias.substring(0, 9) + "...!");
+                    model.addAttribute("loggedinuser", useralias.substring(0, 9) + "...");
                     return true;
                 } else {
                     model.addAttribute("account", principalAccount);
                     model.addAttribute("date", this.date.date());
-                    model.addAttribute("helloalias", "Hello, " + alias + " !");
-                    model.addAttribute("loggedinuser", alias);
+                    model.addAttribute("hellouseralias", "Hello, " + useralias + " !");
+                    model.addAttribute("loggedinuser", useralias);
                     return true;
                 }
             }
@@ -135,9 +138,9 @@ public class AccountService {
             model.addAttribute("username", account.getUsername());
             return "register_error";
         }
-        if (this.accountRepository.findByAlias(account.getAlias()) != null) {
-            model.addAttribute("alias", account.getAlias());
-            model.addAttribute("aliasFail", "");
+        if (this.accountRepository.findByUseralias(account.getUseralias()) != null) {
+            model.addAttribute("useralias", account.getUseralias());
+            model.addAttribute("useraliasFail", "");
             model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
             return "register_error";
@@ -145,10 +148,10 @@ public class AccountService {
             String username = convertRegisterEntry(convertRemoveSpaces(account.getUsername()));
             String password = convertRegisterEntry(account.getPassword());
             String confirm = convertRegisterEntry(account.getConfirm());
-            String realname = convertRegisterEntry(convertRemoveSpaces(account.getRealname()));
-            String alias = convertRegisterEntry(convertRemoveSpaces(account.getAlias()));
+            String realname = convertRegisterEntry(account.getRealname());
+            String useralias = convertRegisterEntry(convertRemoveSpaces(account.getUseralias()));
             if (username.equals("ERROR") || password.equals("ERROR")
-                    || realname.equals("ERROR") || alias.equals("ERROR")) {
+                    || realname.equals("ERROR") || useralias.equals("ERROR")) {
                 model.addAttribute("date", this.date.date());
                 model.addAttribute("entryFail", "");
                 return "register_error";
@@ -157,9 +160,31 @@ public class AccountService {
             account.setPassword(passwordEncoder.encode(password));
             account.setConfirm(confirm);
             account.setRealname(realname);
-            account.setAlias(alias);
+            account.setUseralias(useralias);
         }
         this.accountRepository.save(account);
-        return "redirect:/EmployeeSearch/Register/" + account.getAlias();
+        return "redirect:/EmployeeSearch/Register/" + account.getUseralias();
+    }
+
+    public List<Account> searchByRealname(String keyword) {
+        List<Account> results = this.accountRepository.findByRealnameContainingIgnoreCase(keyword);
+        if (results.size() > 0) {
+            return results;
+        } else {
+            results.add(new Account());
+            return results;
+        }
+    }
+
+    public List<String> searchByUseralias(String keyword) {
+        List<String> results = new ArrayList<>();
+        List<Account> accountsByUseralias = this.accountRepository.findByUseraliasContainingIgnoreCase(keyword);
+        if (accountsByUseralias.size() > 0) {
+            accountsByUseralias.forEach(a -> results.add(a.getUseralias()));
+            return results;
+        } else {
+            results.add("empty");
+            return results;
+        }
     }
 }

@@ -40,5 +40,5 @@ public class Account extends AbstractPersistable<Long> {
     @NotEmpty
     @NotNull
     @Size(min = 2, max = 30)
-    private String alias;
+    private String useralias;
 }

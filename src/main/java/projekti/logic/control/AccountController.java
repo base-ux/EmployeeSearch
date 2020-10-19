@@ -60,9 +60,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Register/{alias}")
-    public String registerOk(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Register/{useralias}")
+    public String registerOk(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -81,9 +81,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/TermsOfService")
-    public String termsOfService(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}/TermsOfService")
+    public String termsOfService(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -92,9 +92,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/Comments")
-    public String userComments(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Comments")
+    public String userComments(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -103,9 +103,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/Connections")
-    public String userConnections(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Connections")
+    public String userConnections(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -114,9 +114,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/DeleteProfile")
-    public String userDeleteProfile(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}/DeleteProfile")
+    public String userDeleteProfile(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -125,9 +125,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/Help")
-    public String userHelp(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Help")
+    public String userHelp(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -136,9 +136,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}")
-    public String userHome(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}")
+    public String userHome(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -147,9 +147,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/Posts")
-    public String userPosts(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Posts")
+    public String userPosts(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -158,9 +158,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/Preferences")
-    public String userPreferences(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Preferences")
+    public String userPreferences(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -169,9 +169,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/Search")
-    public String userSearch(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Search")
+    public String userSearch(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -180,9 +180,9 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/Uploads")
-    public String userUploads(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Uploads")
+    public String userUploads(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -190,9 +190,22 @@ public class AccountController {
         }
     }
 
-    @GetMapping("/EmployeeSearch/Welcome")
-    public String welcome(Model model) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, "notLoggedIn");
+    @Secured("USER")
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}")
+    public String userVisiting(Model model, @PathVariable String useralias,
+            @PathVariable String visitingalias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
+        if (isLoggedInUser == false) {
+            return "address_error";
+        } else {
+            return "visiting";
+        }
+    }
+
+    @Secured("USER")
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Welcome")
+    public String userWelcome(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -200,10 +213,9 @@ public class AccountController {
         }
     }
 
-    @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{alias}/Welcome")
-    public String welcome(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @GetMapping("/EmployeeSearch/Welcome")
+    public String welcome(Model model) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, "notLoggedIn");
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -220,10 +232,10 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @PostMapping("/EmployeeSearch/Users/{alias}")
-    public String userHomeEdit(Model model, @PathVariable String alias,
+    @PostMapping("/EmployeeSearch/Users/{useralias}")
+    public String userHomeEdit(Model model, @PathVariable String useralias,
             @RequestParam String editLayoutButton) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
@@ -233,12 +245,18 @@ public class AccountController {
     }
 
     @Secured("USER")
-    @PostMapping("/EmployeeSearch/Users/{alias}/Search")
-    public String userSearchUsers(Model model, @PathVariable String alias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, alias);
+    @PostMapping("/EmployeeSearch/Users/{useralias}/Search")
+    public String userSearchUsers(Model model, @PathVariable String useralias,
+            @RequestParam String keyword) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
+        if (keyword.length() == 0) {
+            return "redirect:/EmployeeSearch/Users/{useralias}/Search";
+        }
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
+            model.addAttribute("searchResultsRealname", this.accountService.searchByRealname(keyword));
+            model.addAttribute("searchResultsUseralias", this.accountService.searchByUseralias(keyword));
             return "search";
         }
     }

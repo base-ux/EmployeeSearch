@@ -59,10 +59,10 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         Account account = this.accountRepository.findByUsername(username);
-        String alias = account.getAlias();
+        String useralias = account.getUseralias();
 
         Map<String, String> roleTargetUrlMap = new HashMap<>();
-        roleTargetUrlMap.put("USER", "/EmployeeSearch/Users/" + alias);
+        roleTargetUrlMap.put("USER", "/EmployeeSearch/Users/" + useralias);
 
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (final GrantedAuthority grantedAuthority : authorities) {

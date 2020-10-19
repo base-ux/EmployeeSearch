@@ -92,15 +92,15 @@
                                     Your real name
                                 </small>
                             </div>
-                            <!-- Alias -->
+                            <!-- Useralias -->
                             <div class="md-form">
-                                <input type="text" id="RegisterFormAlias" th:field="*{alias}" name="alias" class="form-control" 
-                                       aria-describedby="RegisterFormAliasHelpBlock"/>
-                                <label for="RegisterFormAlias">Alias</label>
-                                <small class="form-text my-4 text-danger" th:if="${#fields.hasErrors('alias')}"
-                                       th:errors="*{alias}">alias validation error message
+                                <input type="text" id="RegisterFormUseralias" th:field="*{useralias}" name="useralias" class="form-control" 
+                                       aria-describedby="RegisterFormUseraliasHelpBlock"/>
+                                <label for="RegisterFormUseralias">Alias</label>
+                                <small class="form-text my-4 text-danger" th:if="${#fields.hasErrors('useralias')}"
+                                       th:errors="*{useralias}">useralias validation error message
                                 </small>
-                                <small id="RegisterFormAliasHelpBlock" class="form-text mb-4 text-muted">
+                                <small id="RegisterFormUseraliasHelpBlock" class="form-text mb-4 text-muted">
                                     Alias will be your unique identifier
                                 </small>
                             </div>

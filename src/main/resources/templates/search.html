@@ -36,9 +36,9 @@
             <div class="row mx-5 my-5 px-5 pb-5 text-center">
                 <!-- Search -->
                 <div class="col">
-                    <form th:action="@{/EmployeeSearch/Users/Search}" class="form-inline justify-content-center" method="POST">
+                    <form th:action="@{/EmployeeSearch/Users/{useralias}/Search(useralias=${account.useralias})}" class="form-inline justify-content-center" method="POST">
                         <div class="md-form form-sm mr-2">
-                            <input type="text" placeholder="Search" aria-label="Search"/>
+                            <input type="text" name="keyword" placeholder="Search" aria-label="Search"/>
                         </div>
                         <select class="browser-default custom-select">
                             <option value="0" selected>Users</option>
@@ -52,10 +52,24 @@
                 </div>
             </div>
             <div class="row mx-5 my-5 px-5 pb-5 text-center">
-                <!-- Results -->
+                <!-- Results by realname -->
                 <div class="col">
                     <div>
-                        <p>Results</p>
+                        <p class="h5">Results By Name</p>
+                    </div>
+                    <div th:each="result:${searchResultsRealname}">
+                        <a th:if="${result.useralias} != null" th:href="@{'/EmployeeSearch/Users/' + ${result.useralias}}"><span th:text="${result.realname}">result</span></a>
+                        <span th:unless="${result.useralias} != null">No results.</span>
+                    </div>
+                </div>
+                <!-- Results by useralias -->
+                <div class="col">
+                    <div>
+                        <p class="h5">Results By Alias</p>
+                    </div>
+                    <div th:each="result:${searchResultsUseralias}">
+                        <a th:if="${result} != 'empty'" th:href="@{'/EmployeeSearch/Users/' + ${result}}"><span th:text="${result}">result</span></a>
+                        <span th:unless="${result} != 'empty'">No results.</span>
                     </div>
                 </div>
             </div>

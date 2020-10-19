@@ -65,7 +65,7 @@
                         <div class="row">
                             <div class="text-center">
                                 <p class="ml-2 mt-2">What if I forget my Password? See Password on the 
-                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Help#forgottenPassword(alias=${account.alias})}">Help page.</a>
+                                    <a th:href="@{/EmployeeSearch/Users/{useralias}/Help#forgottenPassword(useralias=${account.useralias})}">Help page.</a>
                                 </p>
                             </div>
                         </div>
@@ -120,11 +120,11 @@
                                 <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewName" type="submit" id="changeNameButton">Change Name<i class="fas fa-user-edit ml-2"></i></button>
                             </div>
                         </form>
-                        <!-- Change alias link -->
+                        <!-- Change useralias link -->
                         <div class="row">
                             <div class="text-center">
                                 <p class="ml-2 mt-2">Want to change Alias? See Alias on the 
-                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Help#changeAlias(alias=${account.alias})}">Help page.</a>
+                                    <a th:href="@{/EmployeeSearch/Users/{useralias}/Help#changeAlias(useralias=${account.useralias})}">Help page.</a>
                                 </p>
                             </div>
                         </div>
@@ -311,7 +311,7 @@
                         <div class="row">
                             <div class="text-center">
                                 <p class="ml-2 mt-2">Not sure what Hide profile does? See Profile on the 
-                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Help#hideProfile(alias=${account.alias})}">Help page.</a>
+                                    <a th:href="@{/EmployeeSearch/Users/{useralias}/Help#hideProfile(useralias=${account.useralias})}">Help page.</a>
                                 </p>
                             </div>
                         </div>
@@ -335,7 +335,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col col-8">
-                        <form  th:action="@{/EmployeeSearch/Users/{alias}/DeleteProfile(alias=${account.alias})}" class="text-center">
+                        <form  th:action="@{/EmployeeSearch/Users/{useralias}/DeleteProfile(useralias=${account.useralias})}" class="text-center">
                             <!-- Delete profile button -->
                             <div class="row">
                                 <div class="text-center">
@@ -347,7 +347,7 @@
                         <div class="row">
                             <div class="text-center">
                                 <p class="ml-2 mt-2">Not sure what Delete profile does? See Profile on the 
-                                    <a th:href="@{/EmployeeSearch/Users/{alias}/Help#deleteProfile(alias=${account.alias})}">Help page.</a>
+                                    <a th:href="@{/EmployeeSearch/Users/{useralias}/Help#deleteProfile(useralias=${account.useralias})}">Help page.</a>
                                 </p>
                             </div>
                         </div>

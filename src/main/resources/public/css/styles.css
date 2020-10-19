@@ -86,11 +86,11 @@ body, html {
     max-width: 15em;
 }
 
-.toggleAlias[aria-expanded=false] .text-expanded {
+.toggleUseralias[aria-expanded=false] .text-expanded {
     display: none;
 }
 
-.toggleAlias[aria-expanded=true] .text-collapsed {
+.toggleUseralias[aria-expanded=true] .text-collapsed {
     display: none;
 }
 
