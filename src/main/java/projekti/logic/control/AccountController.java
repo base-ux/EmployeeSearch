@@ -28,6 +28,7 @@ public class AccountController {
     @Autowired
     Date date;
 
+    // LOGGED OUT
     // GET-REQUESTS
     @GetMapping("/EmployeeSearch/Login")
     public String loginFill(Model model) {
@@ -80,17 +81,26 @@ public class AccountController {
         }
     }
 
-    @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{useralias}/TermsOfService")
-    public String termsOfService(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
+    @GetMapping("/EmployeeSearch/Welcome")
+    public String welcome(Model model) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, "notLoggedIn");
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
-            return "terms_of_service";
+            return "welcome";
         }
     }
 
+    // POST-REQUESTS
+    @PostMapping("/EmployeeSearch/Register")
+    public String registerCheck(Model model,
+            @Valid @ModelAttribute Account account,
+            BindingResult bindingResult) {
+        return this.accountService.registerCheck(model, account, bindingResult);
+    }
+
+    // LOGGED IN
+    // GET-REQUESTS
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Comments")
     public String userComments(Model model, @PathVariable String useralias) {
@@ -147,6 +157,19 @@ public class AccountController {
     }
 
     @Secured("USER")
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Edit")
+    public String userHomeEdit(Model model, @PathVariable String useralias,
+            @RequestParam String editLayoutButton) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
+        if (isLoggedInUser == false) {
+            return "address_error";
+        } else {
+            model.addAttribute("editlayoutClicked", editLayoutButton);
+            return "home";
+        }
+    }
+
+    @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Posts")
     public String userPosts(Model model, @PathVariable String useralias) {
         boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
@@ -170,12 +193,40 @@ public class AccountController {
 
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Search")
-    public String userSearch(Model model, @PathVariable String useralias) {
+    public String userSearch(Model model, @PathVariable String useralias,
+            @RequestParam String keyword) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
+        if (keyword.length() == 0) {
+            return "search";
+        }
+        if (isLoggedInUser == false) {
+            return "address_error";
+        } else {
+            model.addAttribute("searchResultsRealname", this.accountService.searchByRealname(keyword));
+            model.addAttribute("searchResultsUseralias", this.accountService.searchByUseralias(keyword));
+            return "search";
+        }
+    }
+
+    @Secured("USER")
+    @GetMapping("/EmployeeSearch/Users/{useralias}/SearchDropdown")
+    public String userSearchDropdown(Model model, @PathVariable String useralias) {
         boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
         if (isLoggedInUser == false) {
             return "address_error";
         } else {
             return "search";
+        }
+    }
+
+    @Secured("USER")
+    @GetMapping("/EmployeeSearch/Users/{useralias}/TermsOfService")
+    public String userTermsOfService(Model model, @PathVariable String useralias) {
+        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
+        if (isLoggedInUser == false) {
+            return "address_error";
+        } else {
+            return "terms_of_service";
         }
     }
 
@@ -210,54 +261,6 @@ public class AccountController {
             return "address_error";
         } else {
             return "welcome";
-        }
-    }
-
-    @GetMapping("/EmployeeSearch/Welcome")
-    public String welcome(Model model) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, "notLoggedIn");
-        if (isLoggedInUser == false) {
-            return "address_error";
-        } else {
-            return "welcome";
-        }
-    }
-
-    // POST-REQUESTS
-    @PostMapping("/EmployeeSearch/Register")
-    public String registerCheck(Model model,
-            @Valid @ModelAttribute Account account,
-            BindingResult bindingResult) {
-        return this.accountService.registerCheck(model, account, bindingResult);
-    }
-
-    @Secured("USER")
-    @PostMapping("/EmployeeSearch/Users/{useralias}")
-    public String userHomeEdit(Model model, @PathVariable String useralias,
-            @RequestParam String editLayoutButton) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
-        } else {
-            model.addAttribute("editlayoutClicked", editLayoutButton);
-            return "home";
-        }
-    }
-
-    @Secured("USER")
-    @PostMapping("/EmployeeSearch/Users/{useralias}/Search")
-    public String userSearchUsers(Model model, @PathVariable String useralias,
-            @RequestParam String keyword) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (keyword.length() == 0) {
-            return "redirect:/EmployeeSearch/Users/{useralias}/Search";
-        }
-        if (isLoggedInUser == false) {
-            return "address_error";
-        } else {
-            model.addAttribute("searchResultsRealname", this.accountService.searchByRealname(keyword));
-            model.addAttribute("searchResultsUseralias", this.accountService.searchByUseralias(keyword));
-            return "search";
         }
     }
 }

@@ -44,8 +44,8 @@ public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .logoutRequestMatcher(new AntPathRequestMatcher("/EmployeeSearch/Logout"))
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .logoutSuccessUrl("/EmployeeSearch/Welcome");
+                .logoutSuccessUrl("/EmployeeSearch/Welcome")
+                .deleteCookies("JSESSIONID");
     }
 
     @Autowired

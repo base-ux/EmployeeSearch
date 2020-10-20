@@ -1,15 +1,15 @@
-// Welcome Page Carousel
+// Welcome page carousel
 $(".carousel").carousel({
   interval: 10000
 })
 
-// Home Page Drag and Drop
+// Home page drag and drop
 $(function() {
     $("#sortable").sortable()
     $("#sortable").disableSelection()
 })
 
-// Posts Page Summernote Text Editor
+// Posts page summernote text editor
 $(document).ready(function() {
     $(".summernote").summernote({
     height: 140,
@@ -31,7 +31,7 @@ $(document).ready(function() {
     })
 })
 
-// Register Page Password Confirmation
+// Register page password confirmation
 $(document).ready(function() {
     var $signupButton = $("#signup")
     var $passwordField = $("#RegisterFormPassword")

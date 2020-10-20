@@ -18,7 +18,7 @@
                     </div>
                     <!-- Edit layout button -->
                     <div class="col-6 pr-5 text-right">
-                        <form th:action="@{/EmployeeSearch/Users/{useralias}(useralias=${account.useralias})}" method="POST">
+                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Edit(useralias=${account.useralias})}">
                             <button type="submit" name="editLayoutButton" value="beginEditing" class="btn btn-sm btn-dark editbutton greyish">Edit Layout<i class="fas fa-edit ml-2 greyishicon"></i></button>
                         </form>
                     </div>
