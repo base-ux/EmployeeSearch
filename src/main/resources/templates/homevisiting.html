@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="UTF-8" />
-        <title>Address error - Employee Search</title>
+        <meta charset="UTF-8"/>
+        <title>Home - Employee Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
@@ -19,20 +19,37 @@
     </head>
     <body>
 
-        <!-- Address error message -->
-        <div class="container">
-            <div class="alert alert-warning mt-5">
-                <p><strong>Somehow the request to the given address was not completed!</strong></p>
-                <p>Address is not correct.</p>
-                <p>Please provide a corrected address to the search bar in 
-                    order to complete the address request.</p>
-            </div>
-        </div>
-        <!-- /Address error message -->
+        <!-- Visiting somebody's home page -->
+        <div th:if="${visitingaccount} != null">
 
-        <!-- Footer -->
-        <div th:replace="fragments/layout_footer :: footer"></div>
-        <!-- /Footer -->
+            <!-- Navbar -->
+            <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>
+            <!-- /Navbar -->
+
+            <!-- Home page content -->
+            <div th:replace="fragments/layout_home_visiting :: homevisiting"></div>
+            <!-- /Home page content -->
+
+            <!-- Footer -->
+            <div th:replace="fragments/layout_footer :: footer"></div>
+            <!-- /Footer -->
+
+        </div>
+        <!-- /Visiting somebody's home page -->
+
+        <!-- Visiting somebody's home page -->
+        <div th:unless="${visitingaccount} != null">
+
+            <!-- Address error -->
+            <div th:replace="fragments/layout_address_error :: addresserror"></div>
+            <!-- /Address error -->
+
+            <!-- Footer -->
+            <div th:replace="fragments/layout_footer :: footer"></div>
+            <!-- /Footer -->
+
+        </div>
+        <!-- /Visiting somebody's home page -->
 
         <!-- JQuery -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

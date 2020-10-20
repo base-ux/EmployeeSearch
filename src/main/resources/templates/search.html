@@ -58,7 +58,7 @@
                         <p class="h5">Results By Name</p>
                     </div>
                     <div th:each="result:${searchResultsRealname}">
-                        <a th:if="${result.useralias} != null" th:href="@{'/EmployeeSearch/Users/' + ${result.useralias}}"><span th:text="${result.realname}">result</span></a>
+                        <a th:if="${result.useralias} != null" th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${result.useralias}}"><span th:text="${result.realname}">result</span></a>
                         <span th:unless="${result.useralias} != null">No results.</span>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         <p class="h5">Results By Alias</p>
                     </div>
                     <div th:each="result:${searchResultsUseralias}">
-                        <a th:if="${result} != 'empty'" th:href="@{'/EmployeeSearch/Users/' + ${result}}"><span th:text="${result}">result</span></a>
+                        <a th:if="${result} != 'empty'" th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${result}}"><span th:text="${result}">result</span></a>
                         <span th:unless="${result} != 'empty'">No results.</span>
                     </div>
                 </div>

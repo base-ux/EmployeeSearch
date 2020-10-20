@@ -78,7 +78,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Si";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "to";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("Registering was successful for alias");
         assertThat(pageSource()).contains("to");
@@ -103,7 +103,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("Registering was successful for alias");
         assertThat(pageSource()).contains("tontsa" + aliAs.substring(6));
@@ -143,7 +143,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("size must be between 2 and 60");
     }
@@ -164,7 +164,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("size must be between 2 and 60");
     }
@@ -183,7 +183,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("must not be empty");
         assertThat(pageSource()).contains("size must be between 2 and 60");
@@ -205,7 +205,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("was not completed!");
         assertThat(pageSource()).contains("Some of the entered characters were");
@@ -227,14 +227,14 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Si";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "to";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         goTo("http://localhost:" + port + "/EmployeeSearch/Register");
         $("input[name=username]").fill().with(userName);
         $("input[name=password]").fill().with(passWord);
         $("input[name=confirm]").fill().with(conFirm);
         $("input[name=realname]").fill().with(realName);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("Somehow registering for user");
         assertThat(pageSource()).contains("BB");
@@ -257,7 +257,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("size must be between 8 and 60");
         assertThat(pageSource()).contains("Password must be 8 or more characters in length.");
@@ -279,7 +279,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("size must be between 8 and 60");
         assertThat(pageSource()).contains("Password must be no more than 60 characters in length.");
@@ -300,7 +300,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         assertThat(pageSource()).contains("confirm must match password");
     }
 
@@ -320,7 +320,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         boolean passwordContainsWhiteSpace = returnTrueIfStringContainsWhiteSpaceCharacter(passWord);
         if (passwordContainsWhiteSpace == true) {
@@ -389,7 +389,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         assertThat(pageSource()).contains("confirm must match password");
     }
 
@@ -409,7 +409,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         assertThat(pageSource()).contains("confirm must match password");
     }
 
@@ -427,7 +427,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         assertThat(pageSource()).contains("confirm must match password");
     }
 
@@ -447,7 +447,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#_hiddensignup").click();
         assertThat(pageSource()).contains("The entered Confirm does not match");
     }
@@ -468,7 +468,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#_hiddensignup").click();
         assertThat(pageSource()).contains("The entered Confirm does not match");
     }
@@ -489,7 +489,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#_hiddensignup").click();
         assertThat(pageSource()).contains("The entered Confirm does not match");
     }
@@ -510,7 +510,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni ";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("size must be between 6 and 30");
     }
@@ -531,7 +531,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(19);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("size must be between 6 and 30");
     }
@@ -550,7 +550,7 @@ public class RegisterPageTest extends FluentTest {
         String conFirm = passWord;
         $("input[name=confirm]").fill().with(conFirm);
         String aliAs = "tontsa";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("must not be empty");
         assertThat(pageSource()).contains("size must be between 6 and 30");
@@ -572,7 +572,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = RandomStringUtils.randomAscii(10) + RandomStringUtils.randomGraph(10) + RandomStringUtils.randomPrint(10);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("was not completed!");
         assertThat(pageSource()).contains("Some of the entered characters were");
@@ -594,7 +594,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "t";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("size must be between 2 and 30");
     }
@@ -615,7 +615,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(25);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("size must be between 2 and 30");
     }
@@ -656,7 +656,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = RandomStringUtils.randomAscii(10) + RandomStringUtils.randomGraph(10) + RandomStringUtils.randomPrint(10);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("was not completed!");
         assertThat(pageSource()).contains("Some of the entered characters were");
@@ -678,7 +678,7 @@ public class RegisterPageTest extends FluentTest {
         String realName = "Toni Si";
         $("input[name=realname]").fill().with(realName);
         String aliAs = "to";
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         goTo("http://localhost:" + port + "/EmployeeSearch/Register");
         userName = "ER";
@@ -686,7 +686,7 @@ public class RegisterPageTest extends FluentTest {
         $("input[name=password]").fill().with(passWord);
         $("input[name=confirm]").fill().with(conFirm);
         $("input[name=realname]").fill().with(realName);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("Somehow registering for user");
         assertThat(pageSource()).contains("to");

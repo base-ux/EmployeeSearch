@@ -56,7 +56,7 @@ public class AccountService {
 
     }
 
-    //    Allows only numbers, uppercase letters, lowercase letters, space, &, @, _
+    //    Allows only numbers, uppercase letters, lowercase letters, space (because real names have spaces), &, @, _
     public String convertRegisterEntry(String convert) {
         String converted = "";
         for (int i = 0; i < convert.length(); i++) {
@@ -150,8 +150,12 @@ public class AccountService {
             String confirm = convertRegisterEntry(account.getConfirm());
             String realname = convertRegisterEntry(account.getRealname());
             String useralias = convertRegisterEntry(convertRemoveSpaces(account.getUseralias()));
-            if (username.equals("ERROR") || password.equals("ERROR")
-                    || realname.equals("ERROR") || useralias.equals("ERROR")) {
+            if (username.equals("ERROR")
+                    || (username.length() < account.getUsername().length())
+                    || password.equals("ERROR")
+                    || realname.equals("ERROR")
+                    || useralias.equals("ERROR")
+                    || (useralias.length() < account.getUseralias().length())) {
                 model.addAttribute("date", this.date.date());
                 model.addAttribute("entryFail", "");
                 return "register_error";

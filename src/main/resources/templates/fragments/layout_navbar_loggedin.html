@@ -74,7 +74,7 @@
                                class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">user logged in</a>
                             <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
-                                <a th:href="@{/EmployeeSearch/Users/{useralias}(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-home mr-2 greyishicon"></i><small class="ml-1 greyish"> My Home Page</small></a>
+                                <a th:href="@{/EmployeeSearch/Users/{useralias}(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg" id="myHomePageLink"><i class="fas fa-home mr-2 greyishicon"></i><small class="ml-1 greyish"> My Home Page</small></a>
                                 <a th:href="@{/EmployeeSearch/Users/{useralias}/SearchDropdown(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-search mr-2 greyishicon"></i><small class="ml-4 greyish">Search</small></a>
                                 <a th:href="@{/EmployeeSearch/Users/{useralias}/Connections(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-user mr-2 greyishicon"></i><small class="ml-1 greyish"> Connections</small></a>
                                 <a th:href="@{/EmployeeSearch/Users/{useralias}/Uploads(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-cloud-upload-alt mr-2 greyishicon"></i><small class="ml-3 greyish">Uploads</small></a>

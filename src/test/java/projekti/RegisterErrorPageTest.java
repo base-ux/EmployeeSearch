@@ -38,7 +38,7 @@ public class RegisterErrorPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         assertThat(pageSource()).contains("Somehow registering for user");
         assertThat(pageSource()).contains("Some of the entered characters were");

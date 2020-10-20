@@ -19,6 +19,25 @@
     </head>
     <body>
 
+
+        <!--POISTA ENNEN LOPULLISTA VERSIOTA:-->
+
+
+
+
+        <!--        <ul th:each="user:${showusers}">
+                    <li>
+                        <span th:text="${user.username}">username</span>
+                        <span th:text="${user.password}">password</span>
+                        <span th:text="${user.confirm}">confirm</span>
+                        <span th:text="${user.realname}">realname</span>
+                        <span th:text="${user.useralias}">useralias</span>
+                    </li>
+                </ul>-->
+
+
+
+
         <!-- Register form -->
         <div class="blocks">
             <div class="container col-sm-10 col-md-10 col-lg-10 col-xl-6 p-5 text-center">
@@ -109,7 +128,7 @@
                             <!-- Terms of service -->
                             <p>By clicking
                                 <em>Sign up</em> you agree to the
-                                <a th:href="@{/EmployeeSearch/TermsOfService}">terms of service</a>.
+                                <a th:href="@{/EmployeeSearch/TermsOfService}" id="toTermsOfServicePage">terms of service</a>.
                             </p>
                             <!-- _Hidden Sign up button -->
                             <asp:button runat="server" type="submit" id="_hiddensignup"/>

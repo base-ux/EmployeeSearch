@@ -72,16 +72,14 @@ public class LoginPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         goTo("http://localhost:" + port + "/EmployeeSearch/Login");
         $("#LoginFormUsername").fill().with(userName);
         $("#LoginFormPassword").fill().with(passWord);
         $("#userLogin").click();
-        assertThat(pageSource()).contains("Hello, " + aliAs + "!");
-        assertThat(pageSource()).contains(aliAs + " (Logged in)");
-        assertThat(pageSource()).contains("Home");
-        assertThat(pageSource()).contains("Posts");
+        assertThat(pageSource()).contains(aliAs);
+        assertThat(pageSource()).contains(realName);
     }
 
     // Testing that Spring handles User Login form logging in validation with DevelopmentSecurityConfiguration.java 
@@ -101,7 +99,7 @@ public class LoginPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         goTo("http://localhost:" + port + "/EmployeeSearch/Login");
         $("#LoginFormUsername").fill().with(userName);
@@ -125,7 +123,7 @@ public class LoginPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         goTo("http://localhost:" + port + "/EmployeeSearch/Login");
         $("#LoginFormPassword").fill().with(passWord);
@@ -149,7 +147,7 @@ public class LoginPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         goTo("http://localhost:" + port + "/EmployeeSearch/Login");
         $("#LoginFormUsername").fill().with(userName);
@@ -174,7 +172,7 @@ public class LoginPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         goTo("http://localhost:" + port + "/EmployeeSearch/Login");
         $("#LoginFormUsername").fill().with(userName.substring(1));
@@ -199,7 +197,7 @@ public class LoginPageTest extends FluentTest {
         String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
         $("input[name=realname]").fill().with(realName);
         String aliAs = "toni" + RandomStringUtils.randomAlphabetic(26);
-        $("input[name=alias]").fill().with(aliAs);
+        $("input[name=useralias]").fill().with(aliAs);
         $("#signup").click();
         goTo("http://localhost:" + port + "/EmployeeSearch/Login");
         $("#LoginFormUsername").fill().with(userName.substring(10));

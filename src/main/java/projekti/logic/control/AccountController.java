@@ -32,9 +32,8 @@ public class AccountController {
     // GET-REQUESTS
     @GetMapping("/EmployeeSearch/Login")
     public String loginFill(Model model) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, "notLoggedIn");
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, "notLoggedIn") == false) {
+            return "fragments/layout_address_error";
         } else {
             return "login";
         }
@@ -42,9 +41,8 @@ public class AccountController {
 
     @GetMapping("/EmployeeSearch/LoginError")
     public String loginError(Model model) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, "notLoggedIn");
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, "notLoggedIn") == false) {
+            return "fragments/layout_address_error";
         } else {
             return "login_error";
         }
@@ -52,10 +50,10 @@ public class AccountController {
 
     @GetMapping("/EmployeeSearch/Register")
     public String registerFill(Model model, @ModelAttribute Account account) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, "notLoggedIn");
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, "notLoggedIn") == false) {
+            return "fragments/layout_address_error";
         } else {
+            model.addAttribute("showusers", this.accountRepository.findAll());
             return "register";
         }
     }
@@ -63,9 +61,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Register/{useralias}")
     public String registerOk(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "register_ok";
         }
@@ -73,9 +70,8 @@ public class AccountController {
 
     @GetMapping("/EmployeeSearch/TermsOfService")
     public String termsOfService(Model model) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, "notLoggedIn");
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, "notLoggedIn") == false) {
+            return "fragments/layout_address_error";
         } else {
             return "terms_of_service";
         }
@@ -83,9 +79,8 @@ public class AccountController {
 
     @GetMapping("/EmployeeSearch/Welcome")
     public String welcome(Model model) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, "notLoggedIn");
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, "notLoggedIn") == false) {
+            return "fragments/layout_address_error";
         } else {
             return "welcome";
         }
@@ -104,9 +99,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Comments")
     public String userComments(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "comments";
         }
@@ -115,9 +109,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Connections")
     public String userConnections(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "connections";
         }
@@ -126,9 +119,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/DeleteProfile")
     public String userDeleteProfile(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "delete_profile";
         }
@@ -137,9 +129,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Help")
     public String userHelp(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "help";
         }
@@ -148,9 +139,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}")
     public String userHome(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "home";
         }
@@ -160,9 +150,8 @@ public class AccountController {
     @GetMapping("/EmployeeSearch/Users/{useralias}/Edit")
     public String userHomeEdit(Model model, @PathVariable String useralias,
             @RequestParam String editLayoutButton) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             model.addAttribute("editlayoutClicked", editLayoutButton);
             return "home";
@@ -172,9 +161,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Posts")
     public String userPosts(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "posts";
         }
@@ -183,9 +171,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Preferences")
     public String userPreferences(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "preferences";
         }
@@ -195,13 +182,12 @@ public class AccountController {
     @GetMapping("/EmployeeSearch/Users/{useralias}/Search")
     public String userSearch(Model model, @PathVariable String useralias,
             @RequestParam String keyword) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (keyword.length() == 0) {
-            return "search";
-        }
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
+            if (keyword.length() == 0) {
+                return "search";
+            }
             model.addAttribute("searchResultsRealname", this.accountService.searchByRealname(keyword));
             model.addAttribute("searchResultsUseralias", this.accountService.searchByUseralias(keyword));
             return "search";
@@ -211,9 +197,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/SearchDropdown")
     public String userSearchDropdown(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "search";
         }
@@ -222,9 +207,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/TermsOfService")
     public String userTermsOfService(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "terms_of_service";
         }
@@ -233,9 +217,8 @@ public class AccountController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Uploads")
     public String userUploads(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "uploads";
         }
@@ -245,20 +228,38 @@ public class AccountController {
     @GetMapping("/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}")
     public String userVisiting(Model model, @PathVariable String useralias,
             @PathVariable String visitingalias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
-            return "visiting_page";
+            if (useralias.equals(visitingalias)) {
+                return "redirect:/EmployeeSearch/Users/" + useralias;
+            }
+            model.addAttribute("visitingaccount", this.accountRepository.findByUseralias(visitingalias));
+            return "homevisiting";
+        }
+    }
+
+    @Secured("USER")
+    @GetMapping("/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}/AddConnection")
+    public String userVisitingAddConnection(Model model, @PathVariable String useralias,
+            @PathVariable String visitingalias, @RequestParam String addConnectionButton) {
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
+        } else {
+            if (useralias.equals(visitingalias)) {
+                return "redirect:/EmployeeSearch/Users/" + useralias;
+            }
+            model.addAttribute("connection", addConnectionButton);
+            model.addAttribute("visitingaccount", this.accountRepository.findByUseralias(visitingalias));
+            return "homevisiting";
         }
     }
 
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Welcome")
     public String userWelcome(Model model, @PathVariable String useralias) {
-        boolean isLoggedInUser = this.accountService.helloUser(model, useralias);
-        if (isLoggedInUser == false) {
-            return "address_error";
+        if (this.accountService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
         } else {
             return "welcome";
         }
