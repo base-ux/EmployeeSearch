@@ -134,6 +134,18 @@ body, html {
     color: #fefeff;
 }
 
+.yellowicon {
+    color: #ffd722;
+}
+
+.yellowish {
+    color: #ffd722;
+}
+
+.yellowishbg {
+    background-color: #ffd722;
+}
+
 /*Id's and Classes*/
 #draggableRight .dragdropTitleRight {
     cursor: move;

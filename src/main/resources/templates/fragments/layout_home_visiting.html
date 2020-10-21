@@ -18,9 +18,9 @@
                     </div>
                     <!-- Add connection button -->
                     <div class="col-6 pr-5 text-right">
-                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}/AddConnection(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}">
-                            <button th:if="${connection} == null" type="submit" name="addConnectionButton" value="addConnection" class="btn btn-sm btn-warning editbutton">Add Connection<i class="fas fa-user ml-2"></i></button>
-                            <button th:if="${connection} == 'addConnection'" type="submit" name="addConnectionButton" value="requestSent" class="btn btn-sm btn-warning disabled editbutton">Request Sent<i class="fas fa-user-clock ml-2"></i></button>
+                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}">
+                            <button th:if="${connection} == false" type="submit" class="btn btn-sm yellowishbg editbutton">Add Connection<i class="fas fa-user ml-2"></i></button>
+                            <button th:unless="${connection} == false" type="submit" class="btn btn-sm yellowishbg disabled editbutton">Request Sent<i class="fas fa-user-clock ml-2"></i></button>
                         </form>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="col-xl mx-5">
                         <!-- User picture -->
                         <div class="card mb-5">
-                            <div><h5 class="py-2 text-center darkbluebg whiteish"><i class="fas fa-user mr-3 whiteicon"></i><strong th:text="${visitingaccount.useralias}">Useralias</strong></h5></div>
+                            <div><h5 class="py-2 text-center darkbluebg yellowish"><i class="fas fa-user mr-3 yellowicon"></i><strong th:text="${visitingaccount.useralias}">Useralias</strong></h5></div>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col">

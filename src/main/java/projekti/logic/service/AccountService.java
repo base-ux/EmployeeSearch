@@ -9,16 +9,19 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.Valid;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -54,6 +57,24 @@ public class AccountService {
 
         Class<? extends Payload>[] payload() default {};
 
+    }
+
+    // Add user alias to the connectionRequestsReceived list of visited user account if it's not there yet
+    @Transactional
+    public void connectionRequestReceived(Account userAccount, Account visitingAccount) {
+        if (!visitingAccount.getConnectionRequestsReceived().contains(userAccount.getUseralias())) {
+            visitingAccount.getConnectionRequestsReceived().add(userAccount.getUseralias());
+        }
+    }
+
+    // Add visited user alias to the connectionRequestsSent list of user account if it's not there yet
+    @Transactional
+    public boolean connectionRequestSent(Account userAccount, Account visitingAccount) {
+        if (!userAccount.getConnectionRequestsSent().contains(visitingAccount.getUseralias())) {
+            userAccount.getConnectionRequestsSent().add(visitingAccount.getUseralias());
+            return false;
+        }
+        return true;
     }
 
     //    Allows only numbers, uppercase letters, lowercase letters, space (because real names have spaces), &, @, _

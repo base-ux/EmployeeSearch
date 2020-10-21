@@ -1,5 +1,8 @@
 package projekti.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -41,4 +44,13 @@ public class Account extends AbstractPersistable<Long> {
     @NotNull
     @Size(min = 2, max = 30)
     private String useralias;
+
+    @ElementCollection
+    private List<String> connectionRequestsReceived = new ArrayList<>();
+
+    @ElementCollection
+    private List<String> connectionRequestsSent = new ArrayList<>();
+
+    @ElementCollection
+    private List<String> connectionsEstablished = new ArrayList<>();
 }

@@ -112,6 +112,9 @@ public class AccountController {
         if (this.accountService.helloUser(model, useralias) == false) {
             return "fragments/layout_address_error";
         } else {
+//            Account userAccount = this.accountRepository.findByUseralias(useralias);
+//            model.addAttribute("requestsReceived", this.accountService.connectionRequestsReceived(userAccount));
+//            model.addAttribute("requestsSent", this.accountService.connectionRequestsSent(userAccount));
             return "connections";
         }
     }
@@ -234,23 +237,15 @@ public class AccountController {
             if (useralias.equals(visitingalias)) {
                 return "redirect:/EmployeeSearch/Users/" + useralias;
             }
-            model.addAttribute("visitingaccount", this.accountRepository.findByUseralias(visitingalias));
-            return "homevisiting";
-        }
-    }
-
-    @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}/AddConnection")
-    public String userVisitingAddConnection(Model model, @PathVariable String useralias,
-            @PathVariable String visitingalias, @RequestParam String addConnectionButton) {
-        if (this.accountService.helloUser(model, useralias) == false) {
-            return "fragments/layout_address_error";
-        } else {
-            if (useralias.equals(visitingalias)) {
-                return "redirect:/EmployeeSearch/Users/" + useralias;
+            Account userAccount = this.accountRepository.findByUseralias(useralias);
+            Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
+            if (this.accountService.connectionRequestSent(userAccount, visitingAccount) == true) {
+                model.addAttribute("connection", true);
+            } else {
+                this.accountService.connectionRequestReceived(userAccount, visitingAccount);
+                model.addAttribute("connection", false);
             }
-            model.addAttribute("connection", addConnectionButton);
-            model.addAttribute("visitingaccount", this.accountRepository.findByUseralias(visitingalias));
+            model.addAttribute("visitingaccount", visitingAccount);
             return "homevisiting";
         }
     }
