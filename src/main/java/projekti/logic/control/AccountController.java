@@ -237,6 +237,7 @@ public class AccountController {
             if (useralias.equals(visitingalias)) {
                 return "redirect:/EmployeeSearch/Users/" + useralias;
             }
+            System.out.println("hei");
             Account userAccount = this.accountRepository.findByUseralias(useralias);
             Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
             if (this.accountService.connectionRequestSent(userAccount, visitingAccount) == true) {
