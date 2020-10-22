@@ -6,34 +6,20 @@
     </head>
     <body>
 
-        <!-- Home page visiting -->
-        <div th:fragment="homevisiting">
+        <!-- Connection page visiting -->
+        <div th:fragment="connectionvisiting">
             <div class="container-fluid">
                 <div class="row my-5">
                     <!-- Home page title -->
                     <div class="col-6">
                         <h3 class="text-center darkblue">
-                            <i class="fas fa-globe"></i><strong class="ml-4"><span th:text="${visitingaccount.useralias}">Useralias</span>'s Home Page</strong>
+                            <i class="fas fa-user-friends"></i><strong class="ml-4"><span th:text="${visitingaccount.useralias}">Useralias</span>'s Home Page</strong>
                         </h3>
                     </div>
                     <div class="col-6 pr-5 text-right">
-                        <!-- Send connection request button -->
-                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}/AddConnection(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button th:if="${requestSent} == false and ${requestReceived} == false" type="submit" class="btn btn-sm yellowishbg editbutton">Add Connection<i class="fas fa-user-plus ml-2"></i></button>
-                            <button th:if="${requestSent} == true" type="submit" class="btn btn-sm yellowishbg disabled editbutton">Request Sent<i class="fas fa-user-clock ml-2"></i></button>
-                            <button th:if="${requestReceived} == true" type="submit" class="btn btn-sm yellowishbg disabled editbutton">Request Received<i class="fas fa-user-clock ml-2"></i></button>
-                        </form>
-                        <!-- Cancel connection request button -->
-                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Cancel(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button th:if="${requestSent} == true" type="submit" class="btn btn-sm btn-dark editbutton greyish">Cancel<i class="fas fa-undo ml-2 greyishicon"></i></button>
-                        </form>
-                        <!-- Accept connection request button -->
-                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Accept(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm btn-dark editbutton greyish">Accept<i class="fas fa-user-check ml-2 greyishicon"></i></button>
-                        </form>
-                        <!-- Reject connection request button -->
-                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Reject(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm btn-dark editbutton greyish">Reject<i class="fas fa-user-times ml-2 greyishicon"></i></button>
+                        <!-- Remove connection button -->
+                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Remove(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
+                            <button type="submit" class="btn btn-sm btn-dark editbutton greyish">Remove Connection<i class="fas fa-user-minus ml-2 greyishicon"></i></button>
                         </form>
                     </div>
                 </div>
@@ -43,7 +29,7 @@
                     <div class="col-xl mx-5">
                         <!-- User picture -->
                         <div class="card mb-5">
-                            <div><h5 class="py-2 text-center darkbluebg yellowish"><i class="fas fa-user mr-3 yellowicon"></i><strong th:text="${visitingaccount.useralias}">Useralias</strong></h5></div>
+                            <div><h5 class="py-2 text-center blueish darkbluebg"><i class="fas fa-user mr-3 blueishicon"></i><strong th:text="${visitingaccount.useralias}">Useralias</strong></h5></div>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col">
@@ -169,7 +155,7 @@
                 </div>
             </div>
         </div>
-        <!-- /Home page visiting -->
+        <!-- /Connection page visiting -->
 
     </body>
 </html>

@@ -61,11 +61,17 @@ public class HomeController {
             }
             Account userAccount = this.accountRepository.findByUseralias(useralias);
             Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
-            model.addAttribute("connection", false);
-            for (String[] s : userAccount.getConnectionRequestsSent()) {
-                if (s[0].equals(visitingAccount.getUseralias())) {
-                    model.addAttribute("connection", true);
-                }
+            model.addAttribute("connectionEstablished", false);
+            if (this.connectionsService.connectionIsEstablished(userAccount, visitingAccount) == true) {
+                model.addAttribute("connectionEstablished", true);
+            }
+            model.addAttribute("requestSent", false);
+            if (this.connectionsService.requestIsSent(userAccount, visitingAccount) == true) {
+                model.addAttribute("requestSent", true);
+            }
+            model.addAttribute("requestReceived", false);
+            if (this.connectionsService.requestIsReceived(userAccount, visitingAccount) == true) {
+                model.addAttribute("requestReceived", true);
             }
             model.addAttribute("visitingaccount", visitingAccount);
             return "homevisiting";
@@ -76,8 +82,8 @@ public class HomeController {
     // POST-REQUESTS
     @Secured("USER")
     @PostMapping("/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}/AddConnection")
-    public String userVisiting(Model model, @PathVariable String useralias,
-            @PathVariable String visitingalias, @RequestParam String addConnectionButton) {
+    public String userVisitingAddConnection(Model model, @PathVariable String useralias,
+            @PathVariable String visitingalias) {
         if (this.homeService.helloUser(model, useralias) == false) {
             return "fragments/layout_address_error";
         } else {
@@ -85,14 +91,12 @@ public class HomeController {
                 return "redirect:/EmployeeSearch/Users/" + useralias;
             }
             Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
-            if (addConnectionButton.equals("addConnectionButtonPressed")) {
-                Account userAccount = this.accountRepository.findByUseralias(useralias);
-                if (this.connectionsService.connectionRequestSent(userAccount, visitingAccount) == true) {
-                    model.addAttribute("connection", true);
-                } else {
-                    this.connectionsService.connectionRequestReceived(userAccount, visitingAccount);
-                    model.addAttribute("connection", false);
-                }
+            Account userAccount = this.accountRepository.findByUseralias(useralias);
+            if (this.connectionsService.connectionRequestSent(userAccount, visitingAccount) == true) {
+                model.addAttribute("requestSent", true);
+            } else {
+                this.connectionsService.connectionRequestReceived(userAccount, visitingAccount);
+                model.addAttribute("requestSent", false);
             }
             model.addAttribute("visitingaccount", visitingAccount);
             return "redirect:/EmployeeSearch/Users/" + useralias + "/Visiting/" + visitingalias;

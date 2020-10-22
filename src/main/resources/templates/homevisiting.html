@@ -18,9 +18,27 @@
         <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
     <body>
+        
+        <!-- Visiting connection's home page -->
+        <div th:if="${visitingaccount} != null and ${connectionEstablished} == true">
+
+            <!-- Navbar -->
+            <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>
+            <!-- /Navbar -->
+
+            <!-- Home page content -->
+            <div th:replace="fragments/layout_connection_visiting :: connectionvisiting"></div>
+            <!-- /Home page content -->
+
+            <!-- Footer -->
+            <div th:replace="fragments/layout_footer :: footer"></div>
+            <!-- /Footer -->
+
+        </div>
+        <!-- /Visiting connection's home page -->
 
         <!-- Visiting somebody's home page -->
-        <div th:if="${visitingaccount} != null">
+        <div th:if="${visitingaccount} != null and ${connectionEstablished} == false">
 
             <!-- Navbar -->
             <div th:replace="fragments/layout_navbar_loggedin :: navbar"></div>

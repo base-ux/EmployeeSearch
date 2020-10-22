@@ -21,6 +21,14 @@ body, html {
     min-width: 100vw;
 }
 
+.blueish {
+    color: #2d90ff;
+}
+
+.blueishicon {
+    color: #2d90ff;
+}
+
 .carousel-caption {
     background: rgba(0, 0, 0, 0.6);
 }
