@@ -37,19 +37,29 @@
                 <!-- Requests received -->
                 <div class="col-4">
                     <!-- Received title -->
-                    <p class="h5 mb-4 darkblue">Connection Requests Received</p>
+                    <p class="h5 mb-4 darkblue">Requests Received From</p>
                     <!-- Received results -->
-                    <div>
-                        <p>No Requests Received</p>
+                    <div th:unless="${requestsReceived.empty}">
+                        <div th:each="visitorinfo:${requestsReceived}">
+                            <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${visitorinfo[0]}}"><span th:text="${visitorinfo[1]}">result</span></a>
+                        </div>
+                    </div>
+                    <div th:if="${requestsReceived.empty}">
+                        <span>No Requests Received.</span>
                     </div>
                 </div>
                 <!-- Requests sent -->
                 <div class="col-4">
                     <!-- Sent title -->
-                    <p class="h5 mb-4 darkblue">Connection Requests Sent</p>
+                    <p class="h5 mb-4 darkblue">Requests Sent To</p>
                     <!-- Sent results -->
-                    <div>
-                        <p>No Requests Sent</p>
+                    <div th:unless="${requestsSent.empty}">
+                        <div th:each="visitorinfo:${requestsSent}">
+                            <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${visitorinfo[0]}}"><span th:text="${visitorinfo[1]}">result</span></a>
+                        </div>
+                    </div>
+                    <div th:if="${requestsSent.empty}">
+                        <span>No Requests Sent.</span>
                     </div>
                 </div>
                 <!-- Established -->

@@ -55,21 +55,30 @@
                 <!-- Results by realname -->
                 <div class="col">
                     <div>
-                        <p class="h5">Results By Name</p>
+                        <p class="h5">Results For Names</p>
                     </div>
-                    <div th:each="result:${searchResultsRealname}">
-                        <a th:if="${result.useralias} != null" th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${result.useralias}}"><span th:text="${result.realname}">result</span></a>
-                        <span th:unless="${result.useralias} != null">No results.</span>
+                    <div th:unless="${searchResultsRealname} == null or ${searchResultsRealname.empty}">
+                        <div th:each="result:${searchResultsRealname}">
+                            <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${result.useralias}}"><span th:text="${result.realname}">result</span></a>
+                        </div>
+                    </div>
+                    <div th:if="${searchResultsRealname} == null or ${searchResultsRealname.empty}">
+                        <span>No results.</span>
                     </div>
                 </div>
                 <!-- Results by useralias -->
                 <div class="col">
                     <div>
-                        <p class="h5">Results By Alias</p>
+                        <p class="h5">Results For Aliases</p>
                     </div>
-                    <div th:each="result:${searchResultsUseralias}">
-                        <a th:if="${result} != 'empty'" th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${result}}"><span th:text="${result}">result</span></a>
-                        <span th:unless="${result} != 'empty'">No results.</span>
+
+                    <div th:unless="${searchResultsUseralias} == null or ${searchResultsUseralias.empty}">
+                        <div th:each="result:${searchResultsUseralias}">
+                            <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${result.useralias}}"><span th:text="${result.useralias}">result</span></a>
+                        </div>
+                    </div>
+                    <div th:if="${searchResultsUseralias} == null or ${searchResultsUseralias.empty}">
+                        <span>No results.</span>
                     </div>
                 </div>
             </div>

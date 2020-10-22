@@ -18,8 +18,8 @@
                     </div>
                     <!-- Add connection button -->
                     <div class="col-6 pr-5 text-right">
-                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}">
-                            <button th:if="${connection} == false" type="submit" class="btn btn-sm yellowishbg editbutton">Add Connection<i class="fas fa-user ml-2"></i></button>
+                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}/AddConnection(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
+                            <button th:if="${connection} == false" type="submit" name="addConnectionButton" value="addConnectionButtonPressed" class="btn btn-sm yellowishbg editbutton">Add Connection<i class="fas fa-user ml-2"></i></button>
                             <button th:unless="${connection} == false" type="submit" class="btn btn-sm yellowishbg disabled editbutton">Request Sent<i class="fas fa-user-clock ml-2"></i></button>
                         </form>
                     </div>

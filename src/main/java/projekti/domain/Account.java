@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-import projekti.logic.service.AccountService.ValidPassword;
+import projekti.logic.service.LoginService.ValidPassword;
 
 @Entity
 @Data
@@ -46,11 +46,11 @@ public class Account extends AbstractPersistable<Long> {
     private String useralias;
 
     @ElementCollection
-    private List<String> connectionRequestsReceived = new ArrayList<>();
+    private List<String[]> connectionRequestsReceived = new ArrayList<>();
 
     @ElementCollection
-    private List<String> connectionRequestsSent = new ArrayList<>();
+    private List<String[]> connectionRequestsSent = new ArrayList<>();
 
     @ElementCollection
-    private List<String> connectionsEstablished = new ArrayList<>();
+    private List<String[]> connectionsEstablished = new ArrayList<>();
 }
