@@ -37,11 +37,15 @@
                 <!-- Requests received -->
                 <div class="col-md-4">
                     <!-- Received title -->
-                    <p class="h5 my-5 darkblue">Requests Received From</p>
+                    <p th:if="${connectionRequestsReceivedSize} == ''" class="h5 my-5 darkblue">Requests Received From</p>
+                    <p th:unless="${connectionRequestsReceivedSize} == ''" class="h5 my-5 yellowish">Requests Received From</p>
                     <!-- Received requests -->
                     <div th:unless="${requestsReceived.empty}">
-                        <div th:each="visitorinfo:${requestsReceived}">
+                        <div th:each="visitorinfo:${requestsReceived}" class="mb-2">
                             <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${visitorinfo[0]}}"><span th:text="${visitorinfo[1]}">result</span></a>
+                            <div>
+                                <p class="small">at <span th:text="${visitorinfo[2]}">date</span></p>
+                            </div>
                         </div>
                     </div>
                     <div th:if="${requestsReceived.empty}">
@@ -54,9 +58,13 @@
                     <p class="h5 my-5 darkblue">Requests Sent To</p>
                     <!-- Sent requests -->
                     <div th:unless="${requestsSent.empty}">
-                        <div th:each="visitorinfo:${requestsSent}">
+                        <div th:each="visitorinfo:${requestsSent}" class="mb-2">
                             <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${visitorinfo[0]}}"><span th:text="${visitorinfo[1]}">result</span></a>
+                            <div>
+                                <p class="small">at <span th:text="${visitorinfo[2]}">date</span></p>
+                            </div>
                         </div>
+
                     </div>
                     <div th:if="${requestsSent.empty}">
                         <span>No Requests Sent.</span>
@@ -68,7 +76,7 @@
                     <p class="h5 my-5 darkblue">Established Connections</p>
                     <!-- Established connections -->
                     <div th:unless="${connectionEstablished.empty}">
-                        <div th:each="visitorinfo:${connectionEstablished}">
+                        <div th:each="visitorinfo:${connectionEstablished}" class="mb-2">
                             <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${visitorinfo[0]}}"><span th:text="${visitorinfo[1]}">result</span></a>
                         </div>
                     </div>

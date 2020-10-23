@@ -1,11 +1,17 @@
 package projekti.logic.service;
 
+import java.util.Collections;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projekti.domain.Account;
+import projekti.logic.utility.CustomDate;
 
 @Service
 public class ConnectionsService {
+
+    @Autowired
+    CustomDate date;
 
     // Add visited user alias and name to the connectionsEstablished list of user account if it's not there yet
     @Transactional
@@ -17,6 +23,12 @@ public class ConnectionsService {
         }
         String[] userInfo = {visitingAccount.getUseralias(), visitingAccount.getRealname()};
         userAccount.getConnectionsEstablished().add(userInfo);
+    }
+
+    // Arrange the connectionsEstablished list of the parameter account by real name in alphabetical order
+    @Transactional
+    public void arrangeConnectionsEstablished(Account account) {
+        Collections.sort(account.getConnectionsEstablished(), (a, b) -> a[1].compareToIgnoreCase(b[1]));
     }
 
     // Remove user alias and name from the connectionRequestsReceived list of visited user account
@@ -89,7 +101,7 @@ public class ConnectionsService {
         cancelRequestReceived(userAccount, visitingAccount);
     }
 
-    // Add user alias and name to the connectionRequestsReceived list of visited user account if it's not there yet
+    // Add user alias, real name and request receiving time to the connectionRequestsReceived list of visited user account if it's not there yet
     @Transactional
     public void connectionRequestReceived(Account userAccount, Account visitingAccount) {
         for (String[] s : visitingAccount.getConnectionRequestsReceived()) {
@@ -97,7 +109,7 @@ public class ConnectionsService {
                 return;
             }
         }
-        String[] userInfo = {userAccount.getUseralias(), userAccount.getRealname()};
+        String[] userInfo = {userAccount.getUseralias(), userAccount.getRealname(), this.date.dateTime()};
         visitingAccount.getConnectionRequestsReceived().add(userInfo);
     }
 
@@ -113,13 +125,13 @@ public class ConnectionsService {
         cancelRequestSent(userAccount, visitingAccount);
     }
 
-    // Add visited user alias and name to the connectionRequestsSent list of user account if it's not there yet
+    // Add visited user alias, real name and request sending time to the connectionRequestsSent list of user account if it's not there yet
     @Transactional
     public boolean connectionRequestSent(Account userAccount, Account visitingAccount) {
         if (requestIsSent(userAccount, visitingAccount) == true) {
             return true;
         }
-        String[] userInfo = {visitingAccount.getUseralias(), visitingAccount.getRealname()};
+        String[] userInfo = {visitingAccount.getUseralias(), visitingAccount.getRealname(), this.date.dateTime()};
         userAccount.getConnectionRequestsSent().add(userInfo);
         return false;
     }

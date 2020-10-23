@@ -25,6 +25,10 @@ body, html {
     color: #2d90ff;
 }
 
+.blueishbg {
+    background-color: #2d90ff;
+}
+
 .blueishicon {
     color: #2d90ff;
 }
@@ -94,6 +98,10 @@ body, html {
     max-width: 15em;
 }
 
+.smallimage {
+    max-width: 50px;
+}
+
 .toggleUseralias[aria-expanded=false] .text-expanded {
     display: none;
 }
@@ -142,7 +150,7 @@ body, html {
     color: #fefeff;
 }
 
-.yellowicon {
+.yellowishicon {
     color: #ffd722;
 }
 

@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-import projekti.logic.service.LoginService.ValidPassword;
+import projekti.logic.service.RegisterService.ValidPassword;
 
 @Entity
 @Data

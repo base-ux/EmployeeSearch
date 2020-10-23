@@ -11,7 +11,7 @@ import org.passay.RuleResult;
 import org.passay.CharacterRule;
 import org.passay.EnglishCharacterData;
 import org.passay.WhitespaceRule;
-import projekti.logic.service.LoginService.ValidPassword;
+import projekti.logic.service.RegisterService.ValidPassword;
 
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
 

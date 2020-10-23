@@ -61,6 +61,8 @@ public class HomeController {
             }
             Account userAccount = this.accountRepository.findByUseralias(useralias);
             Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
+            model.addAttribute("connectionEstablishedVisited", visitingAccount.getConnectionsEstablished());
+            model.addAttribute("connectionEstablishedVisitedSize", visitingAccount.getConnectionsEstablished().size());
             model.addAttribute("connectionEstablished", false);
             if (this.connectionsService.connectionIsEstablished(userAccount, visitingAccount) == true) {
                 model.addAttribute("connectionEstablished", true);
@@ -90,8 +92,8 @@ public class HomeController {
             if (useralias.equals(visitingalias)) {
                 return "redirect:/EmployeeSearch/Users/" + useralias;
             }
-            Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
             Account userAccount = this.accountRepository.findByUseralias(useralias);
+            Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
             if (this.connectionsService.connectionRequestSent(userAccount, visitingAccount) == true) {
                 model.addAttribute("requestSent", true);
             } else {

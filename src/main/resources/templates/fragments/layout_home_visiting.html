@@ -13,7 +13,7 @@
                     <!-- Home page title -->
                     <div class="col-6">
                         <h3 class="text-center darkblue">
-                            <i class="fas fa-globe"></i><strong class="ml-4"><span th:text="${visitingaccount.useralias}">Useralias</span>'s Home Page</strong>
+                            <i class="fas fa-globe yellowishicon"></i><strong class="ml-4 yellowish"><span th:text="${visitingaccount.useralias}">Useralias</span>'s Home Page</strong>
                         </h3>
                     </div>
                     <div class="col-6 pr-5 text-right">
@@ -29,11 +29,11 @@
                         </form>
                         <!-- Accept connection request button -->
                         <form th:action="@{/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Accept(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm btn-dark editbutton greyish">Accept<i class="fas fa-user-check ml-2 greyishicon"></i></button>
+                            <button th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm yellowishbg editbutton">Accept<i class="fas fa-user-check ml-2"></i></button>
                         </form>
                         <!-- Reject connection request button -->
                         <form th:action="@{/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Reject(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm btn-dark editbutton greyish">Reject<i class="fas fa-user-times ml-2 greyishicon"></i></button>
+                            <button th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm yellowishbg editbutton">Reject<i class="fas fa-user-times ml-2"></i></button>
                         </form>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                     <div class="col-xl mx-5">
                         <!-- User picture -->
                         <div class="card mb-5">
-                            <div><h5 class="py-2 text-center darkbluebg yellowish"><i class="fas fa-user mr-3 yellowicon"></i><strong th:text="${visitingaccount.useralias}">Useralias</strong></h5></div>
+                            <div><h5 class="py-2 text-center darkbluebg yellowish"><i class="fas fa-user mr-3 yellowishicon"></i><strong th:text="${visitingaccount.useralias}">Useralias</strong></h5></div>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col">
@@ -108,61 +108,18 @@
                         <!-- Connections -->
                         <div class="card mb-5">
                             <h5 class="px-4 py-2 text-left darkbluebg greyish">
-                                <strong class="mr-5"><i class="fas fa-user mr-3 greyishicon"></i>Connections (4)</strong>
+                                <strong class="mr-5"><i class="fas fa-user mr-3 greyishicon"></i>Connections (<span th:text="${connectionEstablishedVisitedSize}">amount</span>)</strong>
                             </h5>
                             <div class="container overflowing">
-                                <div class="row">
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
-                                        </a>
+                                <div th:each="connection:${connectionEstablishedVisited}">
+                                    <div class="row">
+                                        <div class="col ml-5">
+                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle smallimage"/>
+                                            <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${connection[0]}}"><span class="text-dark"><strong th:text="${connection[1]}">Real name</strong></span></a>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}">
-                                            <h5 class="mt-3 text-left text-dark"><strong>Useralias</strong></h5>
-                                        </a>
-                                    </div>
+                                    <hr/>
                                 </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}">
-                                            <h5 class="mt-3 text-left text-dark"><strong>Useralias</strong></h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}">
-                                            <h5 class="mt-3 text-left text-dark"><strong>Useralias</strong></h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle w-25"/>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a th:href="@{/EmployeeSearch/Users}">
-                                            <h5 class="mt-3 text-left text-dark"><strong>Useralias</strong></h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <hr/>
                             </div>
                         </div>
                     </div>

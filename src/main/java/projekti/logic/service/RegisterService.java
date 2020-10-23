@@ -1,5 +1,14 @@
 package projekti.logic.service;
 
+import java.lang.annotation.Documented;
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.TYPE;
+import java.lang.annotation.Retention;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.lang.annotation.Target;
+import javax.validation.Constraint;
+import javax.validation.Payload;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,7 +18,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import projekti.domain.Account;
 import projekti.logic.repository.AccountRepository;
-import projekti.logic.utility.Date;
+import projekti.logic.utility.CustomDate;
+import projekti.security.PasswordConstraintValidator;
 
 @Service
 public class RegisterService {
@@ -18,12 +28,27 @@ public class RegisterService {
     AccountRepository accountRepository;
 
     @Autowired
-    Date date;
+    CustomDate date;
 
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    //    Allows only numbers, uppercase letters, lowercase letters, space (because real names have spaces), &, @, _
+    // Checks password validity
+    @Documented
+    @Constraint(validatedBy = PasswordConstraintValidator.class)
+    @Target({TYPE, FIELD, ANNOTATION_TYPE})
+    @Retention(RUNTIME)
+    public @interface ValidPassword {
+
+        String message() default "Invalid Password";
+
+        Class<?>[] groups() default {};
+
+        Class<? extends Payload>[] payload() default {};
+
+    }
+
+    // Allows only numbers, uppercase letters, lowercase letters, space (because real names have spaces), &, @, _
     public String convertRegisterEntry(String convert) {
         String converted = "";
         for (int i = 0; i < convert.length(); i++) {

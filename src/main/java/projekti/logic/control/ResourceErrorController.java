@@ -5,13 +5,13 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import projekti.logic.utility.Date;
+import projekti.logic.utility.CustomDate;
 
 @Controller
 public class ResourceErrorController implements ErrorController {
 
     @Autowired
-    Date date;
+    CustomDate date;
 
     @Override
     public String getErrorPath() {

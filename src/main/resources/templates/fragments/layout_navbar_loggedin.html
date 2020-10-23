@@ -46,8 +46,9 @@
                         </li>
                         <!-- Connections -->
                         <li class="nav-item ml-1">
-                            <a th:href="@{/EmployeeSearch/Users/{useralias}/Connections(useralias=${account.useralias})}" class="nav-link waves-effect waves-light">1
-                                <i class="fas fa-user-plus greyishicon"></i>
+                            <a th:href="@{/EmployeeSearch/Users/{useralias}/Connections(useralias=${account.useralias})}" class="nav-link waves-effect waves-light"><span th:text="${connectionRequestsReceivedSize}">amount</span>
+                                <i th:if="${connectionRequestsReceivedSize} == ''" class="fas fa-user-plus greyishicon"></i>
+                                <i th:unless="${connectionRequestsReceivedSize} == ''" class="fas fa-user-plus yellowishicon"></i>
                             </a>
                         </li>
                         <!-- Posts -->
@@ -76,7 +77,8 @@
                             <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink">
                                 <a th:href="@{/EmployeeSearch/Users/{useralias}(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg" id="myHomePageLink"><i class="fas fa-home mr-2 greyishicon"></i><small class="ml-1 greyish"> My Home Page</small></a>
                                 <a th:href="@{/EmployeeSearch/Users/{useralias}/SearchDropdown(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-search mr-2 greyishicon"></i><small class="ml-4 greyish">Search</small></a>
-                                <a th:href="@{/EmployeeSearch/Users/{useralias}/Connections(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-user mr-2 greyishicon"></i><small class="ml-1 greyish"> Connections</small></a>
+                                <a th:if="${connectionRequestsReceivedSize} == ''" th:href="@{/EmployeeSearch/Users/{useralias}/Connections(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-user mr-2 greyishicon"></i><small class="ml-1 greyish"> Connections</small></a>
+                                <a th:unless="${connectionRequestsReceivedSize} == ''" th:href="@{/EmployeeSearch/Users/{useralias}/Connections(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-user mr-2 yellowishicon"></i><small class="ml-1 yellowish"> Connections</small></a>
                                 <a th:href="@{/EmployeeSearch/Users/{useralias}/Uploads(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-cloud-upload-alt mr-2 greyishicon"></i><small class="ml-3 greyish">Uploads</small></a>
                                 <a th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-envelope mr-3 greyishicon"></i><small class="ml-3 greyish"> Posts</small></a>
                                 <a th:href="@{/EmployeeSearch/Users/{useralias}/Preferences(useralias=${account.useralias})}" class="btn dropdown-item mb-1 mt-0 darkbluebg"><i class="fas fa-cog mr-3 greyishicon"></i><small class="greyish"> Preferences</small></a>

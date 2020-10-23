@@ -33,8 +33,6 @@ public class ConnectionsController {
             return "fragments/layout_address_error";
         } else {
             Account userAccount = this.accountRepository.findByUseralias(useralias);
-            model.addAttribute("connectionEstablished", userAccount.getConnectionsEstablished());
-            model.addAttribute("requestsReceived", userAccount.getConnectionRequestsReceived());
             model.addAttribute("requestsSent", userAccount.getConnectionRequestsSent());
             return "connections";
         }
@@ -52,6 +50,8 @@ public class ConnectionsController {
             Account userAccount = this.accountRepository.findByUseralias(useralias);
             Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
             this.connectionsService.connectionRequestAccept(userAccount, visitingAccount);
+            this.connectionsService.arrangeConnectionsEstablished(userAccount);
+            this.connectionsService.arrangeConnectionsEstablished(visitingAccount);
             return "redirect:/EmployeeSearch/Users/" + useralias + "/Visiting/" + visitingalias;
         }
     }
@@ -83,7 +83,7 @@ public class ConnectionsController {
             return "redirect:/EmployeeSearch/Users/" + useralias + "/Visiting/" + visitingalias;
         }
     }
-    
+
     @Secured("USER")
     @PostMapping("/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Remove")
     public String userConnectionsRemove(Model model, @PathVariable String useralias,

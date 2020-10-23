@@ -14,7 +14,7 @@ import projekti.domain.Account;
 import projekti.logic.repository.AccountRepository;
 import projekti.logic.service.HomeService;
 import projekti.logic.service.RegisterService;
-import projekti.logic.utility.Date;
+import projekti.logic.utility.CustomDate;
 
 @Controller
 public class RegisterController {
@@ -29,7 +29,7 @@ public class RegisterController {
     private RegisterService registerService;
 
     @Autowired
-    Date date;
+    CustomDate date;
 
     // LOGGED OUT
     // GET-REQUESTS

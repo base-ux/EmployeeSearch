@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import projekti.logic.service.HomeService;
-import projekti.logic.utility.Date;
+import projekti.logic.utility.CustomDate;
 
 @Controller
 public class WelcomeController {
@@ -16,7 +16,7 @@ public class WelcomeController {
     private HomeService homeService;
 
     @Autowired
-    Date date;
+    CustomDate date;
 
     // LOGGED OUT
     // GET-REQUESTS
