@@ -1,9 +1,9 @@
 package projekti.domain;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Lob;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,16 +13,18 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfilePicture extends AbstractPersistable<Long> {
+public class Post extends AbstractPersistable<Long> {
 
     private String useralias;
-    
-    private String name;
-    private String mediaType;
-    
-    private Long profilepicturesize;
 
+    private String postingtime;
+
+    @NotEmpty
+    @Size(min = 1, max = 100)
+    private String title;
+
+    @NotEmpty
+    @Size(min = 1, max = 4000)
     @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] profilepicture;
+    private String message;
 }

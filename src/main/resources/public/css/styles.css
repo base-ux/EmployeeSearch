@@ -6,12 +6,23 @@ a:focus, a:hover, a:visited {
 /*Body*/
 body, html {
     background-color: #fefeff;
+    overflow-x: hidden;
 }
 
 /*Classes*/
 .bigbox {
     max-width: 75em;
     min-width: 30em;
+}
+
+.bigbox2 {
+    max-width: 25em;
+    min-width: 10em;
+}
+
+.bigbox3 {
+    height: 10em;
+    max-width: 25em;
 }
 
 .blocks {

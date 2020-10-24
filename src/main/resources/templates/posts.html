@@ -33,37 +33,56 @@
                     </h3>
                 </div>
             </div>
-            <div class="row mt-5 pr-5 py-5">
-                <!-- New post box -->
-                <div class="col-xl">
-                    <div class="container bigbox">
-                        <form>
-                            <textarea class="summernote"></textarea>
-                            <button type="submit" class="btn btn-outline-dark btn-md mt-3 waves-effect">
-                                Send
-                            </button>
+            <div class="row mt-5 py-5">
+                <!-- New post title and message box -->
+                <div class="col">
+                    <div class="container-fluid bigbox">
+                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias})}" 
+                              th:object="${post}" enctype="multipart/form-data" method="POST">
+                            <p class="h5 mb-4 darkblue"><strong>New Post Title:</strong></p>
+                            <input type="text" th:field="*{title}" name="title" class="container-fluid"/><br/>
+                            <small th:if="${#fields.hasErrors('title')}"
+                                   th:errors="*{title}" class="text-danger">post title error message</small>
+                            <p class="h5 my-4 darkblue"><strong>New Post Message:</strong></p>
+                            <textarea class="summernote" th:field="*{message}" name="message">New Post</textarea>
+                            <small th:if="${#fields.hasErrors('message')}"
+                                   th:errors="*{message}" class="text-danger">post contents error message</small><br/>
+                            <button type="submit" class="btn btn-outline-dark btn-md mt-3 waves-effect">Send</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="row mb-5 pr-5 pb-5">
+            <div class="row">
                 <!-- List of posts -->
-                <div class="col-xl">
+                <div class="col">
                     <div class="container bigbox">
-                        <table>
-                            <!-- Recent posts title -->
-                            <thead>
-                                <p class="h5 mb-4 darkblue">Recent Posts</p>
-                            </thead>
-                            <!-- Posts list -->
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <p>No Posts</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <!-- Recent posts title -->
+                        <div>
+                            <p class="h5 mb-4 darkblue">Recent Posts:</p>
+                        </div>
+                        <div>
+                            <p class="h2 text-center pinkish">New!</p>
+                        </div>
+                        <!-- Posts list -->
+                        <div th:if="${viewAllPosts} != null" th:each="post:${viewAllPosts}">
+                            <div class="card mb-5 w-50 pagination">
+                                <div class="card-body">
+                                    <p class="card-title h5 py-2 text-left darkbluebg greyish">
+                                        <i class="fas fa-book-reader mx-3 greyishicon"></i>
+                                        <strong class="ml-3" th:text="${#strings.abbreviate(post.title,50)}">Post Title</strong>
+                                    </p>
+                                    <p class="card-text mb-0 text-center">view</p>
+                                    <p class="my-0">Views</p>
+                                    <p class="my-0">Comments</p>
+                                    <p class="my-0">Likes</p>
+                                    <p class="small my-0 text-center" th:text="${'posted: ' + post.postingtime}">time</p>
+                                    <p class="small my-0 text-right" th:text="${post.useralias}">alias</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div th:unless="${viewAllPosts} != null">
+                            <p>No Posts</p>
+                        </div>
                     </div>
                 </div>
             </div>

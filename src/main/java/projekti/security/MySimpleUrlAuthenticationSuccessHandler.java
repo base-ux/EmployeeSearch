@@ -22,6 +22,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import projekti.domain.Account;
 import projekti.logic.repository.AccountRepository;
 
+// Credits to https://www.baeldung.com/spring_redirect_after_login
 public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired

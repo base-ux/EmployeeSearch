@@ -34,6 +34,7 @@ public class RegisterService {
     PasswordEncoder passwordEncoder;
 
     // Checks password validity
+    // Credits to https://www.baeldung.com/registration-password-strength-and-rules
     @Documented
     @Constraint(validatedBy = PasswordConstraintValidator.class)
     @Target({TYPE, FIELD, ANNOTATION_TYPE})
