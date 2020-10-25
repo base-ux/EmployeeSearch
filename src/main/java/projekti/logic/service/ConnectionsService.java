@@ -11,7 +11,7 @@ import projekti.logic.utility.CustomDate;
 public class ConnectionsService {
 
     @Autowired
-    CustomDate date;
+    private CustomDate date;
 
     // Add visited user alias and name to the connectionsEstablished list of user account if it's not there yet
     @Transactional

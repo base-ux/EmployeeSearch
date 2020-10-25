@@ -11,7 +11,7 @@ import projekti.logic.utility.CustomDate;
 public class ResourceErrorController implements ErrorController {
 
     @Autowired
-    CustomDate date;
+    private CustomDate date;
 
     @Override
     public String getErrorPath() {

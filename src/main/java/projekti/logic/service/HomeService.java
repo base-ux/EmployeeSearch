@@ -15,13 +15,13 @@ import projekti.logic.utility.CustomDate;
 public class HomeService {
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     @Autowired
-    CustomDate date;
+    private CustomDate date;
 
     @Autowired
-    HttpServletRequest request;
+    private HttpServletRequest request;
 
     // Send user navbar its parameters
     public boolean helloUser(Model model, String checkUseralias) {

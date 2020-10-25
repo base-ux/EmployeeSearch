@@ -25,13 +25,13 @@ import projekti.security.PasswordConstraintValidator;
 public class RegisterService {
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     @Autowired
-    CustomDate date;
+    private CustomDate date;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     // Checks password validity
     // Credits to https://www.baeldung.com/registration-password-strength-and-rules

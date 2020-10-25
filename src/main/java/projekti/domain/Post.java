@@ -1,5 +1,8 @@
 package projekti.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotEmpty;
@@ -15,9 +18,11 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @AllArgsConstructor
 public class Post extends AbstractPersistable<Long> {
 
-    private String useralias;
+    private String realname;
 
     private String postingtime;
+
+    private int likes;
 
     @NotEmpty
     @Size(min = 1, max = 100)
@@ -27,4 +32,10 @@ public class Post extends AbstractPersistable<Long> {
     @Size(min = 1, max = 4000)
     @Lob
     private String message;
+    
+    @ElementCollection
+    private List<String> followers = new ArrayList<>();
+    
+    @ElementCollection
+    private List<String> readbyusers = new ArrayList<>();
 }

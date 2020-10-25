@@ -16,10 +16,10 @@ import projekti.logic.service.HomeService;
 public class ConnectionsController {
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     @Autowired
-    ConnectionsService connectionsService;
+    private ConnectionsService connectionsService;
 
     @Autowired
     private HomeService homeService;

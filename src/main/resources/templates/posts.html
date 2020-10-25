@@ -47,41 +47,105 @@
                             <textarea class="summernote" th:field="*{message}" name="message">New Post</textarea>
                             <small th:if="${#fields.hasErrors('message')}"
                                    th:errors="*{message}" class="text-danger">post contents error message</small><br/>
-                            <button type="submit" class="btn btn-outline-dark btn-md mt-3 waves-effect">Send</button>
+                            <button type="submit" class="btn btn-outline-dark btn-md waves-effect">Send</button>
                         </form>
                     </div>
                 </div>
             </div>
+            <!-- Lists of posts -->
             <div class="row">
-                <!-- List of posts -->
-                <div class="col">
-                    <div class="container bigbox">
-                        <!-- Recent posts title -->
+                <!-- Followed posts -->
+                <div class="col-md mb-5">
+                    <div class="container-fluid text-center">
+                        <!-- Followed posts title -->
                         <div>
-                            <p class="h5 mb-4 darkblue">Recent Posts:</p>
+                            <p class="h5 darkblue">Followed Posts:</p>
                         </div>
-                        <div>
-                            <p class="h2 text-center pinkish">New!</p>
-                        </div>
-                        <!-- Posts list -->
-                        <div th:if="${viewAllPosts} != null" th:each="post:${viewAllPosts}">
-                            <div class="card mb-5 w-50 pagination">
+                        <!-- Followed Posts list -->
+                        <div th:if="${followedPosts} != null" th:each="post:${viewAllPosts}">
+                            <div th:unless="${followedPosts} == null or ${followedPosts.empty}">
+                                <p class="h2 pinkish">New!</p>
+                            </div>
+                            <div class="card mb-5 w-50">
                                 <div class="card-body">
                                     <p class="card-title h5 py-2 text-left darkbluebg greyish">
                                         <i class="fas fa-book-reader mx-3 greyishicon"></i>
                                         <strong class="ml-3" th:text="${#strings.abbreviate(post.title,50)}">Post Title</strong>
                                     </p>
                                     <p class="card-text mb-0 text-center">view</p>
-                                    <p class="my-0">Views</p>
-                                    <p class="my-0">Comments</p>
-                                    <p class="my-0">Likes</p>
+                                    <p class="my-0">Comments: 0</p>
+                                    <p class="my-0">Likes: 0</p>
                                     <p class="small my-0 text-center" th:text="${'posted: ' + post.postingtime}">time</p>
-                                    <p class="small my-0 text-right" th:text="${post.useralias}">alias</p>
+                                    <strong><p class="h6 my-0 text-right" th:text="${'by: ' + post.realname}">name</p></strong>
                                 </div>
                             </div>
                         </div>
-                        <div th:unless="${viewAllPosts} != null">
-                            <p>No Posts</p>
+                        <div th:if="${followedPosts} == null or ${followedPosts.empty}" class="my-5 pb-5">
+                            <span>No Posts Are Followed.</span>
+                        </div>
+                    </div>
+                    <!-- Page -->
+                    <div class="paginationcenter">
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <span th:each="page:${totalPagesFollowed}">
+                                <a th:if="${page} == ${currentPage}" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpage=${page})}" class="active" th:text="${page} + 1">page number</a>
+                                <a th:unless="${page} == ${currentPage}" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpage=${page})}" th:text="${page} + 1">page number</a>
+                            </span>
+                            <a href="#">&raquo;</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Recent posts -->
+                <div class="col-md mb-5">
+                    <div class="container bigbox">
+                        <!-- Recent posts title -->
+                        <div>
+                            <p class="h5 darkblue">Recent Posts:</p>
+                        </div>
+                        <div th:if="${viewAllPosts} == null or ${viewAllPosts.empty}" class="my-5 pb-5">
+                            <span class="my-5">No Posts.</span>
+                        </div>
+                        <!-- Page -->
+                        <div class="paginationleft">
+                            <div class="pagination">
+                                <a th:if="${currentPageRecent} > 0" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpagerecent=${currentPageRecent} - 1)}">&laquo;</a>
+                                <span th:each="page:${totalPagesRecent}">
+                                    <a th:if="${page} == ${currentPageRecent} and ${viewAllPosts} != null and ${!viewAllPosts.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpagerecent=${page})}" class="active" th:text="${page} + 1">page number</a>
+                                    <a th:unless="${page} == ${currentPageRecent}" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpagerecent=${page})}" th:text="${page} + 1">page number</a>
+                                </span>
+                                <a th:if="${currentPageRecent} < ${lastPage}" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpagerecent=${currentPageRecent} + 1)}">&raquo;</a>
+                            </div>
+                        </div>
+                        <!-- Recent posts list -->
+                        <div th:if="${viewAllPosts} != null" th:each="post:${viewAllPosts}">
+                            <div th:unless="${viewAllPosts} == null or ${viewAllPosts.empty}">
+                                <p class="h2 yellowish">unread</p>
+                            </div>
+                            <div class="card mb-5 w-50">
+                                <div class="card-body">
+                                    <p class="card-title h5 py-2 text-left darkbluebg greyish">
+                                        <i class="fas fa-book-reader mx-3 greyishicon"></i>
+                                        <strong class="ml-3" th:text="${#strings.abbreviate(post.title,50)}">Post Title</strong>
+                                    </p>
+                                    <p class="card-text mb-0 text-center">view</p>
+                                    <p class="my-0">Comments: 0</p>
+                                    <p class="my-0">Likes: 0</p>
+                                    <p class="small my-0 text-center" th:text="${'posted: ' + post.postingtime}">time</p>
+                                    <strong><p class="h6 my-0 text-right" th:text="${'by: ' + post.realname}">name</p></strong>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page -->
+                        <div class="paginationleft">
+                            <div class="pagination">
+                                <a th:if="${currentPageRecent} > 0" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpagerecent=${currentPageRecent} - 1)}">&laquo;</a>
+                                <span th:each="page:${totalPagesRecent}">
+                                    <a th:if="${page} == ${currentPageRecent} and ${viewAllPosts} != null and ${!viewAllPosts.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpagerecent=${page})}" class="active" th:text="${page} + 1">page number</a>
+                                    <a th:unless="${page} == ${currentPageRecent}" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpagerecent=${page})}" th:text="${page} + 1">page number</a>
+                                </span>
+                                <a th:if="${currentPageRecent} < ${lastPage}" th:href="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias},showpagerecent=${currentPageRecent} + 1)}">&raquo;</a>
+                            </div>
                         </div>
                     </div>
                 </div>

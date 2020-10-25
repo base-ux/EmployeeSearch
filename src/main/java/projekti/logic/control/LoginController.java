@@ -14,7 +14,7 @@ public class LoginController {
     private HomeService homeService;
 
     @Autowired
-    CustomDate date;
+    private CustomDate date;
 
     // LOGGED OUT
     // GET-REQUESTS

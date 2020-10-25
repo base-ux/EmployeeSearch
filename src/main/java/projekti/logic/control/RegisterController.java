@@ -20,7 +20,7 @@ import projekti.logic.utility.CustomDate;
 public class RegisterController {
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     @Autowired
     private HomeService homeService;
@@ -29,7 +29,7 @@ public class RegisterController {
     private RegisterService registerService;
 
     @Autowired
-    CustomDate date;
+    private CustomDate date;
 
     // LOGGED OUT
     // GET-REQUESTS

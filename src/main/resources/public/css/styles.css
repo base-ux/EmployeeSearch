@@ -91,6 +91,42 @@ body, html {
     overflow-y: scroll;
 }
 
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #ff0067;
+    color: white;
+    border: 1px solid #012854;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.paginationcenter {
+    text-align: center;
+    margin-top: 4em;
+    margin-bottom: 2em;
+}
+
+.paginationleft {
+    text-align: left;
+    margin-top: 4em;
+    margin-bottom: 2em;
+}
+
 .pinkish {
     color: #ff0067;
 }

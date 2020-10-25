@@ -17,7 +17,7 @@ import projekti.logic.service.HomeService;
 public class HomeController {
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     @Autowired
     private ConnectionsService connectionsService;

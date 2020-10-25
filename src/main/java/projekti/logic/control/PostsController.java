@@ -1,5 +1,7 @@
 package projekti.logic.control;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -36,13 +38,18 @@ public class PostsController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Posts")
     public String postsWall(Model model, @ModelAttribute Post post,
-            @PathVariable String useralias) {
+            @PathVariable String useralias, @RequestParam(defaultValue = "0") String showpagerecent, 
+            @RequestParam(defaultValue = "0") String showpagefollowed) {
         if (this.homeService.helloUser(model, useralias) == false) {
             return "fragments/layout_address_error";
         } else {
-            Pageable pageable = PageRequest.of(0, 25, Sort.by("postingtime").descending());
+            int postsPerPage = 2;
+            Pageable pageable = PageRequest.of(Integer.parseInt(showpagerecent), postsPerPage, Sort.by("postingtime").descending());
+            List<Integer> pages = this.postsService.totalPages(postsPerPage, Integer.parseInt(showpagerecent));
+            model.addAttribute("currentPageRecent", Integer.parseInt(showpagerecent));
+            model.addAttribute("lastPage", this.postsService.lastPage(pages));
+            model.addAttribute("totalPagesRecent", pages);
             model.addAttribute("viewAllPosts", this.postsRepository.findAll(pageable));
-            System.out.println("size: " + this.postsRepository.findAll().size());
             return "posts";
         }
     }
@@ -58,7 +65,7 @@ public class PostsController {
             return "fragments/layout_address_error";
         } else {
             if (bindingResult.hasErrors()) {
-                Pageable pageable = PageRequest.of(0, 25, Sort.by("postingtime").descending());
+                Pageable pageable = PageRequest.of(0, 2, Sort.by("postingtime").descending());
                 model.addAttribute("viewAllPosts", this.postsRepository.findAll(pageable));
                 return "posts";
             }

@@ -10,7 +10,7 @@ import projekti.logic.repository.AccountRepository;
 public class SearchService {
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     public List<Account> removeUserAccountFromResultsOrReturnEmptyList(List<Account> results, String useralias) {
         if (results.size() > 0) {
