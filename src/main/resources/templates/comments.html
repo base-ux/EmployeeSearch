@@ -38,7 +38,7 @@
                 <div class="col">
                     <div class="card mb-5 ml-3 w-100">
                         <div class="card-body">
-                            <form th:if="${account.useralias} != ${post.useralias}"  class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikePost(useralias=${account.useralias},postid=${post.id})}" method="POST">
+                            <form th:if="${account.useralias} != ${postuseralias}"  class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikePost(useralias=${account.useralias},postid=${post.id})}" method="POST">
                                 <button th:if="${post.likers.contains(account.useralias)}" type="submit" class="btn btn-sm pinkish"><i class="fas fa-thumbs-up mr-3 pinkish waves-effect waves-light"></i>Liked</button>
                                 <button th:unless="${post.likers.contains(account.useralias)}" type="submit" class="btn btn-sm"><i class="fas fa-thumbs-up mr-3 waves-effect waves-light"></i>Like</button>
                             </form>
