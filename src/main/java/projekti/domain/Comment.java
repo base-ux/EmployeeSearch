@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.Lob;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -26,7 +25,6 @@ public class Comment extends AbstractPersistable<Long> {
 
     @NotEmpty
     @Size(min = 1, max = 4000)
-    @Lob
     private String response;
 
     @ElementCollection
