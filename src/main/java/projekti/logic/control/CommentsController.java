@@ -10,10 +10,10 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import projekti.domain.Comment;
 import projekti.logic.repository.CommentsRepository;
@@ -39,7 +39,7 @@ public class CommentsController {
     // LOGGED IN
     // GET-REQUESTS
     @Secured("USER")
-    @GetMapping("/EmployeeSearch/Users/{useralias}/Comments/{postid}")
+    @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Comments/{postid}", method = RequestMethod.GET)
     public String commentsWall(Model model, @ModelAttribute Comment comment,
             @PathVariable String useralias, @PathVariable Long postid,
             @RequestParam(defaultValue = "0") String showpagecomments) {
@@ -61,7 +61,7 @@ public class CommentsController {
     // LOGGED IN
     // POST-REQUESTS
     @Secured("USER")
-    @PostMapping("/EmployeeSearch/Users/{useralias}/Comments/{postid}")
+    @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Comments/{postid}", method = RequestMethod.POST)
     public String commentNew(Model model, @Valid @ModelAttribute Comment comment,
             BindingResult bindingResult, @PathVariable String useralias,
             @PathVariable Long postid, @RequestParam(defaultValue = "0") String showpagecomments,
@@ -86,7 +86,7 @@ public class CommentsController {
     }
 
     @Secured("USER")
-    @PostMapping("/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikeComment/{commentid}")
+    @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikeComment/{commentid}", method = RequestMethod.POST)
     public String likeComment(Model model, @ModelAttribute Comment comment,
             BindingResult bindingResult, @PathVariable String useralias,
             @PathVariable Long postid, @PathVariable Long commentid, @RequestParam(defaultValue = "0") String showpagecomments) {
@@ -107,7 +107,7 @@ public class CommentsController {
     }
 
     @Secured("USER")
-    @PostMapping("/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikePost")
+    @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikePost", method = RequestMethod.POST)
     public String likePost(Model model, @ModelAttribute Comment comment,
             BindingResult bindingResult, @PathVariable String useralias,
             @PathVariable Long postid, @RequestParam(defaultValue = "0") String showpagecomments) {
