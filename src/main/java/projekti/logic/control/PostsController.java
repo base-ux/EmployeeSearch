@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import projekti.domain.Post;
 import projekti.logic.repository.PostsRepository;
@@ -56,7 +58,7 @@ public class PostsController {
     // LOGGED IN
     // POST-REQUESTS
     @Secured("USER")
-    @PostMapping("/EmployeeSearch/Users/{useralias}/Posts")
+    @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Posts", method = RequestMethod.POST)
     public String postNew(Model model, @Valid @ModelAttribute Post post,
             BindingResult bindingResult, @PathVariable String useralias,
             @RequestParam(defaultValue = "0") String showpagerecent,
