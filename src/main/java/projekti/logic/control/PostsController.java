@@ -74,8 +74,8 @@ public class PostsController {
                 model.addAttribute("viewAllPosts", this.postsRepository.findAll(pageable));
                 return "posts";
             }
-            Long id = this.postsService.newPost(post, useralias, title, message);
-            return "redirect:/EmployeeSearch/Users/" + useralias + "/Comments/" + id;
+            Long postid = this.postsService.newPost(post, useralias, title, message);
+            return "redirect:/EmployeeSearch/Users/" + useralias + "/Comments/" + postid;
         }
     }
 }
