@@ -33,49 +33,94 @@
                     </h3>
                 </div>
             </div>
-            <div class="row mt-5 pr-5 py-5">
-                <!-- New comment box -->
-                <div class="col-xl">
-                    <div class="container bigbox">
-                        <form>
-                            <textarea id="summernote"></textarea>
-                            <button type="submit" class="btn btn-outline-dark btn-md mt-3 waves-effect">
-                                Comment
-                            </button>
+            <!-- Original post -->
+            <div class="row mt-5 pr-5 pt-5">
+                <div class="col">
+                    <div class="card mb-5 ml-3 w-100">
+                        <div class="card-body">
+                            <form th:if="${account.useralias} != ${post.useralias}"  class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikePost(useralias=${account.useralias},postid=${post.id})}" method="POST">
+                                <button th:if="${post.likers.contains(account.useralias)}" type="submit" class="btn btn-sm pinkish"><i class="fas fa-thumbs-up mr-3 pinkish waves-effect waves-light"></i>Liked</button>
+                                <button th:unless="${post.likers.contains(account.useralias)}" type="submit" class="btn btn-sm"><i class="fas fa-thumbs-up mr-3 waves-effect waves-light"></i>Like</button>
+                            </form>
+                            <p class="card-title h5 py-2 text-left darkbluebg greyish">
+                                <i class="fas fa-envelope-open-text mx-3 greyishicon"></i>
+                                <strong class="ml-3" th:text="${post.title}">post title</strong>
+                            </p>
+                            <p class="card-text" th:utext="${post.message}">post message</p>
+                            <p class="small my-0 text-center" th:text="${'posted: ' + post.postingtime}">time</p>
+                            <strong><p class="h6 my-0 text-right" th:text="${'by: ' + post.useralias}">alias</p></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Back to posts page -->
+            <div th:replace="fragments/layout_links_texts :: posts"></div>
+            <!-- /Back to posts page -->
+            <!-- New comment box -->
+            <div class="row pb-5">
+                <div class="col">
+                    <div class="container-fluid bigbox">
+                        <form th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id})}" 
+                              th:object="${comment}" enctype="multipart/form-data" method="POST">
+                            <p class="h5 my-4 darkblue"><strong>New Comment:</strong></p>
+                            <textarea class="summernote" th:field="*{response}" name="response">new comment</textarea>
+                            <small th:if="${#fields.hasErrors('response')}"
+                                   th:errors="*{response}" class="text-danger">comment contents error message</small><br/>
+                            <button type="submit" class="btn btn-outline-dark btn-md waves-effect">Comment</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="row my-5 pr-5 py-5">
-                <!-- List of comments -->
-                <div class="col-xl">
-                    <table>
-                        <!-- Original post title -->
-                        <thead>
-                            <p class="h5 mb-4 darkblue">Original Post</p>
-                        </thead>
-                        <!-- Original post contents -->
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>Original post</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!-- Recent comments title -->
-                    <thead>
-                        <p class="h5 mb-4 darkblue">Recent Comments</p>
-                    </thead>
-                    <!-- Comments list -->
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p>No Comments</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                    </table>
+            <!-- Lists of comments -->
+            <div class="row">
+                <!-- Recent comments -->
+                <div class="col mb-5">
+                    <div class="container bigbox">
+                        <!-- Recent comments title -->
+                        <div>
+                            <p class="h5 darkblue">Recent Comments:</p>
+                        </div>
+                        <div th:if="${viewAllComments} == null or ${viewAllComments.empty}" class="my-5 pb-5">
+                            <span class="my-5">No Comments.</span>
+                        </div>
+                        <!-- Page -->
+                        <div class="paginationleft">
+                            <div class="pagination">
+                                <a th:if="${currentPageComments} > 0" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} - 1)}">&laquo;</a>
+                                <span th:each="page:${totalPagesComments}">
+                                    <a th:if="${page} == ${currentPageComments} and ${viewAllComments} != null and ${!viewAllComments.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" class="active" th:text="${page} + 1">page number</a>
+                                    <a th:unless="${page} == ${currentPageComments}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" th:text="${page} + 1">page number</a>
+                                </span>
+                                <a th:if="${currentPageComments} < ${lastPage} and ${totalPagesComments.size()} > 1 and ${viewAllComments} != null and ${!viewAllComments.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} + 1)}">&raquo;</a>
+                            </div>
+                        </div>
+                        <!-- Recent comments list -->
+                        <div th:if="${viewAllComments} != null" th:each="comment:${viewAllComments}">
+                            <div class="card mb-5 w-100">
+                                <div class="card-body">
+                                    <form th:if="${account.useralias} != ${comment.useralias}" class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikeComment/{commentid}(useralias=${account.useralias},postid=${post.id},commentid=${comment.id})}" method="POST">
+                                        <button th:if="${comment.likers.contains(account.useralias)}" type="submit" class="btn btn-sm pinkish"><i class="fas fa-thumbs-up mr-3 pinkish waves-effect waves-light"></i>Liked</button>
+                                        <button th:unless="${comment.likers.contains(account.useralias)}" type="submit" class="btn btn-sm"><i class="fas fa-thumbs-up mr-3 waves-effect waves-light"></i>Like</button>
+                                    </form>
+                                    <p th:utext=${comment.response}>response</p>
+                                    <p class="my-0">Likes: <span th:text="${comment.likers.size()}">likes</span></p>
+                                    <p class="small my-0 text-center" th:text="${'commented: ' + comment.postingtime}">time</p>
+                                    <strong><p class="h6 my-0 text-right" th:text="${'by: ' + comment.useralias}">alias</p></strong>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page -->
+                        <div class="paginationleft">
+                            <div class="pagination">
+                                <a th:if="${currentPageComments} > 0" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} - 1)}">&laquo;</a>
+                                <span th:each="page:${totalPagesComments}">
+                                    <a th:if="${page} == ${currentPageComments} and ${viewAllComments} != null and ${!viewAllComments.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" class="active" th:text="${page} + 1">page number</a>
+                                    <a th:unless="${page} == ${currentPageComments}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" th:text="${page} + 1">page number</a>
+                                </span>
+                                <a th:if="${currentPageComments} < ${lastPage} and ${totalPagesComments.size()} > 1 and ${viewAllComments} != null and ${!viewAllComments.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} + 1)}">&raquo;</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,5 +6,5 @@ import projekti.domain.Post;
 
 public interface PostsRepository extends JpaRepository<Post, Long> {
 
-    List<Post> findByRealname(String realname);
+    List<Post> findByUseralias(String useralias);
 }

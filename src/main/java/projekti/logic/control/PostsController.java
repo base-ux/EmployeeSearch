@@ -1,6 +1,5 @@
 package projekti.logic.control;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +37,12 @@ public class PostsController {
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Posts")
     public String postsWall(Model model, @ModelAttribute Post post,
-            @PathVariable String useralias, @RequestParam(defaultValue = "0") String showpagerecent, 
+            @PathVariable String useralias, @RequestParam(defaultValue = "0") String showpagerecent,
             @RequestParam(defaultValue = "0") String showpagefollowed) {
         if (this.homeService.helloUser(model, useralias) == false) {
             return "fragments/layout_address_error";
         } else {
-            int postsPerPage = 2;
+            int postsPerPage = 25;
             Pageable pageable = PageRequest.of(Integer.parseInt(showpagerecent), postsPerPage, Sort.by("postingtime").descending());
             List<Integer> pages = this.postsService.totalPages(postsPerPage, Integer.parseInt(showpagerecent));
             model.addAttribute("currentPageRecent", Integer.parseInt(showpagerecent));
@@ -60,17 +59,23 @@ public class PostsController {
     @PostMapping("/EmployeeSearch/Users/{useralias}/Posts")
     public String postNew(Model model, @Valid @ModelAttribute Post post,
             BindingResult bindingResult, @PathVariable String useralias,
+            @RequestParam(defaultValue = "0") String showpagerecent,
             @RequestParam String title, @RequestParam String message) {
         if (this.homeService.helloUser(model, useralias) == false) {
             return "fragments/layout_address_error";
         } else {
             if (bindingResult.hasErrors()) {
-                Pageable pageable = PageRequest.of(0, 2, Sort.by("postingtime").descending());
+                int postsPerPage = 25;
+                Pageable pageable = PageRequest.of(0, postsPerPage, Sort.by("postingtime").descending());
+                List<Integer> pages = this.postsService.totalPages(postsPerPage, Integer.parseInt(showpagerecent));
+                model.addAttribute("currentPageRecent", Integer.parseInt(showpagerecent));
+                model.addAttribute("lastPage", this.postsService.lastPage(pages));
+                model.addAttribute("totalPagesRecent", pages);
                 model.addAttribute("viewAllPosts", this.postsRepository.findAll(pageable));
                 return "posts";
             }
-            this.postsService.newPost(post, useralias, title, message);
-            return "redirect:/EmployeeSearch/Users/" + useralias + "/Posts";
+            Long id = this.postsService.newPost(post, useralias, title, message);
+            return "redirect:/EmployeeSearch/Users/" + useralias + "/Comments/" + id;
         }
     }
 }

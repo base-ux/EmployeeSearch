@@ -4,23 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import projekti.domain.Account;
+import projekti.domain.Comment;
 import projekti.domain.Post;
 import projekti.logic.repository.AccountRepository;
-import projekti.logic.repository.PostsRepository;
+import projekti.logic.repository.CommentsRepository;
 import projekti.logic.utility.CustomDate;
 
 @Service
-public class PostsService {
+public class CommentsService {
 
     @Autowired
     private AccountRepository accountRepository;
 
     @Autowired
-    private CustomDate date;
+    private CommentsRepository commentsRepository;
 
     @Autowired
-    private PostsRepository postsRepository;
+    private CustomDate date;
 
     // Returns the value (page number) of the last index in parameter list
     public Integer lastPage(List<Integer> totalPages) {
@@ -36,29 +38,54 @@ public class PostsService {
         }
     }
 
-    public Long newPost(Post post, String useralias, String title, String message) {
-        post = new Post();
+    // Adds or removes user alias in the likers list of parameter comment if it's not user's own comment
+    @Transactional
+    public void likeComment(String useralias, Comment comment) {
+        if (!comment.getUseralias().equals(useralias)) {
+            List<String> likers = comment.getLikers();
+            if (!likers.contains(useralias)) {
+                likers.add(useralias);
+            } else {
+                likers.remove(useralias);
+            }
+        }
+    }
+
+    public void newComment(Comment comment, Long postid, String useralias, String response) {
+        comment = new Comment();
         Account account = this.accountRepository.findByUseralias(useralias);
-        post.setUseralias(account.getUseralias());
-        post.setPostingtime(this.date.dateTime());
-        post.setTitle(title);
-        post.setMessage(message);
-        this.postsRepository.save(post);
-        return post.getId();
+        comment.setPostid(postid);
+        comment.setUseralias(account.getUseralias());
+        comment.setPostingtime(this.date.dateTime());
+        comment.setResponse(response);
+        this.commentsRepository.save(comment);
+    }
+
+    // Adds or removes user alias in the likers list of parameter post if it's not user's own post
+    @Transactional
+    public void likePost(String useralias, Post post) {
+        if (!post.getUseralias().equals(useralias)) {
+            List<String> likers = post.getLikers();
+            if (!likers.contains(useralias)) {
+                likers.add(useralias);
+            } else {
+                likers.remove(useralias);
+            }
+        }
     }
 
     // Returns a list of five page numbers for pagination
-    public List<Integer> totalPages(int postsPerPage, int showpagerecent) {
+    public List<Integer> totalPages(int commentsPerPage, int showpagecomments) {
         List<Integer> pageNumbers = new ArrayList<>();
-        int totalPosts = this.postsRepository.findAll().size();
-        if (totalPosts > postsPerPage) {
-            int startPage = showpagerecent;
+        int totalComments = this.commentsRepository.findAll().size();
+        if (totalComments > commentsPerPage) {
+            int startPage = showpagecomments;
             int endPage = 0, additionalPages = 0, zeroPages = 0;
             int onePage = 1, twoPages = 2, threePages = 3, fourPages = 4;
-            if (totalPosts % postsPerPage > zeroPages) {
+            if (totalComments % commentsPerPage > zeroPages) {
                 additionalPages = onePage;
             }
-            int totalPages = totalPosts / postsPerPage + additionalPages;
+            int totalPages = totalComments / commentsPerPage + additionalPages;
             if (totalPages > startPage) {
                 if (startPage + fourPages < totalPages) {
                     endPage = startPage + fourPages;

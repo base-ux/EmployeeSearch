@@ -18,11 +18,9 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @AllArgsConstructor
 public class Post extends AbstractPersistable<Long> {
 
-    private String realname;
+    private String useralias;
 
     private String postingtime;
-
-    private int likes;
 
     @NotEmpty
     @Size(min = 1, max = 100)
@@ -35,6 +33,9 @@ public class Post extends AbstractPersistable<Long> {
     
     @ElementCollection
     private List<String> followers = new ArrayList<>();
+    
+    @ElementCollection
+    private List<String> likers = new ArrayList<>();
     
     @ElementCollection
     private List<String> readbyusers = new ArrayList<>();

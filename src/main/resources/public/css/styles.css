@@ -10,6 +10,10 @@ body, html {
 }
 
 /*Classes*/
+.alignright {
+    align-content: flex-end;
+}
+
 .bigbox {
     max-width: 75em;
     min-width: 30em;
@@ -188,7 +192,6 @@ body, html {
 .welcometextbutton {
     padding: 5vh 2vw 5vh 2vw;
 }
-
 .whiteicon {
     color: #ffffff;
 }

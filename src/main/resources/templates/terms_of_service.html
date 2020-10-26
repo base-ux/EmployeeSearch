@@ -31,8 +31,20 @@
             <!-- /Pinkish row -->
 
             <!-- Terms of service page content -->
-            <div th:replace="fragments/layout_terms_loggedout :: terms"></div>
+            <div th:replace="fragments/layout_links_texts :: terms"></div>
             <!-- /Terms of service page content -->
+
+            <!-- Back to login page -->
+            <div th:replace="fragments/layout_links_texts :: login"></div>
+            <!-- /Back to login page -->
+
+            <!-- Back to main page -->
+            <div th:replace="fragments/layout_links_texts :: main"></div>
+            <!-- /Back to main page -->
+
+            <!-- Back to register page -->
+            <div th:replace="fragments/layout_links_texts :: register"></div>
+            <!-- /Back to register page -->
 
             <!-- Footer -->
             <div th:replace="fragments/layout_footer :: footer"></div>
@@ -53,7 +65,7 @@
             <!-- /Pinkish row -->
 
             <!-- Terms of service page content -->
-            <div th:replace="fragments/layout_terms_loggedin :: terms"></div>
+            <div th:replace="fragments/layout_links_texts :: terms"></div>
             <!-- /Terms of service page content -->
 
             <!-- Footer -->
