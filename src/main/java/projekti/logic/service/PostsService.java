@@ -22,6 +22,28 @@ public class PostsService {
     @Autowired
     private PostsRepository postsRepository;
 
+    // Returns the integer amount of posts that user or user's connections have created
+    public int totalPosts(String useralias) {
+        int totalposts = 0;
+        Account account = this.accountRepository.findByUseralias(useralias);
+        List<String> establishedUseraliases = account.getEstablishedUseraliases();
+        List<Post> allPosts = this.postsRepository.findAll();
+        for (Post p : allPosts) {
+            if (p.getUseralias().equals(useralias)
+                    || establishedUseraliases.contains(p.getUseralias())) {
+                totalposts++;
+            }
+        }
+        return totalposts;
+    }
+
+    // Returns the establishedUseraliases list of parameter useralias account
+    public List<String> establishedUseraliases(String useralias) {
+        Account account = this.accountRepository.findByUseralias(useralias);
+        List<String> connections = account.getEstablishedUseraliases();
+        return connections;
+    }
+
     // Returns the value (page number) of the last index in parameter list
     public Integer lastPage(List<Integer> totalPages) {
         int size = totalPages.size();
@@ -43,14 +65,15 @@ public class PostsService {
         post.setPostingtime(this.date.dateTime());
         post.setTitle(title);
         post.setMessage(message);
+        post.setLikes(0);
         this.postsRepository.save(post);
         return post.getId();
     }
 
     // Returns a list of five page numbers for pagination
-    public List<Integer> totalPages(int postsPerPage, int showpagerecent) {
+    public List<Integer> totalPages(int postsPerPage, int showpagerecent, String useralias) {
         List<Integer> pageNumbers = new ArrayList<>();
-        int totalPosts = this.postsRepository.findAll().size();
+        int totalPosts = totalPosts(useralias);
         if (totalPosts > postsPerPage) {
             int startPage = showpagerecent;
             int endPage = 0, additionalPages = 0, zeroPages = 0;

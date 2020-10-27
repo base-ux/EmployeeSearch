@@ -44,10 +44,12 @@ public class PostsController {
         } else {
             int postsPerPage = 25;
             Pageable pageable = PageRequest.of(Integer.parseInt(showpagerecent), postsPerPage, Sort.by("postingtime").descending());
-            List<Integer> pages = this.postsService.totalPages(postsPerPage, Integer.parseInt(showpagerecent));
+            List<Integer> pages = this.postsService.totalPages(postsPerPage, Integer.parseInt(showpagerecent), useralias);
             model.addAttribute("currentPageRecent", Integer.parseInt(showpagerecent));
             model.addAttribute("lastPage", this.postsService.lastPage(pages));
+            model.addAttribute("establishedUseraliases", this.postsService.establishedUseraliases(useralias));
             model.addAttribute("totalPagesRecent", pages);
+            model.addAttribute("totalPagesRecentSize", this.postsService.totalPosts(useralias));
             model.addAttribute("viewAllPosts", this.postsRepository.findAll(pageable));
             return "posts";
         }
@@ -67,10 +69,12 @@ public class PostsController {
             if (bindingResult.hasErrors()) {
                 int postsPerPage = 25;
                 Pageable pageable = PageRequest.of(0, postsPerPage, Sort.by("postingtime").descending());
-                List<Integer> pages = this.postsService.totalPages(postsPerPage, Integer.parseInt(showpagerecent));
+                List<Integer> pages = this.postsService.totalPages(postsPerPage, Integer.parseInt(showpagerecent), useralias);
                 model.addAttribute("currentPageRecent", Integer.parseInt(showpagerecent));
                 model.addAttribute("lastPage", this.postsService.lastPage(pages));
+                model.addAttribute("establishedUseraliases", this.postsService.establishedUseraliases(useralias));
                 model.addAttribute("totalPagesRecent", pages);
+                model.addAttribute("totalPagesRecentSize", this.postsService.totalPosts(useralias));
                 model.addAttribute("viewAllPosts", this.postsRepository.findAll(pageable));
                 return "posts";
             }

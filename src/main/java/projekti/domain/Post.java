@@ -28,13 +28,9 @@ public class Post extends AbstractPersistable<Long> {
     @NotEmpty
     @Size(min = 1, max = 4000)
     private String message;
-    
-    @ElementCollection
-    private List<String> followers = new ArrayList<>();
-    
+
+    private int likes;
+
     @ElementCollection
     private List<String> likers = new ArrayList<>();
-    
-    @ElementCollection
-    private List<String> readbyusers = new ArrayList<>();
 }

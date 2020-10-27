@@ -38,13 +38,8 @@
                 <div class="col">
                     <form th:action="@{/EmployeeSearch/Users/{useralias}/Search(useralias=${account.useralias})}" class="form-inline justify-content-center">
                         <div class="md-form form-sm mr-2">
-                            <input type="text" name="keyword" placeholder="Search" aria-label="Search"/>
+                            <input type="text" name="keyword" placeholder="Search Users" aria-label="Search"/>
                         </div>
-                        <select class="browser-default custom-select">
-                            <option value="0" selected>Users</option>
-                            <option value="1">Posts</option>
-                            <option value="2">Comments</option>
-                        </select>
                         <button type="submit" class="btn btn-outline-dark btn-sm ml-2 waves-effect">
                             <i class="fas fa-search"></i>
                         </button>

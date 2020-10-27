@@ -3,6 +3,9 @@ package projekti.logic.service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projekti.domain.Account;
@@ -10,6 +13,7 @@ import projekti.domain.Comment;
 import projekti.domain.Post;
 import projekti.logic.repository.AccountRepository;
 import projekti.logic.repository.CommentsRepository;
+import projekti.logic.repository.PostsRepository;
 import projekti.logic.utility.CustomDate;
 
 @Service
@@ -22,7 +26,29 @@ public class CommentsService {
     private CommentsRepository commentsRepository;
 
     @Autowired
+    private PostsRepository postsRepository;
+
+    @Autowired
     private CustomDate date;
+
+    // Deletes parameter comments from repository
+    @Transactional
+    public void deleteComments(List<Comment> comments) {
+        for (Comment c : comments) {
+            this.commentsRepository.delete(c);
+        }
+    }
+
+    // After calling deleteComments method deletes parameter post from repository if post was created by parameter user
+    @Transactional
+    public void deletePost(String useralias, Post post) {
+        if (post.getUseralias().equals(useralias)) {
+            Pageable pageable = PageRequest.of(0, 25, Sort.by("postingtime").descending());
+            List<Comment> comments = viewAllComments(post.getId(), pageable);
+            deleteComments(comments);
+            this.postsRepository.delete(post);
+        }
+    }
 
     // Returns the value (page number) of the last index in parameter list
     public Integer lastPage(List<Integer> totalPages) {
@@ -35,19 +61,6 @@ public class CommentsService {
                 return 1;
             default:
                 return lastPage;
-        }
-    }
-
-    // Adds or removes user alias in the likers list of parameter comment if it's not user's own comment
-    @Transactional
-    public void likeComment(String useralias, Comment comment) {
-        if (!comment.getUseralias().equals(useralias)) {
-            List<String> likers = comment.getLikers();
-            if (!likers.contains(useralias)) {
-                likers.add(useralias);
-            } else {
-                likers.remove(useralias);
-            }
         }
     }
 
@@ -68,16 +81,18 @@ public class CommentsService {
             List<String> likers = post.getLikers();
             if (!likers.contains(useralias)) {
                 likers.add(useralias);
+                post.setLikes(post.getLikes() + 1);
             } else {
                 likers.remove(useralias);
+                post.setLikes(post.getLikes() - 1);
             }
         }
     }
 
     // Returns a list of five page numbers for pagination
-    public List<Integer> totalPages(int commentsPerPage, int showpagecomments) {
+    public List<Integer> totalPages(int commentsPerPage, int showpagecomments, List<Comment> viewAllComments) {
         List<Integer> pageNumbers = new ArrayList<>();
-        int totalComments = this.commentsRepository.findAll().size();
+        int totalComments = viewAllComments.size();
         if (totalComments > commentsPerPage) {
             int startPage = showpagecomments;
             int endPage = 0, additionalPages = 0, zeroPages = 0;
@@ -113,5 +128,10 @@ public class CommentsService {
             pageNumbers.add(0);
         }
         return pageNumbers;
+    }
+
+    public List<Comment> viewAllComments(Long postid, Pageable pageable) {
+        List<Comment> viewAllComments = this.commentsRepository.findAllByPostid(postid, pageable);
+        return viewAllComments;
     }
 }

@@ -38,7 +38,10 @@
                 <div class="col">
                     <div class="card mb-5 ml-3 w-100">
                         <div class="card-body">
-                            <form th:if="${account.useralias} != ${postuseralias}"  class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikePost(useralias=${account.useralias},postid=${post.id})}" method="POST">
+                            <form th:if="${account.useralias} == ${postuseralias}" class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}/DeletePost(useralias=${account.useralias},postid=${post.id})}" method="POST">
+                                <button class="btn btn-sm"><i class="fas fa-trash-alt mr-3"></i>Delete</button>
+                            </form>
+                            <form th:unless="${account.useralias} == ${postuseralias}" class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikePost(useralias=${account.useralias},postid=${post.id})}" method="POST">
                                 <button th:if="${post.likers.contains(account.useralias)}" type="submit" class="btn btn-sm pinkish"><i class="fas fa-thumbs-up mr-3 pinkish waves-effect waves-light"></i>Liked</button>
                                 <button th:unless="${post.likers.contains(account.useralias)}" type="submit" class="btn btn-sm"><i class="fas fa-thumbs-up mr-3 waves-effect waves-light"></i>Like</button>
                             </form>
@@ -47,6 +50,7 @@
                                 <strong class="ml-3" th:text="${post.title}">post title</strong>
                             </p>
                             <p class="card-text" th:utext="${post.message}">post message</p>
+                            <p class="my-0">Likes: <span th:text="${post.likes}">likes</span></p>
                             <p class="small my-0 text-center" th:text="${'posted: ' + post.postingtime}">time</p>
                             <strong><p class="h6 my-0 text-right" th:text="${'by: ' + postuseralias}">alias</p></strong>
                         </div>
@@ -98,12 +102,7 @@
                         <div th:if="${viewAllComments} != null" th:each="comment:${viewAllComments}">
                             <div class="card mb-5 w-100">
                                 <div class="card-body">
-                                    <form th:if="${account.useralias} != ${comment.useralias}" class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikeComment/{commentid}(useralias=${account.useralias},postid=${post.id},commentid=${comment.id})}" method="POST">
-                                        <button th:if="${comment.likers.contains(account.useralias)}" type="submit" class="btn btn-sm pinkish"><i class="fas fa-thumbs-up mr-3 pinkish waves-effect waves-light"></i>Liked</button>
-                                        <button th:unless="${comment.likers.contains(account.useralias)}" type="submit" class="btn btn-sm"><i class="fas fa-thumbs-up mr-3 waves-effect waves-light"></i>Like</button>
-                                    </form>
                                     <p th:utext=${comment.response}>response</p>
-                                    <p class="my-0">Likes: <span th:text="${comment.likers.size()}">likes</span></p>
                                     <p class="small my-0 text-center" th:text="${'commented: ' + comment.postingtime}">time</p>
                                     <strong><p class="h6 my-0 text-right" th:text="${'by: ' + comment.useralias}">alias</p></strong>
                                 </div>

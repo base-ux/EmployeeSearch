@@ -13,7 +13,7 @@ public class ConnectionsService {
     @Autowired
     private CustomDate date;
 
-    // Add visited user alias and name to the connectionsEstablished list of user account if it's not there yet
+    // Add visited user alias and name to the connectionsEstablished and establishedUseraliases lists list of user account if it's not there yet
     @Transactional
     public void acceptRequest(Account userAccount, Account visitingAccount) {
         for (String[] s : userAccount.getConnectionsEstablished()) {
@@ -21,8 +21,10 @@ public class ConnectionsService {
                 return;
             }
         }
-        String[] userInfo = {visitingAccount.getUseralias(), visitingAccount.getRealname()};
+        String visitingUseralias = visitingAccount.getUseralias();
+        String[] userInfo = {visitingUseralias, visitingAccount.getRealname()};
         userAccount.getConnectionsEstablished().add(userInfo);
+        userAccount.getEstablishedUseraliases().add(visitingUseralias);
     }
 
     // Arrange the connectionsEstablished list of the parameter account by real name in alphabetical order
@@ -136,29 +138,31 @@ public class ConnectionsService {
         return false;
     }
 
-    // Remove visited user alias and name from the connectionsEstablished list of user account
+    // Remove visited user alias and name from the connectionsEstablished and establishedUseraliases lists of user account
     @Transactional
     public void removeConnectionUser(Account userAccount, Account visitingAccount) {
         for (String[] s : userAccount.getConnectionsEstablished()) {
             if (s[0].equals(visitingAccount.getUseralias())) {
                 userAccount.getConnectionsEstablished().remove(s);
+                userAccount.getEstablishedUseraliases().remove(visitingAccount.getUseralias());
                 break;
             }
         }
     }
 
-    // Remove user alias and name from the connectionsEstablished list of visited user account
+    // Remove user alias and name from the connectionsEstablished and establishedUseraliases lists of visited user account
     @Transactional
     public void removeConnectionVisited(Account userAccount, Account visitingAccount) {
         for (String[] s : visitingAccount.getConnectionsEstablished()) {
             if (s[0].equals(userAccount.getUseralias())) {
                 visitingAccount.getConnectionsEstablished().remove(s);
+                visitingAccount.getEstablishedUseraliases().remove(userAccount.getUseralias());
                 break;
             }
         }
     }
 
-    // Add user alias and name to the connectionsEstablished list of visited user account if it's not there yet
+    // Add user alias and name to the connectionsEstablished and establishedUseraliases lists of visited user account if it's not there yet
     @Transactional
     public void requestAccepted(Account userAccount, Account visitingAccount) {
         for (String[] s : visitingAccount.getConnectionsEstablished()) {
@@ -166,8 +170,10 @@ public class ConnectionsService {
                 return;
             }
         }
-        String[] userInfo = {userAccount.getUseralias(), userAccount.getRealname()};
+        String useralias = userAccount.getUseralias();
+        String[] userInfo = {useralias, userAccount.getRealname()};
         visitingAccount.getConnectionsEstablished().add(userInfo);
+        visitingAccount.getEstablishedUseraliases().add(useralias);
     }
 
     // Check if connectionRequestsReceived list of user account contains visited user alias

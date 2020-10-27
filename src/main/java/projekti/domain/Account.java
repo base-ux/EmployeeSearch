@@ -52,5 +52,8 @@ public class Account extends AbstractPersistable<Long> {
     private List<String[]> connectionRequestsSent = new ArrayList<>();
 
     @ElementCollection
+    private List<String> establishedUseraliases = new ArrayList<>();
+
+    @ElementCollection
     private List<String[]> connectionsEstablished = new ArrayList<>();
 }
