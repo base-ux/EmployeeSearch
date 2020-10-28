@@ -132,27 +132,26 @@
                 </div>
             </div>
             <div th:replace="fragments/layout_misc_elements :: horizontalrule"></div>
-            <!-- Edit abilities -->
+            <!-- Add ability -->
             <div class="container">
-                <!-- Edit abilities title -->
-                <h4 id="editAbilities">Edit Abilities</h4>
-                <!-- Edit abilities form -->
+                <!-- Add ability title -->
+                <h4 id="addAbility">Add Ability<i class="fas fa-user-tie ml-3"></i></h4>
+                <!-- Add ability form -->
                 <div class="row justify-content-center">
                     <div class="col col-8">
-                        <!-- Current abilities -->
+                        <!-- Add ability box -->
                         <div class="row">
-                            <div class="md-form input-group input-with-pre-icon ml-2">
-                                <p><i class="fas fa-user-tie fa-2x mr-5" aria-hidden="true"></i>Current Abilities</p>
+                            <div class="col">
+                                <div class="container-fluid bigbox">
+                                    <form th:action="@{/EmployeeSearch/Users/{useralias}/Abilities(useralias=${account.useralias})}" 
+                                          th:object="${ability}" enctype="multipart/form-data" method="POST">
+                                        <textarea class="summernote" th:field="*{abilitytext}" name="abilitytext">new ability text</textarea>
+                                        <small th:if="${#fields.hasErrors('abilitytext')}"
+                                               th:errors="*{abilitytext}" class="text-danger">ability text error message</small><br/>
+                                        <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewAbility" type="submit" id="addAbilityButton">Add<i class="fas fa-user-tie ml-2"></i></button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Edit abilities box -->
-                        <div class="row">
-                            <div class="ml-2">
-                            </div>
-                        </div>
-                        <!-- Edit abilities button -->
-                        <div class="row justify-content-left">
-                            <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewAbilities" type="submit" id="editAbilitiesButton">Save<i class="fas fa-user-tie ml-2"></i></button>
                         </div>
                     </div>
                 </div>

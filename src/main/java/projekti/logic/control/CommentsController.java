@@ -17,16 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import projekti.domain.Comment;
 import projekti.domain.Post;
-import projekti.logic.repository.CommentsRepository;
 import projekti.logic.repository.PostsRepository;
 import projekti.logic.service.CommentsService;
 import projekti.logic.service.HomeService;
 
 @Controller
 public class CommentsController {
-
-    @Autowired
-    private CommentsRepository commentsRepository;
 
     @Autowired
     private CommentsService commentsService;

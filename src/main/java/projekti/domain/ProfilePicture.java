@@ -16,11 +16,12 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class ProfilePicture extends AbstractPersistable<Long> {
 
     private String useralias;
-    
+
     private String name;
+
     private String mediaType;
-    
-    private Long profilepicturesize;
+
+    private Long profilepictureSize;
 
     @Lob
     @Basic(fetch = FetchType.LAZY)

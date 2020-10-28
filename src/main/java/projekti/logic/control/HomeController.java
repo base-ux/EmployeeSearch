@@ -5,16 +5,23 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import projekti.domain.Account;
+import projekti.domain.Praise;
+import projekti.logic.repository.AbilityRepository;
 import projekti.logic.repository.AccountRepository;
+import projekti.logic.repository.PraiseRepository;
 import projekti.logic.service.ConnectionsService;
 import projekti.logic.service.HomeService;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    private AbilityRepository abilityRepository;
 
     @Autowired
     private AccountRepository accountRepository;
@@ -25,6 +32,9 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
 
+    @Autowired
+    private PraiseRepository praiseRepository;
+
     // LOGGED IN
     // GET-REQUESTS
     @Secured("USER")
@@ -33,6 +43,9 @@ public class HomeController {
         if (this.homeService.helloUser(model, useralias) == false) {
             return "fragments/layout_address_error";
         } else {
+            Account account = this.accountRepository.findByUseralias(useralias);
+            model.addAttribute("viewAllAbilities", this.abilityRepository.findByAccount(account));
+            model.addAttribute("viewAllPraises", this.praiseRepository.findAll());
             return "home";
         }
     }
@@ -51,8 +64,8 @@ public class HomeController {
 
     @Secured("USER")
     @GetMapping("/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}")
-    public String userVisiting(Model model, @PathVariable String useralias,
-            @PathVariable String visitingalias) {
+    public String userVisiting(Model model, @ModelAttribute Praise praise,
+            @PathVariable String useralias, @PathVariable String visitingalias) {
         if (this.homeService.helloUser(model, useralias) == false) {
             return "fragments/layout_address_error";
         } else {
@@ -76,6 +89,8 @@ public class HomeController {
                 model.addAttribute("requestReceived", true);
             }
             model.addAttribute("visitingaccount", visitingAccount);
+            model.addAttribute("viewAllAbilities", this.abilityRepository.findByAccount(visitingAccount));
+            model.addAttribute("viewAllPraises", this.praiseRepository.findAll());
             return "homevisiting";
         }
     }

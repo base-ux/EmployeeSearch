@@ -47,44 +47,65 @@
                         </div>
                         <!-- Tabs -->
                         <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                            <!-- Ability tab -->
                             <li class="nav-item">
                                 <a class="nav-link darkbluebg greyish active" id="proficiency-tab" data-toggle="tab" href="#proficiency" role="tab" aria-controls="proficiency"
                                    aria-selected="true">Proficiency<i class="fas fa-user-tie ml-3 greyishicon"></i></a>
                             </li>
+                            <!-- Education tab -->
                             <li class="nav-item">
                                 <a class="nav-link darkbluebg greyish" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education"
                                    aria-selected="false">Education<i class="fas fa-graduation-cap ml-3 greyishicon"></i></a>
                             </li>
+                            <!-- Work history tab -->
                             <li class="nav-item">
                                 <a class="nav-link darkbluebg greyish" id="workHistory-tab" data-toggle="tab" href="#workHistory" role="tab" aria-controls="workHistory"
                                    aria-selected="false">Work History<i class="fas fa-briefcase ml-3 greyishicon"></i></a>
                             </li>
                         </ul>
                         <div class="tab-content py-5" id="profileTabsContent">
+                            <!-- Abilities -->
                             <div class="tab-pane fade show active" id="proficiency" role="tabpanel" aria-labelledby="proficiency-tab">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Ability</th>
-                                            <th>Level</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th>Likes <i class="far fa-thumbs-up"></i></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                                <p></p>
+                                <!-- Abilities list -->
+                                <div th:each="ability:${viewAllAbilities}">
+                                    <div class="card my-5 w-100">
+                                        <div class="card-body">
+                                            <p class="card-text mb-0 text-center" th:utext="${ability.abilitytext}">ability text</p>
+                                            <p class="my-0">Praises: <span th:text="${ability.praises}">praises</span></p>
+                                            <!-- Add praise -->
+                                            <p class="h5 my-3">Add Praise:</p>
+                                            <form th:action="@{/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/Praise/{visitingalias}(useralias=${account.useralias},abilityid=${ability.id},visitingalias=${visitingaccount.useralias})}" 
+                                                  th:object="${praise}" enctype="multipart/form-data" method="POST">
+                                                <textarea class="summernote" th:field="*{praisetext}" name="praisetext">new praise text</textarea>
+                                                <small th:if="${#fields.hasErrors('praisetext')}"
+                                                       th:errors="*{praisetext}" class="text-danger">praise text error message</small><br/>
+                                                <button class="btn btn-sm" name="submitNewPraise" type="submit" id="addPraiseButton"><i class="fas fa-hands mr-3 waves-effect waves-light"></i>Praise</button>
+                                            </form>
+                                            <!-- Praises list -->
+                                            <div th:each="praise:${viewAllPraises}">
+                                                <div th:if="${ability} == ${praise.ability}" class="container-fluid">
+                                                    <div class="row my-5">
+                                                        <div class="col text-left">
+                                                            <span th:utext="${praise.praisetext}">praise</span>
+                                                        </div>
+                                                        <div class="col text-left">
+                                                            <strong th:text="${praise.useralias}">alias</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- Education -->
                             <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">
+                                <!-- Education text -->
                                 <p>Education Text</p>
                             </div>
+                            <!-- Work history -->
                             <div class="tab-pane fade" id="workHistory" role="tabpanel" aria-labelledby="workHistory-tab">
+                                <!-- Work History text -->
                                 <p>Work History Text</p>
                             </div>
                         </div>

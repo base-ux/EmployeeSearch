@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -56,4 +57,7 @@ public class Account extends AbstractPersistable<Long> {
 
     @ElementCollection
     private List<String[]> connectionsEstablished = new ArrayList<>();
+
+    @OneToMany(mappedBy = "account")
+    private List<Ability> abilities = new ArrayList<>();
 }
