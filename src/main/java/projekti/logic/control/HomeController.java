@@ -14,6 +14,7 @@ import projekti.domain.Praise;
 import projekti.logic.repository.AbilityRepository;
 import projekti.logic.repository.AccountRepository;
 import projekti.logic.repository.PraiseRepository;
+import projekti.logic.service.AbilityService;
 import projekti.logic.service.ConnectionsService;
 import projekti.logic.service.HomeService;
 
@@ -22,6 +23,9 @@ public class HomeController {
 
     @Autowired
     private AbilityRepository abilityRepository;
+
+    @Autowired
+    private AbilityService abilityService;
 
     @Autowired
     private AccountRepository accountRepository;
@@ -44,7 +48,8 @@ public class HomeController {
             return "fragments/layout_address_error";
         } else {
             Account account = this.accountRepository.findByUseralias(useralias);
-            model.addAttribute("viewAllAbilities", this.abilityRepository.findByAccount(account));
+            model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(account));
+            model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(account));
             model.addAttribute("viewAllPraises", this.praiseRepository.findAll());
             return "home";
         }
@@ -57,8 +62,12 @@ public class HomeController {
         if (this.homeService.helloUser(model, useralias) == false) {
             return "fragments/layout_address_error";
         } else {
-            model.addAttribute("editlayoutClicked", editLayoutButton);
-            return "home";
+            if (editLayoutButton.equals("finishedEditing")) {
+                return "redirect:/EmployeeSearch/Users/" + useralias;
+            } else {
+                model.addAttribute("editlayoutClicked", editLayoutButton);
+                return "home";
+            }
         }
     }
 
@@ -89,7 +98,8 @@ public class HomeController {
                 model.addAttribute("requestReceived", true);
             }
             model.addAttribute("visitingaccount", visitingAccount);
-            model.addAttribute("viewAllAbilities", this.abilityRepository.findByAccount(visitingAccount));
+            model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));
+            model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(visitingAccount));
             model.addAttribute("viewAllPraises", this.praiseRepository.findAll());
             return "homevisiting";
         }

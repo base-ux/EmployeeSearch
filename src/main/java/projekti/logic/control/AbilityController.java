@@ -61,18 +61,6 @@ public class AbilityController {
     }
 
     @Secured("USER")
-    @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/DeleteAbility", method = RequestMethod.POST)
-    public String deleteAbility(Model model, @ModelAttribute Ability ability,
-            @PathVariable String useralias, @PathVariable Long abilityid) {
-        if (this.homeService.helloUser(model, useralias) == false) {
-            return "fragments/layout_address_error";
-        } else {
-            this.abilityService.deleteAbility(useralias, this.abilityRepository.getOne(abilityid));
-            return "redirect:/EmployeeSearch/Users/" + useralias;
-        }
-    }
-
-    @Secured("USER")
     @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/Praise/{visitingalias}", method = RequestMethod.POST)
     public String praiseNew(Model model, @Valid @ModelAttribute Praise praise,
             BindingResult bindingResult, @PathVariable String useralias,
@@ -98,13 +86,28 @@ public class AbilityController {
                     model.addAttribute("requestReceived", true);
                 }
                 model.addAttribute("visitingaccount", visitingAccount);
-                model.addAttribute("viewAllAbilities", this.abilityRepository.findByAccount(visitingAccount));
+                model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));
+                model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(visitingAccount));
                 model.addAttribute("viewAllPraises", this.praiseRepository.findAll());
                 return "homevisiting";
             }
             Ability ability = this.abilityRepository.getOne(abilityid);
             this.abilityService.newPraise(ability, useralias, praisetext);
             return "redirect:/EmployeeSearch/Users/" + useralias + "/Visiting/" + visitingalias;
+        }
+    }
+
+    // LOGGED IN
+    // DELETE-REQUESTS
+    @Secured("USER")
+    @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/DeleteAbility", method = RequestMethod.DELETE)
+    public String deleteAbility(Model model, @ModelAttribute Ability ability,
+            @PathVariable String useralias, @PathVariable Long abilityid) {
+        if (this.homeService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
+        } else {
+            this.abilityService.deleteAbility(useralias, this.abilityRepository.getOne(abilityid));
+            return "redirect:/EmployeeSearch/Users/" + useralias;
         }
     }
 }

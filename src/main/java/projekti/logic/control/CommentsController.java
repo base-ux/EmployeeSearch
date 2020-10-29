@@ -87,18 +87,6 @@ public class CommentsController {
     }
 
     @Secured("USER")
-    @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Comments/{postid}/DeletePost", method = RequestMethod.POST)
-    public String deletePost(Model model, @ModelAttribute Comment comment,
-            @PathVariable String useralias, @PathVariable Long postid) {
-        if (this.homeService.helloUser(model, useralias) == false) {
-            return "fragments/layout_address_error";
-        } else {
-            this.commentsService.deletePost(useralias, this.postsRepository.getOne(postid));
-            return "redirect:/EmployeeSearch/Users/" + useralias + "/Posts";
-        }
-    }
-
-    @Secured("USER")
     @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikePost", method = RequestMethod.POST)
     public String likePost(Model model, @ModelAttribute Comment comment,
             @PathVariable String useralias, @PathVariable Long postid,
@@ -117,6 +105,20 @@ public class CommentsController {
             model.addAttribute("totalPagesComments", pages);
             model.addAttribute("viewAllComments", viewAllComments);
             return "redirect:/EmployeeSearch/Users/" + useralias + "/Comments/" + postid;
+        }
+    }
+
+    // LOGGED IN
+    // DELETE-REQUESTS
+    @Secured("USER")
+    @RequestMapping(value = "/EmployeeSearch/Users/{useralias}/Comments/{postid}/DeletePost", method = RequestMethod.DELETE)
+    public String deletePost(Model model, @ModelAttribute Comment comment,
+            @PathVariable String useralias, @PathVariable Long postid) {
+        if (this.homeService.helloUser(model, useralias) == false) {
+            return "fragments/layout_address_error";
+        } else {
+            this.commentsService.deletePost(useralias, this.postsRepository.getOne(postid));
+            return "redirect:/EmployeeSearch/Users/" + useralias + "/Posts";
         }
     }
 }

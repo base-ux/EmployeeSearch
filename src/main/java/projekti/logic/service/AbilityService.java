@@ -1,5 +1,8 @@
 package projekti.logic.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,5 +69,44 @@ public class AbilityService {
         this.praiseRepository.save(praise);
         ability.setPraises(ability.getPraises() + 1);
         this.abilityRepository.save(ability);
+    }
+
+    public List<Ability> reverseListOrder(List<Ability> abilityList) {
+        abilityList.sort(Comparator.comparing(s -> s.getPraises()));
+        Collections.reverse(abilityList);
+        List<Ability> reversedList = new ArrayList<>();
+        for (Ability a : abilityList) {
+            reversedList.add(a);
+        }
+        return reversedList;
+    }
+
+    public List<Ability> viewFirstAbilities(Account account) {
+        List<Ability> abilities = this.abilityRepository.findByAccount(account);
+        List<Ability> reversedAbilities = reverseListOrder(abilities);
+        List<Ability> firstabilities = new ArrayList<>();
+        if (reversedAbilities.size() > 0) {
+            for (int i = 0; i < reversedAbilities.size(); i++) {
+                if (i == 3) {
+                    break;
+                }
+                firstabilities.add(reversedAbilities.get(i));
+            }
+            return firstabilities;
+        }
+        return firstabilities;
+    }
+
+    public List<Ability> viewLastAbilities(Account account) {
+        List<Ability> abilities = this.abilityRepository.findByAccount(account);
+        List<Ability> reversedAbilities = reverseListOrder(abilities);
+        List<Ability> lastabilities = new ArrayList<>();
+        if (reversedAbilities.size() > 3) {
+            for (int i = 3; i < reversedAbilities.size(); i++) {
+                lastabilities.add(reversedAbilities.get(i));
+            }
+            return lastabilities;
+        }
+        return lastabilities;
     }
 }

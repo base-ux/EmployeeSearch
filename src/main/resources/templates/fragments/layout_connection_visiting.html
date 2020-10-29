@@ -66,30 +66,87 @@
                         <div class="tab-content py-5" id="profileTabsContent">
                             <!-- Abilities -->
                             <div class="tab-pane fade show active" id="proficiency" role="tabpanel" aria-labelledby="proficiency-tab">
-                                <!-- Abilities list -->
-                                <div th:each="ability:${viewAllAbilities}">
-                                    <div class="card my-5 w-100">
+                                <!-- First abilities list -->
+                                <div th:each="ability:${viewFirstAbilities}">
+                                    <div class="card my-5 w-100 border-primary">
                                         <div class="card-body">
                                             <p class="card-text mb-0 text-center" th:utext="${ability.abilitytext}">ability text</p>
-                                            <p class="my-0">Praises: <span th:text="${ability.praises}">praises</span></p>
+                                            <p class="mt-0 mb-2 blueish">Praises: <span th:text="${ability.praises}">praises</span></p>
                                             <!-- Add praise -->
-                                            <p class="h5 my-3">Add Praise:</p>
-                                            <form th:action="@{/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/Praise/{visitingalias}(useralias=${account.useralias},abilityid=${ability.id},visitingalias=${visitingaccount.useralias})}" 
-                                                  th:object="${praise}" enctype="multipart/form-data" method="POST">
-                                                <textarea class="summernote" th:field="*{praisetext}" name="praisetext">new praise text</textarea>
-                                                <small th:if="${#fields.hasErrors('praisetext')}"
-                                                       th:errors="*{praisetext}" class="text-danger">praise text error message</small><br/>
-                                                <button class="btn btn-sm" name="submitNewPraise" type="submit" id="addPraiseButton"><i class="fas fa-hands mr-3 waves-effect waves-light"></i>Praise</button>
-                                            </form>
+                                            <div th:each="praise:${viewAllPraises}">
+                                                <div th:if="${praise.ability} == ${ability} and ${praise.useralias} == ${account.useralias}">
+                                                    <p class="h5 pinkish">Already praised!</p>
+                                                </div>
+                                            </div>
+                                            <div class="text-left" role="button" data-toggle="collapse" data-target="#collapsePraiseConnectionVisitingFirst">
+                                                <button class="btn btn-sm h5 my-3"><i class="fas fa-hand-point-up mr-3 waves-effect waves-light"></i>Add Praise</button>
+                                            </div>
+                                            <div class="collapse hide" id="collapsePraiseConnectionVisitingFirst">
+                                                <form th:action="@{/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/Praise/{visitingalias}(useralias=${account.useralias},abilityid=${ability.id},visitingalias=${visitingaccount.useralias})}" 
+                                                      th:object="${praise}" enctype="multipart/form-data" method="POST">
+                                                    <textarea class="summernote" th:field="*{praisetext}" name="praisetext">new praise text</textarea>
+                                                    <small th:if="${#fields.hasErrors('praisetext')}"
+                                                           th:errors="*{praisetext}" class="text-danger">praise text error message</small><br/>
+                                                    <button class="btn btn-sm" name="submitNewPraise" type="submit"><i class="fas fa-hands mr-3 waves-effect waves-light"></i>Praise</button>
+                                                </form>
+                                            </div>
                                             <!-- Praises list -->
                                             <div th:each="praise:${viewAllPraises}">
                                                 <div th:if="${ability} == ${praise.ability}" class="container-fluid">
-                                                    <div class="row my-5">
+                                                    <div class="row my-3">
                                                         <div class="col text-left">
                                                             <span th:utext="${praise.praisetext}">praise</span>
                                                         </div>
                                                         <div class="col text-left">
                                                             <strong th:text="${praise.useralias}">alias</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div th:if="${viewFirstAbilities.empty}">
+                                    <p>No Abilities added.</p>
+                                </div>
+                                <!-- Last abilities list -->
+                                <div th:if="${!viewLastAbilities.empty}" class="text-left" role="button" data-toggle="collapse" data-target="#collapseLastAbilitiesConnectionVisiting">
+                                    <button class="btn btn-sm h5 my-3"><i class="fas fa-hand-point-up mr-3 waves-effect waves-light"></i>Show More Abilities</button>
+                                </div>
+                                <div th:if="${!viewLastAbilities.empty}" class="collapse hide" id="collapseLastAbilitiesConnectionVisiting">
+                                    <div th:each="ability:${viewLastAbilities}">
+                                        <div class="card my-5 w-100">
+                                            <div class="card-body">
+                                                <p class="card-text mb-0 text-center" th:utext="${ability.abilitytext}">ability text</p>
+                                                <p class="mt-0 mb-2 blueish">Praises: <span th:text="${ability.praises}">praises</span></p>
+                                                <!-- Add praise -->
+                                                <div th:each="praise:${viewAllPraises}">
+                                                    <div th:if="${praise.ability} == ${ability} and ${praise.useralias} == ${account.useralias}">
+                                                        <p class="h5 pinkish">Already praised!</p>
+                                                    </div>
+                                                </div>
+                                                <div class="text-left" role="button" data-toggle="collapse" data-target="#collapsePraiseConnectionVisitingLast">
+                                                    <button class="btn btn-sm h5 my-3"><i class="fas fa-hand-point-up mr-3 waves-effect waves-light"></i>Add Praise</button>
+                                                </div>
+                                                <div class="collapse hide" id="collapsePraiseConnectionVisitingLast">
+                                                    <form th:action="@{/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/Praise/{visitingalias}(useralias=${account.useralias},abilityid=${ability.id},visitingalias=${visitingaccount.useralias})}" 
+                                                          th:object="${praise}" enctype="multipart/form-data" method="POST">
+                                                        <textarea class="summernote" th:field="*{praisetext}" name="praisetext">new praise text</textarea>
+                                                        <small th:if="${#fields.hasErrors('praisetext')}"
+                                                               th:errors="*{praisetext}" class="text-danger">praise text error message</small><br/>
+                                                        <button class="btn btn-sm" name="submitNewPraise" type="submit"><i class="fas fa-hands mr-3 waves-effect waves-light"></i>Praise</button>
+                                                    </form>
+                                                </div>
+                                                <!-- Praises list -->
+                                                <div th:each="praise:${viewAllPraises}">
+                                                    <div th:if="${ability} == ${praise.ability}" class="container-fluid">
+                                                        <div class="row my-3">
+                                                            <div class="col text-left">
+                                                                <span th:utext="${praise.praisetext}">praise</span>
+                                                            </div>
+                                                            <div class="col text-left">
+                                                                <strong th:text="${praise.useralias}">alias</strong>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
