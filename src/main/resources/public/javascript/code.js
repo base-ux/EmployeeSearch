@@ -16,18 +16,11 @@ $(document).ready(function() {
     minHeight: 140,
     maxHeight: 800,
     toolbar: [
-    [ 'fontname', [ 'fontname' ] ],
-    [ 'fontsize', [ 'fontsize' ] ],
     [ 'forecolor', [ 'forecolor' ] ],
     [ 'backcolor', [ 'backcolor' ] ],
-    [ 'style', [ 'style' ] ],
-    [ 'view', [ 'undo', 'redo' ] ],
-    [ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'hr', 'clear'] ],
-    [ 'view', [ 'codeview' ] ],
-    [ 'para', [ 'ol', 'ul', 'paragraph', 'height' ] ],
-    [ 'table', [ 'table' ] ],
-    [ 'insert', [ 'link'] ],
-    [ 'view', [ 'fullscreen', 'help' ] ]
+    [ 'font', [ 'bold', 'italic', 'underline', 'strikethrough' ] ],
+    [ 'insert', [ 'link' ] ],
+    [ 'view', [ 'help' ] ]
     ]
     })
 })

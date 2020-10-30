@@ -87,6 +87,7 @@ public class AbilityController {
                     model.addAttribute("requestReceived", true);
                 }
                 model.addAttribute("visitingaccount", visitingAccount);
+                model.addAttribute("visitingProfilePicture", visitingAccount.getStockProfilePicture());
                 model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));
                 model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(visitingAccount));
                 model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(visitingAccount));

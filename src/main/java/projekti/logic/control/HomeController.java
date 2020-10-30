@@ -44,6 +44,7 @@ public class HomeController {
             return "fragments/layout_address_error";
         } else {
             Account account = this.accountRepository.findByUseralias(useralias);
+            model.addAttribute("stockProfilePicture", account.getStockProfilePicture());
             model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(account));
             model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(account));
             model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(account));
@@ -61,7 +62,9 @@ public class HomeController {
             if (editLayoutButton.equals("finishedEditing")) {
                 return "redirect:/EmployeeSearch/Users/" + useralias;
             } else {
+                Account account = this.accountRepository.findByUseralias(useralias);
                 model.addAttribute("editlayoutClicked", editLayoutButton);
+                model.addAttribute("stockProfilePicture", account.getStockProfilePicture());
                 return "home";
             }
         }
@@ -94,6 +97,7 @@ public class HomeController {
                 model.addAttribute("requestReceived", true);
             }
             model.addAttribute("visitingaccount", visitingAccount);
+            model.addAttribute("visitingProfilePicture", visitingAccount.getStockProfilePicture());
             model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));
             model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(visitingAccount));
             model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(visitingAccount));

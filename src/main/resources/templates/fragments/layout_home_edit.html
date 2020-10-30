@@ -26,7 +26,7 @@
                 <!-- Contents -->
                 <div class="row">
                     <!-- Left column -->
-                    <div class="col-xl mx-5">
+                    <div class="col-xl mx-5 w-75">
                         <!-- User picture -->
                         <div class="card mb-5">
                             <div><h5 class="py-2 text-center darkbluebg greyish"><i class="fas fa-user-circle mr-3 whiteicon"></i><strong th:text="${account.useralias}">Useralias</strong></h5></div>
@@ -90,13 +90,13 @@
                         </div>
                     </div>
                     <!-- Right column -->
-                    <div class="col mx-5">
+                    <div class="col-xl mx-5 w-75">
                         <ul id="sortable">
                             <!-- Background -->
                             <li class="ui-state-default">
                                 <div class="card mb-5">
                                     <div><h5 class="py-2 text-center darkbluebg greyish"><strong><i class="fas fa-history mr-3 greyishicon"></i>Background</strong></h5></div>
-                                    <div class="collapse show overflowing" id="collapseBackground">
+                                    <div class="collapse show overflow-auto" id="collapseBackground">
                                         <a th:href="@{/EmployeeSearch/Users}">
                                             <p class="mt-3 text-center text-dark">Background text</p>
                                         </a>
@@ -115,7 +115,7 @@
                             <li class="ui-state-default">
                                 <div class="card mb-5">
                                     <div><h5 class="py-2 text-center darkbluebg greyish"><strong><i class="fas fa-address-card mr-3 greyishicon"></i>Contact Information</strong></h5></div>
-                                    <div class="collapse show overflowing" id="collapseContactInformation">
+                                    <div class="collapse show overflow-auto" id="collapseContactInformation">
                                         <a th:href="@{/EmployeeSearch/Users}">
                                             <p class="mt-3 text-center text-dark">Contact Information text</p>
                                         </a>
@@ -136,7 +136,7 @@
                                     <h5 class="px-4 py-2 text-left darkbluebg greyish">
                                         <strong class="mr-5"><i class="fas fa-user mr-3 greyishicon"></i>Connections (<span th:text="${connectionEstablishedSize}">amount</span>)</strong>
                                     </h5>
-                                    <div class="container collapse show overflowing" id="collapseConnections">
+                                    <div class="container collapse show overflow-auto" id="collapseConnections">
                                         <div th:each="connection:${connectionEstablished}">
                                             <div class="row">
                                                 <div class="col ml-5">
