@@ -18,7 +18,8 @@ $(document).ready(function() {
     toolbar: [
     [ 'fontname', [ 'fontname' ] ],
     [ 'fontsize', [ 'fontsize' ] ],
-    [ 'color', [ 'forecolor', 'color' ] ],
+    [ 'forecolor', [ 'forecolor' ] ],
+    [ 'backcolor', [ 'backcolor' ] ],
     [ 'style', [ 'style' ] ],
     [ 'view', [ 'undo', 'redo' ] ],
     [ 'font', [ 'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'hr', 'clear'] ],

@@ -2,6 +2,7 @@ package projekti.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
@@ -23,10 +24,12 @@ public class Post extends AbstractPersistable<Long> {
 
     @NotEmpty
     @Size(min = 1, max = 100)
+    @Column(columnDefinition="TEXT")
     private String title;
 
     @NotEmpty
     @Size(min = 1, max = 4000)
+    @Column(columnDefinition="TEXT")
     private String message;
 
     private int likes;

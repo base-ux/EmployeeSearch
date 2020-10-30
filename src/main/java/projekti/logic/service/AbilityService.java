@@ -55,7 +55,7 @@ public class AbilityService {
     }
 
     // Adds new praise to parameter ability and increments the praises integer of parameter ability if it's not there yet
-    public void newPraise(Ability ability, String useralias, String praisetext) {
+    public void newPraise(Ability ability, String useralias, String praisetext, Account visitingAccount) {
         List<Praise> praisers = ability.getPraisers();
         for (Praise p : praisers) {
             if (p.getUseralias().equals(useralias)) {
@@ -65,6 +65,7 @@ public class AbilityService {
         Praise praise = new Praise();
         praise.setUseralias(useralias);
         praise.setPraisetext(praisetext);
+        praise.setAccount(visitingAccount);
         praise.setAbility(ability);
         this.praiseRepository.save(praise);
         ability.setPraises(ability.getPraises() + 1);

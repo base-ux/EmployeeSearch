@@ -2,6 +2,7 @@ package projekti.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -19,7 +20,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Ability extends AbstractPersistable<Long> {
 
     @NotEmpty
-    @Size(min = 1, max = 1000)
+    @Size(min = 1, max = 4000)
+    @Column(columnDefinition="TEXT")
     private String abilitytext;
 
     @ManyToOne

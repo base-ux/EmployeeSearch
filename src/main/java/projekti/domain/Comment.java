@@ -1,5 +1,6 @@
 package projekti.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -22,5 +23,6 @@ public class Comment extends AbstractPersistable<Long> {
 
     @NotEmpty
     @Size(min = 1, max = 4000)
+    @Column(columnDefinition="TEXT")
     private String response;
 }

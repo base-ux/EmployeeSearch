@@ -39,7 +39,6 @@ public class RegisterController {
             return "fragments/layout_address_error";
         } else {
             model.addAttribute("date", this.date.date());
-            model.addAttribute("showusers", this.accountRepository.findAll());
             return "register";
         }
     }

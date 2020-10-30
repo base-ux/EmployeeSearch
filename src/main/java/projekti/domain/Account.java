@@ -60,4 +60,7 @@ public class Account extends AbstractPersistable<Long> {
 
     @OneToMany(mappedBy = "account")
     private List<Ability> abilities = new ArrayList<>();
+
+    @OneToMany(mappedBy = "account")
+    private List<Praise> praisers = new ArrayList<>();
 }

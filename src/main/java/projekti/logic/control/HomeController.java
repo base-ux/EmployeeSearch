@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import projekti.domain.Account;
 import projekti.domain.Praise;
-import projekti.logic.repository.AbilityRepository;
 import projekti.logic.repository.AccountRepository;
 import projekti.logic.repository.PraiseRepository;
 import projekti.logic.service.AbilityService;
@@ -20,9 +19,6 @@ import projekti.logic.service.HomeService;
 
 @Controller
 public class HomeController {
-
-    @Autowired
-    private AbilityRepository abilityRepository;
 
     @Autowired
     private AbilityService abilityService;
@@ -50,7 +46,7 @@ public class HomeController {
             Account account = this.accountRepository.findByUseralias(useralias);
             model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(account));
             model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(account));
-            model.addAttribute("viewAllPraises", this.praiseRepository.findAll());
+            model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(account));
             return "home";
         }
     }
@@ -100,7 +96,7 @@ public class HomeController {
             model.addAttribute("visitingaccount", visitingAccount);
             model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));
             model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(visitingAccount));
-            model.addAttribute("viewAllPraises", this.praiseRepository.findAll());
+            model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(visitingAccount));
             return "homevisiting";
         }
     }

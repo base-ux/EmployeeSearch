@@ -98,8 +98,8 @@
                                             <div class="collapse hide" id="collapsePraiseHomeVisitingFirst">
                                                 <form th:action="@{/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/Praise/{visitingalias}(useralias=${account.useralias},abilityid=${ability.id},visitingalias=${visitingaccount.useralias})}" 
                                                       th:object="${praise}" enctype="multipart/form-data" method="POST">
-                                                    <textarea class="summernote" th:field="*{praisetext}" name="praisetext">new praise text</textarea>
-                                                    <small th:if="${#fields.hasErrors('praisetext')}"
+                                                    <textarea th:unless="${#fields.hasErrors('praisetext')} and ${abilityid} != ${ability.id}" class="summernote" th:field="*{praisetext}" name="praisetext">new praise text</textarea>
+                                                    <small th:if="${#fields.hasErrors('praisetext')} and ${abilityid} == ${ability.id}"
                                                            th:errors="*{praisetext}" class="text-danger">praise text error message</small><br/>
                                                     <button class="btn btn-sm" name="submitNewPraise" type="submit"><i class="fas fa-hands mr-3 waves-effect waves-light"></i>Praise</button>
                                                 </form>
@@ -145,8 +145,8 @@
                                                 <div class="collapse hide" id="collapsePraiseHomeVisitingLast">
                                                     <form th:action="@{/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/Praise/{visitingalias}(useralias=${account.useralias},abilityid=${ability.id},visitingalias=${visitingaccount.useralias})}" 
                                                           th:object="${praise}" enctype="multipart/form-data" method="POST">
-                                                        <textarea class="summernote" th:field="*{praisetext}" name="praisetext">new praise text</textarea>
-                                                        <small th:if="${#fields.hasErrors('praisetext')}"
+                                                        <textarea th:unless="${#fields.hasErrors('praisetext')} and ${abilityid} != ${ability.id}" class="summernote" th:field="*{praisetext}" name="praisetext">new praise text</textarea>
+                                                        <small th:if="${#fields.hasErrors('praisetext')} and ${abilityid} == ${ability.id}"
                                                                th:errors="*{praisetext}" class="text-danger">praise text error message</small><br/>
                                                         <button class="btn btn-sm" name="submitNewPraise" type="submit"><i class="fas fa-hands mr-3 waves-effect waves-light"></i>Praise</button>
                                                     </form>

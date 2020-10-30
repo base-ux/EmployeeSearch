@@ -68,9 +68,10 @@ public class AbilityController {
         if (this.homeService.helloUser(model, useralias) == false) {
             return "fragments/layout_address_error";
         } else {
+            Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
             if (bindingResult.hasErrors()) {
                 Account userAccount = this.accountRepository.findByUseralias(useralias);
-                Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
+                model.addAttribute("abilityid", abilityid);
                 model.addAttribute("connectionEstablishedVisited", visitingAccount.getConnectionsEstablished());
                 model.addAttribute("connectionEstablishedVisitedSize", visitingAccount.getConnectionsEstablished().size());
                 model.addAttribute("connectionEstablished", false);
@@ -88,11 +89,11 @@ public class AbilityController {
                 model.addAttribute("visitingaccount", visitingAccount);
                 model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));
                 model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(visitingAccount));
-                model.addAttribute("viewAllPraises", this.praiseRepository.findAll());
+                model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(visitingAccount));
                 return "homevisiting";
             }
             Ability ability = this.abilityRepository.getOne(abilityid);
-            this.abilityService.newPraise(ability, useralias, praisetext);
+            this.abilityService.newPraise(ability, useralias, praisetext, visitingAccount);
             return "redirect:/EmployeeSearch/Users/" + useralias + "/Visiting/" + visitingalias;
         }
     }
