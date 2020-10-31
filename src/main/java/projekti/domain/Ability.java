@@ -32,3 +32,5 @@ public class Ability extends AbstractPersistable<Long> {
     @OneToMany(mappedBy = "ability")
     private List<Praise> praisers = new ArrayList<>();
 }
+
+
