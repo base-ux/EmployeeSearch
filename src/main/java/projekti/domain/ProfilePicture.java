@@ -7,6 +7,7 @@ import javax.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -24,6 +25,7 @@ public class ProfilePicture extends AbstractPersistable<Long> {
     private Long profilepictureSize;
 
     @Lob
+    @Type(type = "org.hibernate.type.ImageType")
     @Basic(fetch = FetchType.LAZY)
     private byte[] profilepicture;
 }

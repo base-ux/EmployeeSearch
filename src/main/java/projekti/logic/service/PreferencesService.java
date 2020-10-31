@@ -3,7 +3,6 @@ package projekti.logic.service;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import projekti.domain.Account;
 import projekti.domain.ProfilePicture;
@@ -20,7 +19,6 @@ public class PreferencesService {
     private ProfilePictureRepository profilePictureRepository;
 
     // Deletes current profilepicture from repository if it's there and saves parameter loadedProfilePicture and sets parameter useralias account submittedProfilePicture to true
-    @Transactional
     public void newProfilePictureLoad(String useralias, MultipartFile loadedProfilePicture) throws IOException {
         if (loadedProfilePicture.isEmpty()) {
             return;
@@ -39,7 +37,9 @@ public class PreferencesService {
         profilePicture.setMediaType(loadedProfilePicture.getContentType());
         profilePicture.setProfilepictureSize(loadedProfilePicture.getSize());
         profilePicture.setProfilepicture(loadedProfilePicture.getBytes());
+        this.profilePictureRepository.save(profilePicture);
         account.setSubmittedProfilePicture(true);
+        this.accountRepository.save(account);
     }
 
     // Sets the parameter useraliast account stockProfilePicture to parameter profilePictureStock and submittedProfilePicture to false
