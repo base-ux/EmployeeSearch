@@ -23,7 +23,7 @@ public class HomeService {
     @Autowired
     private HttpServletRequest request;
 
-    // Send user navbar its parameters
+    // Sends user navbar its parameters
     public boolean helloUser(Model model, String checkUseralias) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();

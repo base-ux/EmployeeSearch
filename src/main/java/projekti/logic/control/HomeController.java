@@ -13,6 +13,7 @@ import projekti.domain.Account;
 import projekti.domain.Praise;
 import projekti.logic.repository.AccountRepository;
 import projekti.logic.repository.PraiseRepository;
+import projekti.logic.repository.ProfilePictureRepository;
 import projekti.logic.service.AbilityService;
 import projekti.logic.service.ConnectionsService;
 import projekti.logic.service.HomeService;
@@ -35,6 +36,9 @@ public class HomeController {
     @Autowired
     private PraiseRepository praiseRepository;
 
+    @Autowired
+    private ProfilePictureRepository profilePictureRepository;
+
     // LOGGED IN
     // GET-REQUESTS
     @Secured("USER")
@@ -44,7 +48,8 @@ public class HomeController {
             return "fragments/layout_address_error";
         } else {
             Account account = this.accountRepository.findByUseralias(useralias);
-            model.addAttribute("stockProfilePicture", account.getStockProfilePicture());
+            model.addAttribute("loadedProfilePicture", this.profilePictureRepository.findByUseralias(useralias));
+            model.addAttribute("submittedProfilePicture", account.isSubmittedProfilePicture());
             model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(account));
             model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(account));
             model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(account));
@@ -64,7 +69,8 @@ public class HomeController {
             } else {
                 Account account = this.accountRepository.findByUseralias(useralias);
                 model.addAttribute("editlayoutClicked", editLayoutButton);
-                model.addAttribute("stockProfilePicture", account.getStockProfilePicture());
+                model.addAttribute("loadedProfilePicture", this.profilePictureRepository.findByUseralias(useralias));
+                model.addAttribute("submittedProfilePicture", account.isSubmittedProfilePicture());
                 return "home";
             }
         }
@@ -96,6 +102,8 @@ public class HomeController {
             if (this.connectionsService.requestIsReceived(userAccount, visitingAccount) == true) {
                 model.addAttribute("requestReceived", true);
             }
+            model.addAttribute("loadedProfilePicture", this.profilePictureRepository.findByUseralias(visitingalias));
+            model.addAttribute("submittedProfilePicture", visitingAccount.isSubmittedProfilePicture());
             model.addAttribute("visitingaccount", visitingAccount);
             model.addAttribute("visitingProfilePicture", visitingAccount.getStockProfilePicture());
             model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));

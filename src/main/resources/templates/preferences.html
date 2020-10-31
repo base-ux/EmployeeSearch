@@ -80,21 +80,27 @@
                 <!-- Change picture form -->
                 <div class="row justify-content-center">
                     <div class="col col-8">
-                        <form class="text-center" th:action="@{/EmployeeSearch/Users/{useralias}/ProfilePictureStock(useralias=${account.useralias})}" 
-                              th:object="${ability}" enctype="multipart/form-data" method="POST">
+                        <!-- Select stock profile picture -->
+                        <form class="text-center" th:action="@{/EmployeeSearch/Users/{useralias}/ProfilePictureStock(useralias=${account.useralias})}" method="POST">
                             <!-- Current picture -->
                             <div class="md-form input-group input-with-pre-icon">
                                 <p><i class="fas fa-portrait fa-2x mr-5" aria-hidden="true"></i>Current Profile Picture:</p>
-                                <div th:if="${account.stockProfilePicture} == 'male'">
-                                    <img src="" th:src="@{/media/profilePicture_default_male.png}" alt="No Image" class="img-fluid rounded-circle"/>
+                                <div th:if="${submittedProfilePicture} == false">
+                                    <div th:if="${account.stockProfilePicture} == 'male'">
+                                        <img src="" th:src="@{/media/profilePicture_default_male.png}" alt="No Image" class="img-fluid rounded-circle"/>
+                                    </div>
+                                    <div th:if="${account.stockProfilePicture} == 'female'">
+                                        <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="No Image" class="img-fluid rounded-circle"/>
+                                    </div>
+                                    <div th:if="${account.stockProfilePicture} == 'neutral'">
+                                        <img src="" th:src="@{/media/profilePicture_default_neutral.png}" alt="No Image" class="img-fluid rounded-circle"/>
+                                    </div>
                                 </div>
-                                <div th:if="${account.stockProfilePicture} == 'female'">
-                                    <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="No Image" class="img-fluid rounded-circle"/>
-                                </div>
-                                <div th:if="${account.stockProfilePicture} == 'neutral'">
-                                    <img src="" th:src="@{/media/profilePicture_default_neutral.png}" alt="No Image" class="img-fluid rounded-circle"/>
+                                <div th:if="${submittedProfilePicture} == true">
+                                    <img src="" th:src="@{/EmployeeSearch/Users/{useralias}/LoadedProfilePicture/{loadedProfilePictureId}(useralias=${account.useralias},loadedProfilePictureId=${loadedProfilePicture.id})}" alt="No Image" class="img-fluid rounded-circle"/>
                                 </div>
                             </div>
+                            <!-- Stock profile picture -->
                             <div>
                                 <p class="h5 text-center">Select Stock Profile Picture:</p>
                             </div>
@@ -107,7 +113,17 @@
                             </div>
                             <!-- Change picture button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewPicture" type="submit" id="changePictureButton">Save<i class="fas fa-portrait ml-2"></i></button>
+                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewStockProfilePicture" type="submit" id="selectStockProfilePictureButton">Select<i class="fas fa-portrait ml-2"></i></button>
+                            </div>
+                        </form>
+                        <!-- Load picture -->
+                        <div class="my-4">
+                            <p class="h5 text-center">Load Profile Picture (MAX SIZE 2MB):</p>
+                        </div>
+                        <form class="text-center" th:action="@{/EmployeeSearch/Users/{useralias}/ProfilePictureLoad(useralias=${account.useralias})}" enctype="multipart/form-data" method="POST">
+                            <input type="file" name="profilePictureLoaded"/>
+                            <div class="row justify-content-left">
+                                <button class="btn btn-sm btn-dark my-4 editbutton greyish" name="submitNewLoadPicture" type="submit" id="loadProfilePictureButton">Load<i class="fas fa-portrait ml-2"></i></button>
                             </div>
                         </form>
                     </div>

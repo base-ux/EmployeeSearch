@@ -21,7 +21,7 @@ public class Ability extends AbstractPersistable<Long> {
 
     @NotEmpty
     @Size(min = 1, max = 4000)
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String abilitytext;
 
     @ManyToOne
@@ -32,5 +32,3 @@ public class Ability extends AbstractPersistable<Long> {
     @OneToMany(mappedBy = "ability")
     private List<Praise> praisers = new ArrayList<>();
 }
-
-

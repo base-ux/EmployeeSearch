@@ -46,7 +46,9 @@ public class Account extends AbstractPersistable<Long> {
     @Size(min = 2, max = 30)
     private String useralias;
 
-    private String stockProfilePicture = "male";
+    private boolean submittedProfilePicture = false;
+
+    private String stockProfilePicture = "neutral";
 
     @ElementCollection
     private List<String[]> connectionRequestsReceived = new ArrayList<>();

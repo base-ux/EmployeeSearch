@@ -17,6 +17,7 @@ import projekti.domain.Praise;
 import projekti.logic.repository.AbilityRepository;
 import projekti.logic.repository.AccountRepository;
 import projekti.logic.repository.PraiseRepository;
+import projekti.logic.repository.ProfilePictureRepository;
 import projekti.logic.service.AbilityService;
 import projekti.logic.service.ConnectionsService;
 import projekti.logic.service.HomeService;
@@ -41,6 +42,9 @@ public class AbilityController {
 
     @Autowired
     private PraiseRepository praiseRepository;
+
+    @Autowired
+    private ProfilePictureRepository profilePictureRepository;
 
     // LOGGED IN
     // POST-REQUESTS
@@ -86,6 +90,8 @@ public class AbilityController {
                 if (this.connectionsService.requestIsReceived(userAccount, visitingAccount) == true) {
                     model.addAttribute("requestReceived", true);
                 }
+                model.addAttribute("loadedProfilePicture", this.profilePictureRepository.findByUseralias(visitingalias));
+                model.addAttribute("submittedProfilePicture", visitingAccount.isSubmittedProfilePicture());
                 model.addAttribute("visitingaccount", visitingAccount);
                 model.addAttribute("visitingProfilePicture", visitingAccount.getStockProfilePicture());
                 model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));
