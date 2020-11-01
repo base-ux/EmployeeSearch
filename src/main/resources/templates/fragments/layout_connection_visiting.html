@@ -33,6 +33,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col">
+                                        <!-- Stock profile picture -->
                                         <div th:if="${submittedProfilePicture} == false">
                                             <div th:if="${visitingProfilePicture} == 'male'">
                                                 <img src="" th:src="@{/media/profilePicture_default_male.png}" alt="No Image" class="img-fluid rounded-circle"/>
@@ -50,6 +51,7 @@
                                             <img src="" th:src="@{/EmployeeSearch/Users/{useralias}/LoadedProfilePicture/{loadedProfilePictureId}(useralias=${account.useralias},loadedProfilePictureId=${loadedProfilePicture.id})}" alt="No Image" class="img-fluid rounded-circle"/>
                                         </div>
                                     </div>
+                                    <!-- Loaded profile picture -->
                                     <div class="col">
                                         <p><i class="fas fa-quote-left mr-1"></i>Introduction of myself and about my profile</p>
                                     </div>

@@ -63,7 +63,7 @@
             <div th:replace="fragments/layout_links_texts :: posts"></div>
             <!-- /Back to posts page -->
             <!-- New comment box -->
-            <div class="row pb-5 w-75">
+            <div class="row pb-5">
                 <div class="col">
                     <div class="container-fluid bigbox">
                         <form th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id})}" 
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <!-- Lists of comments -->
-            <div class="row w-75">
+            <div class="row">
                 <!-- Recent comments -->
                 <div class="col mb-5">
                     <div class="container bigbox">

@@ -64,16 +64,6 @@ public class CommentsService {
         }
     }
 
-    public void newComment(Comment comment, Long postid, String useralias, String response) {
-        comment = new Comment();
-        Account account = this.accountRepository.findByUseralias(useralias);
-        comment.setPostid(postid);
-        comment.setUseralias(account.getUseralias());
-        comment.setPostingtime(this.date.dateTime());
-        comment.setResponse(response);
-        this.commentsRepository.save(comment);
-    }
-
     // Adds or removes user alias in the likers list of parameter post if it's not user's own post
     @Transactional
     public void likePost(String useralias, Post post) {
@@ -87,6 +77,16 @@ public class CommentsService {
                 post.setLikes(post.getLikes() - 1);
             }
         }
+    }
+
+    public void newComment(Comment comment, Long postid, String useralias, String response) {
+        comment = new Comment();
+        Account account = this.accountRepository.findByUseralias(useralias);
+        comment.setPostid(postid);
+        comment.setUseralias(account.getUseralias());
+        comment.setPostingtime(this.date.dateTime());
+        comment.setResponse(response);
+        this.commentsRepository.save(comment);
     }
 
     // Returns a list of five page numbers for pagination
@@ -130,6 +130,7 @@ public class CommentsService {
         return pageNumbers;
     }
 
+    // Returns a list of comments of the parameter postid post
     public List<Comment> viewAllComments(Long postid, Pageable pageable) {
         List<Comment> viewAllComments = this.commentsRepository.findAllByPostid(postid, pageable);
         return viewAllComments;

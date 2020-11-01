@@ -11,16 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import projekti.domain.Account;
-import projekti.logic.repository.AccountRepository;
 import projekti.logic.service.HomeService;
 import projekti.logic.service.RegisterService;
 import projekti.logic.utility.CustomDate;
 
 @Controller
 public class RegisterController {
-
-    @Autowired
-    private AccountRepository accountRepository;
 
     @Autowired
     private HomeService homeService;

@@ -24,12 +24,12 @@ public class Post extends AbstractPersistable<Long> {
 
     @NotEmpty
     @Size(min = 1, max = 100)
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String title;
 
     @NotEmpty
     @Size(min = 1, max = 4000)
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String message;
 
     private int likes;

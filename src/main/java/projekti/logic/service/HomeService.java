@@ -44,10 +44,6 @@ public class HomeService {
                     model.addAttribute("account", principalAccount);
                     model.addAttribute("connectionEstablished", principalAccount.getConnectionsEstablished());
                     model.addAttribute("connectionEstablishedSize", principalAccount.getConnectionsEstablished().size());
-                    model.addAttribute("date", this.date.date());
-                    model.addAttribute("hellouseralias", "Hello, " + useralias.substring(0, 9) + "...!");
-                    model.addAttribute("loggedinuser", useralias.substring(0, 9) + "...");
-                    model.addAttribute("requestsReceived", principalAccount.getConnectionRequestsReceived());
                     if (connectionRequestsReceivedSize == 0) {
                         model.addAttribute("connectionRequestsReceivedSize", "");
                     } else if (connectionRequestsReceivedSize > 9) {
@@ -55,15 +51,15 @@ public class HomeService {
                     } else {
                         model.addAttribute("connectionRequestsReceivedSize", connectionRequestsReceivedSize);
                     }
+                    model.addAttribute("date", this.date.date());
+                    model.addAttribute("hellouseralias", "Hello, " + useralias.substring(0, 9) + "...!");
+                    model.addAttribute("loggedinuser", useralias.substring(0, 9) + "...");
+                    model.addAttribute("requestsReceived", principalAccount.getConnectionRequestsReceived());
                     return true;
                 } else {
                     model.addAttribute("account", principalAccount);
                     model.addAttribute("connectionEstablished", principalAccount.getConnectionsEstablished());
                     model.addAttribute("connectionEstablishedSize", principalAccount.getConnectionsEstablished().size());
-                    model.addAttribute("date", this.date.date());
-                    model.addAttribute("hellouseralias", "Hello, " + useralias + " !");
-                    model.addAttribute("loggedinuser", useralias);
-                    model.addAttribute("requestsReceived", principalAccount.getConnectionRequestsReceived());
                     if (connectionRequestsReceivedSize == 0) {
                         model.addAttribute("connectionRequestsReceivedSize", "");
                     } else if (connectionRequestsReceivedSize > 9) {
@@ -71,6 +67,10 @@ public class HomeService {
                     } else {
                         model.addAttribute("connectionRequestsReceivedSize", connectionRequestsReceivedSize);
                     }
+                    model.addAttribute("date", this.date.date());
+                    model.addAttribute("hellouseralias", "Hello, " + useralias + " !");
+                    model.addAttribute("loggedinuser", useralias);
+                    model.addAttribute("requestsReceived", principalAccount.getConnectionRequestsReceived());
                     return true;
                 }
             }

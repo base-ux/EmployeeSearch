@@ -18,16 +18,6 @@ public class LoginController {
 
     // LOGGED OUT
     // GET-REQUESTS
-    @GetMapping("/EmployeeSearch/Login")
-    public String loginFill(Model model) {
-        if (this.homeService.helloUser(model, "notLoggedIn") == false) {
-            return "fragments/layout_address_error";
-        } else {
-            model.addAttribute("date", this.date.date());
-            return "login";
-        }
-    }
-
     @GetMapping("/EmployeeSearch/LoginError")
     public String loginError(Model model) {
         if (this.homeService.helloUser(model, "notLoggedIn") == false) {
@@ -35,6 +25,16 @@ public class LoginController {
         } else {
             model.addAttribute("date", this.date.date());
             return "login_error";
+        }
+    }
+
+    @GetMapping("/EmployeeSearch/Login")
+    public String loginFill(Model model) {
+        if (this.homeService.helloUser(model, "notLoggedIn") == false) {
+            return "fragments/layout_address_error";
+        } else {
+            model.addAttribute("date", this.date.date());
+            return "login";
         }
     }
 }

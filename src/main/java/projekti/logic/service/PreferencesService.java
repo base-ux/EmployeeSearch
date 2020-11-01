@@ -18,7 +18,15 @@ public class PreferencesService {
     @Autowired
     private ProfilePictureRepository profilePictureRepository;
 
-    // Deletes current profilepicture from repository if it's there and saves parameter loadedProfilePicture and sets parameter useralias account submittedProfilePicture to true
+    // Deletes current profilepicture from repository of parameter useralias if it's there
+    public void deleteLoadedProfilePicture(String useralias) {
+        ProfilePicture deletePreviousProfilePicture = this.profilePictureRepository.findByUseralias(useralias);
+        if (deletePreviousProfilePicture != null) {
+            this.profilePictureRepository.delete(deletePreviousProfilePicture);
+        }
+    }
+
+    // Saves parameter loadedProfilePicture to repository and sets parameter useralias account submittedProfilePicture to true
     public void newProfilePictureLoad(String useralias, MultipartFile loadedProfilePicture) throws IOException {
         if (loadedProfilePicture.isEmpty()) {
             return;
@@ -27,10 +35,7 @@ public class PreferencesService {
             return;
         }
         Account account = this.accountRepository.findByUseralias(useralias);
-        ProfilePicture deletePreviousProfilePicture = this.profilePictureRepository.findByUseralias(useralias);
-        if (deletePreviousProfilePicture != null) {
-            this.profilePictureRepository.delete(deletePreviousProfilePicture);
-        }
+        deleteLoadedProfilePicture(useralias);
         ProfilePicture profilePicture = new ProfilePicture();
         profilePicture.setUseralias(useralias);
         profilePicture.setName(loadedProfilePicture.getOriginalFilename());
@@ -45,6 +50,7 @@ public class PreferencesService {
     // Sets the parameter useraliast account stockProfilePicture to parameter profilePictureStock and submittedProfilePicture to false
     public void newProfilePictureStock(String useralias, String profilePictureStock) {
         Account account = this.accountRepository.findByUseralias(useralias);
+        deleteLoadedProfilePicture(useralias);
         account.setStockProfilePicture(profilePictureStock);
         account.setSubmittedProfilePicture(false);
         this.accountRepository.save(account);

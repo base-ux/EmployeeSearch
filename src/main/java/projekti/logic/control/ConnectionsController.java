@@ -49,9 +49,9 @@ public class ConnectionsController {
         } else {
             Account userAccount = this.accountRepository.findByUseralias(useralias);
             Account visitingAccount = this.accountRepository.findByUseralias(visitingalias);
-            this.connectionsService.connectionRequestAccept(userAccount, visitingAccount);
             this.connectionsService.arrangeConnectionsEstablished(userAccount);
             this.connectionsService.arrangeConnectionsEstablished(visitingAccount);
+            this.connectionsService.connectionRequestAccept(userAccount, visitingAccount);
             return "redirect:/EmployeeSearch/Users/" + useralias + "/Visiting/" + visitingalias;
         }
     }

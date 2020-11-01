@@ -14,7 +14,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comment extends AbstractPersistable<Long> {
-    
+
     private Long postid;
 
     private String useralias;
@@ -23,6 +23,6 @@ public class Comment extends AbstractPersistable<Long> {
 
     @NotEmpty
     @Size(min = 1, max = 4000)
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String response;
 }

@@ -22,21 +22,6 @@ public class PostsService {
     @Autowired
     private PostsRepository postsRepository;
 
-    // Returns the integer amount of posts that user or user's connections have created
-    public int totalPosts(String useralias) {
-        int totalposts = 0;
-        Account account = this.accountRepository.findByUseralias(useralias);
-        List<String> establishedUseraliases = account.getEstablishedUseraliases();
-        List<Post> allPosts = this.postsRepository.findAll();
-        for (Post p : allPosts) {
-            if (p.getUseralias().equals(useralias)
-                    || establishedUseraliases.contains(p.getUseralias())) {
-                totalposts++;
-            }
-        }
-        return totalposts;
-    }
-
     // Returns the establishedUseraliases list of parameter useralias account
     public List<String> establishedUseraliases(String useralias) {
         Account account = this.accountRepository.findByUseralias(useralias);
@@ -109,5 +94,20 @@ public class PostsService {
             pageNumbers.add(0);
         }
         return pageNumbers;
+    }
+
+    // Returns the integer amount of posts that user or user's connections have created
+    public int totalPosts(String useralias) {
+        int totalposts = 0;
+        Account account = this.accountRepository.findByUseralias(useralias);
+        List<String> establishedUseraliases = account.getEstablishedUseraliases();
+        List<Post> allPosts = this.postsRepository.findAll();
+        for (Post p : allPosts) {
+            if (p.getUseralias().equals(useralias)
+                    || establishedUseraliases.contains(p.getUseralias())) {
+                totalposts++;
+            }
+        }
+        return totalposts;
     }
 }

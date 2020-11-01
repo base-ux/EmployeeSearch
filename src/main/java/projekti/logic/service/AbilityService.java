@@ -72,6 +72,7 @@ public class AbilityService {
         this.abilityRepository.save(ability);
     }
 
+    // Returns s list of abilities, which is in a reversed order compared to the parameter list
     public List<Ability> reverseListOrder(List<Ability> abilityList) {
         abilityList.sort(Comparator.comparing(s -> s.getPraises()));
         Collections.reverse(abilityList);
@@ -82,6 +83,7 @@ public class AbilityService {
         return reversedList;
     }
 
+    // Returns a list of 1 to 3 abilities that will be emphasized
     public List<Ability> viewFirstAbilities(Account account) {
         List<Ability> abilities = this.abilityRepository.findByAccount(account);
         List<Ability> reversedAbilities = reverseListOrder(abilities);
@@ -98,6 +100,7 @@ public class AbilityService {
         return firstabilities;
     }
 
+    // Returns a list of 1 or more abilities that will not be emphasized
     public List<Ability> viewLastAbilities(Account account) {
         List<Ability> abilities = this.abilityRepository.findByAccount(account);
         List<Ability> reversedAbilities = reverseListOrder(abilities);

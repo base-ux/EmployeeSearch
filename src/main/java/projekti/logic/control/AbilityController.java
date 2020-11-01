@@ -76,27 +76,27 @@ public class AbilityController {
             if (bindingResult.hasErrors()) {
                 Account userAccount = this.accountRepository.findByUseralias(useralias);
                 model.addAttribute("abilityid", abilityid);
-                model.addAttribute("connectionEstablishedVisited", visitingAccount.getConnectionsEstablished());
-                model.addAttribute("connectionEstablishedVisitedSize", visitingAccount.getConnectionsEstablished().size());
                 model.addAttribute("connectionEstablished", false);
                 if (this.connectionsService.connectionIsEstablished(userAccount, visitingAccount) == true) {
                     model.addAttribute("connectionEstablished", true);
+                }
+                model.addAttribute("connectionEstablishedVisited", visitingAccount.getConnectionsEstablished());
+                model.addAttribute("connectionEstablishedVisitedSize", visitingAccount.getConnectionsEstablished().size());
+                model.addAttribute("loadedProfilePicture", this.profilePictureRepository.findByUseralias(visitingalias));
+                model.addAttribute("requestReceived", false);
+                if (this.connectionsService.requestIsReceived(userAccount, visitingAccount) == true) {
+                    model.addAttribute("requestReceived", true);
                 }
                 model.addAttribute("requestSent", false);
                 if (this.connectionsService.requestIsSent(userAccount, visitingAccount) == true) {
                     model.addAttribute("requestSent", true);
                 }
-                model.addAttribute("requestReceived", false);
-                if (this.connectionsService.requestIsReceived(userAccount, visitingAccount) == true) {
-                    model.addAttribute("requestReceived", true);
-                }
-                model.addAttribute("loadedProfilePicture", this.profilePictureRepository.findByUseralias(visitingalias));
                 model.addAttribute("submittedProfilePicture", visitingAccount.isSubmittedProfilePicture());
-                model.addAttribute("visitingaccount", visitingAccount);
-                model.addAttribute("visitingProfilePicture", visitingAccount.getStockProfilePicture());
+                model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(visitingAccount));
                 model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));
                 model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(visitingAccount));
-                model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(visitingAccount));
+                model.addAttribute("visitingaccount", visitingAccount);
+                model.addAttribute("visitingProfilePicture", visitingAccount.getStockProfilePicture());
                 return "homevisiting";
             }
             Ability ability = this.abilityRepository.getOne(abilityid);

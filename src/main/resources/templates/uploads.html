@@ -36,20 +36,50 @@
             <div class="row mx-5 mt-5 px-5 py-5">
                 <!-- Files uploaded -->
                 <div class="col">
+                    <p class="h5 mb-4 darkblue">Files Uploaded</p>
                     <table>
                         <!-- Files uploaded title -->
                         <thead>
-                            <p class="h5 mb-4 darkblue">Files Uploaded</p>
-                        </thead>
-                        <!-- Files list -->
-                        <tbody>
                             <tr>
+                                <th>Filename</th>
+                                <th>Type</th>
+                                <th>Size</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <!-- Uploaded files list -->
+                        <tbody>
+                            <tr th:unless="${fileuploads} == null or ${fileuploads.empty}" th:each="fileupload:${fileuploads}">
+                                <td>
+                                    <a th:href="@{/EmployeeSearch/Users/{useralias}/FileUpload/{fileuploadId}/RetrieveFileUpload(useralias=${account.useralias},fileuploadId=${fileupload.id})}" 
+                                       th:text="${fileupload.name}">name</a>
+                                </td>
+                                <td th:text="${fileupload.mediaType}">media type</td>
+                                <td th:text="${fileupload.uploadSize}">size</td>
+                                <td>
+                                    <form th:action="@{/EmployeeSearch/Users/{useralias}/FileUpload/{fileuploadId}/DeleteFileUpload(useralias=${account.useralias},fileuploadId=${fileupload.id})}" 
+                                          th:method="DELETE">
+                                        <input type="submit" value="Delete"/>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr th:if="${fileuploads} == null or ${fileuploads.empty}">
                                 <td>
                                     <p>No Files</p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <!-- Select upload -->
+                    <div class="my-4">
+                        <p class="h5 text-center darkblue">Upload File (MAX SIZE 2MB):</p>
+                    </div>
+                    <form class="text-center" th:action="@{/EmployeeSearch/Users/{useralias}/FileUpload(useralias=${account.useralias})}" enctype="multipart/form-data" method="POST">
+                        <input type="file" name="fileUploaded"/>
+                        <div class="row justify-content-left">
+                            <button class="btn btn-sm btn-dark my-4 editbutton greyish" name="submitNewUpload" type="submit" id="submitUploadButton">Upload<i class="fas fa-portrait ml-2"></i></button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

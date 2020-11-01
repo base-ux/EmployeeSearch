@@ -33,6 +33,7 @@
                             <div class="container-fluid collapse show" id="collapseUseralias">
                                 <div class="row">
                                     <div class="col">
+                                        <!-- Stock profile picture -->
                                         <div th:if="${submittedProfilePicture} == false">
                                             <div th:if="${account.stockProfilePicture} == 'male'">
                                                 <img src="" th:src="@{/media/profilePicture_default_male.png}" alt="No Image" class="img-fluid rounded-circle"/>
@@ -48,6 +49,7 @@
                                             <h5 class="mt-3 text-center text-dark"><strong th:text="${account.realname}">Real name</strong></h5>
                                             <a th:href="@{/EmployeeSearch/Users/{useralias}/Preferences#changeName(useralias=${account.useralias})}"><small class="mt-3 text-center text-dark"><strong>Change name</strong></small></a>
                                         </div>
+                                        <!-- Loaded profile picture -->
                                         <div th:if="${submittedProfilePicture} == true">
                                             <img src="" th:src="@{/EmployeeSearch/Users/{useralias}/LoadedProfilePicture/{loadedProfilePictureId}(useralias=${account.useralias},loadedProfilePictureId=${loadedProfilePicture.id})}" alt="No Image" class="img-fluid rounded-circle"/>
                                         </div>

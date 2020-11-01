@@ -70,12 +70,14 @@ public class RegisterService {
         return converted;
     }
 
+    // Returns a string without spaces of parameter string
     public String convertRemoveSpaces(String convert) {
         String converted = convert;
         converted = converted.trim().replaceAll("\\s+", "");
         return converted;
     }
 
+    // Creates a new account for username and useralias if username or useralias is not reserved and form entries are acceptable
     public String registerCheck(Model model,
             @Valid @ModelAttribute Account account,
             BindingResult bindingResult) {
@@ -99,9 +101,9 @@ public class RegisterService {
             return "register_error";
         }
         if (this.accountRepository.findByUseralias(account.getUseralias()) != null) {
+            model.addAttribute("date", this.date.date());
             model.addAttribute("useralias", account.getUseralias());
             model.addAttribute("useraliasFail", "");
-            model.addAttribute("date", this.date.date());
             model.addAttribute("username", account.getUsername());
             return "register_error";
         } else {

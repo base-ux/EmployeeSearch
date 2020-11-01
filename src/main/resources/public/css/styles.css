@@ -153,14 +153,6 @@ body, html {
     max-width: 50px;
 }
 
-.toggleUseralias[aria-expanded=false] .text-expanded {
-    display: none;
-}
-
-.toggleUseralias[aria-expanded=true] .text-collapsed {
-    display: none;
-}
-
 .toggleConnections[aria-expanded=false] .text-expanded {
     display: none;
 }
@@ -174,6 +166,14 @@ body, html {
 }
 
 .toggleUploads[aria-expanded=true] .text-collapsed {
+    display: none;
+}
+
+.toggleUseralias[aria-expanded=false] .text-expanded {
+    display: none;
+}
+
+.toggleUseralias[aria-expanded=true] .text-collapsed {
     display: none;
 }
 
@@ -200,16 +200,16 @@ body, html {
     color: #fefeff;
 }
 
-.yellowishicon {
-    color: #ffd722;
-}
-
 .yellowish {
     color: #ffd722;
 }
 
 .yellowishbg {
     background-color: #ffd722;
+}
+
+.yellowishicon {
+    color: #ffd722;
 }
 
 /*Id's and Classes*/
