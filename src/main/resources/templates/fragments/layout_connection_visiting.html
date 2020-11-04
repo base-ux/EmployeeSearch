@@ -44,11 +44,15 @@
                                             <div th:if="${visitingProfilePicture} == 'neutral'">
                                                 <img src="" th:src="@{/media/profilePicture_default_neutral.png}" alt="No Image" class="img-fluid rounded-circle"/>
                                             </div>
+                                            <!-- Real name -->
                                             <br/>
                                             <h5 class="mt-3 text-center text-dark"><strong th:text="${visitingaccount.realname}">Real name</strong></h5>
                                         </div>
                                         <div th:if="${submittedProfilePicture} == true">
                                             <img src="" th:src="@{/EmployeeSearch/Users/{useralias}/LoadedProfilePicture/{loadedProfilePictureId}(useralias=${account.useralias},loadedProfilePictureId=${loadedProfilePicture.id})}" alt="No Image" class="img-fluid rounded-circle"/>
+                                            <!-- Real name -->
+                                            <br/>
+                                            <h5 class="mt-3 text-center text-dark"><strong th:text="${visitingaccount.realname}">Real name</strong></h5>
                                         </div>
                                     </div>
                                     <!-- Loaded profile picture -->
@@ -212,8 +216,7 @@
                             <div class="container overflow-auto">
                                 <div th:each="connection:${connectionEstablishedVisited}">
                                     <div class="row">
-                                        <div class="col ml-5">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle smallimage"/>
+                                        <div class="col ml-3">
                                             <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${connection[0]}}"><span class="text-dark"><strong th:text="${connection[1]}">Real name</strong></span></a>
                                         </div>
                                     </div>
@@ -221,23 +224,21 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Uploads -->
                         <div class="card mb-5">
-                            <div><h5 class="px-4 py-2 text-left darkbluebg greyish">
-                                    <strong class="mr-5"><i class="fas fa-cloud-upload-alt mr-3 greyishicon"></i>Uploads (10)</strong>
-                                </h5></div>
+                            <div>
+                                <h5 class="px-4 py-2 text-left darkbluebg greyish">
+                                    <strong class="mr-5"><i class="fas fa-cloud-upload-alt mr-3 greyishicon"></i>Uploads (<span th:text="${uploadsSize}">size</span>)</strong>
+                                </h5>
+                            </div>
                             <div class="overflowing">
-                                <a>
-                                    <h5 class="mt-3 text-center text-dark">File 1</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 2</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 3</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 4</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 5</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 6</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 7</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 8</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 9</h5>
-                                    <h5 class="mt-3 text-center text-dark">File 10</h5>
-                                </a>
+                                <div th:unless="${uploads} == null or ${uploads.empty}" th:each="upload:${uploads}">
+                                    <a th:href="@{/EmployeeSearch/Users/{visitingalias}/FileUpload/{fileuploadId}/RetrieveFileUpload(visitingalias=${visitingaccount.useralias},fileuploadId=${upload.id})}"><h5 class="ml-4 mt-3 text-left text-dark" th:text="${upload.name}">name</h5></a>
+                                    <hr/>
+                                </div>
+                                <div th:if="${uploads} == null or ${uploads.empty}">
+                                    <h5 class="my-4 text-center text-dark">No Files</h5>
+                                </div>
                             </div>
                         </div>
                     </div>

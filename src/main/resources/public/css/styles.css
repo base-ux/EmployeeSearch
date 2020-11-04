@@ -145,11 +145,17 @@ body, html {
     width: 100%;
 }
 
+.rounded-circle {
+    max-height: 300px;
+    max-width: 300px;
+}
+
 .smallbox {
     max-width: 15em;
 }
 
 .smallimage {
+    max-height: 50px;
     max-width: 50px;
 }
 
@@ -212,12 +218,11 @@ body, html {
     color: #ffd722;
 }
 
-/*Id's and Classes*/
+/*Id's*/
 #draggableRight .dragdropTitleRight {
     cursor: move;
 }
 
-/*Id's and Lists*/
 #sortable li {
     list-style-type: none;
 }

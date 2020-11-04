@@ -63,6 +63,30 @@ public class RegisterPageTest extends FluentTest {
 
     // Testing that sign up form works
     @Test
+    public void clickRegisterErrorBackToRegisterPageLinkThenPageSourceContainsSignUp() {
+        clickRegisterErrorBackToRegisterPageLink();
+    }
+
+    public void clickRegisterErrorBackToRegisterPageLink() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Register");
+        String userName = RandomStringUtils.randomAscii(20) + RandomStringUtils.randomGraph(20) + RandomStringUtils.randomPrint(20);
+        $("input[name=username]").fill().with(userName);
+        String passWord = "aZ0&" + RandomStringUtils.randomAlphabetic(56);
+        $("input[name=password]").fill().with(passWord);
+        String conFirm = passWord;
+        $("input[name=confirm]").fill().with(conFirm);
+        String realName = "Toni Silfver" + RandomStringUtils.randomAlphabetic(18);
+        $("input[name=realname]").fill().with(realName);
+        String aliAs = "tontsa" + RandomStringUtils.randomAlphabetic(24);
+        $("input[name=useralias]").fill().with(aliAs);
+        $("#signup").click();
+        assertThat(pageSource()).contains("Somehow registering for user");
+        assertThat(pageSource()).contains("Some of the entered characters were");
+        $("#backToRegisterPage").click();
+        assertThat(pageSource()).contains("Sign up");
+    }
+
+    @Test
     public void canAddAccountWithShortInputs() {
         addAccountWithShortInputs();
     }

@@ -14,6 +14,7 @@ import projekti.domain.Praise;
 import projekti.logic.repository.AccountRepository;
 import projekti.logic.repository.PraiseRepository;
 import projekti.logic.repository.ProfilePictureRepository;
+import projekti.logic.repository.UploadsRepository;
 import projekti.logic.service.AbilityService;
 import projekti.logic.service.ConnectionsService;
 import projekti.logic.service.HomeService;
@@ -39,6 +40,9 @@ public class HomeController {
     @Autowired
     private ProfilePictureRepository profilePictureRepository;
 
+    @Autowired
+    private UploadsRepository uploadsRepository;
+
     // LOGGED IN
     // GET-REQUESTS
     @Secured("USER")
@@ -50,6 +54,8 @@ public class HomeController {
             Account account = this.accountRepository.findByUseralias(useralias);
             model.addAttribute("loadedProfilePicture", this.profilePictureRepository.findByUseralias(useralias));
             model.addAttribute("submittedProfilePicture", account.isSubmittedProfilePicture());
+            model.addAttribute("uploads", this.uploadsRepository.findByUseralias(useralias));
+            model.addAttribute("uploadsSize", this.uploadsRepository.findByUseralias(useralias).size());
             model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(account));
             model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(account));
             model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(account));
@@ -104,6 +110,8 @@ public class HomeController {
                 model.addAttribute("requestSent", true);
             }
             model.addAttribute("submittedProfilePicture", visitingAccount.isSubmittedProfilePicture());
+            model.addAttribute("uploads", this.uploadsRepository.findByUseralias(visitingalias));
+            model.addAttribute("uploadsSize", this.uploadsRepository.findByUseralias(visitingalias).size());
             model.addAttribute("viewAllPraises", this.praiseRepository.findByAccount(visitingAccount));
             model.addAttribute("viewFirstAbilities", this.abilityService.viewFirstAbilities(visitingAccount));
             model.addAttribute("viewLastAbilities", this.abilityService.viewLastAbilities(visitingAccount));

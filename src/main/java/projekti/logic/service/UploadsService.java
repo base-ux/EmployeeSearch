@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import projekti.domain.Upload;
 import projekti.logic.repository.UploadsRepository;
@@ -23,8 +22,11 @@ public class UploadsService {
         this.uploadsRepository.deleteById(fileuploadId);
     }
 
-    // Saves parameter uploadedFile to repository
+    // Saves parameter uploadedFile to repository if it's not empty or wrong format and unless there are already 10 files uploaded
     public void newFileUpload(String useralias, MultipartFile uploadedFile) throws IOException {
+        if (this.uploadsRepository.findByUseralias(useralias).size() >= 10) {
+            return;
+        }
         if (uploadedFile.isEmpty()) {
             return;
         }

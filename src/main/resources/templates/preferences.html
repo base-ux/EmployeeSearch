@@ -105,15 +105,15 @@
                                 <p class="h5 text-center">Select Stock Profile Picture:</p>
                             </div>
                             <div class="my-4">
-                                <select name="profilePictureStock" class="browser-default custom-select">
-                                    <option value="male" selected>Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="neutral">Neutral</option>
+                                <select id="profilePictureStockSelector" name="profilePictureStock" class="browser-default custom-select">
+                                    <option id="profilePictureStockMale" value="male" selected>Male</option>
+                                    <option id="profilePictureStockFemale" value="female">Female</option>
+                                    <option id="profilePictureStockNeutral" value="neutral">Neutral</option>
                                 </select>
                             </div>
-                            <!-- Change picture button -->
+                            <!-- Select picture button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewStockProfilePicture" type="submit" id="selectStockProfilePictureButton">Select<i class="fas fa-portrait ml-2"></i></button>
+                                <button id="selectStockProfilePictureButton" class="btn btn-sm btn-dark editbutton greyish" name="submitNewStockProfilePicture" type="submit">Select<i class="fas fa-portrait ml-2"></i></button>
                             </div>
                         </form>
                         <!-- Load picture -->
@@ -122,8 +122,9 @@
                         </div>
                         <form class="text-center" th:action="@{/EmployeeSearch/Users/{useralias}/ProfilePictureLoad(useralias=${account.useralias})}" enctype="multipart/form-data" method="POST">
                             <input type="file" name="profilePictureLoaded"/>
+                            <!-- Load picture button -->
                             <div class="row justify-content-left">
-                                <button class="btn btn-sm btn-dark my-4 editbutton greyish" name="submitNewLoadPicture" type="submit" id="loadProfilePictureButton">Load<i class="fas fa-portrait ml-2"></i></button>
+                                <button id="loadProfilePictureButton" class="btn btn-sm btn-dark my-4 editbutton greyish" name="submitNewLoadPicture" type="submit">Load<i class="fas fa-portrait ml-2"></i></button>
                             </div>
                         </form>
                     </div>
@@ -180,10 +181,10 @@
                                 <div class="container-fluid bigbox">
                                     <form th:action="@{/EmployeeSearch/Users/{useralias}/Abilities(useralias=${account.useralias})}" 
                                           th:object="${ability}" enctype="multipart/form-data" method="POST">
-                                        <textarea class="summernote" th:field="*{abilitytext}" name="abilitytext">new ability text</textarea>
+                                        <textarea id="addAbilityTextBox" class="summernote" th:field="*{abilitytext}" name="abilitytext">new ability text</textarea>
                                         <small th:if="${#fields.hasErrors('abilitytext')}"
                                                th:errors="*{abilitytext}" class="text-danger">ability text error message</small><br/>
-                                        <button class="btn btn-sm btn-dark editbutton greyish" name="submitNewAbility" type="submit" id="addAbilityButton">Add<i class="fas fa-user-tie ml-2"></i></button>
+                                        <button id="addAbilityButton" class="btn btn-sm btn-dark editbutton greyish" name="submitNewAbility" type="submit">Add<i class="fas fa-user-tie ml-2"></i></button>
                                     </form>
                                 </div>
                             </div>

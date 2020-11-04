@@ -58,11 +58,15 @@
                                             <div th:if="${visitingProfilePicture} == 'neutral'">
                                                 <img src="" th:src="@{/media/profilePicture_default_neutral.png}" alt="No Image" class="img-fluid rounded-circle"/>
                                             </div>
+                                            <!-- Real name -->
                                             <br/>
                                             <h5 class="mt-3 text-center text-dark"><strong th:text="${visitingaccount.realname}">Real name</strong></h5>
                                         </div>
                                         <div th:if="${submittedProfilePicture} == true">
                                             <img src="" th:src="@{/EmployeeSearch/Users/{useralias}/LoadedProfilePicture/{loadedProfilePictureId}(useralias=${account.useralias},loadedProfilePictureId=${loadedProfilePicture.id})}" alt="No Image" class="img-fluid rounded-circle"/>
+                                            <!-- Real name -->
+                                            <br/>
+                                            <h5 class="mt-3 text-center text-dark"><strong th:text="${visitingaccount.realname}">Real name</strong></h5>
                                         </div>
                                     </div>
                                     <!-- Loaded profile picture -->
@@ -208,8 +212,7 @@
                             <div class="container overflow-auto">
                                 <div th:each="connection:${connectionEstablishedVisited}">
                                     <div class="row">
-                                        <div class="col ml-5">
-                                            <img src="" th:src="@{/media/profilePicture_default_female.png}" alt="" class="img-fluid rounded-circle smallimage"/>
+                                        <div class="col ml-3">
                                             <a th:href="@{'/EmployeeSearch/Users/' + ${account.useralias} + '/Visiting/' + ${connection[0]}}"><span class="text-dark"><strong th:text="${connection[1]}">Real name</strong></span></a>
                                         </div>
                                     </div>
