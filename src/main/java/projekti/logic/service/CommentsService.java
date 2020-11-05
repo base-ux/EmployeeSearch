@@ -3,9 +3,6 @@ package projekti.logic.service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projekti.domain.Account;
@@ -43,8 +40,7 @@ public class CommentsService {
     @Transactional
     public void deletePost(String useralias, Post post) {
         if (post.getUseralias().equals(useralias)) {
-            Pageable pageable = PageRequest.of(0, 25, Sort.by("postingtime").descending());
-            List<Comment> comments = viewAllComments(post.getId(), pageable);
+            List<Comment> comments = viewAllComments(post.getId());
             deleteComments(comments);
             this.postsRepository.delete(post);
         }
@@ -89,10 +85,22 @@ public class CommentsService {
         this.commentsRepository.save(comment);
     }
 
+    // Returns the integer amount of comments that user or user's connections have created to parameter postid post
+    public int totalComments(Long postid) {
+        List<Comment> totalComments = this.commentsRepository.findAll();
+        int totalCommentsSize = 0;
+        for (Comment c : totalComments) {
+            if (c.getPostid().equals(postid)) {
+                totalCommentsSize++;
+            }
+        }
+        return totalCommentsSize;
+    }
+
     // Returns a list of five page numbers for pagination
-    public List<Integer> totalPages(int commentsPerPage, int showpagecomments, List<Comment> viewAllComments) {
+    public List<Integer> totalPages(int commentsPerPage, int showpagecomments, Long postid) {
         List<Integer> pageNumbers = new ArrayList<>();
-        int totalComments = viewAllComments.size();
+        int totalComments = totalComments(postid);
         if (totalComments > commentsPerPage) {
             int startPage = showpagecomments;
             int endPage = 0, additionalPages = 0, zeroPages = 0;
@@ -131,8 +139,8 @@ public class CommentsService {
     }
 
     // Returns a list of comments of the parameter postid post
-    public List<Comment> viewAllComments(Long postid, Pageable pageable) {
-        List<Comment> viewAllComments = this.commentsRepository.findAllByPostid(postid, pageable);
+    public List<Comment> viewAllComments(Long postid) {
+        List<Comment> viewAllComments = this.commentsRepository.findAllByPostid(postid);
         return viewAllComments;
     }
 }

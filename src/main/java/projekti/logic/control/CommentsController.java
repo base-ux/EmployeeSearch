@@ -17,12 +17,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import projekti.domain.Comment;
 import projekti.domain.Post;
+import projekti.logic.repository.CommentsRepository;
 import projekti.logic.repository.PostsRepository;
 import projekti.logic.service.CommentsService;
 import projekti.logic.service.HomeService;
 
 @Controller
 public class CommentsController {
+
+    @Autowired
+    private CommentsRepository commentsRepository;
 
     @Autowired
     private CommentsService commentsService;
@@ -45,15 +49,15 @@ public class CommentsController {
         } else {
             int commentsPerPage = 10;
             Pageable pageable = PageRequest.of(Integer.parseInt(showpagecomments), commentsPerPage, Sort.by("postingtime").descending());
-            List<Comment> viewAllComments = this.commentsService.viewAllComments(postid, pageable);
-            List<Integer> pages = this.commentsService.totalPages(commentsPerPage, Integer.parseInt(showpagecomments), viewAllComments);
+            List<Integer> pages = this.commentsService.totalPages(commentsPerPage, Integer.parseInt(showpagecomments), postid);
             Post post = this.postsRepository.getOne(postid);
             model.addAttribute("currentPageComments", Integer.parseInt(showpagecomments));
             model.addAttribute("lastPage", this.commentsService.lastPage(pages));
             model.addAttribute("post", post);
             model.addAttribute("postuseralias", post.getUseralias());
             model.addAttribute("totalPagesComments", pages);
-            model.addAttribute("viewAllComments", viewAllComments);
+            model.addAttribute("totalPagesCommentsSize", this.commentsService.totalComments(postid));
+            model.addAttribute("viewAllComments", this.commentsRepository.findAll(pageable));
             return "comments";
         }
     }
@@ -72,13 +76,13 @@ public class CommentsController {
             if (bindingResult.hasErrors()) {
                 int commentsPerPage = 10;
                 Pageable pageable = PageRequest.of(0, commentsPerPage, Sort.by("postingtime").descending());
-                List<Comment> viewAllComments = this.commentsService.viewAllComments(postid, pageable);
-                List<Integer> pages = this.commentsService.totalPages(commentsPerPage, Integer.parseInt(showpagecomments), viewAllComments);
+                List<Integer> pages = this.commentsService.totalPages(commentsPerPage, Integer.parseInt(showpagecomments), postid);
                 model.addAttribute("currentPageComments", Integer.parseInt(showpagecomments));
                 model.addAttribute("lastPage", this.commentsService.lastPage(pages));
                 model.addAttribute("post", this.postsRepository.getOne(postid));
                 model.addAttribute("totalPagesComments", pages);
-                model.addAttribute("viewAllComments", viewAllComments);
+                model.addAttribute("totalPagesCommentsSize", this.commentsService.totalComments(postid));
+                model.addAttribute("viewAllComments", this.commentsRepository.findAll(pageable));
                 return "comments";
             }
             this.commentsService.newComment(comment, postid, useralias, response);
@@ -97,13 +101,13 @@ public class CommentsController {
             this.commentsService.likePost(useralias, this.postsRepository.getOne(postid));
             int commentsPerPage = 10;
             Pageable pageable = PageRequest.of(0, commentsPerPage, Sort.by("postingtime").descending());
-            List<Comment> viewAllComments = this.commentsService.viewAllComments(postid, pageable);
-            List<Integer> pages = this.commentsService.totalPages(commentsPerPage, Integer.parseInt(showpagecomments), viewAllComments);
+            List<Integer> pages = this.commentsService.totalPages(commentsPerPage, Integer.parseInt(showpagecomments), postid);
             model.addAttribute("currentPageComments", Integer.parseInt(showpagecomments));
             model.addAttribute("lastPage", this.commentsService.lastPage(pages));
             model.addAttribute("post", this.postsRepository.getOne(postid));
             model.addAttribute("totalPagesComments", pages);
-            model.addAttribute("viewAllComments", viewAllComments);
+            model.addAttribute("totalPagesCommentsSize", this.commentsService.totalComments(postid));
+            model.addAttribute("viewAllComments", this.commentsRepository.findAll(pageable));
             return "redirect:/EmployeeSearch/Users/" + useralias + "/Comments/" + postid;
         }
     }

@@ -86,41 +86,43 @@
                         <div>
                             <p class="h5 darkblue">Recent Comments:</p>
                         </div>
-                        <div th:if="${viewAllComments} == null or ${viewAllComments.empty}" class="my-5 pb-5">
+                        <div th:if="${totalPagesCommentsSize} == 0" class="my-5 pb-5">
                             <span class="my-5">No Comments.</span>
                         </div>
                         <!-- Page -->
                         <div class="paginationleft">
-                            <div class="pagination">
+                            <div th:unless="${totalPagesCommentsSize} == 0" class="pagination">
                                 <a th:if="${currentPageComments} > 0" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} - 1)}">&laquo;</a>
                                 <span th:each="page:${totalPagesComments}">
-                                    <a th:if="${page} == ${currentPageComments} and ${viewAllComments} != null and ${!viewAllComments.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" class="active" th:text="${page} + 1">page number</a>
+                                    <a th:if="${page} == ${currentPageComments}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" class="active" th:text="${page} + 1">page number</a>
                                     <a th:unless="${page} == ${currentPageComments}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" th:text="${page} + 1">page number</a>
                                 </span>
-                                <a th:if="${currentPageComments} < ${lastPage} and ${totalPagesComments.size()} > 1 and ${viewAllComments} != null and ${!viewAllComments.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} + 1)}">&raquo;</a>
+                                <a th:if="${currentPageComments} < ${lastPage} and ${totalPagesComments.size()} > 1" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} + 1)}">&raquo;</a>
                             </div>
                         </div>
                         <!-- Recent comments list -->
-                        <div th:if="${viewAllComments} != null" th:each="comment:${viewAllComments}">
-                            <div class="card mb-5 w-100">
-                                <div class="card-body">
-                                    <div class="overflow-auto">
-                                        <p th:utext=${comment.response}>response</p>
-                                        <p class="small my-0 text-center" th:text="${'commented: ' + comment.postingtime}">time</p>
-                                        <strong><p class="h6 my-0 text-right" th:text="${'by: ' + comment.useralias}">alias</p></strong>
+                        <div th:each="comment:${viewAllComments}">
+                            <div th:if="${comment.postid} == ${post.id}" class="card mb-5 w-50">
+                                <div class="card w-100">
+                                    <div class="card-body">
+                                        <div class="overflow-auto">
+                                            <p th:utext=${comment.response}>response</p>
+                                            <p class="small my-0 text-center" th:text="${'commented: ' + comment.postingtime}">time</p>
+                                            <strong><p class="h6 my-0 text-right" th:text="${'by: ' + comment.useralias}">alias</p></strong>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Page -->
                         <div class="paginationleft">
-                            <div class="pagination">
+                            <div th:unless="${totalPagesCommentsSize} == 0" class="pagination">
                                 <a th:if="${currentPageComments} > 0" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} - 1)}">&laquo;</a>
                                 <span th:each="page:${totalPagesComments}">
-                                    <a th:if="${page} == ${currentPageComments} and ${viewAllComments} != null and ${!viewAllComments.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" class="active" th:text="${page} + 1">page number</a>
+                                    <a th:if="${page} == ${currentPageComments}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" class="active" th:text="${page} + 1">page number</a>
                                     <a th:unless="${page} == ${currentPageComments}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${page})}" th:text="${page} + 1">page number</a>
                                 </span>
-                                <a th:if="${currentPageComments} < ${lastPage} and ${totalPagesComments.size()} > 1 and ${viewAllComments} != null and ${!viewAllComments.empty}" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} + 1)}">&raquo;</a>
+                                <a th:if="${currentPageComments} < ${lastPage} and ${totalPagesComments.size()} > 1" th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id},showpagecomments=${currentPageComments} + 1)}">&raquo;</a>
                             </div>
                         </div>
                     </div>
