@@ -29,7 +29,6 @@ public class TermsOfServicePageTest extends FluentTest {
     @LocalServerPort
     private Integer port;
 
-    // Not logged in
     // layout_links_texts.html th:fragment="terms" - TESTS
     @Test
     public void clickTermsOfServiceReturnLinkThenPageSourceContainsSignUp() {

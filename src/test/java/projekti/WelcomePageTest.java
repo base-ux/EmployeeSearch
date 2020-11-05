@@ -29,7 +29,6 @@ public class WelcomePageTest extends FluentTest {
     @LocalServerPort
     private Integer port;
 
-    // Not logged in
     // layout_welcome_loggedout.html - TESTS
     // Testing that carousel works
     @Test

@@ -1,30 +1,21 @@
 package projekti;
 
-import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.fluentlenium.adapter.junit.FluentTest;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-import projekti.domain.Ability;
-import projekti.domain.Account;
-import projekti.logic.repository.AccountRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class AbilityTest extends FluentTest {
-
-    @Autowired
-    private AccountRepository accountRepository;
+public class PostTest extends FluentTest {
 
     @LocalServerPort
     private Integer port;
@@ -63,28 +54,44 @@ public class AbilityTest extends FluentTest {
         $("#userLogin").click();
     }
 
-    // layout_home_nonedit.html - TESTS
-    // Testing that ability adding works
+    // posts.html and comments.html - TESTS
+    // Testing that post adding works
     @Test
-    public void addAbility() {
-        $("#addAbilityLink").click();
-        find("#addAbilityTextBox").fill().with("Lisätään taito 1.");
-        $("#addAbilityButton").click();
-        assertThat(pageSource()).contains("My Home Page");
-        assertThat(pageSource()).contains("Lisätään taito 1.");
-        assertThat(pageSource()).contains("Praises:");
+    public void addPost() {
+        $("#navbarPostsButton").click();
+        assertThat(pageSource()).contains("Posts");
+        assertThat(pageSource()).contains("New Post Title:");
+        assertThat(pageSource()).contains("New Post Message:");
+        assertThat(pageSource()).contains("Recent Posts:");
+
+        find("[name=title]").fill().with("otsikko 1");
+        find("[name=message]").fill().with("sisältö 1");
+        find("[name=sendPostButton]").click();
+        assertThat(pageSource()).contains("Comments");
+        assertThat(pageSource()).contains("otsikko 1");
+        assertThat(pageSource()).contains("sisältö 1");
+        assertThat(pageSource()).contains("New Comment:");
     }
 
-    // layout_home_visiting.html - TESTS
-    // Testing that praise adding works
+    // Testing that comment adding works
     @Test
-    public void addPraise() {
-        $("#addAbilityLink").click();
-        find("#addAbilityTextBox").fill().with("Lisätään taito 1.");
-        $("#addAbilityButton").click();
-        assertThat(pageSource()).contains("My Home Page");
-        assertThat(pageSource()).contains("Lisätään taito 1.");
-        assertThat(pageSource()).contains("Praises:");
+    public void addComment() {
+        goTo("http://localhost:" + port + "/EmployeeSearch/Users/tontsa/Visiting/tontsa2");
+        find("[name=addConnectionButton]").click();
+
+        $("#navbarPostsButton").click();
+        assertThat(pageSource()).contains("Posts");
+        assertThat(pageSource()).contains("New Post Title:");
+        assertThat(pageSource()).contains("New Post Message:");
+        assertThat(pageSource()).contains("Recent Posts:");
+
+        find("[name=title]").fill().with("otsikko 1");
+        find("[name=message]").fill().with("sisältö 1");
+        find("[name=sendPostButton]").click();
+        assertThat(pageSource()).contains("Comments");
+        assertThat(pageSource()).contains("otsikko 1");
+        assertThat(pageSource()).contains("sisältö 1");
+        assertThat(pageSource()).contains("New Comment:");
 
         $("#navbarDropdownMenuLink").click();
         $("#signoutLink").click();
@@ -99,19 +106,20 @@ public class AbilityTest extends FluentTest {
         $("#userLogin").click();
 
         goTo("http://localhost:" + port + "/EmployeeSearch/Users/tontsa2/Visiting/tontsa");
-        find("[name=addPraiseButton]").first().click();
-        find("[name=praisetext]").first().fill().with("Hyvä taito 1!");
-        find("[name=submitNewPraise]").first().click();
+        find("[name=acceptConnectionButton]").click();
 
-        assertThat(pageSource()).contains("Already praised!");
+        $("#navbarPostsButton").click();
+        assertThat(pageSource()).contains("Posts");
+        assertThat(pageSource()).contains("New Post Title:");
+        assertThat(pageSource()).contains("New Post Message:");
+        assertThat(pageSource()).contains("Recent Posts:");
+
+        find("[name=postTitleLink]").click();
+        find("[name=response]").fill().with("kommentti 1");
+        find("[name=addCommentButton]").click();
+
+        assertThat(pageSource()).contains("Comments");
+        assertThat(pageSource()).contains("kommentti 1");
         assertThat(pageSource()).contains("tontsa2");
-        assertThat(pageSource()).contains("Hyvä taito 1!");
-
-        Account account = this.accountRepository.findByUseralias("tontsa");
-        List<Ability> abilities = account.getAbilities();
-        int praises = 0;
-        Ability ability = abilities.get(0);
-        praises = ability.getPraises();
-        assertEquals(1, praises);
     }
 }

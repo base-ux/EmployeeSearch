@@ -97,7 +97,7 @@
                                     <div class="card my-5 w-100 border-primary">
                                         <div class="card-body">
                                             <form th:if="${account} == ${ability.account}" class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/DeleteAbility(useralias=${account.useralias},abilityid=${ability.id})}" th:method="DELETE">
-                                                <button class="btn btn-sm aligncenter" onclick="return confirm('* * * DELETE ABILITY * * * \n \n* * ARE YOU SURE? * *\n \n Deleting the ability also deletes the associated praises.');"><i class="fas fa-trash-alt mr-3"></i>Delete</button>
+                                                <button name="deleteAbilityButton" class="btn btn-sm aligncenter" onclick="return confirm('* * * DELETE ABILITY * * * \n \n* * ARE YOU SURE? * *\n \n Deleting the ability also deletes the associated praises.');"><i class="fas fa-trash-alt mr-3"></i>Delete</button>
                                             </form>
                                             <p class="card-text mb-0 text-center" th:utext="${ability.abilitytext}">ability text</p>
                                             <p class="mt-0 mb-2 blueish">Praises: <span th:text="${ability.praises}">praises</span></p>

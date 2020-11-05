@@ -40,14 +40,14 @@
                         <form th:action="@{/EmployeeSearch/Users/{useralias}/Posts(useralias=${account.useralias})}" 
                               th:object="${post}" enctype="multipart/form-data" method="POST">
                             <p class="h5 mb-4 darkblue"><strong>New Post Title:</strong></p>
-                            <input type="text" th:field="*{title}" name="title" class="container-fluid"/><br/>
+                            <input name="title" type="text" th:field="*{title}" class="container-fluid"/><br/>
                             <small th:if="${#fields.hasErrors('title')}"
                                    th:errors="*{title}" class="text-danger">post title error message</small>
                             <p class="h5 my-4 darkblue"><strong>New Post Message:</strong></p>
-                            <textarea class="summernote" th:field="*{message}" name="message">new post message</textarea>
+                            <textarea name="message" class="summernote" th:field="*{message}">new post message</textarea>
                             <small th:if="${#fields.hasErrors('message')}"
                                    th:errors="*{message}" class="text-danger">post contents error message</small><br/>
-                            <button type="submit" class="btn btn-outline-dark btn-md waves-effect">Send</button>
+                            <button name="sendPostButton" type="submit" class="btn btn-outline-dark btn-md waves-effect">Send</button>
                         </form>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                                     <a th:href="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id})}">
                                         <p class="card-title h5 py-2 text-left darkbluebg greyish">
                                             <i class="fas fa-book-reader mx-3 greyishicon"></i>
-                                            <strong class="ml-3" th:text="${#strings.abbreviate(post.title,50)}">post title</strong>
+                                            <strong name="postTitleLink" class="ml-3" th:text="${#strings.abbreviate(post.title,50)}">post title</strong>
                                         </p>
                                         <p class="card-text mb-0 text-center">view</p>
                                     </a>

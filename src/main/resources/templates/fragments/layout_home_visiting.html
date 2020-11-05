@@ -19,7 +19,7 @@
                     <div class="col-6 pr-5 text-right">
                         <!-- Send connection request button -->
                         <form th:action="@{/EmployeeSearch/Users/{useralias}/Visiting/{visitingalias}/AddConnection(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button th:if="${requestSent} == false and ${requestReceived} == false" type="submit" class="btn btn-sm yellowishbg editbutton">Add Connection<i class="fas fa-user-plus ml-2"></i></button>
+                            <button name="addConnectionButton" th:if="${requestSent} == false and ${requestReceived} == false" type="submit" class="btn btn-sm yellowishbg editbutton">Add Connection<i class="fas fa-user-plus ml-2"></i></button>
                             <button th:if="${requestSent} == true" type="submit" class="btn btn-sm yellowishbg disabled editbutton">Request Sent<i class="fas fa-user-clock ml-2"></i></button>
                             <button th:if="${requestReceived} == true" type="submit" class="btn btn-sm yellowishbg disabled editbutton">Request Received<i class="fas fa-user-clock ml-2"></i></button>
                         </form>
@@ -29,11 +29,11 @@
                         </form>
                         <!-- Accept connection request button -->
                         <form th:action="@{/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Accept(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm yellowishbg editbutton">Accept<i class="fas fa-user-check ml-2"></i></button>
+                            <button name="acceptConnectionButton" th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm yellowishbg editbutton">Accept<i class="fas fa-user-check ml-2"></i></button>
                         </form>
                         <!-- Reject connection request button -->
                         <form th:action="@{/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Reject(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm yellowishbg editbutton">Reject<i class="fas fa-user-times ml-2"></i></button>
+                            <button name="rejectConnectionButton" th:if="${requestSent} == false and ${requestReceived} == true" type="submit" class="btn btn-sm yellowishbg editbutton">Reject<i class="fas fa-user-times ml-2"></i></button>
                         </form>
                     </div>
                 </div>
@@ -110,15 +110,15 @@
                                                 </div>
                                             </div>
                                             <div class="text-left" role="button" data-toggle="collapse" data-target="#collapsePraiseHomeVisitingFirst">
-                                                <button class="btn btn-sm h5 my-3"><i class="fas fa-hand-point-up mr-3 waves-effect waves-light"></i>Add Praise</button>
+                                                <button name="addPraiseButton" class="btn btn-sm h5 my-3"><i class="fas fa-hand-point-up mr-3 waves-effect waves-light"></i>Add Praise</button>
                                             </div>
                                             <div class="collapse hide" id="collapsePraiseHomeVisitingFirst">
                                                 <form th:action="@{/EmployeeSearch/Users/{useralias}/Abilities/{abilityid}/Praise/{visitingalias}(useralias=${account.useralias},abilityid=${ability.id},visitingalias=${visitingaccount.useralias})}" 
                                                       th:object="${praise}" enctype="multipart/form-data" method="POST">
-                                                    <textarea th:unless="${#fields.hasErrors('praisetext')} and ${abilityid} != ${ability.id}" class="summernote" th:field="*{praisetext}" name="praisetext">new praise text</textarea>
+                                                    <textarea name="praisetext" th:unless="${#fields.hasErrors('praisetext')} and ${abilityid} != ${ability.id}" class="summernote" th:field="*{praisetext}">new praise text</textarea>
                                                     <small th:if="${#fields.hasErrors('praisetext')} and ${abilityid} == ${ability.id}"
                                                            th:errors="*{praisetext}" class="text-danger">praise text error message</small><br/>
-                                                    <button th:unless="${#fields.hasErrors('praisetext')} and ${abilityid} != ${ability.id}" class="btn btn-sm" name="submitNewPraise" type="submit"><i class="fas fa-hands mr-3 waves-effect waves-light"></i>Praise</button>
+                                                    <button name="submitNewPraise" th:unless="${#fields.hasErrors('praisetext')} and ${abilityid} != ${ability.id}" class="btn btn-sm" type="submit"><i class="fas fa-hands mr-3 waves-effect waves-light"></i>Praise</button>
                                                 </form>
                                             </div>
                                             <!-- Praises list -->

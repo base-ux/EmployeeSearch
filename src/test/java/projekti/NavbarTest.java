@@ -40,7 +40,6 @@ public class NavbarTest extends FluentTest {
         $("#userLogin").click();
     }
 
-    // Logged in
     // layout_navbar_loggedin.html - TESTS
     // Testing that links and buttons work
     @Test

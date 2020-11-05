@@ -19,7 +19,7 @@
                     <div class="col-6 pr-5 text-right">
                         <!-- Remove connection button -->
                         <form th:action="@{/EmployeeSearch/Users/{useralias}/Connections/{visitingalias}/Remove(useralias=${account.useralias},visitingalias=${visitingaccount.useralias})}" method="POST">
-                            <button type="submit" class="btn btn-sm blueishbg editbutton">Remove Connection<i class="fas fa-user-minus ml-2 greyishicon"></i></button>
+                            <button name="removeConnectionButton" type="submit" class="btn btn-sm blueishbg editbutton">Remove Connection<i class="fas fa-user-minus ml-2 greyishicon"></i></button>
                         </form>
                     </div>
                 </div>

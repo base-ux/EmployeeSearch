@@ -3,13 +3,13 @@ $(".carousel").carousel({
   interval: 10000
 })
 
-// Home page drag and drop
+// Home page edit mode drag and drop
 $(function() {
     $("#sortable").sortable()
     $("#sortable").disableSelection()
 })
 
-// Posts page summernote text editor
+// Summernote text editor
 $(document).ready(function() {
     $(".summernote").summernote({
     height: 140,

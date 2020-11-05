@@ -127,6 +127,14 @@
                                 <button id="loadProfilePictureButton" class="btn btn-sm btn-dark my-4 editbutton greyish" name="submitNewLoadPicture" type="submit">Load<i class="fas fa-portrait ml-2"></i></button>
                             </div>
                         </form>
+                        <!-- Delete profile picture link -->
+                        <div class="row">
+                            <div class="text-center">
+                                <p class="ml-2 mt-2">Want to delete Profile Picture? See Delete Profile Picture on the 
+                                    <a th:href="@{/EmployeeSearch/Users/{useralias}/Help#deleteProfilepicture(useralias=${account.useralias})}">Help page.</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

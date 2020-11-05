@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -62,7 +63,7 @@ public class Account extends AbstractPersistable<Long> {
     @ElementCollection
     private List<String[]> connectionsEstablished = new ArrayList<>();
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "account")
     private List<Ability> abilities = new ArrayList<>();
 
     @OneToMany(mappedBy = "account")

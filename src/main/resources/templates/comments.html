@@ -43,7 +43,7 @@
                             </form>
                             <form th:unless="${account.useralias} == ${postuseralias}" class="text-right" th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}/LikePost(useralias=${account.useralias},postid=${post.id})}" method="POST">
                                 <button th:if="${post.likers.contains(account.useralias)}" type="submit" class="btn btn-sm pinkish"><i class="fas fa-thumbs-up mr-3 pinkish waves-effect waves-light"></i>Liked</button>
-                                <button th:unless="${post.likers.contains(account.useralias)}" type="submit" class="btn btn-sm"><i class="fas fa-thumbs-up mr-3 waves-effect waves-light"></i>Like</button>
+                                <button name="likePostButton" th:unless="${post.likers.contains(account.useralias)}" type="submit" class="btn btn-sm"><i class="fas fa-thumbs-up mr-3 waves-effect waves-light"></i>Like</button>
                             </form>
                             <p class="card-title h5 py-2 text-left darkbluebg greyish">
                                 <i class="fas fa-envelope-open-text mx-3 greyishicon"></i>
@@ -69,10 +69,10 @@
                         <form th:action="@{/EmployeeSearch/Users/{useralias}/Comments/{postid}(useralias=${account.useralias},postid=${post.id})}" 
                               th:object="${comment}" enctype="multipart/form-data" method="POST">
                             <p class="h5 my-4 darkblue"><strong>New Comment:</strong></p>
-                            <textarea class="summernote" th:field="*{response}" name="response">new comment</textarea>
+                            <textarea name="response" class="summernote" th:field="*{response}">new comment</textarea>
                             <small th:if="${#fields.hasErrors('response')}"
                                    th:errors="*{response}" class="text-danger">comment contents error message</small><br/>
-                            <button type="submit" class="btn btn-outline-dark btn-md waves-effect">Comment</button>
+                            <button name="addCommentButton" type="submit" class="btn btn-outline-dark btn-md waves-effect">Comment</button>
                         </form>
                     </div>
                 </div>

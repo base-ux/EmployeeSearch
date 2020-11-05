@@ -50,7 +50,7 @@ public class ProfilePictureTest extends FluentTest {
         $("#userLogin").click();
     }
 
-    // Not logged in
+    // preferences.html and layout_home_nonedit.html - TESTS
     // Testing stock that profile picture adding works
     @Test
     public void clickNavbarPreferencesButtonAndSelectStockMaleProfilePicture() {
@@ -60,7 +60,7 @@ public class ProfilePictureTest extends FluentTest {
         $("#selectStockProfilePictureButton").click();
         assertThat(getAccount().getStockProfilePicture()).contains("male");
     }
-    
+
     @Test
     public void clickNavbarPreferencesButtonAndSelectStockFemaleProfilePicture() {
         $("#navbarPreferencesButton").click();
@@ -69,7 +69,7 @@ public class ProfilePictureTest extends FluentTest {
         $("#selectStockProfilePictureButton").click();
         assertThat(getAccount().getStockProfilePicture()).contains("female");
     }
-    
+
     @Test
     public void clickNavbarPreferencesButtonAndSelectStockNeutralProfilePicture() {
         $("#navbarPreferencesButton").click();
