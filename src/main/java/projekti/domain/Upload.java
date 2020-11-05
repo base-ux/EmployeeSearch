@@ -25,7 +25,7 @@ public class Upload extends AbstractPersistable<Long> {
     private Long uploadSize;
 
     @Lob
-    @Type(type = "org.hibernate.type.BinaryType")
+    @Type(type = "org.hibernate.type.PrimitiveByteArrayBlobType")
     @Basic(fetch = FetchType.LAZY)
     private byte[] upload;
 }
