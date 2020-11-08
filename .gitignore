@@ -1,5 +1,19 @@
 /target/
 
+*.o
+
+*.pyc
+
+*.class
+
+*.tmp
+
+*.lock
+
+*.db
+
+*.log
+
 .DS_Store
 
 node_modules
