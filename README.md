@@ -3,9 +3,6 @@ EmployeeSearch - Pikaopas - v1.00 Copyright (C) 2020 Toni Silfver. All rights re
 ****************************************************************************************************
 Taustatiedot:
 
-Sovelluksen Heroku-osoite
-https://guarded-thicket-83287.herokuapp.com/
-
 Tämän ohjeen kieli
 Suomi.
 
